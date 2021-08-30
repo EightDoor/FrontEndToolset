@@ -16,7 +16,11 @@ const Slider = defineComponent({
     const list = reactive<Layout.SliderType[]>([
       {
         title: '首页',
-        url: 'home',
+        url: '/home',
+      },
+      {
+        title: "node环境安装与配置",
+        url: "/env_install"
       }
     ]);
     function change(item: any) {
