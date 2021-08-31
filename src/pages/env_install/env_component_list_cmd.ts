@@ -1,5 +1,4 @@
-import { spawn } from 'child_process';
-
+const { spawn } = require("child_process")
 /**
  * 执行命令
  * @param {*} val 命令 
