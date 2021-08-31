@@ -1,3 +1,7 @@
+# 功能
+- 开发环境配置
+- 开发ide安装
+
 # 运行
 - 构建node-gpy
   - 执行 nmp run rebuild
