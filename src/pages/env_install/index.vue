@@ -6,7 +6,7 @@
 import { ref } from "vue";
 import EnvComponentList from './env_component_list.vue';
 
-const defaultList:EnvInstall.ListType[] = [
+const defaultList: EnvInstall.ListType[] = [
   {
     title: "nodejs",
     status: false,
@@ -15,7 +15,7 @@ const defaultList:EnvInstall.ListType[] = [
   {
     title: "npm",
     status: false,
-    type:"npm"
+    type: "npm"
   },
   {
     title: "cnpm",
@@ -25,8 +25,13 @@ const defaultList:EnvInstall.ListType[] = [
   {
     title: "yarn",
     status: false,
-    type: "yarn"
+    type: "yarn",
+  },
+  {
+    title: "pnpm",
+    status: false,
+    type: "pnpm"
   }
 ];
-const list:EnvInstall.ListType[] = ref(defaultList);
+const list = ref<EnvInstall.ListType[]>(defaultList);
 </script>
