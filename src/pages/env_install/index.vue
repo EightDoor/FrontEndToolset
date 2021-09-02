@@ -1,37 +1,55 @@
 <template>
-  <env-component-list v-for="(item, index) in list" :key="index" :data="item"></env-component-list>
+  <env-component-list
+    v-for="(item, index) in list"
+    :key="index"
+    :data="item"
+  ></env-component-list>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue';
 import EnvComponentList from './env_component_list.vue';
 
 const defaultList: EnvInstall.ListType[] = [
   {
-    title: "nodejs",
+    title: 'nodejs',
     status: false,
-    type: "node"
+    type: 'node',
+    cmd: 'node -v',
   },
   {
-    title: "npm",
+    title: 'npm',
     status: false,
-    type: "npm"
+    type: 'npm',
+    cmd: 'npm -v',
   },
   {
-    title: "cnpm",
+    title: 'nrm',
     status: false,
-    type: "cnpm"
+    type: 'nrm',
+    cmd: 'nrm -v',
+    install: 'npm install nrm -g',
   },
   {
-    title: "yarn",
+    title: 'cnpm',
     status: false,
-    type: "yarn",
+    type: 'cnpm',
+    cmd: 'cnpm -v',
+    install: 'npm install cnpm -g',
   },
   {
-    title: "pnpm",
+    title: 'yarn',
     status: false,
-    type: "pnpm"
-  }
+    type: 'yarn',
+    cmd: 'yarn -v',
+    install: 'npm install yarn -g',
+  },
+  {
+    title: 'pnpm',
+    status: false,
+    type: 'pnpm',
+    cmd: 'pnpm -v',
+  },
 ];
 const list = ref<EnvInstall.ListType[]>(defaultList);
 </script>
