@@ -19,20 +19,25 @@
           <!-- 要高亮的代码块用 "v-highlight"  -->
           <div v-highlight>{{ data?.install }}</div>
         </el-form-item>
+        <el-form-item v-if="operationLog" label="操作日志">
+          <div v-highlight>{{ operationLog }}</div>
+        </el-form-item>
       </el-form>
     </div>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="submit">确定</el-button>
+        <el-button type="primary" @click="submit(data?.install ?? '')">确定</el-button>
       </span>
     </template>
   </el-dialog>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
 import { log } from '@/utils/log';
+import { reactive, ref } from 'vue';
+import { ElMessage } from '_element-plus@1.1.0-beta.9@element-plus';
+import EnvCmd from './env_component_list_cmd';
 
 const form = reactive({
   // 镜像源
@@ -51,10 +56,21 @@ function openDialog(sta: EnvInstall.Status, val: EnvInstall.ListType) {
   dialogVisible.value = true;
 }
 
-function submit() {
+
+const operationLog = ref("")
+function submit(val: string) {
   log('submit', '提交');
   if (status.value === 'install') {
-
+    if (!val) {
+      ElMessage.error("没有安装命令")
+    } else {
+      EnvCmd(val, (err) => {
+        operationLog.value += err;
+      }, (data) => {
+        // log("执行的", data)
+        operationLog.value = data;
+      })
+    }
   } else if (status.value === 'uninstall') {
   }
 }
