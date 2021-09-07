@@ -1,3 +1,5 @@
+
+// const spawn = require('cross-spawn')
 const { spawn } = require("child_process")
 /**
  * 执行命令
@@ -6,16 +8,25 @@ const { spawn } = require("child_process")
 
 type TypeFun = (val: string) => void;
 function EnvCmd(val: string, error: TypeFun, success: TypeFun) {
+  // const ls = spawn('npm', ['-v'], {
+  //   stdio: "inherit",
+  //   shell: process.env.SHELL,
+  // })
+  // if (ls.error) {
+  //   error(JSON.stringify(ls.error));
+  //   return;
+  // }
+  // log("spawn", ls)
+  // success(ls.stdout)
+
+
   const ls = spawn(val, {
-    cwd: process.cwd(),
-    shell: true,
+    shell: process.env.SHELL,
   })
-  let result = `${val}-> \n`;
   // 监听标准输出
   ls.stdout.on("data", (data: any) => {
     console.log(`stdout: ${data}`);
-    result += `out -> ${data}\n`;
-    success(result);
+    success(data);
   })
 
   // 监听标准错误
@@ -31,5 +42,12 @@ function EnvCmd(val: string, error: TypeFun, success: TypeFun) {
   })
 }
 
+// function EnvCmd(val: string, error: TypeFun, success: TypeFun) {
+//   cost result = spawn.sync('npm', { stdio: 'inherit' })
+//   log('r', result)
+//   log('stderr', result.stderr)
+//   success(result.stdout)
+//   error(result.error)
+// }
 
 export default EnvCmd;

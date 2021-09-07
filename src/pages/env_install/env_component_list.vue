@@ -25,7 +25,7 @@
       >{{ data.status ? '卸载' : '安装' }}</el-button>
     </li>
   </ul>
-  <com-dialog ref="dialogRef" />
+  <com-dialog ref="dialogRef" @refresh="refresh" />
 </template>
 <script lang="ts">
 export default defineComponent({
@@ -34,10 +34,10 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { reactive, watch, defineComponent, PropType, ref, Ref } from 'vue';
-import EnvCmd from './env_component_list_cmd';
 import { log } from '@/utils/log';
 import { ElMessage } from 'element-plus';
+import { defineComponent, PropType, reactive, ref, watch } from 'vue';
+import EnvCmd from './env_component_list_cmd';
 import ComDialog from './env_component_list_dialog.vue';
 
 const props = defineProps({
@@ -57,22 +57,31 @@ const cmdData = ref('');
 const cmdDataErr = ref('');
 const dialogRef = ref<EnvInstall.openDialogType<EnvInstall.ListType>>();
 
+function refresh() {
+  cmdFun()
+}
+
+function cmdFun(val?: EnvInstall.ListType) {
+  cmdData.value = '';
+  cmdDataErr.value = '';
+  EnvCmd(
+    val?.cmd ?? data.cmd,
+    (val) => {
+      cmdDataErr.value = val;
+    },
+    (val) => {
+      cmdData.value = String(val);
+      data.status = true;
+    }
+  );
+}
 watch(
   () => props.data,
   (newValue, oldValue) => {
     log('wa', props.data);
     if (props.data) {
-      EnvCmd(
-        props.data.cmd,
-        (val) => {
-          cmdDataErr.value = val;
-        },
-        (val) => {
-          cmdData.value = val;
-          data.status = true;
-        }
-      );
       data = props.data;
+      cmdFun(props.data)
     }
   },
   {

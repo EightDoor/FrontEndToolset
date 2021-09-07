@@ -17,7 +17,17 @@
         </el-form-item>
         <el-form-item label="安装命令">
           <!-- 要高亮的代码块用 "v-highlight"  -->
-          <div v-highlight>{{ data?.install }}</div>
+          <div v-highlight>{{ `${data?.install} --registry=${form.mirrorSource}` }}</div>
+        </el-form-item>
+        <el-form-item v-if="operationLog" label="操作日志">
+          <div v-highlight>{{ operationLog }}</div>
+        </el-form-item>
+      </el-form>
+    </div>
+    <div v-if="status === 'uninstall'">
+      <el-form>
+        <el-form-item label="卸载命令">
+          <div v-highlight>{{ data?.uninstall }}</div>
         </el-form-item>
         <el-form-item v-if="operationLog" label="操作日志">
           <div v-highlight>{{ operationLog }}</div>
@@ -27,7 +37,11 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="submit(data?.install ?? '')">确定</el-button>
+        <el-button
+          type="primary"
+          @click="submit(`${data?.install} --registry=${form.mirrorSource}` ?? '')"
+          :loading="loading"
+        >确定</el-button>
       </span>
     </template>
   </el-dialog>
@@ -35,20 +49,23 @@
 
 <script lang="ts" setup>
 import { log } from '@/utils/log';
-import { reactive, ref } from 'vue';
+import { defineEmits, reactive, ref } from 'vue';
 import { ElMessage } from '_element-plus@1.1.0-beta.9@element-plus';
 import EnvCmd from './env_component_list_cmd';
 
 const form = reactive({
   // 镜像源
-  "mirrorSource": "taobao",
+  "mirrorSource": "https://registry.npm.taobao.org/",
 });
+const loading = ref(false)
 const status = ref<EnvInstall.Status>('install')
 const data = ref<EnvInstall.ListType>()
 const dialogVisible = ref(false);
 function handleClose() {
   dialogVisible.value = false;
 }
+
+const emit = defineEmits(['refresh'])
 
 function openDialog(sta: EnvInstall.Status, val: EnvInstall.ListType) {
   status.value = sta;
@@ -64,14 +81,28 @@ function submit(val: string) {
     if (!val) {
       ElMessage.error("没有安装命令")
     } else {
+      loading.value = true;
       EnvCmd(val, (err) => {
         operationLog.value += err;
+        loading.value = false;
       }, (data) => {
         // log("执行的", data)
-        operationLog.value = data;
+        loading.value = false
+        operationLog.value += data;
       })
     }
   } else if (status.value === 'uninstall') {
+    loading.value = true;
+    EnvCmd(val, (err) => {
+      operationLog.value += err;
+      loading.value = false;
+      emit('refresh')
+    }, (data) => {
+      // log("执行的", data)
+      loading.value = false
+      operationLog.value = data;
+      emit('refresh')
+    })
   }
 }
 defineExpose({

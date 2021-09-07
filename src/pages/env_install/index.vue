@@ -1,13 +1,10 @@
 <template>
-  <env-component-list
-    v-for="(item, index) in list"
-    :key="index"
-    :data="item"
-  ></env-component-list>
+  <env-component-list v-for="(item, index) in list" :key="index" :data="item"></env-component-list>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { log } from '@/utils/log';
+import { onMounted, ref } from 'vue';
 import EnvComponentList from './env_component_list.vue';
 
 const defaultList: EnvInstall.ListType[] = [
@@ -24,11 +21,18 @@ const defaultList: EnvInstall.ListType[] = [
     cmd: 'npm -v',
   },
   {
+    title: 'nvm',
+    status: false,
+    type: 'nvm',
+    cmd: 'nvm --version'
+  },
+  {
     title: 'nrm',
     status: false,
     type: 'nrm',
-    cmd: 'nrm -v',
+    cmd: 'nrm -V',
     install: 'npm install nrm -g',
+    uninstall: "npm uninstall nrm -g"
   },
   {
     title: 'cnpm',
@@ -52,4 +56,8 @@ const defaultList: EnvInstall.ListType[] = [
   },
 ];
 const list = ref<EnvInstall.ListType[]>(defaultList);
+
+onMounted(() => {
+  log("工作空间", process.env)
+})
 </script>
