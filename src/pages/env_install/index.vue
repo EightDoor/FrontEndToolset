@@ -48,6 +48,7 @@ const defaultList: EnvInstall.ListType[] = [
     type: 'yarn',
     cmd: 'yarn -v',
     install: 'npm install yarn -g',
+    uninstall: 'npm uninstall -g yarn',
   },
   {
     title: 'pnpm',
