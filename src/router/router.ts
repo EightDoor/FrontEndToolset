@@ -2,6 +2,7 @@ import BaseLayout from '@/layout/BaseLayout.vue';
 import Home from '@/pages/home/home.vue';
 import NotFound from '@/pages/other/not_found.vue';
 import EnvInstall from '@/pages/env_install/index.vue';
+import Json from '@/pages/json/index.vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
@@ -17,6 +18,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: "env_install",
         component: EnvInstall,
+      },
+      {
+        path: 'json',
+        component: Json,
       }
     ],
   },

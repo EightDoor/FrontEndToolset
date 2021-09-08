@@ -20,7 +20,12 @@
           <div v-highlight>{{ `${data?.install} --registry=${form.mirrorSource}` }}</div>
         </el-form-item>
         <el-form-item v-if="operationLog" label="操作日志">
-          <div v-highlight>{{ operationLog }}</div>
+<!--          TODO 更新数据视图无法更新，自定义指令问题-->
+<!--          <div v-highlight>{{ operationLog }}</div>-->
+          <ul class="ul">
+            <div v-html="operationLog">
+            </div>
+          </ul>
         </el-form-item>
       </el-form>
     </div>
@@ -50,13 +55,14 @@
 <script lang="ts" setup>
 import { log } from '@/utils/log';
 import { defineEmits, reactive, ref } from 'vue';
-import { ElMessage } from '_element-plus@1.1.0-beta.9@element-plus';
+import { ElMessage } from 'element-plus';
 import EnvCmd from './env_component_list_cmd';
 
 const form = reactive({
   // 镜像源
   "mirrorSource": "https://registry.npm.taobao.org/",
 });
+
 const loading = ref(false)
 const status = ref<EnvInstall.Status>('install')
 const data = ref<EnvInstall.ListType>()
@@ -71,6 +77,7 @@ function openDialog(sta: EnvInstall.Status, val: EnvInstall.ListType) {
   status.value = sta;
   data.value = val;
   dialogVisible.value = true;
+  operationLog.value = '';
 }
 
 
@@ -83,29 +90,32 @@ function submit(val: string) {
     } else {
       loading.value = true;
       EnvCmd(val, (err) => {
-        operationLog.value += err;
+        operationLog.value += `${err}\n`;
         loading.value = false;
       }, (data) => {
-        // log("执行的", data)
         loading.value = false
-        operationLog.value += data;
+        operationLog.value += `<li style="margin-top: 15px;border-bottom: 1px solid red">${data}</li>`;
+        log("执行的", operationLog.value)
+        emit('refresh')
       })
     }
   } else if (status.value === 'uninstall') {
     loading.value = true;
-    EnvCmd(val, (err) => {
-      operationLog.value += err;
+    EnvCmd(data.value?.uninstall ?? "", (err) => {
+      operationLog.value += `${err}\n`;
       loading.value = false;
-      emit('refresh')
+      // emit('refresh')
     }, (data) => {
-      // log("执行的", data)
       loading.value = false
-      operationLog.value = data;
+      operationLog.value += `${data}\n`;
       emit('refresh')
     })
   }
 }
+
 defineExpose({
   openDialog,
 })
 </script>
+<style scoped lang="less">
+</style>

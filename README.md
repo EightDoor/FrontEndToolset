@@ -17,3 +17,4 @@
 - prettier 代码格式化
 - debugout.js 前端日志
 - vitejs-plugin-electron electron ESModule使用
+- codemirror 代码编辑器

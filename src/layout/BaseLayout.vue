@@ -1,9 +1,9 @@
 <template>
-  <el-container>
-    <el-aside width="100px">
+  <el-container class="container">
+    <el-aside class="aside" width="200px">
       <Slider />
     </el-aside>
-    <el-main>
+    <el-main class="content">
       <router-view />
     </el-main>
   </el-container>
@@ -20,3 +20,14 @@ const BaseLayout = defineComponent({
 
 export default BaseLayout;
 </script>
+<style scoped lang="less">
+@height: 20px;
+.aside {
+  height: calc(100vh - @height);
+  overflow-y: auto;
+}
+.content {
+  height: calc(100vh - @height);
+  overflow-y: auto;
+}
+</style>

@@ -21,6 +21,10 @@ const Slider = defineComponent({
       {
         title: "node环境安装与配置",
         url: "/env_install"
+      },
+      {
+        title: "json格式化",
+        url: "/json"
       }
     ]);
     function change(item: any) {

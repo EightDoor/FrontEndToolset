@@ -40,6 +40,7 @@ const defaultList: EnvInstall.ListType[] = [
     type: 'cnpm',
     cmd: 'cnpm -v',
     install: 'npm install cnpm -g',
+    uninstall: 'npm uninstall cnpm -g'
   },
   {
     title: 'yarn',
@@ -53,6 +54,8 @@ const defaultList: EnvInstall.ListType[] = [
     status: false,
     type: 'pnpm',
     cmd: 'pnpm -v',
+    install: 'npm install -g pnpm',
+    uninstall: 'npm uninstall -g pnpm',
   },
 ];
 const list = ref<EnvInstall.ListType[]>(defaultList);
