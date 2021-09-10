@@ -40,8 +40,9 @@ async function download() {
   try {
     const result = await ipcRenderer.invoke("download", 'http://apk.start6.cn/1.mp4')
     loading.value = false;
-    log('r', result)
-    log("loading", loading.value)
+    log('r', JSON.parse(result))
+    const data = JSON.parse(result);
+    ElMessage.success("下载成功 " + data['savePath'])
   } catch (err) {
     loading.value = false;
     ElMessage.error("下载错误: " + err)

@@ -11,7 +11,8 @@ const init = () => {
     console.log(arg, 'url');
     const win = BrowserWindow.getFocusedWindow();
     const result = await electronDl.download(win, arg);
-    return result;
+    console.log(result);
+    return JSON.stringify(result);
   })
 }
 
