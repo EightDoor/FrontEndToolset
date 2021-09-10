@@ -2,10 +2,12 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
+const electronDl = require('electron-dl');
 
+electronDl()
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
-function createWindow() {
+function createWindow () {
   const win = new BrowserWindow({
     width: 1200,
     height: 800,
@@ -21,13 +23,13 @@ function createWindow() {
   });
   //
   isDev ? dev() : win.loadFile(path.join(__dirname, 'dist/index.html'));
-  function dev() {
+  function dev () {
     const url = 'http://localhost:9999/';
     win.loadURL(url).then(
       (
         r // 打开调试
       ) => win.webContents.openDevTools({ mode: 'bottom' })
-    ).catch(err=>{
+    ).catch(err => {
       console.log(err);
     });
   }

@@ -12,13 +12,11 @@ export default defineComponent({
 })
 </script>
 <style>
-body ul li {
+body,
+ul,
+li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-</style>
-
-<style>
-
 </style>
