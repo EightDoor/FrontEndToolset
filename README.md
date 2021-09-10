@@ -19,3 +19,4 @@
 - vitejs-plugin-electron electron ESModule使用
 - codemirror 代码编辑器
 - jsonlint-mod json格式化
+- json-to-ts json转换为ts文件
