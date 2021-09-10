@@ -2,6 +2,7 @@
   <ul class="ul">
     <li v-for="(item, index) in props.list" :key="index">
       <el-button
+        :loading="props.loading ?? false"
         @click="() => props.click(item.title)"
         class="button_space"
         :type="item.type ?? 'primary'"
@@ -18,12 +19,13 @@ export interface ButtonsType {
   click: (val: string) => void;
   w?: string;
   h?: string;
+  loading?: boolean
 }
 export interface ButtonsListType {
   title: string;
   type?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text',
   size?: 'medium' | 'small' | 'mini'
-  plain?: boolean
+  plain?: boolean,
 }
 
 const props = defineProps<ButtonsType>()

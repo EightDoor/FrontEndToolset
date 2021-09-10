@@ -20,11 +20,10 @@
           <div v-highlight>{{ `${data?.install} --registry=${form.mirrorSource}` }}</div>
         </el-form-item>
         <el-form-item v-if="operationLog" label="操作日志">
-<!--          TODO 更新数据视图无法更新，自定义指令问题-->
-<!--          <div v-highlight>{{ operationLog }}</div>-->
+          <!--          TODO 更新数据视图无法更新，自定义指令问题-->
+          <!--          <div v-highlight>{{ operationLog }}</div>-->
           <ul class="ul">
-            <div v-html="operationLog">
-            </div>
+            <div v-html="operationLog"></div>
           </ul>
         </el-form-item>
       </el-form>
@@ -54,7 +53,7 @@
 
 <script lang="ts" setup>
 import { log } from '@/utils/log';
-import { defineEmits, reactive, ref } from 'vue';
+import { reactive, ref } from 'vue';
 import { ElMessage } from 'element-plus';
 import EnvCmd from './env_component_list_cmd';
 
@@ -119,3 +118,4 @@ defineExpose({
 </script>
 <style scoped lang="less">
 </style>
+
