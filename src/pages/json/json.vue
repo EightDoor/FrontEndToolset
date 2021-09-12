@@ -1,15 +1,16 @@
 <template>
-  <Buttons :list="list" :click="change" :loading="loading" />
-  <JsonCode />
+  <Buttons :focus="true" :list="list" :click="change" :loading="loading">
+    <ClipButton :clipText="clipText" title="复制内容" />
+  </Buttons>
+  <JsonCode :changeText="changeText" :content="content" />
 </template>
 
 <script setup lang="ts">
 import JsonCode from '@/components/JsonCode/index.vue';
 import Buttons, { ButtonsListType } from '@/components/Buttons/index.vue';
 import { ref } from 'vue';
-import { ipcRenderer } from 'electron';
-import { log } from '@/utils/log';
-import { ElMessage } from 'element-plus';
+import utils from '@/utils';
+import ClipButton from '@/components/Buttons/clip_button.vue';
 
 
 const loading = ref(false)
@@ -20,34 +21,31 @@ const list = ref<ButtonsListType[]>([
     size: 'small',
   },
   {
-    title: '下载',
+    title: '格式化',
     size: 'small',
-  },
+  }
 ])
+const content = ref<any>(null)
+const defaultJson = ref<any>(null)
+
+function clipText() {
+  utils.clipText(defaultJson.value)
+}
 
 function change(val: string) {
   switch (val) {
     case "压缩":
+      content.value = utils.format(defaultJson.value, true);
       break;
-    case "下载":
-      download();
-      break;
+    case "格式化":
+      content.value = utils.format(defaultJson.value ?? content.value, false);
+      break
   }
 }
 
-async function download() {
-  loading.value = true;
-  try {
-    const result = await ipcRenderer.invoke("download", 'http://apk.start6.cn/1.mp4')
-    loading.value = false;
-    log('r', JSON.parse(result))
-    const data = JSON.parse(result);
-    ElMessage.success("下载成功 " + data['savePath'])
-  } catch (err) {
-    loading.value = false;
-    ElMessage.error("下载错误: " + err)
-    log("下载错误", err)
-  }
+function changeText(val: any) {
+  defaultJson.value = val;
 }
+
 
 </script>

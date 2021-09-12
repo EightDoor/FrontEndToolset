@@ -61,6 +61,9 @@ const props = defineProps<{
   content?: string;
   changeText?: (val: any) => void;
   mode?: string;
+  // 是否获取焦点
+  focus?: boolean;
+  readOnly?: boolean
 }>()
 
 function init() {
@@ -72,10 +75,12 @@ function init() {
       mode: props.mode ?? "application/json",
       indentUnit: 2, // 缩进单位，默认2
       smartIndent: true, // 是否智能缩进
+      // 是否只读
+      readOnly: props.readOnly ?? false,
       // 显示行号
       lineNumbers: true,
       // 设置主题
-      theme: "idea",
+      // theme: "idea",
       // 绑定sublime快捷键
       // keyMap: "sublime",
       // 默认选择是否显示光标
@@ -111,6 +116,9 @@ function init() {
       },
     })
   );
+  if (props.focus) {
+    codemirror.focus();
+  }
   // 将编辑器中的值存储下来
   codemirror.on("change", (cm: any) => {
     code.value = cm.getValue();
@@ -121,7 +129,11 @@ function init() {
 }
 
 onMounted(() => {
-  init()
+  if (!codemirror) {
+    setTimeout(() => {
+      init()
+    }, 0)
+  }
 })
 
 function destroy() {

@@ -10,6 +10,7 @@
         :plain="item.plain ?? false"
       >{{ item.title }}</el-button>
     </li>
+    <slot></slot>
   </ul>
 </template>
 <script lang="ts" setup>

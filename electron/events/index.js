@@ -7,7 +7,7 @@ const electronDl = require('electron-dl');
 const init = () => {
   console.log('监听init初始化------------------->');
 
-  ipcMain.handleOnce("download", async (event, arg) => {
+  ipcMain.handle("download", async (event, arg) => {
     console.log(arg, 'url');
     const win = BrowserWindow.getFocusedWindow();
     const result = await electronDl.download(win, arg);

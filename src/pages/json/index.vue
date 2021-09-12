@@ -1,7 +1,9 @@
 <template>
-  <el-tabs type="border-card">
+  <el-tabs type="border-card" @tab-click="change">
     <el-tab-pane v-for="(item, index) in data" :key="index" :label="item.title">
-      <component :is="item.component"></component>
+      <template v-if="index === selectIndex">
+        <component :is="item.component"></component>
+      </template>
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -15,6 +17,7 @@ interface DataType {
 import { ref } from 'vue';
 import JsonComponent from './json.vue';
 import JsonToTs from './json_to_typescript.vue';
+const selectIndex = ref(0)
 const data = ref<DataType[]>([
   {
     title: "json格式化",
@@ -25,5 +28,9 @@ const data = ref<DataType[]>([
     component: JsonToTs,
   }
 ])
+
+function change(val: any) {
+  selectIndex.value = Number(val.index);
+}
 
 </script>
