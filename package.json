@@ -52,5 +52,6 @@
   },
   "linux": {
     "icon": "dist/icons"
-  }
+  },
+  "__npminstall_done": false
 }
