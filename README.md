@@ -20,3 +20,9 @@
 - codemirror 代码编辑器
 - jsonlint-mod json格式化
 - json-to-ts json转换为ts文件
+
+
+# 完成
+- 安装环境检测 ![安装环境检测](./public/git/tools.png)
+- json格式化 ![安装环境检测](./public/git/json_1.png)
+- json转换ts ![安装环境检测](./public/git/json_2.png)
