@@ -15,7 +15,7 @@ import Slider from '@/layout/Slider.vue';
 const BaseLayout = defineComponent({
   name: 'baseLayout',
   components: { Slider },
-  setup() {},
+  setup() { },
 });
 
 export default BaseLayout;
@@ -25,6 +25,8 @@ export default BaseLayout;
 .aside {
   height: calc(100vh - @height);
   overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 .content {
   height: calc(100vh - @height);

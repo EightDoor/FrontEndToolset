@@ -1,18 +1,21 @@
 <template>
   <ul class="ul">
-    <li v-for="(item, index) in list" :key="index" @click="change(item)">
-      {{ item.title }}
+    <li v-for="(item, index) in list" :key="index" @click="change(item, index)">
+      <el-button type="primary">{{ item.title }}</el-button>
+      <img v-if="selectIndex === index" class="img" src="/images/tap.png" alt />
     </li>
   </ul>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
-import { useRouter } from 'vue-router';
+import { defineComponent, reactive, ref, onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const Slider = defineComponent({
   name: 'slider',
   setup() {
+    const selectIndex = ref(0)
     const router = useRouter();
+    const route = useRoute()
     const list = reactive<Layout.SliderType[]>([
       {
         title: '首页',
@@ -27,15 +30,29 @@ const Slider = defineComponent({
         url: "/json"
       }
     ]);
-    function change(item: any) {
+    function change(item: any, index: number) {
+      selectIndex.value = index;
       console.log(`当前选择的: ${JSON.stringify(item)}`);
       router.push(item.url);
     }
+
+    function getPath() {
+      const path = route.path;
+      const index = list.findIndex((item) => item.url === path);
+      if (index !== -1) {
+        selectIndex.value = index;
+      }
+    }
+
+    onMounted(() => {
+      getPath()
+    })
     return {
       //fun
       change,
       //data
       list,
+      selectIndex
     };
   },
 });
@@ -43,5 +60,12 @@ const Slider = defineComponent({
 export default Slider;
 </script>
 <style lang="less" scoped>
-@import 'slider.module';
+@import "slider.module";
+.img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 15px;
+}
 </style>
