@@ -8,13 +8,13 @@ export default defineConfig({
     host: '0.0.0.0',
   },
   build: {
-    // outDir: 'electron/dist',
-    // rollupOptions: {
-    //   output: {
-    //     format: 'cjs', // 配置 Rollup 打包输出 CommonJs 格式
-    //   },
-    //   external: ['electron'], // 告诉 Rollup 不要去打包 electron
-    // },
+    outDir: 'electron/dist',
+    rollupOptions: {
+      // output: {
+      //   format: 'cjs', // 配置 Rollup 打包输出 CommonJs 格式
+      // },
+      external: ['electron'], // 告诉 Rollup 不要去打包 electron
+    },
   },
   resolve: {
     alias: [{ find: '@', replacement: '/src' }],

@@ -1,5 +1,5 @@
 import { log } from "@/utils/log";
-const { spawn, } = require("child_process")
+const { spawn } = require("child_process")
 /**
  * 执行命令
  * @param {*} val 命令
@@ -7,7 +7,7 @@ const { spawn, } = require("child_process")
 
 type TypeFun = (val: string) => void;
 function EnvCmd(val: string, error: TypeFun, success: TypeFun) {
-  log('输出值',val)
+  log('输出值', val)
   const ls = spawn(val, {
     shell: true,
   })
