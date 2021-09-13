@@ -1,5 +1,5 @@
 import { log } from "./log";
-import { clipboard } from 'electron';
+const { clipboard } = require('electron')
 import { ElMessage } from "element-plus";
 
 const utils = {
