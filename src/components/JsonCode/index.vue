@@ -46,11 +46,8 @@ import "codemirror/addon/lint/lint.css";
 import "codemirror/addon/lint/lint.js";
 // 需要依赖全局的jsonlint，不是很优雅
 import "codemirror/addon/lint/json-lint.js";
-// 引入jsonlint
-import jsonlint from "jsonlint-mod";
 import { log } from "@/utils/log";
 // @ts-ignore
-window.jsonlint = jsonlint;
 
 
 const code = ref('')
