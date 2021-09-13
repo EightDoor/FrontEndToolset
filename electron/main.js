@@ -17,6 +17,7 @@ function createWindow () {
     minimizable: true,
     resizable: true,
     webPreferences: {
+      webviewTag: true,
       webSecurity: false,
       nodeIntegration: true,
       contextIsolation: false,
