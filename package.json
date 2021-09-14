@@ -21,6 +21,7 @@
     "codemirror": "^5.62.3",
     "electron-dl": "^3.2.1",
     "electron-is-dev": "^2.0.0",
+    "electron-updater": "^4.3.9",
     "element-plus": "^1.1.0-beta.9",
     "highlight.js": "^11.2.0",
     "json-to-ts": "^1.7.0",
@@ -51,6 +52,12 @@
     "appId": "cn.start6",
     "copyright": "周凯",
     "compression": "store",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://xxx.com"
+      }
+    ],
     "win": {
       "target": [
         "nsis"
