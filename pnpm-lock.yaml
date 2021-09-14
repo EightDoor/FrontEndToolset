@@ -22,7 +22,6 @@ specifiers:
   prettier: 2.3.2
   typescript: ^4.3.5
   vite: ^2.4.4
-  vitejs-plugin-electron: ^0.1.5
   vue: ^3.2.7
   vue-router: ^4.0.10
   vue-tsc: ^0.2.2
@@ -54,7 +53,6 @@ devDependencies:
   prettier: registry.nlark.com/prettier/2.3.2
   typescript: registry.nlark.com/typescript/4.4.3
   vite: registry.nlark.com/vite/2.5.6
-  vitejs-plugin-electron: registry.nlark.com/vitejs-plugin-electron/0.1.5
   vue-tsc: registry.nlark.com/vue-tsc/0.2.3_typescript@4.4.3
   wait-on: registry.nlark.com/wait-on/6.0.0
 
@@ -700,25 +698,10 @@ packages:
     version: 1.1.1
     dev: true
 
-  registry.nlark.com/acorn-walk/8.2.0:
-    resolution: {integrity: sha1-dBIQ8uJCZFRQiFOi9E0KuDt/acE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/acorn-walk/download/acorn-walk-8.2.0.tgz}
-    name: acorn-walk
-    version: 8.2.0
-    engines: {node: '>=0.4.0'}
-    dev: true
-
   registry.nlark.com/acorn/7.4.1:
     resolution: {integrity: sha1-/q7SVZc9LndVW4PbwIhRpsY1IPo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/acorn/download/acorn-7.4.1.tgz?cache=0&sync_timestamp=1630916608300&other_urls=https%3A%2F%2Fregistry.nlark.com%2Facorn%2Fdownload%2Facorn-7.4.1.tgz}
     name: acorn
     version: 7.4.1
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
-
-  registry.nlark.com/acorn/8.5.0:
-    resolution: {integrity: sha1-RRLMuZs2mMdSWR6btEcuOK1DzuI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/acorn/download/acorn-8.5.0.tgz}
-    name: acorn
-    version: 8.5.0
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
@@ -3504,7 +3487,7 @@ packages:
     dev: true
 
   registry.nlark.com/needle/2.9.1:
-    resolution: {integrity: sha1-ItHf++NJDCuD4wH3cJtnNs2PJoQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/needle/download/needle-2.9.1.tgz}
+    resolution: {integrity: sha1-ItHf++NJDCuD4wH3cJtnNs2PJoQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/needle/download/needle-2.9.1.tgz?cache=0&sync_timestamp=1630674807738&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fneedle%2Fdownload%2Fneedle-2.9.1.tgz}
     name: needle
     version: 2.9.1
     engines: {node: '>= 4.4.x'}
@@ -5193,15 +5176,6 @@ packages:
       rollup: registry.nlark.com/rollup/2.56.3
     optionalDependencies:
       fsevents: registry.nlark.com/fsevents/2.3.2
-    dev: true
-
-  registry.nlark.com/vitejs-plugin-electron/0.1.5:
-    resolution: {integrity: sha1-VEaRq4OiqhK9XfLXCFCvGytK8aQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/vitejs-plugin-electron/download/vitejs-plugin-electron-0.1.5.tgz}
-    name: vitejs-plugin-electron
-    version: 0.1.5
-    dependencies:
-      acorn: registry.nlark.com/acorn/8.5.0
-      acorn-walk: registry.nlark.com/acorn-walk/8.2.0
     dev: true
 
   registry.nlark.com/void-elements/3.1.0:

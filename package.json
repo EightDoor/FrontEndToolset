@@ -46,8 +46,23 @@
     "vue-tsc": "^0.2.2",
     "wait-on": "^6.0.0"
   },
-  "linux": {
-    "icon": "dist/icons"
+  "build": {
+    "productName": "个人工具箱",
+    "appId": "cn.start6",
+    "copyright": "周凯",
+    "compression": "store",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icons/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "language": "2052",
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "__npminstall_done": false
 }

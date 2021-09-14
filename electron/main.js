@@ -4,8 +4,8 @@ const path = require('path');
 const isDev = require('electron-is-dev');
 const electronDl = require('electron-dl');
 const { init } = require("./events/index")
-
 electronDl()
+
 // 初始化render函数
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';

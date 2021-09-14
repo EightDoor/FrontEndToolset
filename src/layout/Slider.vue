@@ -32,6 +32,10 @@ const Slider = defineComponent({
       {
         title: "json to dart",
         url: "/json_to_dart"
+      },
+      {
+        title: "github",
+        url: '/github'
       }
     ]);
     function change(item: any, index: number) {
