@@ -11,7 +11,7 @@
     "lint": "yarn prettier --write",
     "pack": "electron-builder --dir",
     "dist:all": "electron-builder -mwl",
-    "dist:mac": "electron-builder --mac",
+    "dist:mac": "electron-builder -m",
     "dist:win": "electron-builder --win --x64",
     "postinstall": "electron-builder install-app-deps",
     "dist:linux": "electron-builder --linux deb tar.xz AppImage"
