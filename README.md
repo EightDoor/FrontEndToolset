@@ -25,6 +25,7 @@
 - 安装环境检测 ![安装环境检测](./public/git/tools.png)
 - json格式化 ![安装环境检测](./public/git/json_1.png)
 - json转换ts ![安装环境检测](./public/git/json_2.png)
-<!-- # 下载
+# 下载
 - win x64
-  - [百度云网盘地址]() -->
+  - [百度云网盘地址](https://pan.baidu.com/s/1l0GtwhxAFPXV-xKWDWOuHg)
+  - 提取码：emw6
