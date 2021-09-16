@@ -5,6 +5,7 @@ import EnvInstall from '@/pages/env_install/index.vue';
 import Json from '@/pages/json/index.vue';
 import JsonToDart from '@/pages/json_to_dart/index.vue';
 import GitHub from '@/pages/other/github.vue';
+import Translate from '@/pages/translate/index.vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
@@ -30,9 +31,14 @@ const routes: RouteRecordRaw[] = [
         component: JsonToDart
       },
       {
+        path: '/translate',
+        component: Translate
+      },
+      {
         path: '/github',
         component: GitHub
-      }
+      },
+
     ],
   },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },

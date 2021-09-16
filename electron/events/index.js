@@ -1,5 +1,6 @@
 const { BrowserWindow, ipcMain } = require("electron")
 const electronDl = require('electron-dl');
+const translate = require('@vitalets/google-translate-api');
 
 
 
@@ -7,6 +8,7 @@ const electronDl = require('electron-dl');
 const init = () => {
   console.log('监听init初始化------------------->');
 
+  // 下载文件
   ipcMain.handle("download", async (event, arg) => {
     console.log(arg, 'url');
     const win = BrowserWindow.getFocusedWindow();

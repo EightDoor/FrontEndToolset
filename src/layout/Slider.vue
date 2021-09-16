@@ -34,6 +34,10 @@ const Slider = defineComponent({
         url: "/json_to_dart"
       },
       {
+        title: "百度翻译",
+        url: "/translate"
+      },
+      {
         title: "github",
         url: '/github'
       }

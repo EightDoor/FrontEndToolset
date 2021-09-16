@@ -24,6 +24,11 @@
     },
     "baseUrl": "."
   },
+  "exclude": [
+    "node_modules",
+    "electron",
+    "**/*.js"
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
