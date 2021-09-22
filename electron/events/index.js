@@ -1,6 +1,5 @@
 const { BrowserWindow, ipcMain } = require("electron")
 const electronDl = require('electron-dl');
-const translate = require('@vitalets/google-translate-api');
 
 
 
