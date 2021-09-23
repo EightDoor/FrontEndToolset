@@ -1,6 +1,8 @@
 const { BrowserWindow, ipcMain } = require("electron")
 const electronDl = require('electron-dl');
-const {autoUpdater} = require("electron-updater")
+const { autoUpdater } = require("electron-updater")
+const keyBoard = require('./keyboard');
+
 // 升级地址
 const uploadUrl = 'http://www.start7.cn/1.deb';
 
@@ -15,16 +17,21 @@ const init = (win) => {
     console.log(result);
     return JSON.stringify(result);
   })
+
+  // 键盘快捷键
+  keyBoard(win);
+
+  // 版本升级
   update(win)
 }
 
 
-function sendUpdateMessage(msg, win) {
+function sendUpdateMessage (msg, win) {
   win.send('uploadMsg', msg)
 }
 
 // 版本更新
-function update(win) {
+function update (win) {
   let message = {
     error: '检查更新出错',
     checking: '正在检查更新……',
@@ -61,7 +68,7 @@ function update(win) {
     win.webContents.send('isUpdateNow')
   });
 
-  ipcMain.on("checkForUpdate",async ()=>{
+  ipcMain.on("checkForUpdate", async () => {
     //执行自动更新检查
     await autoUpdater.checkForUpdates();
   })
