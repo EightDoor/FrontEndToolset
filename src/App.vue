@@ -1,17 +1,20 @@
 <template>
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <keep-alive :include="list">
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router';
+import { defineComponent, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router';
 const { ipcRenderer } = require('electron')
 
 export default defineComponent({
   name: 'App',
-  components: {
-  },
   setup() {
+    const list = ref(['Json', 'Translate']);
     const router = useRouter()
     onMounted(() => {
       // 监听键盘快捷键
@@ -26,7 +29,7 @@ export default defineComponent({
       })
     })
     return {
-
+      list
     }
   }
 })

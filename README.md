@@ -27,6 +27,8 @@
 - json转换ts ![安装环境检测](./public/git/json_2.png)
 - json转换dart
 - 百度翻译
+# TODO
+- keep-alive 不生效
 # 下载
 - win x64
   - 链接: https://pan.baidu.com/s/1qvngz5pV2o7QEzeR2xXGRg  密码: i3a3

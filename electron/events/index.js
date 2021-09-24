@@ -2,6 +2,7 @@ const { BrowserWindow, ipcMain } = require("electron")
 const electronDl = require('electron-dl');
 const { autoUpdater } = require("electron-updater")
 const keyBoard = require('./keyboard');
+const Tray = require("./tray")
 
 // 升级地址
 const uploadUrl = 'http://www.start7.cn/1.deb';
@@ -23,6 +24,9 @@ const init = (win) => {
 
   // 版本升级
   update(win)
+
+  // 托盘图标
+  Tray(win)
 }
 
 

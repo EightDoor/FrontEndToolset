@@ -50,7 +50,13 @@
     </el-col>
   </el-row>
 </template>
-<script setup lang="ts">import { log } from "@/utils/log";
+
+<script lang="ts">
+import { defineComponent } from "vue"
+export default defineComponent({ name: "Translate" })
+</script>
+<script setup lang="ts">
+import { log } from "@/utils/log";
 import { ElMessage } from "element-plus";
 import { reactive, ref, onMounted, } from "vue";
 import axios from 'axios';
