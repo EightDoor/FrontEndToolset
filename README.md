@@ -29,5 +29,4 @@
 - 百度翻译
 # 下载
 - win x64
-  - [百度云网盘地址(windows安装包)](https://pan.baidu.com/s/1l0GtwhxAFPXV-xKWDWOuHg)
-  - 提取码：emw6
+  - 链接: https://pan.baidu.com/s/1qvngz5pV2o7QEzeR2xXGRg  密码: i3a3

@@ -52,11 +52,12 @@
 </template>
 <script setup lang="ts">import { log } from "@/utils/log";
 import { ElMessage } from "element-plus";
-import { reactive, ref } from "vue";
+import { reactive, ref, onMounted } from "vue";
 import axios from 'axios';
 import MD5 from 'md5';
 import { TranslateType } from "./index.type";
 import { ArrowRightBold } from '@element-plus/icons'
+import { useRoute } from 'vue-router';
 
 
 const data = reactive<TranslateType.Data>({
@@ -76,6 +77,8 @@ const options = ref([
     label: '英文',
   }
 ])
+
+
 function translateFun() {
   data.loading = true;
   const appid = import.meta.env.VITE_APP_ID;
@@ -111,6 +114,15 @@ function translateFun() {
     ElMessage.error("翻译失败: " + JSON.stringify(err))
   })
 }
+const route = useRoute()
+
+onMounted(() => {
+  const title = route.query.title as string;
+  if (title) {
+    data.entryText = title;
+    translateFun();
+  }
+})
 
 </script>
 <style scoped lang="less">

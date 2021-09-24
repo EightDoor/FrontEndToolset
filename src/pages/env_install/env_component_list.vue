@@ -2,14 +2,14 @@
   <ul class="ul">
     <li>
       <el-badge v-if="!data.status" is-dot class="item">
-        <div class="title">{{
-            data.title
-          }}</div>
-      </el-badge>
-      <el-divider  v-else content-position="left">
         <div class="title">
-          {{ data.title }}
+          {{
+            data.title
+          }}
         </div>
+      </el-badge>
+      <el-divider v-else content-position="left">
+        <div class="title">{{ data.title }}</div>
       </el-divider>
 
       <div class="msg">
@@ -28,12 +28,16 @@
         @click="change(data)"
         :type="data.status ? 'danger' : 'primary'"
       >{{ data.status ? '卸载' : '安装' }}</el-button>
-      <el-button v-if="data.type === 'node' || data.type === 'nvm'" @click="other(data)" type="primary">其他</el-button>
+      <el-button
+        v-if="data.type === 'node' || data.type === 'nvm'"
+        @click="other(data)"
+        type="primary"
+      >其他</el-button>
     </li>
     <el-divider />
   </ul>
   <com-dialog ref="dialogRef" @refresh="refresh" />
-  <other-dialog ref="otherRef"  />
+  <other-dialog ref="otherRef" />
 </template>
 <script lang="ts" setup>
 import { log } from '@/utils/log';

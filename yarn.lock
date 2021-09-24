@@ -1742,7 +1742,7 @@ electron@^13.1.7:
     "@types/node" "^14.6.2"
     extract-zip "^1.0.3"
 
-element-plus@^1.1.0-beta.15:
+element-plus@^1.1.0-beta.12:
   version "1.1.0-beta.15"
   resolved "https://registry.npmmirror.com/element-plus/download/element-plus-1.1.0-beta.15.tgz?cache=0&sync_timestamp=1632359409803&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Felement-plus%2Fdownload%2Felement-plus-1.1.0-beta.15.tgz#842568ac39e4765ec2118dc2fbd472d94d37b7f3"
   integrity sha1-hCVorDnkdl7CEY3C+9Ry2U03t/M=
