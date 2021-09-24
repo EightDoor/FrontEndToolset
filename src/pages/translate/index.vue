@@ -52,12 +52,12 @@
 </template>
 <script setup lang="ts">import { log } from "@/utils/log";
 import { ElMessage } from "element-plus";
-import { reactive, ref, onMounted } from "vue";
+import { reactive, ref, onMounted, } from "vue";
 import axios from 'axios';
 import MD5 from 'md5';
 import { TranslateType } from "./index.type";
 import { ArrowRightBold } from '@element-plus/icons'
-import { useRoute } from 'vue-router';
+import { useRoute, onBeforeRouteUpdate, NavigationGuard, RouteLocationNormalized, NavigationGuardNext } from 'vue-router';
 
 
 const data = reactive<TranslateType.Data>({
@@ -122,6 +122,14 @@ onMounted(() => {
     data.entryText = title;
     translateFun();
   }
+})
+
+onBeforeRouteUpdate((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+  if (to.query.title) {
+    data.entryText = to.query.title as string;
+    translateFun();
+  }
+  next();
 })
 
 </script>

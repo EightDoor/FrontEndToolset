@@ -1,5 +1,4 @@
 const { globalShortcut, clipboard } = require('electron');
-const { log } = require('util');
 
 // 监听全局键盘快捷键
 module.exports = (win) => {
@@ -10,8 +9,15 @@ module.exports = (win) => {
     const text = clipboard.readText();
     console.log(text, 'clipboard内容')
     win.webContents.send("BaiduTranslate", text)
+    winShow(win);
   })
   if (!ret) {
-    log("快捷键注册失败")
+    console.log("快捷键注册失败")
+  }
+
+  // 显示主窗口
+  function winShow (win) {
+    // 判断是否存在聚焦窗口
+    win.show()
   }
 }
