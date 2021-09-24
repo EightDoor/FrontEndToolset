@@ -99,7 +99,7 @@ function change(val: EnvInstall.ListType) {
   if (val.install || val.uninstall) {
     dialogRef.value?.openDialog(data.status ? "uninstall" : "install", val)
   } else {
-    ElMessage.error('没有安装命令!!!');
+    ElMessage.error('没有安装命令!!!')
   }
 }
 
