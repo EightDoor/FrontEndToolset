@@ -14,7 +14,8 @@
     "dist:mac": "electron-builder -m",
     "dist:win": "electron-builder --win --x64",
     "postinstall": "electron-builder install-app-deps",
-    "dist:linux": "electron-builder --linux deb tar.xz AppImage"
+    "dist:linux": "electron-builder --linux deb tar.xz AppImage",
+    "prepare": "husky install"
   },
   "author": "周凯 <851708184@qq.com>",
   "dependencies": {
@@ -34,6 +35,8 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@types/codemirror": "^5.60.2",
     "@types/lodash": "^4.14.172",
     "@types/md5": "^2.3.1",
