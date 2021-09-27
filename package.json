@@ -85,8 +85,5 @@
       "runAfterFinish": true
     }
   },
-  "__npminstall_done": false,
-  "gitHooks": {
-    "commit-msg": "node scripts/verifyCommit.js"
-  }
+  "__npminstall_done": false
 }
