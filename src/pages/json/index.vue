@@ -2,14 +2,19 @@
   <el-tabs type="border-card" @tab-click="change">
     <el-tab-pane v-for="(item, index) in data" :key="index" :label="item.title">
       <template v-if="index === selectIndex">
-        <component :is="item.component"></component>
+        <div class="container_json">
+          <component :is="item.component"></component>
+        </div>
       </template>
     </el-tab-pane>
   </el-tabs>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue"
+export default defineComponent({ name: "Json" })
+</script>
 <script setup lang="ts">
-
 interface DataType {
   title: string;
   component: any;
@@ -34,3 +39,6 @@ function change(val: any) {
 }
 
 </script>
+<style scoped lang="less">
+
+</style>

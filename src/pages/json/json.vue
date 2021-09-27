@@ -49,3 +49,6 @@ function changeText(val: any) {
 
 
 </script>
+<style scoped lang="less">
+
+</style>

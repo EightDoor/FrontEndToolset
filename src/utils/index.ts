@@ -7,12 +7,12 @@ const utils = {
   /**
    * format(json,true）;表示压缩json字符串。
    * format(json,false）;表示格式化json字符串。
-   * @param txt 
-   * @param compress 
-   * @returns 
+   * @param txt
+   * @param compress
+   * @returns
    */
   format: (txt: string, compress: boolean/*是否为压缩模式*/) => {/* 格式化JSON源码(对象转换为JSON文本) */
-    var indentChar = ' ';
+    const indentChar = ' ';
     if (/^\s*$/.test(txt)) {
       alert();
       log('err', '数据为空,无法格式化! ')
@@ -22,7 +22,7 @@ const utils = {
     catch (e: any) {
       log('err', '数据源语法错误,格式化失败! 错误信息: ' + e.description)
       return txt;
-    };
+    }
     var draw: any[] = [], last = false, This = this, line = compress ? '' : '\n', nodeCount = 0, maxDepth = 0;
 
     var notify = function (name: any, value: any, isLast: any, indent: any/*缩进*/, formObj: any) {
@@ -44,9 +44,9 @@ const utils = {
       } else {
         if (typeof value == 'string') value = '"' + value + '"';
         draw.push(tab + (formObj ? ('"' + name + '":') : '') + value + (isLast ? '' : ',') + line);
-      };
+      }
     };
-    var isLast = true, indent = 0;
+    const isLast = true, indent = 0;
     notify('', data, isLast, indent, false);
     return draw.join('');
   },
@@ -56,12 +56,12 @@ const utils = {
    * 复制文字到剪切板
    * @param text 内容
    */
-  clipText(text: string) {
+  clipText: function (text: string) {
     if (text) {
-      ElMessage.success("内容已经复制到剪切板")
-      clipboard.writeText(text)
+      ElMessage.success("内容已经复制到剪切板");
+      clipboard.writeText(text);
     } else {
-      ElMessage.info("请输入内容")
+      ElMessage.info("请输入内容");
     }
   }
 }

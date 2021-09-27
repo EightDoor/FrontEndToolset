@@ -17,5 +17,9 @@ const app = createApp(App);
 import directives from './directives';
 directives(app)
 
+// store
+import store from '@/store';
+app.use(store)
+
 app.use(ElementPlus, { size: 'small', zIndex: 3000 }).use(router);
 app.mount('#app');

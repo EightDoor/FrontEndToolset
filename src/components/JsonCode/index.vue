@@ -155,7 +155,7 @@ watch(() => props.content, (newVal, oldVal) => {
   deep: true,
 })
 </script>
-<style scoped lang="less">
+<style  lang="less">
 .codesql {
   font-size: 11pt;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
@@ -164,5 +164,8 @@ watch(() => props.content, (newVal, oldVal) => {
 .title {
   font-size: 25px;
   margin-bottom: 15px;
+}
+.CodeMirror {
+  height: calc(100vh - 250px);
 }
 </style>

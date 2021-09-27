@@ -7,8 +7,9 @@
   </ul>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref, onMounted } from 'vue';
+import { defineComponent, reactive, ref, onMounted, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import {useStore} from 'vuex';
 
 const Slider = defineComponent({
   name: 'slider',
@@ -16,6 +17,7 @@ const Slider = defineComponent({
     const selectIndex = ref(0)
     const router = useRouter();
     const route = useRoute()
+    const store = useStore()
     const list = reactive<Layout.SliderType[]>([
       {
         title: '首页',
@@ -44,6 +46,7 @@ const Slider = defineComponent({
     ]);
     function change(item: any, index: number) {
       selectIndex.value = index;
+      store.commit('MenuBar/setIndex', item.title)
       console.log(`当前选择的: ${JSON.stringify(item)}`);
       router.push(item.url);
     }
@@ -55,6 +58,14 @@ const Slider = defineComponent({
         selectIndex.value = index;
       }
     }
+
+    const title = computed(()=>store.state.MenuBar.title)
+    watch(title, (newVal)=>{
+      const v = list.findIndex((item)=>item.title === newVal);
+      if(v !== -1) {
+        selectIndex.value = v
+      }
+    })
 
     onMounted(() => {
       getPath()

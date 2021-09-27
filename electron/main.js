@@ -1,4 +1,3 @@
-
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
@@ -24,6 +23,7 @@ function createWindow () {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+  init(win);
   isDev ? dev() : win.loadFile(path.join(__dirname, 'dist/index.html'));
   // win.loadFile(path.join(__dirname, 'dist/index.html'));
   function dev () {
@@ -40,7 +40,7 @@ function createWindow () {
 
 app.whenReady().then(() => {
   createWindow();
-  init();
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();

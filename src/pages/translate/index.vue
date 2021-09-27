@@ -42,7 +42,7 @@
         <div class="right_content__title">翻译结果为:</div>
         <ul v-for="(item, index) in data.resultText" :key="index">
           <li class="right_content__title__li">
-            <span v-if="data.resultText.length > 1">当前结果值为({{ index + 1 }}):</span>
+            <span v-if="data.resultText.length > 1">值: ({{ index + 1 }}):</span>
             {{ item.dst }}
           </li>
         </ul>
@@ -50,13 +50,20 @@
     </el-col>
   </el-row>
 </template>
-<script setup lang="ts">import { log } from "@/utils/log";
+
+<script lang="ts">
+import { defineComponent } from "vue"
+export default defineComponent({ name: "Translate" })
+</script>
+<script setup lang="ts">
+import { log } from "@/utils/log";
 import { ElMessage } from "element-plus";
-import { reactive, ref } from "vue";
+import { reactive, ref, onMounted, } from "vue";
 import axios from 'axios';
 import MD5 from 'md5';
 import { TranslateType } from "./index.type";
 import { ArrowRightBold } from '@element-plus/icons'
+import { useRoute, onBeforeRouteUpdate, NavigationGuard, RouteLocationNormalized, NavigationGuardNext } from 'vue-router';
 
 
 const data = reactive<TranslateType.Data>({
@@ -76,6 +83,8 @@ const options = ref([
     label: '英文',
   }
 ])
+
+
 function translateFun() {
   data.loading = true;
   const appid = import.meta.env.VITE_APP_ID;
@@ -111,6 +120,23 @@ function translateFun() {
     ElMessage.error("翻译失败: " + JSON.stringify(err))
   })
 }
+const route = useRoute()
+
+onMounted(() => {
+  const title = route.query.title as string;
+  if (title) {
+    data.entryText = title;
+    translateFun();
+  }
+})
+
+onBeforeRouteUpdate((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+  if (to.query.title) {
+    data.entryText = to.query.title as string;
+    translateFun();
+  }
+  next();
+})
 
 </script>
 <style scoped lang="less">
