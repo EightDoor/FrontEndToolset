@@ -51,7 +51,6 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^7.18.0",
     "less": "^4.1.1",
-    "lint-staged": "^11.1.2",
     "prettier": "2.3.2",
     "typescript": "^4.3.5",
     "vite": "^2.4.4",
@@ -87,15 +86,6 @@
   },
   "__npminstall_done": false,
   "gitHooks": {
-    "pre-commit": "lint-staged",
     "commit-msg": "node scripts/verifyCommit.js"
-  },
-  "lint-staged": {
-    "*.j?(t)s": [
-      "eslint"
-    ],
-    "*.ts?(x)": [
-      "eslint"
-    ]
   }
 }
