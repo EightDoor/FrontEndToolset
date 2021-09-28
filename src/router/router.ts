@@ -6,6 +6,7 @@ import Json from '@/pages/json/index.vue';
 import JsonToDart from '@/pages/json_to_dart/index.vue';
 import GitHub from '@/pages/other/github.vue';
 import Translate from '@/pages/translate/index.vue';
+import Gadgets from '@/pages/gadgets/index.vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
@@ -56,7 +57,13 @@ const routes: RouteRecordRaw[] = [
           keepAlive: true,
         },
       },
-
+      {
+        path: '/gadgets',
+        component: Gadgets,
+        meta:{
+          keepAlive: true,
+        },
+      },
     ],
   },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },

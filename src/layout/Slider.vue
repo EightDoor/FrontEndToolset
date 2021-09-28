@@ -40,9 +40,13 @@ const Slider = defineComponent({
         url: "/translate"
       },
       {
+        title: "小工具",
+        url: "/gadgets"
+      },
+      {
         title: "github",
         url: '/github'
-      }
+      },
     ]);
     function change(item: any, index: number) {
       selectIndex.value = index;
