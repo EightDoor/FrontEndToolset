@@ -1,7 +1,7 @@
 <template>
   <el-tabs type="border-card" @tab-click="change">
-    <el-tab-pane v-for="(item, index) in data" :key="index" :label="item.title">
-      <template v-if="index === selectIndex">
+    <el-tab-pane v-for="(item, index) in data.value" :key="index" :label="item.title">
+      <template v-if="index === selectIndex.value">
         <div class="container_json">
           <component :is="item.component"></component>
         </div>
@@ -40,5 +40,4 @@ function change(val: any) {
 
 </script>
 <style scoped lang="less">
-
 </style>

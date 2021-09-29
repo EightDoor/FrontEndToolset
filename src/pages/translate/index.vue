@@ -3,7 +3,7 @@
     <el-col :span="12">
       <el-select class="input_w" v-model="value" placeholder="请选择语言">
         <el-option
-          v-for="item in options"
+          v-for="item in options.value"
           :key="item.value"
           :label="item.label"
           :value="item.value"
@@ -14,7 +14,7 @@
       </el-icon>
       <el-select class="input_w" v-model="outputValue" placeholder="请选择语言">
         <el-option
-          v-for="item in options"
+          v-for="item in options.value"
           :key="item.value"
           :label="item.label"
           :value="item.value"
@@ -73,7 +73,10 @@ const data = reactive<TranslateType.Data>({
 })
 const value = ref("en")
 const outputValue = ref("zh")
-const options = ref([
+const options = ref<{
+  value: string;
+  label: string;
+}[]>([
   {
     value: 'zh',
     label: '中文',

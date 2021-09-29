@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="20">
     <el-col :span="12">
-      <JsonCode :changeText="changeText" :content="defaultSource">
+      <JsonCode :changeText="changeText" :content="defaultSource.value">
         <template #title>
           <div>
             <el-link type="primary" style="font-size: 25px;" disabled>请输入根节点名称</el-link>
@@ -12,7 +12,7 @@
       </JsonCode>
     </el-col>
     <el-col :span="12">
-      <JsonCode :content="content" mode="text/typescript" :readOnly="true">
+      <JsonCode :content="content.value" mode="text/typescript" :readOnly="true">
         <template #title>
           <el-link type="success" style="font-size: 25px;" disabled>转换的typescript</el-link>
           <Clip_button :clipText="clipText" title="复制内容" />

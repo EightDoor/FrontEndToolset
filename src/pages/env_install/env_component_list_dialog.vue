@@ -1,12 +1,12 @@
 <template>
   <el-dialog
     :center="true"
-    :title="status === 'install' ? '安装' : '卸载'"
+    :title="status.value === 'install' ? '安装' : '卸载'"
     v-model="dialogVisible"
     width="50%"
     :before-close="handleClose"
   >
-    <div v-if="status === 'install'">
+    <div v-if="status.value === 'install'">
       <el-form :model="form" ref="ruleForm" label-width="100px">
         <el-form-item label="镜像源">
           <el-select v-model="form.mirrorSource" placeholder="请选择镜像源">
@@ -17,7 +17,7 @@
         </el-form-item>
         <el-form-item label="安装命令">
           <!-- 要高亮的代码块用 "v-highlight"  -->
-          <div v-highlight>{{ `${data?.install} --registry=${form.mirrorSource}` }}</div>
+          <div v-highlight>{{ `${data.value?.install} --registry=${form.mirrorSource}` }}</div>
         </el-form-item>
         <el-form-item v-if="operationLog" label="操作日志">
           <!--          TODO 更新数据视图无法更新，自定义指令问题-->
@@ -28,10 +28,10 @@
         </el-form-item>
       </el-form>
     </div>
-    <div v-if="status === 'uninstall'">
+    <div v-if="status.value === 'uninstall'">
       <el-form>
         <el-form-item label="卸载命令">
-          <div v-highlight>{{ data?.uninstall }}</div>
+          <div v-highlight>{{ data.value?.uninstall }}</div>
         </el-form-item>
         <el-form-item v-if="operationLog" label="操作日志">
           <div v-highlight>{{ operationLog }}</div>
@@ -40,10 +40,10 @@
     </div>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button @click="dialogVisible.value = false">取消</el-button>
         <el-button
           type="primary"
-          @click="submit(`${data?.install} --registry=${form.mirrorSource}` ?? '')"
+          @click="submit(`${data.value?.install} --registry=${form.mirrorSource}` ?? '')"
           :loading="loading"
         >确定</el-button>
       </span>

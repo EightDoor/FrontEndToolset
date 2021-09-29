@@ -1,5 +1,5 @@
 <template>
-  <Buttons :focus="true" :list="list" :click="change" :loading="loading">
+  <Buttons :focus="true" :list="list.value" :click="change" :loading="loading.value">
     <ClipButton :clipText="clipText" title="复制内容" />
   </Buttons>
   <JsonCode :changeText="changeText" :content="content" />
@@ -50,5 +50,4 @@ function changeText(val: any) {
 
 </script>
 <style scoped lang="less">
-
 </style>

@@ -2,7 +2,7 @@
   <div class="title">
     <slot name="title"></slot>
   </div>
-  <textarea ref="jsonCodeRef" class="codesql" v-model="code" style="height:100%;width:100%"></textarea>
+  <textarea ref="jsonCodeRef" class="codesql" v-model="code.value" style="height:100%;width:100%"></textarea>
 </template>
 <script lang="ts" setup>
 import { ref, onMounted, markRaw, onUnmounted, watch } from "vue";
