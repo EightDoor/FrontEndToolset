@@ -3,7 +3,7 @@
     <el-col :span="12">
       <el-select class="input_w" v-model="value" placeholder="请选择语言">
         <el-option
-          v-for="item in options.value"
+          v-for="item in options"
           :key="item.value"
           :label="item.label"
           :value="item.value"
@@ -14,7 +14,7 @@
       </el-icon>
       <el-select class="input_w" v-model="outputValue" placeholder="请选择语言">
         <el-option
-          v-for="item in options.value"
+          v-for="item in options"
           :key="item.value"
           :label="item.label"
           :value="item.value"

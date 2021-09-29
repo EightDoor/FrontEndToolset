@@ -1,6 +1,4 @@
-<template>
-  Url编码解码
-</template>
+<template>Url编码解码</template>
 
 <script lang="ts">
 export default {

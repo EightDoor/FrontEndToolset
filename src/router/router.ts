@@ -18,51 +18,30 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'home',
         component: Home,
-        meta:{
-          keepAlive: true,
-        },
       },
       {
         path: "env_install",
         component: EnvInstall,
-        meta:{
-          keepAlive: true,
-        },
       },
       {
         path: 'json',
         component: Json,
-        meta:{
-          keepAlive: true,
-        },
       },
       {
         path: '/json_to_dart',
         component: JsonToDart,
-        meta:{
-          keepAlive: true,
-        },
       },
       {
         path: '/translate',
         component: Translate,
-        meta:{
-          keepAlive: true,
-        },
       },
       {
         path: '/github',
         component: GitHub,
-        meta:{
-          keepAlive: true,
-        },
       },
       {
         path: '/gadgets',
         component: Gadgets,
-        meta:{
-          keepAlive: true,
-        },
       },
     ],
   },

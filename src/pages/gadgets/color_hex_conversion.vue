@@ -9,7 +9,7 @@
       <el-button type="primary" @click="transformation">转换</el-button>
     </div>
     <div class="content">
-      <div class="backColor" :style="hex.value ? { backgroundColor: hex.value } : {}"></div>
+      <div class="backColor" :style="hex ? { backgroundColor: hex } : {}"></div>
       <div class="content__hex">{{ hex }}</div>
       <div v-if="hex">
         <el-button
@@ -35,10 +35,7 @@
       <el-button type="primary" @click="transformationRgb">转换</el-button>
     </div>
     <div class="content">
-      <div
-        class="backColor"
-        :style="hexadecimalRgb.value ? { backgroundColor: hexadecimalRgb.value } : {}"
-      ></div>
+      <div class="backColor" :style="hexadecimalRgb ? { backgroundColor: hexadecimalRgb } : {}"></div>
       <div class="content__hex">{{ hexadecimalRgb }}</div>
       <div v-if="hexadecimalRgb">
         <el-button

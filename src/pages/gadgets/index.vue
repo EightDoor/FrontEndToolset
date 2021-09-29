@@ -1,6 +1,6 @@
 <template>
   <el-tabs tab-position="top">
-    <el-tab-pane v-for="(item, index) in list.value" :key="index" :label="item.label">
+    <el-tab-pane v-for="(item, index) in list" :key="index" :label="item.label">
       <component :is="item.component" />
     </el-tab-pane>
   </el-tabs>

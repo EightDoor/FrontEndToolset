@@ -1,5 +1,5 @@
 <template>
-  <Buttons :focus="true" :list="list.value" :click="change" :loading="loading.value">
+  <Buttons :focus="true" :list="list" :click="change" :loading="loading">
     <ClipButton :clipText="clipText" title="复制内容" />
   </Buttons>
   <JsonCode :changeText="changeText" :content="content" />
