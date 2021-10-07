@@ -16,6 +16,7 @@ import { markRaw, ref } from "vue";
 import Calculator from './calculator/index.vue';
 import ColorHexConversion from './color_hex_conversion.vue';
 import UrlEncoding from './url_encoding.vue';
+import StyleConversion from './style_conversion/index.vue';
 
 interface ListType {
   label: string;
@@ -33,6 +34,10 @@ const list = ref<ListType[]>([
   {
     label: 'Url编码解码',
     component: markRaw(UrlEncoding),
-  }
+  },
+  {
+    label: 'less、sass、css相互转换',
+    component: markRaw(StyleConversion),
+  },
 ])
 </script>
