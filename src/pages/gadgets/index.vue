@@ -13,7 +13,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { markRaw, ref } from "vue";
-import Calculator from './calculator.vue';
+import Calculator from './calculator/index.vue';
 import ColorHexConversion from './color_hex_conversion.vue';
 import UrlEncoding from './url_encoding.vue';
 
