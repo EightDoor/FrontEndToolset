@@ -3,6 +3,8 @@ const electronDl = require('electron-dl');
 const { autoUpdater } = require("electron-updater")
 const keyBoard = require('./keyboard');
 const Tray = require("./tray")
+const OpenBrower = require("./open_browser")
+const ListenEvent = require("./listen_event")
 
 // 升级地址
 const uploadUrl = 'http://www.start7.cn/1.deb';
@@ -10,14 +12,8 @@ const uploadUrl = 'http://www.start7.cn/1.deb';
 // 初始化
 const init = (win) => {
   console.log('监听init初始化------------------->');
-  // 下载文件
-  ipcMain.handle("download", async (event, arg) => {
-    console.log(arg, 'url');
-    const win = BrowserWindow.getFocusedWindow();
-    const result = await electronDl.download(win, arg);
-    console.log(result);
-    return JSON.stringify(result);
-  })
+  // 监听事件
+  ListenEvent(win)
 
   // 键盘快捷键
   keyBoard(win);
@@ -27,6 +23,9 @@ const init = (win) => {
 
   // 托盘图标
   Tray(win)
+
+  // BrowserView 打开页面
+  OpenBrower(win)
 }
 
 

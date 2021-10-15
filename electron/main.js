@@ -41,6 +41,9 @@ function createWindow () {
 app.whenReady().then(() => {
   createWindow();
 
+  // 在主进程中调用 Chromium 命令行关闭同源策略。
+  app.commandLine.appendSwitch("disable-site-isolation-trials");
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();

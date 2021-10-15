@@ -21,7 +21,7 @@ export default defineConfig({
   },
   optimizeDeps: {
     // 告诉 Vite 不要转换模块
-    // exclude: ['electron', 'child_process'],
+    exclude: ['electron'],
   },
   logLevel: 'info',
   base: "./",
