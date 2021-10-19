@@ -1,6 +1,6 @@
 <template>
   <div>
-    <webview id="wb" src="https://github.com/EightDoor/FrontEndToolset" />
+    <!-- <webview id="wb" src="https://github.com/EightDoor/FrontEndToolset" /> -->
   </div>
 </template>
 <script lang="ts">

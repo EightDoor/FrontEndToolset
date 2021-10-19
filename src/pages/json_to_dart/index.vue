@@ -1,10 +1,10 @@
 <template>
   <div>
-    <webview
+    <!-- <webview
       id="wb"
       :allowpaymentrequest="true"
       src="https://javiercbk.github.io/json_to_dart/"
-    />
+    /> -->
   </div>
 </template>
 <script lang="ts">
