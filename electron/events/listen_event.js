@@ -10,14 +10,4 @@ module.exports = (win) => {
     console.log(result);
     return JSON.stringify(result);
   })
-
-  // 打开新页面
-  ipcMain.handle("openWeb", async (event, arg) => {
-    const { url, width, height } = arg;
-    const child = new BrowserWindow({ parent: win, modal: true, show: false, width: width ?? 300, height: height ?? 300 });
-    child.loadURL(url);
-    child.once('ready-to-show', () => {
-      child.show()
-    })
-  })
 }

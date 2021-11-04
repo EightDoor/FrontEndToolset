@@ -3,7 +3,6 @@ const electronDl = require('electron-dl');
 const { autoUpdater } = require("electron-updater")
 const keyBoard = require('./keyboard');
 const Tray = require("./tray")
-const OpenBrower = require("./open_browser")
 const ListenEvent = require("./listen_event")
 
 // 升级地址
@@ -23,9 +22,6 @@ const init = (win) => {
 
   // 托盘图标
   Tray(win)
-
-  // BrowserView 打开页面
-  OpenBrower(win)
 }
 
 

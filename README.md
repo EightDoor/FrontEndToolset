@@ -22,6 +22,7 @@
 
 
 # 完成
+- 首页 ![首页](http://mn.applet.start6.cn/git-home.png)
 - 安装环境检测 ![安装环境检测](./public/git/tools.png)
 - json格式化 ![安装环境检测](./public/git/json_1.png)
 - json转换ts ![安装环境检测](./public/git/json_2.png)
@@ -32,3 +33,5 @@
 # 下载
 - win x64
   - 链接: https://pan.baidu.com/s/1qvngz5pV2o7QEzeR2xXGRg  密码: i3a3
+# 存在问题
+- 打开 window.open() 两次出现程序闪退

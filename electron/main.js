@@ -3,9 +3,8 @@ const path = require('path');
 const isDev = require('electron-is-dev');
 const electronDl = require('electron-dl');
 const { init } = require("./events/index")
+const menuInit = require("./menu/index")
 electronDl()
-
-// 初始化render函数
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 function createWindow () {
@@ -16,14 +15,19 @@ function createWindow () {
     minimizable: true,
     resizable: true,
     webPreferences: {
-      webviewTag: true,
+      webviewTag: false,
       webSecurity: false,
       nodeIntegration: true,
       contextIsolation: false,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+
+
   init(win);
+  menuInit(win)
+
+
   isDev ? dev() : win.loadFile(path.join(__dirname, 'dist/index.html'));
   // win.loadFile(path.join(__dirname, 'dist/index.html'));
   function dev () {

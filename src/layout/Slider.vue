@@ -7,6 +7,7 @@
   </ul>
 </template>
 <script lang="ts">
+import { ElMessage } from 'element-plus';
 import {
   defineComponent,
   reactive,
@@ -26,6 +27,7 @@ const Slider = defineComponent({
     const router = useRouter();
     const route = useRoute();
     const store = useStore();
+    const view = ref()
     const list = reactive<Layout.SliderType[]>([
       {
         title: '首页',
@@ -61,12 +63,7 @@ const Slider = defineComponent({
     function change(item: Layout.SliderType, index: number) {
       console.log(`当前选择的: ${JSON.stringify(item)}`);
       if (item.type === 'url') {
-        ipcRenderer.send(
-          'openWeb',
-          JSON.stringify({
-            url: item.url,
-          })
-        );
+        window.open(item.url)
       } else {
         selectIndex.value = index;
         store.commit('MenuBar/setIndex', item.title);
