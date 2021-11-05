@@ -5,12 +5,16 @@ const Config = require('../config')
 module.exports = (win, list) => {
   // 键盘快捷键
  list.forEach((item)=>{
-   const ret = globalShortcut.register(item.value, () => {
-     win.webContents.send(Config.channel.SHORTCUT, item.label)
-     winShow(win);
-   })
-   if (!ret) {
-     console.log("快捷键注册失败")
+   try {
+     const ret = globalShortcut.register(item.value, () => {
+       win.webContents.send(Config.channel.SHORTCUT, item.label)
+       winShow(win);
+     })
+     if (!ret) {
+       console.log("快捷键注册失败")
+     }
+   }catch (e) {
+     console.log(e);
    }
  })
   // 显示主窗口

@@ -1,7 +1,8 @@
-import { ipcRenderer } from "electron";
 import CommVariable from "@/comm_variable/comm_variable.json";
 import store from '@/utils/store';
 import Constant from "@/utils/constant";
+const {ipcRenderer} = require('electron')
+
 export interface RegisterShortcutType {
   value: string;
   label: string;

@@ -13,7 +13,7 @@ export default defineConfig({
       // output: {
       //   format: 'cjs', // 配置 Rollup 打包输出 CommonJs 格式
       // },
-      external: ['electron'], // 告诉 Rollup 不要去打包 electron
+      // external: ['electron'], // 告诉 Rollup 不要去打包 electron
     },
   },
   resolve: {
@@ -21,7 +21,7 @@ export default defineConfig({
   },
   optimizeDeps: {
     // 告诉 Vite 不要转换模块
-    exclude: ['electron'],
+    // exclude: ['electron'],
   },
   logLevel: 'info',
   base: "./",

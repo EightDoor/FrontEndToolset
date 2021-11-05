@@ -4,7 +4,6 @@ import NotFound from '@/pages/other/not_found.vue';
 import EnvInstall from '@/pages/env_install/index.vue';
 import Json from '@/pages/json/index.vue';
 import JsonToDart from '@/pages/json_to_dart/index.vue';
-import GitHub from '@/pages/other/github.vue';
 import Translate from '@/pages/translate/index.vue';
 import Gadgets from '@/pages/gadgets/index.vue';
 import My from '@/pages/my/index.vue';
@@ -38,10 +37,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/translate',
         component: Translate,
-      },
-      {
-        path: '/github',
-        component: GitHub,
       },
       {
         path: '/gadgets',

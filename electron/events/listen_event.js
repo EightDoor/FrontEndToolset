@@ -2,11 +2,10 @@ const { ipcMain, BrowserWindow } = require("electron");
 const electronDl = require("electron-dl");
 const Config = require("../config")
 const Keyboard = require("./keyboard")
-const { ca } = require("wait-on/exampleConfig");
 
 module.exports = (win) => {
   // 下载文件
-  ipcMain.handle("download", async (event, arg) => {
+  ipcMain.handle("downloadFile", async (event, arg) => {
     console.log(arg, 'url');
     const win = BrowserWindow.getFocusedWindow();
     const result = await electronDl.download(win, arg);
