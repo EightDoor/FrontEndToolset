@@ -15,11 +15,7 @@ O
 src/components/GoHome/index.vue,7/6/763f349d1571adba26c51cc58525a5138fd7e30a
 F
 src/pages/my/index.vue,f/3/f30c096d7f20bafe06da1f4e3f7515158ec31e68
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 E
 src/layout/Slider.vue,0/f/0fdecdbfe8920de16bc88608fee2e6a540177a1f
-E
-src/utils/constant.ts,d/8/d81e6a765edfd61f5b00f2ee25309af613315dab
 P
  src/pages/shortcut_key/index.vue,f/a/fa38542ea7ad07c20a02130dc925e20d9bc34afa

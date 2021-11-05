@@ -24,15 +24,28 @@
 
 # 完成
 - 首页 ![首页](http://mn.applet.start6.cn/git-home.png)
-- 安装环境检测 ![安装环境检测](./public/git/tools.png)
-- json格式化 ![安装环境检测](./public/git/json_1.png)
-- json转换ts ![安装环境检测](./public/git/json_2.png)
+# 功能列表
+- nodejs工具管理
+- json格式化
 - json转换dart
-- 百度翻译
+- 文件下载
+- 翻译工具
+- 快捷键跳转启动
+- 每天必看的东西
+- 颜色进制转换
+- 计算器
+- 托盘图标
+- URl编码解码
+- less、sass 转换为css
+- open打开网页
+- 快捷键配置
+- 开机自启动
+  - 没有没有第一次启动 开机自启动选项开启状态
 # TODO
 - keep-alive 不生效
 # 下载
-- win x64
-  - 链接: https://pan.baidu.com/s/1qvngz5pV2o7QEzeR2xXGRg  密码: i3a3
+- 根据对应的版本选择下载即可
+- 链接: https://pan.baidu.com/s/1Fpfq_cDraOtmzMB8nBzAMA 
+  - 提取码: pmqe
 # 存在问题
 - 打开 window.open() 第一次未加载完毕关闭， 第二次打开 出现程序闪退
