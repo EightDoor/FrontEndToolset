@@ -1,6 +1,7 @@
 import { log } from "./log";
-import { ElMessage } from "element-plus";
-const { clipboard } = require("electron")
+import { ElMessage, ElLoading } from "element-plus";
+import CommVariable from '@/comm_variable/comm_variable.json';
+const { clipboard, ipcRenderer } = require("electron")
 
 
 const utils = {
@@ -65,16 +66,29 @@ const utils = {
       ElMessage.info("请输入内容");
     }
   },
-  openUrl: function(url: string, title?: string): void {
-      const strWindowFeatures = `
-          menubar=yes,
-          toolbar=yes,
-          location=yes,
-          resizable=yes,
-          scrollbars=yes,
-          status=yes
-      `;
-      window.open(url, title, strWindowFeatures)
+  openUrl: async function(url: string, title?: string): void {
+      // const strWindowFeatures = `
+      //     menubar=yes,
+      //     toolbar=yes,
+      //     location=yes,
+      //     resizable=yes,
+      //     scrollbars=yes,
+      //     status=yes
+      // `;
+      // window.open(url, title, strWindowFeatures)
+    const loading = ElLoading.service({
+      lock: true,
+      text: `${title} 打开中...`
+    })
+    // 超时5秒关闭
+    setTimeout(()=>{
+      loading.close();
+    }, 5000)
+    await ipcRenderer.invoke(CommVariable.channel.WEBVIEW, JSON.stringify({
+      url,
+      title
+    }))
+    loading.close();
   }
 }
 
