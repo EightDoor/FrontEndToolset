@@ -5,7 +5,7 @@
         <template #header>
           <div class="header">
             {{item.title}}
-            <el-button type="primary" size="mini" @click="changeCard(item)">访问</el-button>
+            <el-button class="btn" type="primary" size="mini" @click="changeCard(item)">访问</el-button>
           </div>
         </template>
         <div class="content">
@@ -73,5 +73,10 @@ function changeCard(item) {
   display: flex;
   justify-content: space-between;
   align-items: center
+}
+.btn {
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>

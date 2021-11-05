@@ -2,11 +2,13 @@
   "channel": {
     "SWITCH_ROUTE": "SWITCH_ROUTE",
     "SHORTCUT": "SHORTCUT",
-    "REGISTER_SHORTCUT": "REGISTER_SHORTCUT"
+    "REGISTER_SHORTCUT": "REGISTER_SHORTCUT",
+    "DOWNLOAD_FILE": "DOWNLOAD_FILE"
   },
   "method": {
     "HELP": "HELP",
-    "SHORTCUT": "SHORTCUT"
+    "SHORTCUT": "SHORTCUT",
+    "CHECK_APP_VERSION": "CHECK_APP_VERSION"
   },
   "Config": {
     "ShortcutKey": [

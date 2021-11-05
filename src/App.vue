@@ -49,23 +49,32 @@ export default defineComponent({
 
       // 监听主进程发送的事件
       ipcRenderer.on(CommVariable.channel.SWITCH_ROUTE, function(event, msg) {
-        console.log(msg, '匹配事件');
-        switch (msg) {
+        const result = JSON.parse(msg);
+        console.log(result, '监听主进程发送的事件');
+        switch (result.method) {
           case CommVariable.method.HELP:
             router.push({
               path: '/my',
             })
             break;
-            case CommVariable.method.SHORTCUT:
+          case CommVariable.method.SHORTCUT:
               router.push({
                 path: '/shortcut_key'
               })
               break;
+          case CommVariable.method.CHECK_APP_VERSION:
+            checkVersion(result.value)
+            break;
           default:
             ElMessage.info("没有匹配事件");
         }
       })
     })
+
+    function checkVersion(version: string) {
+      console.log(version, '当前版本信息');
+    }
+
     return {
       list
     }

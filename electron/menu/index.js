@@ -1,4 +1,4 @@
-const { Menu} = require("electron")
+const { Menu, app} = require("electron")
 const { switchRoute } = require('../events/web_contents')
 const Config = require("../config");
 
@@ -62,6 +62,13 @@ module.exports = (win)=>{
       label: '帮助',
       role: 'help',
       submenu: [
+        {
+          label: '检查更新',
+          click:function() {
+            const version = app.getVersion();
+            switchRoute(win, Config.method.CHECK_APP_VERSION, version)
+          }
+        },
         {
           label: "快捷键",
           click: function() {

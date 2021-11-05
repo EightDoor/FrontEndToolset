@@ -5,7 +5,7 @@ const Keyboard = require("./keyboard")
 
 module.exports = (win) => {
   // 下载文件
-  ipcMain.handle("downloadFile", async (event, arg) => {
+  ipcMain.handle(Config.channel.DOWNLOAD_FILE, async (event, arg) => {
     console.log(arg, 'url');
     const win = BrowserWindow.getFocusedWindow();
     const result = await electronDl.download(win, arg);
@@ -20,7 +20,7 @@ module.exports = (win) => {
       if(list && list.length > 0) {
         Keyboard(win, list);
       }
-    }catch(e) {
+    } catch (e) {
       console.error(e, '注册键盘快捷方式失败');
     }
   })
