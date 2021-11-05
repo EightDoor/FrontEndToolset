@@ -7,7 +7,6 @@
   </ul>
 </template>
 <script lang="ts">
-import { ElMessage } from 'element-plus';
 import {
   defineComponent,
   reactive,
@@ -18,6 +17,7 @@ import {
 } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import utils from '@/utils'
 const { ipcRenderer } = require('electron');
 
 const Slider = defineComponent({
@@ -27,11 +27,14 @@ const Slider = defineComponent({
     const router = useRouter();
     const route = useRoute();
     const store = useStore();
-    const view = ref()
     const list = reactive<Layout.SliderType[]>([
       {
         title: '首页',
         url: '/home',
+      },
+      {
+        title: '每日必看',
+        url: '/daily_muse_see',
       },
       {
         title: 'node环境安装与配置',
@@ -63,7 +66,7 @@ const Slider = defineComponent({
     function change(item: Layout.SliderType, index: number) {
       console.log(`当前选择的: ${JSON.stringify(item)}`);
       if (item.type === 'url') {
-        window.open(item.url)
+        utils.openUrl(item.url, item.title)
       } else {
         selectIndex.value = index;
         store.commit('MenuBar/setIndex', item.title);

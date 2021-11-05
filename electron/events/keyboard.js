@@ -1,20 +1,22 @@
-const { globalShortcut, clipboard } = require('electron');
+const { globalShortcut } = require('electron');
+const Config = require('../config')
 
 // 监听全局键盘快捷键
-module.exports = (win) => {
-
-  // 百度翻译
-  const ret = globalShortcut.register('Alt+T', () => {
-    // 剪切板内容
-    const text = clipboard.readText();
-    console.log(text, 'clipboard内容')
-    win.webContents.send("BaiduTranslate", text)
-    winShow(win);
-  })
-  if (!ret) {
-    console.log("快捷键注册失败")
-  }
-
+module.exports = (win, list) => {
+  // 键盘快捷键
+ list.forEach((item)=>{
+   try {
+     const ret = globalShortcut.register(item.value, () => {
+       win.webContents.send(Config.channel.SHORTCUT, item.label)
+       winShow(win);
+     })
+     if (!ret) {
+       console.log("快捷键注册失败")
+     }
+   }catch (e) {
+     console.log(e);
+   }
+ })
   // 显示主窗口
   function winShow (win) {
     // 判断是否存在聚焦窗口

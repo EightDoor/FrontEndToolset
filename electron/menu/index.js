@@ -1,7 +1,9 @@
-const {app, Menu, shell} = require("electron")
+const { Menu, app} = require("electron")
+const { switchRoute } = require('../events/web_contents')
+const Config = require("../config");
 
 const isMac = process.platform === 'darwin'
-module.exports = ()=>{
+module.exports = (win)=>{
   const template = [
     {
       label: '操作',
@@ -16,6 +18,15 @@ module.exports = ()=>{
           accelerator: 'CmdOrCtrl+V',
           role: 'paste'
         },
+        {
+          label: '剪切',
+          accelerator: 'CmdOrCtrl+X',
+          role: 'cut'
+        },
+        {
+          label: '全选',
+          role: 'selectAll'
+        }
       ]
     },
     {
@@ -24,13 +35,13 @@ module.exports = ()=>{
       submenu: [
         {
           label: '最小化',
-          accelerator: 'CmdOrCtrl+M',
+          accelerator: 'CmdOrCtrl+W',
           role: 'minimize'
         },
         {
           label: '关闭',
-          accelerator: 'CmdOrCtrl+W',
-          role: 'close'
+          accelerator: 'CmdOrCtrl+Q',
+          role: isMac? 'quit': 'close'
         },
         {
           label: '切换开发者工具',
@@ -57,9 +68,28 @@ module.exports = ()=>{
       role: 'help',
       submenu: [
         {
+          label: '设置',
+          click:function() {
+            switchRoute(win, Config.method.SETTINGS)
+          }
+        },
+        {
+          label: '检查更新',
+          click:function() {
+            const version = app.getVersion();
+            switchRoute(win, Config.method.CHECK_APP_VERSION, version)
+          }
+        },
+        {
+          label: "快捷键",
+          click: function() {
+            switchRoute(win, Config.method.SHORTCUT)
+          }
+        },
+        {
           label:'意见反馈',
           click:function() {
-            shell.openExternal('http://www.start6.cn')
+            switchRoute(win, Config.method.HELP)
           }
         }
       ]
