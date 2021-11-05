@@ -3,7 +3,6 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue';
-import { log } from '@/utils/log';
 
 const Home = defineComponent({
   name: 'home',

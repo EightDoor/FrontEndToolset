@@ -1,5 +1,8 @@
-const { ipcMain, BrowserWindow, BrowserView } = require("electron");
+const { ipcMain, BrowserWindow } = require("electron");
 const electronDl = require("electron-dl");
+const Config = require("../config")
+const Keyboard = require("./keyboard")
+const { ca } = require("wait-on/exampleConfig");
 
 module.exports = (win) => {
   // 下载文件
@@ -9,5 +12,17 @@ module.exports = (win) => {
     const result = await electronDl.download(win, arg);
     console.log(result);
     return JSON.stringify(result);
+  })
+
+  // 注册键盘快捷方式
+  ipcMain.handle(Config.channel.REGISTER_SHORTCUT, async (event, arg)=>{
+    try {
+      const list = JSON.parse(arg);
+      if(list && list.length > 0) {
+        Keyboard(win, list);
+      }
+    }catch(e) {
+      console.error(e, '注册键盘快捷方式失败');
+    }
   })
 }

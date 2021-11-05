@@ -19,6 +19,7 @@
 - codemirror 代码编辑器
 - json-to-ts json转换为ts文件
 - 百度翻译api
+  - 需要自己在根目录创建 .env.local文件 添加对应的百度api开发者id和秘钥
 
 
 # 完成
@@ -34,4 +35,4 @@
 - win x64
   - 链接: https://pan.baidu.com/s/1qvngz5pV2o7QEzeR2xXGRg  密码: i3a3
 # 存在问题
-- 打开 window.open() 两次出现程序闪退
+- 打开 window.open() 第一次未加载完毕关闭， 第二次打开 出现程序闪退

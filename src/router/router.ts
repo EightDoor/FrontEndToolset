@@ -7,6 +7,10 @@ import JsonToDart from '@/pages/json_to_dart/index.vue';
 import GitHub from '@/pages/other/github.vue';
 import Translate from '@/pages/translate/index.vue';
 import Gadgets from '@/pages/gadgets/index.vue';
+import My from '@/pages/my/index.vue';
+import DailyMuseSee from '@/pages/daily_muse_see/index.vue';
+import ShortcutKey from '@/pages/shortcut_key/index.vue';
+
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
@@ -43,7 +47,19 @@ const routes: RouteRecordRaw[] = [
         path: '/gadgets',
         component: Gadgets,
       },
+      {
+        path: '/daily_muse_see',
+        component: DailyMuseSee,
+      }
     ],
+  },
+  {
+    path: '/my',
+    component: My
+  },
+  {
+    path: '/shortcut_key',
+    component: ShortcutKey,
   },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ];

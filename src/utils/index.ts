@@ -23,7 +23,7 @@ const utils = {
       log('err', '数据源语法错误,格式化失败! 错误信息: ' + e.description)
       return txt;
     }
-    var draw: any[] = [], last = false, This = this, line = compress ? '' : '\n', nodeCount = 0, maxDepth = 0;
+    let draw: any[] = [], last = false, This = this, line = compress ? '' : '\n', nodeCount = 0, maxDepth = 0;
 
     var notify = function (name: any, value: any, isLast: any, indent: any/*缩进*/, formObj: any) {
       nodeCount++;/*节点计数*/
@@ -56,13 +56,24 @@ const utils = {
    * 复制文字到剪切板
    * @param text 内容
    */
-  clipText: function (text: string) {
+  clipText: function (text: string): void {
     if (text) {
       ElMessage.success("内容已经复制到剪切板");
       clipboard.writeText(text);
     } else {
       ElMessage.info("请输入内容");
     }
+  },
+  openUrl: function(url: string, title?: string): void {
+      const strWindowFeatures = `
+          menubar=yes,
+          toolbar=yes,
+          location=yes,
+          resizable=yes,
+          scrollbars=yes,
+          status=yes
+      `;
+      window.open(url, title, strWindowFeatures)
   }
 }
 

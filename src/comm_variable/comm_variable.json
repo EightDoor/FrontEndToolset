@@ -1,0 +1,25 @@
+{
+  "channel": {
+    "SWITCH_ROUTE": "SWITCH_ROUTE",
+    "SHORTCUT": "SHORTCUT",
+    "REGISTER_SHORTCUT": "REGISTER_SHORTCUT"
+  },
+  "method": {
+    "HELP": "HELP",
+    "SHORTCUT": "SHORTCUT"
+  },
+  "Config": {
+    "ShortcutKey": [
+      {
+      "value": "Alt+T",
+      "label": "translate",
+        "description": "翻译"
+      },
+      {
+        "value": "Alt+Z",
+        "label": "myMustSee",
+        "description": "每日必看"
+      }
+    ]
+  }
+}

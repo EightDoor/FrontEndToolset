@@ -1,7 +1,9 @@
-const {app, Menu, shell} = require("electron")
+const { Menu} = require("electron")
+const { switchRoute } = require('../events/web_contents')
+const Config = require("../config");
 
 const isMac = process.platform === 'darwin'
-module.exports = ()=>{
+module.exports = (win)=>{
   const template = [
     {
       label: '操作',
@@ -16,6 +18,10 @@ module.exports = ()=>{
           accelerator: 'CmdOrCtrl+V',
           role: 'paste'
         },
+        {
+          label: '全选',
+          role: 'selectAll'
+        }
       ]
     },
     {
@@ -57,9 +63,15 @@ module.exports = ()=>{
       role: 'help',
       submenu: [
         {
+          label: "快捷键",
+          click: function() {
+            switchRoute(win, Config.method.SHORTCUT)
+          }
+        },
+        {
           label:'意见反馈',
           click:function() {
-            shell.openExternal('http://www.start6.cn')
+            switchRoute(win, Config.method.HELP)
           }
         }
       ]

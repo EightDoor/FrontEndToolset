@@ -1,7 +1,5 @@
-const { BrowserWindow, ipcMain } = require("electron")
-const electronDl = require('electron-dl');
+const { ipcMain } = require("electron")
 const { autoUpdater } = require("electron-updater")
-const keyBoard = require('./keyboard');
 const Tray = require("./tray")
 const ListenEvent = require("./listen_event")
 
@@ -13,9 +11,6 @@ const init = (win) => {
   console.log('监听init初始化------------------->');
   // 监听事件
   ListenEvent(win)
-
-  // 键盘快捷键
-  keyBoard(win);
 
   // 版本升级
   update(win)
