@@ -1,15 +1,21 @@
 import { ipcRenderer } from "electron";
 import CommVariable from "@/comm_variable/comm_variable.json";
-
+import store from '@/utils/store';
+import Constant from "@/utils/constant";
 export interface RegisterShortcutType {
   value: string;
   label: string;
   description: string;
 }
 const Business = {
-  registerShortcutKeys: (list: RegisterShortcutType[])=>{
+  registerShortcutKeys: async (list?: RegisterShortcutType[])=>{
+    const result = await store.get(Constant.REGISTER_SHORTCUT_KEYS)
+    let r: unknown = list ?? CommVariable.Config.ShortcutKey
+    if(result) {
+      r = result;
+    }
     // 发送主进程注册快捷键
-    ipcRenderer.invoke(CommVariable.channel.REGISTER_SHORTCUT, JSON.stringify(list ?? CommVariable.Config.ShortcutKey));
+    await ipcRenderer.invoke(CommVariable.channel.REGISTER_SHORTCUT, JSON.stringify(r));
   }
 }
 

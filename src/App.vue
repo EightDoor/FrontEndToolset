@@ -11,6 +11,7 @@ import { defineComponent, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import CommVariable from "@/comm_variable/comm_variable.json";
+import Business from '@/utils/business'
 import { ElMessage } from "element-plus";
 
 const { ipcRenderer, clipboard } = require('electron')
@@ -22,7 +23,8 @@ export default defineComponent({
     const router = useRouter()
     const store = useStore()
     onMounted(() => {
-
+      // 注册键盘监听事件
+      Business.registerShortcutKeys();
       // 监听键盘快捷键 是否触发
       ipcRenderer.on(CommVariable.channel.SHORTCUT, (event, arg) => {
         switch (arg){

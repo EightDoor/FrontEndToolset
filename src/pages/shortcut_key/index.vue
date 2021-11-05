@@ -17,6 +17,10 @@
 import GoHome from '@/components/GoHome/index.vue';
 import { ref, onMounted } from "vue";
 import CommVariable from '@/comm_variable/comm_variable.json';
+import Business from '@/utils/business';
+import {ElMessage} from 'element-plus';
+import store from '@/utils/store';
+import Constant from "@/utils/constant";
 
 const formData = ref({})
 const formRef = ref(null)
@@ -31,8 +35,10 @@ function getList() {
     formData.value[item.label] = item.value;
   })
 }
-function changeShortcutKey() {
-
+async function changeShortcutKey() {
+  await store.set(Constant.REGISTER_SHORTCUT_KEYS, list.value);
+  await Business.registerShortcutKeys(list.value);
+  ElMessage.success("更改成功");
 }
 </script>
 <style scoped lang="less">
