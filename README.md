@@ -6,7 +6,9 @@
   - 执行 nmp run rebuild
 - `npm run z`
 # 打包
-- `npm run dist`
+- `npm run dist:all` 打包全部平台
+- `npm run dist:mac` 打包mac
+- `npm run dist:win` 打包win
 # 其他
 - 编辑器使用webstorm 
   - 配置Prettier  实现代码保存自动格式化
