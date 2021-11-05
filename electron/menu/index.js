@@ -30,13 +30,8 @@ module.exports = (win)=>{
       submenu: [
         {
           label: '最小化',
-          accelerator: 'CmdOrCtrl+M',
-          role: 'minimize'
-        },
-        {
-          label: '关闭',
           accelerator: 'CmdOrCtrl+W',
-          role: 'close'
+          role: 'minimize'
         },
         {
           label: '切换开发者工具',
