@@ -9,6 +9,7 @@ import Gadgets from '@/pages/gadgets/index.vue';
 import My from '@/pages/my/index.vue';
 import DailyMuseSee from '@/pages/daily_muse_see/index.vue';
 import ShortcutKey from '@/pages/shortcut_key/index.vue';
+import Setting from '@/pages/setting/settings.vue';
 
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
@@ -55,6 +56,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/shortcut_key',
     component: ShortcutKey,
+  },
+  {
+    path: '/setting',
+    component: Setting
   },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ];

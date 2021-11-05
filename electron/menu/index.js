@@ -19,6 +19,11 @@ module.exports = (win)=>{
           role: 'paste'
         },
         {
+          label: '剪切',
+          accelerator: 'CmdOrCtrl+X',
+          role: 'cut'
+        },
+        {
           label: '全选',
           role: 'selectAll'
         }
@@ -32,6 +37,11 @@ module.exports = (win)=>{
           label: '最小化',
           accelerator: 'CmdOrCtrl+W',
           role: 'minimize'
+        },
+        {
+          label: '关闭',
+          accelerator: 'CmdOrCtrl+Q',
+          role: isMac? 'quit': 'close'
         },
         {
           label: '切换开发者工具',
@@ -57,6 +67,12 @@ module.exports = (win)=>{
       label: '帮助',
       role: 'help',
       submenu: [
+        {
+          label: '设置',
+          click:function() {
+            switchRoute(win, Config.method.SETTINGS)
+          }
+        },
         {
           label: '检查更新',
           click:function() {

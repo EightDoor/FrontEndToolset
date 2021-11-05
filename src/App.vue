@@ -13,6 +13,8 @@ import { useStore } from "vuex";
 import CommVariable from "@/comm_variable/comm_variable.json";
 import Business from '@/utils/business'
 import { ElMessage } from "element-plus";
+import storeData from '@/utils/store';
+import Constant from "@/utils/constant";
 
 const { ipcRenderer, clipboard } = require('electron')
 
@@ -23,6 +25,8 @@ export default defineComponent({
     const router = useRouter()
     const store = useStore()
     onMounted(() => {
+      // 初始化设置开机启动选项
+      initPowerStatus();
       // 注册键盘监听事件
       Business.registerShortcutKeys();
       // 监听键盘快捷键 是否触发
@@ -61,9 +65,14 @@ export default defineComponent({
               router.push({
                 path: '/shortcut_key'
               })
-              break;
+            break;
           case CommVariable.method.CHECK_APP_VERSION:
             checkVersion(result.value)
+            break;
+          case CommVariable.method.SETTINGS:
+            router.push({
+              path: '/setting'
+            })
             break;
           default:
             ElMessage.info("没有匹配事件");
@@ -75,6 +84,13 @@ export default defineComponent({
       console.log(version, '当前版本信息');
     }
 
+    async function initPowerStatus() {
+      const value = await storeData.get(Constant.IS_FIRST_INIT_APP)
+      if(!value) {
+        await ipcRenderer.invoke(CommVariable.channel.POWER_ON_SETTING_STATUS, true);
+        await storeData.set(Constant.IS_FIRST_INIT_APP, true);
+      }
+    }
     return {
       list
     }

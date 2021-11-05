@@ -1,4 +1,4 @@
-const { ipcMain, BrowserWindow } = require("electron");
+const { ipcMain, BrowserWindow, app } = require("electron");
 const electronDl = require("electron-dl");
 const Config = require("../config")
 const Keyboard = require("./keyboard")
@@ -22,6 +22,21 @@ module.exports = (win) => {
       }
     } catch (e) {
       console.error(e, '注册键盘快捷方式失败');
+    }
+  })
+
+  // 获取开机是否自动启动应用状态
+  ipcMain.handle(Config.channel.POWER_ON_STATUS, async (event, arg) => {
+    const obj = app.getLoginItemSettings();
+    return obj.openAtLogin;
+  })
+
+  // 设置开机启动状态
+  ipcMain.handle(Config.channel.POWER_ON_SETTING_STATUS, async (event, arg) => {
+    if(arg) {
+      app.setLoginItemSettings({
+        openAtLogin: arg,
+      })
     }
   })
 }
