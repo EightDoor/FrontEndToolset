@@ -49,5 +49,3 @@
 - 根据对应的版本选择下载即可
 - 链接: https://pan.baidu.com/s/1Fpfq_cDraOtmzMB8nBzAMA 
   - 提取码: pmqe
-# 存在问题
-- 打开 window.open() 第一次未加载完毕关闭， 第二次打开 出现程序闪退
