@@ -66,16 +66,7 @@ const utils = {
       ElMessage.info("请输入内容");
     }
   },
-  openUrl: async function(url: string, title?: string): void {
-      // const strWindowFeatures = `
-      //     menubar=yes,
-      //     toolbar=yes,
-      //     location=yes,
-      //     resizable=yes,
-      //     scrollbars=yes,
-      //     status=yes
-      // `;
-      // window.open(url, title, strWindowFeatures)
+  openUrl: async function(url: string, title?: string) {
     const loading = ElLoading.service({
       lock: true,
       text: `${title} 打开中...`
