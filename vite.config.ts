@@ -13,7 +13,7 @@ export default defineConfig({
       // output: {
       //   format: 'cjs', // 配置 Rollup 打包输出 CommonJs 格式
       // },
-      // external: ['electron'], // 告诉 Rollup 不要去打包 electron
+      external: ['AMap'], // 告诉 Rollup 不要去打包 AMap
     },
   },
   resolve: {

@@ -1,10 +1,6 @@
 
 Q
 !src/components/JsonCode/index.vue,1/2/1277dd25be70a3d9b6d33fa2ee24811ef109d538
-=
-tsconfig.json,6/1/61ebb9fd6e8cf9082658121d5d81e297791dacd0
-4
-.env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
 ;
 src/main.ts,1/a/1af9a5bdf96ddff3a2f3427ed520b7005e9564ad
 M
@@ -23,8 +19,6 @@ F
 electron/menu/index.js,4\3\43b0280a1151cf8cfcb7b153cbca8d69bc4f9f81
 G
 src/directives/index.ts,6\1\61f49e8428a800d7557ede993f50ded599c22a39
-E
-src/utils/business.ts,8\1\810f8572292a657b0b0120a734f88e6c12a9e376
 K
 electron/events/keyboard.js,b\7\b73e1adc954a209904020f85183022a70b5b8464
 ;
