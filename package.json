@@ -19,6 +19,7 @@
   },
   "author": "周凯 <851708184@qq.com>",
   "dependencies": {
+    "@amap/amap-jsapi-types": "^0.0.8",
     "@element-plus/icons": "^0.0.11",
     "axios": "^0.21.4",
     "codemirror": "^5.63.3",

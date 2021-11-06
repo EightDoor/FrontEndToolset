@@ -1,6 +1,7 @@
 import CommVariable from "@/comm_variable/comm_variable.json";
 import store from '@/utils/store';
 import Constant from "@/utils/constant";
+import "@amap/amap-jsapi-types";
 const {ipcRenderer} = require('electron')
 
 export interface RegisterShortcutType {
@@ -21,6 +22,7 @@ const Business = {
   position: ()=>{
     return new Promise((resolve, reject)=>{
       AMap.plugin('AMap.Geolocation', function() {
+        // @ts-ignore
         const geolocation = new AMap.Geolocation({
           // 是否使用高精度定位，默认：true
           enableHighAccuracy: true,
@@ -35,7 +37,9 @@ const Business = {
         })
 
         geolocation.getCurrentPosition()
+        // @ts-ignore
         AMap.event.addListener(geolocation, 'complete', onComplete)
+        // @ts-ignore
         AMap.event.addListener(geolocation, 'error', onError)
 
         function onComplete (data) {
