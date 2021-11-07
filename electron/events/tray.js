@@ -1,4 +1,4 @@
-const { Menu, Tray, app } = require('electron')
+const { Menu, Tray } = require('electron')
 const path = require("path")
 const { switchRoute } = require("../events/web_contents");
 const Config = require("../config");
