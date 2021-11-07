@@ -1,8 +1,6 @@
 
 Q
 !src/components/JsonCode/index.vue,1/2/1277dd25be70a3d9b6d33fa2ee24811ef109d538
-;
-src/main.ts,1/a/1af9a5bdf96ddff3a2f3427ed520b7005e9564ad
 M
 src/pages/translate/index.vue,3/5/3526dc931cd60dc0277c1fa4bbd185312cf6b2b5
 \
@@ -15,11 +13,40 @@ P
  src/pages/shortcut_key/index.vue,f/a/fa38542ea7ad07c20a02130dc925e20d9bc34afa
 w
 G.idea/sonarlint/issuestore/d/d/dde3e769377c57668ecd73503bad9286a9808a36,7\6\76664e50041011ca2151e6b578550707f8fe32d2
-F
-electron/menu/index.js,4\3\43b0280a1151cf8cfcb7b153cbca8d69bc4f9f81
-G
-src/directives/index.ts,6\1\61f49e8428a800d7557ede993f50ded599c22a39
 K
 electron/events/keyboard.js,b\7\b73e1adc954a209904020f85183022a70b5b8464
 ;
 src/App.vue,5\4\5441d5289c77ce615f0e420c266cdee5d78f3ecd
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+6
+.npmrc,1\2\12453d06e6e35287172e482940b954ba12dc25a2
+B
+src/utils/index.ts,0\c\0cc957a5bbd31d0d6029a0eb5dd2b84ad8f9ef09
+=
+tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
+B
+src/shims-vue.d.ts,6\1\61d5cbd5ae7b00bcdaab6cbca1c51addb3cc9733
+I
+src/types/layout/index.ts,f\7\f7978ad425439eec985196631e33fe9272ed3de5
+4
+.env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
+:
+
+index.html,f\6\f6013a00b362253c64368d6eebc50ea2131754e2
+?
+src/source.d.ts,2\e\2e6dd643050e9f4f884031b7df76a96e96a943d5
+>
+vite.config.ts,7\5\75ea7f3ea6d80d54bb5b2357996972d1632a5038
+A
+src/types/home.ts,8\1\8158fea6d120d15d254b74241ff593dda451db7b
+G
+src/pages/home/home.vue,f\0\f0a6767aaee557f369688e5c24ffc6719efe0fba
+9
+	yarn.lock,5\3\53585a096fe3a3b96321113856ae62602995a33b
+E
+src/utils/business.ts,8\1\810f8572292a657b0b0120a734f88e6c12a9e376
+G
+src/directives/index.ts,6\1\61f49e8428a800d7557ede993f50ded599c22a39
+;
+src/main.ts,1\a\1af9a5bdf96ddff3a2f3427ed520b7005e9564ad
