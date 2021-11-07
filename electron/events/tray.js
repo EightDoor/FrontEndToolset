@@ -1,8 +1,7 @@
-const { Menu, Tray, BrowserWindow, app } = require('electron')
+const { Menu, Tray, app } = require('electron')
 const path = require("path")
 const { switchRoute } = require("../events/web_contents");
 const Config = require("../config");
-
 
 let tray = null;
 module.exports = (win) => {
@@ -25,7 +24,7 @@ module.exports = (win) => {
     {
       label: '退出',
       click: function () {
-        BrowserWindow.getFocusedWindow().webContents().send('close-main-window');
+        win.destroy();
       }
     }
   ])
