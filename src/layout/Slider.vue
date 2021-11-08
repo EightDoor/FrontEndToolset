@@ -1,9 +1,15 @@
 <template>
   <ul class="ul">
-    <li v-for="(item, index) in list" :key="index" @click="change(item, index)">
-      <el-button type="primary">{{ item.title }}</el-button>
-      <img v-if="selectIndex === index" class="img" src="/images/tap.png" />
-    </li>
+    <el-menu
+      background-color="#545c64"
+      text-color="#fff"
+      :default-active="selectIndex"
+      class="slider"
+    >
+      <el-menu-item v-for="(item, index) in list" :key="index" :index="index" @click="change(item, index)">
+        <template #title>{{ item.title }}</template>
+      </el-menu-item>
+    </el-menu>
   </ul>
 </template>
 <script lang="ts">
@@ -107,11 +113,4 @@ export default Slider;
 </script>
 <style lang="less" scoped>
 @import 'slider.module';
-.img {
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-  display: inline-block;
-  margin-left: 15px;
-}
 </style>

@@ -36,8 +36,6 @@ A
 src/types/home.ts,8\1\8158fea6d120d15d254b74241ff593dda451db7b
 G
 src/pages/home/home.vue,f\0\f0a6767aaee557f369688e5c24ffc6719efe0fba
-G
-src/directives/index.ts,6\1\61f49e8428a800d7557ede993f50ded599c22a39
 ;
 src/main.ts,1\a\1af9a5bdf96ddff3a2f3427ed520b7005e9564ad
 9
@@ -58,6 +56,12 @@ G
 electron/main.js,b/8/b8a1a7276c8e00611ae0bee8b3f623c2793ef19f
 :
 
-.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 O
 electron/events/web_contents.js,7/0/70763482045bdaf62c18bf42099d4fcbf6461ea0
+<
+package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
+G
+src/directives/index.ts,6\1\61f49e8428a800d7557ede993f50ded599c22a39
+P
+ src/components/Buttons/index.vue,2\5\25751789f0a4f09fefb2586adcc66aa8c312888f
