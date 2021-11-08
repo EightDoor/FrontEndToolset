@@ -7,3 +7,4 @@ dist-ssr
 /electron/dist
 /.history
 .env.local
+.idea
