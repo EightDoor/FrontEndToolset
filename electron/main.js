@@ -5,10 +5,11 @@ const electronDl = require('electron-dl');
 const { init } = require("./events/index")
 const menuInit = require("./menu/index")
 electronDl()
-
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
+let win;
 function createWindow () {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1200,
     height: 800,
     maximizable: true,
@@ -40,6 +41,7 @@ function createWindow () {
       console.log(err);
     });
   }
+
 }
 
 app.whenReady().then(() => {
@@ -53,10 +55,16 @@ app.whenReady().then(() => {
       createWindow();
     }
   });
+
+  win.on('close', (event)=>{
+    event.preventDefault()
+    win.hide();
+  })
 });
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
+// app.on('window-all-closed', () => {
+//   if (process.platform !== 'darwin') {
+//     app.quit();
+//   }
+// });
+

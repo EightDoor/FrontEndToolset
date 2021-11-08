@@ -1,13 +1,19 @@
-const { Menu, Tray, BrowserWindow } = require('electron')
+const { Menu, Tray } = require('electron')
 const path = require("path")
 const { switchRoute } = require("../events/web_contents");
 const Config = require("../config");
 
-
+let tray = null;
 module.exports = (win) => {
-  const appIcon = new Tray(path.join(__dirname, '../dist/images/tap.png'))
+  tray = new Tray(path.join(__dirname, '../dist/images/tap.png'))
   // 托盘图标 http://bbs.itying.com/topic/5c21ced8d5488a17e894a7e6
   const menu = Menu.buildFromTemplate([
+    {
+      label: '打开主页面',
+      click: function () {
+        win.show();
+      }
+    },
     {
       label: '关于',
       click: function () {
@@ -18,10 +24,13 @@ module.exports = (win) => {
     {
       label: '退出',
       click: function () {
-        BrowserWindow.getFocusedWindow().webContents().send('close-main-window');
+        win.destroy();
       }
     }
   ])
-  appIcon.setToolTip('个人工具箱');
-  appIcon.setContextMenu(menu);
+  tray.on('click', function() {
+    win.show();
+  })
+  tray.setToolTip('个人工具箱');
+  tray.setContextMenu(menu);
 }

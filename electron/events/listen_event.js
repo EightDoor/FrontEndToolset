@@ -1,7 +1,8 @@
-const { ipcMain, BrowserWindow, app } = require("electron");
+const { ipcMain, BrowserWindow, app, dialog } = require("electron");
 const electronDl = require("electron-dl");
 const Config = require("../config")
 const Keyboard = require("./keyboard")
+const path = require("path");
 
 module.exports = (win) => {
   // 下载文件
@@ -38,5 +39,17 @@ module.exports = (win) => {
         openAtLogin: arg,
       })
     }
+  })
+
+  // 打开webview
+  ipcMain.handle(Config.channel.WEBVIEW,  async (event, arg) => {
+    const { title, url } = JSON.parse(arg)
+    const child = new BrowserWindow({parent: win, modal: true, show: false, webPreferences: {
+        preload: path.join(__dirname, 'child_webview.js')
+      }})
+    // child.setMenuBarVisibility(false)
+    child.setTitle(title)
+    await child.loadURL(url)
+    child.show()
   })
 }

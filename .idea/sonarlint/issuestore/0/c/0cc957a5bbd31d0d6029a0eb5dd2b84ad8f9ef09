@@ -1,0 +1,10 @@
+
+ptypescript:S3776"TRefactor this function to reduce its Cognitive Complexity from 43 to the 15 allowed.(Èüğé
+Stypescript:S1854"2Remove this useless assignment to variable "This".(Úñ¯–ıÿÿÿÿ
+Qtypescript:S1117"0'isLast' is already declared in the upper scope.(öÂîıÿÿÿÿ
+Qtypescript:S1117"0'indent' is already declared in the upper scope.(öÂîıÿÿÿÿ
+Wtypescript:S1854""6Remove this useless assignment to variable "maxDepth".(µ©ñ”şÿÿÿÿ
+8typescript:S2814%"'i' is already defined.(§²Œ³øÿÿÿÿ
+8typescript:S2814*"'i' is already defined.(Ë’œùÿÿÿÿ
+Mtypescript:S1854+"1Remove this useless assignment to variable "key".(âµ˜¢
+:typescript:S2814,"'key' is already defined.(•£äÏÿÿÿÿÿ
