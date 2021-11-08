@@ -1,8 +1,8 @@
 const { Menu, app} = require("electron")
 const { switchRoute } = require('../events/web_contents')
 const Config = require("../config");
+const { isMac } = require("../utils");
 
-const isMac = process.platform === 'darwin'
 module.exports = (win)=>{
   const template = [
     {

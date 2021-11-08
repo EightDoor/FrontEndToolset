@@ -41,13 +41,22 @@ module.exports = (win) => {
     }
   })
 
+  // 版本信息
+  ipcMain.handle(Config.channel.GET_VERSION, async (event, arg)=>{
+    const version = app.getVersion();
+    return JSON.stringify({
+      version
+    })
+  })
+
   // 打开webview
   ipcMain.handle(Config.channel.WEBVIEW,  async (event, arg) => {
     const { title, url } = JSON.parse(arg)
     const child = new BrowserWindow({parent: win, modal: true, show: false, webPreferences: {
-        preload: path.join(__dirname, 'child_webview.js')
-      }})
-    // child.setMenuBarVisibility(false)
+            preload: path.join(__dirname, 'child_webview.js')
+          },
+        },
+      )
     child.setTitle(title)
     await child.loadURL(url)
     child.show()

@@ -7,18 +7,12 @@ M
 ,.idea/inspectionProfiles/Project_Default.xml,4/9/496a238a6afa168dbaf6efd37bb459331589579c
 O
 src/components/GoHome/index.vue,7/6/763f349d1571adba26c51cc58525a5138fd7e30a
-F
-src/pages/my/index.vue,f/3/f30c096d7f20bafe06da1f4e3f7515158ec31e68
 P
  src/pages/shortcut_key/index.vue,f/a/fa38542ea7ad07c20a02130dc925e20d9bc34afa
 w
 G.idea/sonarlint/issuestore/d/d/dde3e769377c57668ecd73503bad9286a9808a36,7\6\76664e50041011ca2151e6b578550707f8fe32d2
-K
-electron/events/keyboard.js,b\7\b73e1adc954a209904020f85183022a70b5b8464
 ;
 src/App.vue,5\4\5441d5289c77ce615f0e420c266cdee5d78f3ecd
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 6
 .npmrc,1\2\12453d06e6e35287172e482940b954ba12dc25a2
 B
@@ -42,11 +36,28 @@ A
 src/types/home.ts,8\1\8158fea6d120d15d254b74241ff593dda451db7b
 G
 src/pages/home/home.vue,f\0\f0a6767aaee557f369688e5c24ffc6719efe0fba
-9
-	yarn.lock,5\3\53585a096fe3a3b96321113856ae62602995a33b
-E
-src/utils/business.ts,8\1\810f8572292a657b0b0120a734f88e6c12a9e376
 G
 src/directives/index.ts,6\1\61f49e8428a800d7557ede993f50ded599c22a39
 ;
 src/main.ts,1\a\1af9a5bdf96ddff3a2f3427ed520b7005e9564ad
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+E
+src/utils/business.ts,8/1/810f8572292a657b0b0120a734f88e6c12a9e376
+B
+electron/config.js,7/1/71ed17a0214211db5be7fb5b94c035fba50fba60
+C
+electron/preload.js,c/c/cc98a6bc5419188205cfb3b7d633b57b698e7074
+9
+	yarn.lock,5/3/53585a096fe3a3b96321113856ae62602995a33b
+F
+electron/menu/index.js,4/3/43b0280a1151cf8cfcb7b153cbca8d69bc4f9f81
+G
+electron/utils/index.js,a/a/aa3a4419e38e5ee3036324b9f32d08d448efdebc
+@
+electron/main.js,b/8/b8a1a7276c8e00611ae0bee8b3f623c2793ef19f
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+O
+electron/events/web_contents.js,7/0/70763482045bdaf62c18bf42099d4fcbf6461ea0
