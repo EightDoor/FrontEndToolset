@@ -1,4 +1,4 @@
-const { Menu, Tray } = require('electron')
+const { Menu, Tray, app } = require('electron')
 const path = require("path")
 const { switchRoute } = require("../events/web_contents");
 const Config = require("../config");
@@ -25,6 +25,7 @@ module.exports = (win) => {
       label: '退出',
       click: function () {
         win.destroy();
+        win = null
       }
     }
   ])

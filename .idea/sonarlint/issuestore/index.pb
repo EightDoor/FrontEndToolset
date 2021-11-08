@@ -13,12 +13,8 @@ P
  src/pages/shortcut_key/index.vue,f/a/fa38542ea7ad07c20a02130dc925e20d9bc34afa
 w
 G.idea/sonarlint/issuestore/d/d/dde3e769377c57668ecd73503bad9286a9808a36,7\6\76664e50041011ca2151e6b578550707f8fe32d2
-K
-electron/events/keyboard.js,b\7\b73e1adc954a209904020f85183022a70b5b8464
 ;
 src/App.vue,5\4\5441d5289c77ce615f0e420c266cdee5d78f3ecd
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 6
 .npmrc,1\2\12453d06e6e35287172e482940b954ba12dc25a2
 B
@@ -42,10 +38,6 @@ A
 src/types/home.ts,8\1\8158fea6d120d15d254b74241ff593dda451db7b
 G
 src/pages/home/home.vue,f\0\f0a6767aaee557f369688e5c24ffc6719efe0fba
-9
-	yarn.lock,5\3\53585a096fe3a3b96321113856ae62602995a33b
-E
-src/utils/business.ts,8\1\810f8572292a657b0b0120a734f88e6c12a9e376
 G
 src/directives/index.ts,6\1\61f49e8428a800d7557ede993f50ded599c22a39
 ;

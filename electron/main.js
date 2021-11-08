@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
 const electronDl = require('electron-dl');
@@ -61,6 +61,11 @@ app.whenReady().then(() => {
     win.hide();
   })
 });
+
+app.on("will-quit", ()=>{
+  win = null;
+  globalShortcut.unregisterAll()
+})
 
 // app.on('window-all-closed', () => {
 //   if (process.platform !== 'darwin') {
