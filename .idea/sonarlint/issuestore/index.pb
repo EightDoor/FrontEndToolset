@@ -15,8 +15,6 @@ G.idea/sonarlint/issuestore/d/d/dde3e769377c57668ecd73503bad9286a9808a36,7\6\76
 src/App.vue,5\4\5441d5289c77ce615f0e420c266cdee5d78f3ecd
 6
 .npmrc,1\2\12453d06e6e35287172e482940b954ba12dc25a2
-B
-src/utils/index.ts,0\c\0cc957a5bbd31d0d6029a0eb5dd2b84ad8f9ef09
 =
 tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
 B
@@ -40,8 +38,6 @@ G
 src/main.ts,1\a\1af9a5bdf96ddff3a2f3427ed520b7005e9564ad
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-E
-src/utils/business.ts,8/1/810f8572292a657b0b0120a734f88e6c12a9e376
 B
 electron/config.js,7/1/71ed17a0214211db5be7fb5b94c035fba50fba60
 C
@@ -59,8 +55,6 @@ G
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 O
 electron/events/web_contents.js,7/0/70763482045bdaf62c18bf42099d4fcbf6461ea0
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 G
 src/directives/index.ts,6\1\61f49e8428a800d7557ede993f50ded599c22a39
 P
