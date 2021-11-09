@@ -69,7 +69,7 @@ const utils = {
   openUrl: async function(url: string, title?: string) {
     const loading = ElLoading.service({
       lock: true,
-      text: `${title} 打开中...`
+      text: `${title??"网页"} 打开中...`
     })
     // 超时5秒关闭
     setTimeout(()=>{

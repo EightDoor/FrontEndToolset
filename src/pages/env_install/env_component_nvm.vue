@@ -19,8 +19,9 @@
   </ul>
 </template>
 <script setup lang="ts">
+import utils from '@/utils';
 function download() {
-  window.open("https://github.com/coreybutler/nvm-windows/releases")
+  utils.openUrl("http://nodejs.cn/download/")
 }
 </script>
 <style scoped lang="less">

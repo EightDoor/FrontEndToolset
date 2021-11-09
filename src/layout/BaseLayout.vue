@@ -22,14 +22,8 @@ export default BaseLayout;
 </script>
 <style scoped lang="less">
 @height: 20px;
-.aside {
-  height: calc(100vh - @height);
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
 .content {
-  height: calc(100vh - @height);
+  height: 100vh;
   overflow-y: auto;
 }
 </style>

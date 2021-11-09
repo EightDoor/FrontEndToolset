@@ -15,8 +15,6 @@ G.idea/sonarlint/issuestore/d/d/dde3e769377c57668ecd73503bad9286a9808a36,7\6\76
 src/App.vue,5\4\5441d5289c77ce615f0e420c266cdee5d78f3ecd
 6
 .npmrc,1\2\12453d06e6e35287172e482940b954ba12dc25a2
-B
-src/utils/index.ts,0\c\0cc957a5bbd31d0d6029a0eb5dd2b84ad8f9ef09
 =
 tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
 B
@@ -48,10 +46,11 @@ G
 electron/main.js,b/8/b8a1a7276c8e00611ae0bee8b3f623c2793ef19f
 :
 
-.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 O
 electron/events/web_contents.js,7/0/70763482045bdaf62c18bf42099d4fcbf6461ea0
 G
+<<<<<<< HEAD
 electron/events/tray.js,7/2/72174a44c1b4bcddfcae345b934de18ca33ae776
 K
 electron/events/keyboard.js,b/7/b73e1adc954a209904020f85183022a70b5b8464
@@ -77,3 +76,8 @@ A
 src/types/home.ts,8/1/8158fea6d120d15d254b74241ff593dda451db7b
 I
 src/types/layout/index.ts,f/7/f7978ad425439eec985196631e33fe9272ed3de5
+=======
+src/directives/index.ts,6\1\61f49e8428a800d7557ede993f50ded599c22a39
+P
+ src/components/Buttons/index.vue,2\5\25751789f0a4f09fefb2586adcc66aa8c312888f
+>>>>>>> ca5d4224e47ecc055c74e34c157cc860ce602b0c
