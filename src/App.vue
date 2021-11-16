@@ -98,13 +98,17 @@ export default defineComponent({
 })
 </script>
 <style>
+@font-face {
+  font-family: "custom_font";
+  src: url("http://vue3.admin.qiniu.start6.cn/NotoSerifGeorgian-Bold.ttf")
+}
 body,
 ul,
 li {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-  'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  font-family: "custom_font"
 }
+
 </style>
