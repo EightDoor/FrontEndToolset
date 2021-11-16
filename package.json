@@ -81,7 +81,14 @@
       "target": [
         "nsis"
       ],
-      "icon": "build/icons/icon.ico"
+      "icon": "images/tap.ico"
+    },
+    "mac" : {
+      "target": ["dmg"]
+    },
+    "dmg" : {
+      "icon": "images/tap.ico",
+      "title": "个人工具箱"
     },
     "nsis": {
       "oneClick": false,
