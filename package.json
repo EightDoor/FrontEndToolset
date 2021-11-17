@@ -81,13 +81,13 @@
       "target": [
         "nsis"
       ],
-      "icon": "images/tap.ico"
+      "icon": "public/images/tap.ico"
     },
     "mac" : {
       "target": ["dmg"]
     },
     "dmg" : {
-      "icon": "images/tap.ico",
+      "icon": "public/images/tap.ico",
       "title": "个人工具箱"
     },
     "nsis": {
