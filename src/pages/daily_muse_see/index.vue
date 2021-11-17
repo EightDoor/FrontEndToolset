@@ -20,11 +20,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import utils from '@/utils';
+import { useRouter } from 'vue-router';
 
 interface ListType {
   title: string;
-  url: string;
+  url?: string;
   descriptions: string;
+  router?: string;
 }
 const list = ref<ListType[]>([]);
 
@@ -40,6 +42,16 @@ function getList() {
       url: 'http://personal.start6.cn/'
     },
     {
+      title: 'CNode',
+      descriptions: 'CNode',
+      url: 'https://cnodejs.org/?tab=good'
+    },
+    {
+      title: '今日头条',
+      descriptions: '今日头条',
+      router: "/today_headlines",
+    },
+    {
       title: '开源中国',
       descriptions: '开源中国',
       url: 'https://www.oschina.net/'
@@ -47,8 +59,13 @@ function getList() {
   ]
 }
 
+const router = useRouter();
 function changeCard(item) {
-  utils.openUrl(item.url, item.title)
+  if(item.url) {
+    utils.openUrl(item.url, item.title)
+  }else if(item.router) {
+    router.push(item.router)
+  }
 }
 </script>
 <style scoped lang="less">

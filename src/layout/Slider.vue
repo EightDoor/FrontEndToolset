@@ -43,6 +43,10 @@ const Slider = defineComponent({
         url: '/daily_muse_see',
       },
       {
+        title: '音乐',
+        url: '/music',
+      },
+      {
         title: 'node环境安装与配置',
         url: '/env_install',
       },
@@ -58,6 +62,11 @@ const Slider = defineComponent({
       {
         title: '百度翻译',
         url: '/translate',
+      },
+      {
+        title: '接口请求工具',
+        url: 'https://hoppscotch.io/cn',
+        type: 'url',
       },
       {
         title: '小工具',
