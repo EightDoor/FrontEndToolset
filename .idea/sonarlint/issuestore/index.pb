@@ -73,3 +73,5 @@ G
 electron/events/tray.js,7\2\72174a44c1b4bcddfcae345b934de18ca33ae776
 P
  src/pages/shortcut_key/index.vue,f\a\fa38542ea7ad07c20a02130dc925e20d9bc34afa
+;
+LICENSE.txt,7/9/79b82ce9b64a924266619555502f890dd80c83b9

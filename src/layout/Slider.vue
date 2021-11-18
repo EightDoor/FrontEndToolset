@@ -64,11 +64,6 @@ const Slider = defineComponent({
         url: '/translate',
       },
       {
-        title: '接口请求工具',
-        url: 'https://hoppscotch.io/cn',
-        type: 'url',
-      },
-      {
         title: '小工具',
         url: '/gadgets',
       },
