@@ -73,3 +73,11 @@ G
 electron/events/tray.js,7\2\72174a44c1b4bcddfcae345b934de18ca33ae776
 P
  src/pages/shortcut_key/index.vue,f\a\fa38542ea7ad07c20a02130dc925e20d9bc34afa
+E
+src/layout/Slider.vue,0\f\0fdecdbfe8920de16bc88608fee2e6a540177a1f
+\
+,src/pages/daily_muse_see/today_headlines.vue,a\a\aac12c26a0228e35ddc045bc45b7ba02a80f9c88
+F
+electron/menu/index.js,4\3\43b0280a1151cf8cfcb7b153cbca8d69bc4f9f81
+D
+src/router/router.ts,0\4\0458232fea8252a359e246e89b19020e762813c5
