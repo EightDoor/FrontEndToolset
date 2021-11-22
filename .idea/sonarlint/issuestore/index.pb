@@ -10,7 +10,8 @@ G.idea/sonarlint/issuestore/d/d/dde3e769377c57668ecd73503bad9286a9808a36,7\6\76
 6
 .npmrc,1\2\12453d06e6e35287172e482940b954ba12dc25a2
 =
-tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
+
+tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
 B
 src/shims-vue.d.ts,6\1\61d5cbd5ae7b00bcdaab6cbca1c51addb3cc9733
 I
@@ -73,11 +74,5 @@ G
 electron/events/tray.js,7\2\72174a44c1b4bcddfcae345b934de18ca33ae776
 P
  src/pages/shortcut_key/index.vue,f\a\fa38542ea7ad07c20a02130dc925e20d9bc34afa
-E
-src/layout/Slider.vue,0\f\0fdecdbfe8920de16bc88608fee2e6a540177a1f
-\
-,src/pages/daily_muse_see/today_headlines.vue,a\a\aac12c26a0228e35ddc045bc45b7ba02a80f9c88
-F
-electron/menu/index.js,4\3\43b0280a1151cf8cfcb7b153cbca8d69bc4f9f81
-D
-src/router/router.ts,0\4\0458232fea8252a359e246e89b19020e762813c5
+;
+LICENSE.txt,7/9/79b82ce9b64a924266619555502f890dd80c83b9

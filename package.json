@@ -80,8 +80,7 @@
     "win": {
       "target": [
         "nsis"
-      ],
-      "icon": "public/images/tap.ico"
+      ]
     },
     "mac" : {
       "target": ["dmg"]
