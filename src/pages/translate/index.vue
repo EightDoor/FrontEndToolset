@@ -1,7 +1,7 @@
 <template>
   <el-row class="header_title">
     <el-col :span="12">
-      <el-select class="input_w" v-model="value" placeholder="请选择语言">
+      <el-select class="input_w" @change="changeSelect" v-model="value" placeholder="请选择语言">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -140,6 +140,14 @@ onBeforeRouteUpdate((to: RouteLocationNormalized, from: RouteLocationNormalized,
   }
   next();
 })
+
+function changeSelect(val) {
+  if(val === 'zh') {
+    outputValue.value = 'en';
+  }else {
+    outputValue.value = 'zh';
+  }
+}
 
 </script>
 <style scoped lang="less">
