@@ -38,13 +38,15 @@ jobs:
         path: '.'
       id: package-version
 
-      # 关于创建 release 的更多参数，可以查看 actions/create-release@v1
+      # 关于创建 release 的更多参数，可以查看 actions/create-release@master
     - name: Create Release for Tag
       id: release_tag
-      uses: actions/create-release@v1
+      uses: actions/create-release@master
       env:
-        GITHUB_TOKEN: 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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 # 这块需要用到 github的token，因为需要对分之进行代码推送
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # GITHUB_TOKEN: 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 # 这块需要用到 github的token，因为需要对分之进行代码推送
       with:
         tag_name: frontEnd${{ steps.package-version.outputs.version }}
         release_name: Release frontEndfrontEnd${{ steps.package-version.outputs.version }}
+        draft: false # 是否是草稿
         prerelease: false # 是否为预发布版本
