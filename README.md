@@ -26,26 +26,9 @@
 
 # 完成
 - 首页 ![首页](http://mn.applet.start6.cn/git-home.png)
-# 功能列表
-- nodejs工具管理
-- json格式化
-- json转换dart
-- 文件下载
-- 翻译工具
-- 快捷键跳转启动
-- 每天必看的东西
-- 颜色进制转换
-- 计算器
-- 托盘图标
-- URl编码解码
-- less、sass 转换为css
-- open打开网页
-- 快捷键配置
-- 开机自启动
-  - 没有没有第一次启动 开机自启动选项开启状态
+
+# 更多
+- 查看
+  - https://www.yuque.com/docs/share/aee204ad-4be0-431e-9d22-87ee26963798?# 《前端工具 electron》
 # TODO
 - keep-alive 不生效
-# 下载
-- 根据对应的版本选择下载即可
-- 链接: https://pan.baidu.com/s/1Fpfq_cDraOtmzMB8nBzAMA 
-  - 提取码: pmqe
