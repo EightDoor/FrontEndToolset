@@ -1,11 +1,15 @@
-const { Menu, Tray, app } = require('electron')
+const { Menu, Tray, app, nativeImage } = require('electron')
 const path = require("path")
 const { switchRoute } = require("../events/web_contents");
 const Config = require("../config");
 
 let tray = null;
 module.exports = (win) => {
-  tray = new Tray(path.join(__dirname, '../dist/images/tap.png'))
+  const image = nativeImage.createFromPath(path.join(__dirname, '../dist/images/tap.png'))
+  tray = new Tray(image.resize({
+    width: 32,
+    height: 32
+  }))
   // 托盘图标 http://bbs.itying.com/topic/5c21ced8d5488a17e894a7e6
   const menu = Menu.buildFromTemplate([
     {
