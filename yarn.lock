@@ -2031,6 +2031,11 @@ electron-dl@^3.3.0:
     pupa "^2.0.1"
     unused-filename "^2.1.0"
 
+electron-is-dev@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-0.3.0.tgz#14e6fda5c68e9e4ecbeff9ccf037cbd7c05c5afe"
+  integrity sha1-FOb9pcaOnk7L7/nM8DfL18BcWv4=
+
 electron-is-dev@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/electron-is-dev/download/electron-is-dev-2.0.0.tgz#833487a069b8dad21425c67a19847d9064ab19bd"
@@ -2796,6 +2801,13 @@ git-raw-commits@^2.0.0:
     split2 "^3.0.0"
     through2 "^4.0.0"
 
+github-url-to-object@^4.0.4:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/github-url-to-object/-/github-url-to-object-4.0.6.tgz#5ea8701dc8c336b8d582dc3fa5bf964165c3b365"
+  integrity sha512-NaqbYHMUAlPcmWFdrAB7bcxrNIiiJWJe8s/2+iOc9vlcHlwHqSGrPk+Yi3nu6ebTwgsZEa7igz+NH2vEq3gYwQ==
+  dependencies:
+    is-url "^1.1.0"
+
 glob-parent@^5.1.2:
   version "5.1.2"
   resolved "https://registry.nlark.com/glob-parent/download/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
@@ -3387,6 +3399,11 @@ is-unicode-supported@^0.1.0:
   version "0.1.0"
   resolved "https://registry.nlark.com/is-unicode-supported/download/is-unicode-supported-0.1.0.tgz#3f26c76a809593b52bfa2ecb5710ed2779b522a7"
   integrity sha1-PybHaoCVk7Ur+i7LVxDtJ3m1Iqc=
+
+is-url@^1.1.0, is-url@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/is-url/-/is-url-1.2.4.tgz#04a4df46d28c4cff3d73d01ff06abeb318a1aa52"
+  integrity sha512-ITvGim8FhRiYe4IQ5uHSkj7pVaPDrCTkNd3yq3cV7iZAcJdHTUMPMEHcqSOy9xZ9qFenQCvi+2wjH9a1nXqHww==
 
 is-what@^3.12.0:
   version "3.14.1"
@@ -5428,6 +5445,16 @@ upath@^2.0.1:
   version "2.0.1"
   resolved "https://registry.nlark.com/upath/download/upath-2.0.1.tgz#50c73dea68d6f6b990f51d279ce6081665d61a8b"
   integrity sha1-UMc96mjW9rmQ9R0nnOYIFmXWGos=
+
+update-electron-app@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/update-electron-app/-/update-electron-app-2.0.1.tgz#229dbeb4534f51ec949e6a46ae1ac32f68a17eed"
+  integrity sha512-e4xEner89UZZaBGYJbYlMdL1uUrC0VjOsTAL2N4opPjzFtn+j7mdsJJsnyXZzUVeLY+8tuCX4XEsUM98oBHmZg==
+  dependencies:
+    electron-is-dev "^0.3.0"
+    github-url-to-object "^4.0.4"
+    is-url "^1.2.4"
+    ms "^2.1.1"
 
 update-notifier@^5.1.0:
   version "5.1.0"
