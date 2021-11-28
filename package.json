@@ -1,13 +1,13 @@
 {
   "name": "vite-project",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./electron/main.js",
   "scripts": {
     "z": "concurrently  \"npm run start\" \"npm run dev\"",
     "start": "wait-on -c waitOnConfig.json http-get://localhost:9999/ && electron ./electron",
     "dev": "vite",
     "build": "cross-env NODE_ENV=production vue-tsc --noEmit --skipLibCheck && vite build",
-    "dist:ci": "npm run build && dist:all",
+    "dist:ci": "npm run build && npm run dist:all",
     "serve": "vite preview",
     "lint": "yarn prettier --write",
     "pack": "electron-builder --dir",
