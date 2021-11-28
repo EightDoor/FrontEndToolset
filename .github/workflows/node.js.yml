@@ -29,3 +29,22 @@ jobs:
     - run: npm install yarn -g
     - run: yarn install
     - run: npm run dist:ci
+
+        # 下面主要是创建 github 的release
+    # 使用 tyankatsu0105/read-package-version-actions@v1 工具来读取对应的package.json 数据
+    - name: Read package.json
+      uses: tyankatsu0105/read-package-version-actions@v1
+      with:
+        path: '.'
+      id: package-version
+
+      # 关于创建 release 的更多参数，可以查看 actions/create-release@v1
+    - name: Create Release for Tag
+      id: release_tag
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: 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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 # 这块需要用到 github的token，因为需要对分之进行代码推送
+      with:
+        tag_name: frontEnd${{ steps.package-version.outputs.version }}
+        release_name: Release frontEndfrontEnd${{ steps.package-version.outputs.version }}
+        prerelease: false # 是否为预发布版本
