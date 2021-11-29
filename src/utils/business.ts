@@ -1,6 +1,7 @@
 import CommVariable from "@/comm_variable/comm_variable.json";
 import store from '@/utils/store';
 import Constant from "@/utils/constant";
+import {ElLoading, ILoadingInstance } from 'element-plus';
 import "@amap/amap-jsapi-types";
 const {ipcRenderer} = require('electron')
 
@@ -61,6 +62,31 @@ const Business = {
         }
       })
     })
+  },
+  /**
+   * 显示加载中
+   * @param text
+   * @returns
+   */
+  showLoading(text?: string) {
+    const loadingInstance = ElLoading.service({
+      text: text ?? "加载中..."
+    })
+    setTimeout(() => {
+      if (loadingInstance) {
+        loadingInstance.close()
+      }
+    }, 5000)
+    return loadingInstance;
+  },
+  /**
+   * 关闭loading弹框
+   * @param instant
+   */
+  hideLoading(instant: ILoadingInstance) {
+    if (instant) {
+      instant.close()
+    }
   },
 }
 

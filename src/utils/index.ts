@@ -80,7 +80,7 @@ const utils = {
       title
     }))
     loading.close();
-  }
+  },
 }
 
 export default utils

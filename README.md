@@ -30,5 +30,4 @@
 # 更多
 - 查看
   - https://www.yuque.com/docs/share/aee204ad-4be0-431e-9d22-87ee26963798?# 《前端工具 electron》
-# TODO
-- keep-alive 不生效
+

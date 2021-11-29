@@ -4,18 +4,22 @@
       <Slider />
     </el-aside>
     <el-main class="content">
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
     </el-main>
   </el-container>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Slider from '@/layout/Slider.vue';
+import { defineComponent } from "vue";
+import Slider from "@/layout/Slider.vue";
 
 const BaseLayout = defineComponent({
-  name: 'baseLayout',
+  name: "baseLayout",
   components: { Slider },
-  setup() { },
+  setup() {},
 });
 
 export default BaseLayout;

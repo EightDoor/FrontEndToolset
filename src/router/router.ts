@@ -12,6 +12,7 @@ import ShortcutKey from '@/pages/shortcut_key/index.vue';
 import Setting from '@/pages/setting/settings.vue';
 import TodayHeadlines from '@/pages/daily_muse_see/today_headlines.vue'
 import Music from '@/pages/music/index.vue';
+import MusicList from '@/pages/music/music_list/index.vue';
 
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
@@ -34,24 +35,28 @@ const routes: RouteRecordRaw[] = [
         component: Json,
       },
       {
-        path: '/json_to_dart',
+        path: 'json_to_dart',
         component: JsonToDart,
       },
       {
-        path: '/translate',
+        path: 'translate',
         component: Translate,
       },
       {
-        path: '/gadgets',
+        path: 'gadgets',
         component: Gadgets,
       },
       {
-        path: '/daily_muse_see',
+        path: 'daily_muse_see',
         component: DailyMuseSee,
       },
       {
-        path: "/music",
-        component: Music
+        path: "music",
+        component: Music,
+      },
+      {
+        path: "music_list",
+        component: MusicList,
       },
     ],
   },

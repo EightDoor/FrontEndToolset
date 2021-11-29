@@ -3,10 +3,10 @@
     <el-menu
       background-color="#545c64"
       text-color="#fff"
-      :default-active="selectIndex"
+      :default-active="String(selectIndex)"
       class="slider"
     >
-      <el-menu-item v-for="(item, index) in list" :key="index" :index="index" @click="change(item, index)">
+      <el-menu-item v-for="(item, index) in list" :key="index" :index="String(index)" @click="change(item, index)">
         <template #title>{{ item.title }}</template>
       </el-menu-item>
     </el-menu>
