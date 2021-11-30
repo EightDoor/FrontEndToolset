@@ -1,5 +1,5 @@
 <template>
-  <div @click="clickFun" class="play_audio" v-if="playData && isShow">
+  <div @click="clickFun" class="play_audio" v-show="playData && isShow">
     <div class="play_audio_title" v-if="data">
       <img :src="data.al.picUrl" alt="" />
       <div class="play_audio_name">
@@ -9,7 +9,7 @@
     </div>
     <audio :src="playData.url" controls />
   </div>
-  <div v-if="!isShow && minimization" @click="clickShow" class="play_audio_mini">
+  <div v-show="!isShow && minimization" @click="clickShow" class="play_audio_mini">
     <img src="http://vue3.admin.qiniu.start6.cn/%E9%9F%B3%E4%B9%90.png" alt="" />
   </div>
 </template>
