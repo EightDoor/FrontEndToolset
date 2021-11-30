@@ -1,5 +1,7 @@
 <template>
   <router-view />
+  <!-- 播放器 -->
+  <play-audio />
 </template>
 
 <script lang="ts">
@@ -11,11 +13,15 @@ import Business from "@/utils/business";
 import { ElMessage } from "element-plus";
 import storeData from "@/utils/store";
 import Constant from "@/utils/constant";
+import PlayAudio from "@/pages/music/play/audio.vue";
 
 const { ipcRenderer, clipboard } = require("electron");
 
 export default defineComponent({
   name: "App",
+  components: {
+    PlayAudio,
+  },
   setup() {
     const list = ref(["Json", "Translate"]);
     const router = useRouter();
