@@ -100,7 +100,6 @@ interface Ar {
   alias: any[];
 }
 
-
 export interface SongPalyList {
   data: Datum[];
   code: number;

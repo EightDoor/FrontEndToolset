@@ -6,7 +6,12 @@
       :default-active="String(selectIndex)"
       class="slider"
     >
-      <el-menu-item v-for="(item, index) in list" :key="index" :index="String(index)" @click="change(item, index)">
+      <el-menu-item
+        v-for="(item, index) in list"
+        :key="index"
+        :index="String(index)"
+        @click="change(item, index)"
+      >
         <template #title>{{ item.title }}</template>
       </el-menu-item>
     </el-menu>
@@ -14,20 +19,14 @@
 </template>
 <script lang="ts">
 import {
-  defineComponent,
-  reactive,
-  ref,
-  onMounted,
-  computed,
-  watch,
+  defineComponent, reactive, ref, onMounted, computed, watch,
 } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import utils from '@/utils'
-const { ipcRenderer } = require('electron');
+import utils from '@/utils';
 
 const Slider = defineComponent({
-  name: 'slider',
+  name: 'LayoutSlider',
   setup() {
     const selectIndex = ref(0);
     const router = useRouter();
@@ -55,17 +54,17 @@ const Slider = defineComponent({
         url: '/json',
       },
       {
-        title: 'json to dart',
-        url: 'https://javiercbk.github.io/json_to_dart/',
-        type: 'url',
-      },
-      {
         title: '百度翻译',
         url: '/translate',
       },
       {
         title: '小工具',
         url: '/gadgets',
+      },
+      {
+        title: 'json to dart',
+        url: 'https://javiercbk.github.io/json_to_dart/',
+        type: 'url',
       },
       {
         title: 'github',
@@ -76,7 +75,7 @@ const Slider = defineComponent({
     function change(item: Layout.SliderType, index: number) {
       console.log(`当前选择的: ${JSON.stringify(item)}`);
       if (item.type === 'url') {
-        utils.openUrl(item.url, item.title)
+        utils.openUrl(item.url, item.title);
       } else {
         selectIndex.value = index;
         store.commit('MenuBar/setIndex', item.title);
@@ -85,7 +84,7 @@ const Slider = defineComponent({
     }
 
     function getPath() {
-      const path = route.path;
+      const { path } = route;
       const index = list.findIndex((item) => item.url === path);
       if (index !== -1) {
         selectIndex.value = index;
@@ -104,9 +103,9 @@ const Slider = defineComponent({
       getPath();
     });
     return {
-      //fun
+      // fun
       change,
-      //data
+      // data
       list,
       selectIndex,
     };
@@ -116,5 +115,5 @@ const Slider = defineComponent({
 export default Slider;
 </script>
 <style lang="less" scoped>
-@import 'slider.module';
+@import "slider.module";
 </style>
