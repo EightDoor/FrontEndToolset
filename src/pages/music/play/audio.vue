@@ -7,7 +7,7 @@
         <div>{{ formaAuthor(data?.ar) }}</div>
       </div>
     </div>
-    <audio :src="playData.url" controls />
+    <audio :src="playData?.url" controls />
   </div>
   <div v-show="!isShow && minimization" @click="clickShow" class="play_audio_mini">
     <img src="http://vue3.admin.qiniu.start6.cn/%E9%9F%B3%E4%B9%90.png" alt="" />
