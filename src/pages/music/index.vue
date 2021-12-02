@@ -1,13 +1,13 @@
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
-    <e-tab-pane
+    <el-tab-pane
       v-for="(item, index) in list"
       :key="index"
       :label="item.title"
       :name="item.name"
     >
       <component :is="item.component" />
-    </e-tab-pane>
+    </el-tab-pane>
   </el-tabs>
 </template>
 <script lang="ts" setup>

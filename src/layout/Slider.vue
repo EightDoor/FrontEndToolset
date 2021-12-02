@@ -54,11 +54,7 @@ const Slider = defineComponent({
         title: 'json格式化',
         url: '/json',
       },
-      {
-        title: 'json to dart',
-        url: 'https://javiercbk.github.io/json_to_dart/',
-        type: 'url',
-      },
+
       {
         title: '百度翻译',
         url: '/translate',
@@ -66,6 +62,11 @@ const Slider = defineComponent({
       {
         title: '小工具',
         url: '/gadgets',
+      },
+      {
+        title: 'json to dart',
+        url: 'https://javiercbk.github.io/json_to_dart/',
+        type: 'url',
       },
       {
         title: 'github',
