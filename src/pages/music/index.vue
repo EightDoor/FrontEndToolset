@@ -16,25 +16,33 @@ import { log } from '@/utils/log';
 import DailySongList from './daily_song/index.vue';
 import LikeMusic from './like_music/index.vue';
 import PersonalCenter from './personal_center/index.vue';
+import MyPlayList from './personal_center/my_play_list/index.vue';
 
 const activeName = ref('dailySongRecommendation');
-const list = [
-  {
-    title: '每日歌曲推荐',
-    name: 'dailySongRecommendation',
-    component: DailySongList,
-  },
-  {
-    title: '我喜欢的音乐',
-    name: 'iLikeMusic',
-    component: LikeMusic,
-  },
-  {
-    title: '个人中心',
-    name: 'personalCenter',
-    component: PersonalCenter,
-  },
-];
+const list = ref(
+  [
+    {
+      title: '推荐歌单',
+      name: 'dailySongRecommendation',
+      component: DailySongList,
+    },
+    {
+      title: '我的歌单',
+      name: 'myPlayList',
+      component: MyPlayList,
+    },
+    {
+      title: '我喜欢的音乐',
+      name: 'iLikeMusic',
+      component: LikeMusic,
+    },
+    {
+      title: '个人中心',
+      name: 'personalCenter',
+      component: PersonalCenter,
+    },
+  ],
+);
 
 function handleClick(val: any) {
   //
