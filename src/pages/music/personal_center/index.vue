@@ -47,11 +47,16 @@
           {{userInfo.profile.vipType}}
         </span>
       </li>
+      <li>
+        <el-button :loading="loadingLogout" type="primary" @click="signOut">退出登录</el-button>
+      </li>
     </ul>
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import {
+  ref, onMounted, computed, watch,
+} from 'vue';
 import { ElMessage } from 'element-plus';
 import { useStore } from 'vuex';
 import http from '@/utils/request';
@@ -90,12 +95,17 @@ const userInfo = ref<UserInfo | null>(null);
 
 onMounted(() => {
   // 是否存在信息
-  store.get(Constant.NETEASE_CLOUD_MUSIC).then(async (res) => {
+  store.get(Constant.NETEASE_CLOUD_MUSIC).then(async (res:any) => {
     if (res) {
       await getUserDetailInfo(res.profile.userId);
       info.value = res;
     }
   });
+});
+
+const infoV = computed(() => storeV.state.userInfo.data);
+watch(infoV, (newVal) => {
+  info.value = newVal;
 });
 
 async function getUserDetailInfo(id) {
@@ -122,6 +132,21 @@ function submit() {
       });
     }
   });
+}
+
+const loadingLogout = ref(false);
+async function signOut() {
+  try {
+    loadingLogout.value = true;
+    await http.get('/music/logout');
+    loadingLogout.value = false;
+    info.value = null;
+    userInfo.value = null;
+    await store.clear();
+    ElMessage.success('退出成功');
+  } catch (e) {
+    loadingLogout.value = false;
+  }
 }
 
 </script>
