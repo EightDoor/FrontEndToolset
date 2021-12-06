@@ -3,9 +3,10 @@ import Config from '@/config';
 
 const instant = axios.create({
   baseURL: '',
+  withCredentials: true,
 });
 
-instant.interceptors.request.use((config: AxiosRequestConfig) => {
+instant.interceptors.request.use(async (config: AxiosRequestConfig) => {
   // 在发送请求之前做些什么
   const reg = /music/;
   if (reg.test(config.url || '')) {

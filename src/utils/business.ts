@@ -99,6 +99,16 @@ const business = {
       instant.close();
     }
   },
+  /**
+   * 获取本地登录存储的cookie 登录鉴权需要
+   */
+  async getCookie(url) {
+    const data:any = await store.get(Constant.NETEASE_CLOUD_MUSIC);
+    if (data) {
+      return `${url}?cookie=${data.cookie}&timestamp=${Date.now()}`;
+    }
+    return url;
+  },
 };
 
 export default business;

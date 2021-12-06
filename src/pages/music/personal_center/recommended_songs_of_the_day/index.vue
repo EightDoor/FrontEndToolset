@@ -1,7 +1,7 @@
 <template>
   <refresh-data @refresh="refresh"/>
 
-  <el-table :data="playList" stripe style="width: 100%"
+  <el-table v-loading="loading" :data="playList" stripe style="width: 100%"
             :row-class-name="tableRowClassName"
   >
     <el-table-column label="序号">
@@ -46,10 +46,15 @@ import RefreshData from '@/components/RefreshData/index.vue';
 
 const storeU = useStore();
 const playList = ref<DailySong[]>([]);
+const loading = ref(false);
 
 async function getList() {
-  http.get<DailyRecommendedSongData>('music/recommend/songs').then((res) => {
+  let url = 'music/recommend/songs';
+  url = await business.getCookie(url);
+  loading.value = true;
+  http.get<DailyRecommendedSongData>(url).then((res) => {
     playList.value = res.data.data.dailySongs;
+    loading.value = false;
   });
 }
 

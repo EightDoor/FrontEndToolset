@@ -3,7 +3,7 @@ export interface SongIdsDetail {
   privileges: Privilege[];
   code: number;
 }
-interface Privilege {
+export interface Privilege {
   id: number;
   fee: number;
   payed: number;
