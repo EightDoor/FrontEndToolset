@@ -3,6 +3,7 @@ import CommVariable from '@/comm_variable/comm_variable.json';
 import store from '@/utils/store';
 import Constant from '@/utils/constant';
 import '@amap/amap-jsapi-types';
+import http from '@/utils/request';
 
 const { ipcRenderer } = require('electron');
 
@@ -12,6 +13,17 @@ export interface RegisterShortcutType {
   description: string;
 }
 const business = {
+  /**
+   * 获取用户信息
+   * @param uid
+   */
+  getUserInfo(uid: string) {
+    return http.get('music/user/detail', {
+      params: {
+        uid,
+      },
+    });
+  },
   registerShortcutKeys: async (list?: RegisterShortcutType[]) => {
     const result = await store.get(Constant.REGISTER_SHORTCUT_KEYS);
     let r: unknown = list ?? CommVariable.Config.ShortcutKey;

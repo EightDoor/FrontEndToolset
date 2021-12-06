@@ -62,6 +62,11 @@ import { log } from '@/utils/log';
 import http from '@/utils/request';
 import business from '@/utils/business';
 
+interface IMusicCheck {
+  success: boolean;
+  message: string;
+}
+
 const store = useStore();
 const isShow = ref(false);
 const minimization = ref(false);
@@ -119,16 +124,43 @@ async function songSwitchImplement(list, index, status?: 1 | 2) {
   const singData = list[v];
   if (singData) {
     const loading = business.showLoading('切换中..');
-    const r = await getIdsList(singData?.id);
-    log('r', r.data.data);
-    if (r.data.data.length > 0) {
-      business.hideLoading(loading);
-      store.commit('music/setData', singData);
-      store.commit('music/setPlayData', r.data.data[0]);
+    // 判断当前歌曲是否可以播放
+    const v = await getSongIsAvailable(singData?.id);
+    if (v) {
+      const r = await getIdsList(singData?.id);
+      log('r', r.data.data);
+      if (r.data.data.length > 0) {
+        business.hideLoading(loading);
+        store.commit('music/setData', singData);
+        store.commit('music/setPlayData', r.data.data[0]);
+      } else {
+        ElMessage.info('切换失败');
+      }
     } else {
-      ElMessage.info('切换失败');
+      ElMessage.info('当前歌曲没有版权信息,3s自动跳转下一首');
+      setTimeout(() => {
+        songSwitchImplement(list, index + 1, status);
+      }, 3000);
     }
   }
+}
+
+function getSongIsAvailable(id) {
+  return new Promise((resolve, reject) => {
+    http.get<IMusicCheck>('/music/check/music', {
+      params: {
+        id,
+      },
+    }).then((res) => {
+      if (res.data.success) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    }).catch((err) => {
+      reject(err);
+    });
+  });
 }
 
 function songSwitch(val?: 1 | 2) {
@@ -164,9 +196,23 @@ function changeSelectMusic() {
   selectMusic.value = !selectMusic.value;
   if (selectMusic.value) {
     selectMusicImg.value = `${url}_select`;
+    likeFun(true);
   } else {
     selectMusicImg.value = url;
+    likeFun(false);
   }
+}
+function likeFun(like: boolean) {
+  http.get('/music/like', {
+    params: {
+      id: data.value?.id,
+      like,
+    },
+  }).then((res) => {
+    if (res.data.code === 200) {
+      ElMessage.success(like ? '喜欢成功' : '取消喜欢');
+    }
+  });
 }
 
 onUnmounted(() => {

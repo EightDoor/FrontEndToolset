@@ -1,5 +1,6 @@
 <template>
   <refresh-data @refresh="refresh"/>
+
   <el-table :data="playList" stripe style="width: 100%"
             :row-class-name="tableRowClassName"
   >
@@ -37,21 +38,17 @@ import { useStore } from 'vuex';
 import { ElMessage } from 'element-plus';
 import http from '@/utils/request';
 import { log } from '@/utils/log';
-import RefreshData from '@/components/RefreshData/index.vue';
 
 import business from '@/utils/business';
 import { Song, SongPalyList } from '@/types/music/detail';
 import { DailyRecommendedSongData, DailySong } from '@/types/music/my_play_list';
+import RefreshData from '@/components/RefreshData/index.vue';
 
 const storeU = useStore();
 const playList = ref<DailySong[]>([]);
 
-async function getList(id) {
-  http.get<DailyRecommendedSongData>('music/likelist', {
-    params: {
-      uid: id,
-    },
-  }).then((res) => {
+async function getList() {
+  http.get<DailyRecommendedSongData>('music/recommend/songs').then((res) => {
     playList.value = res.data.data.dailySongs;
   });
 }
@@ -67,15 +64,12 @@ function tableRowClassName({ row }) {
 const userInfo = computed(() => storeU.state.userInfo.data);
 watch(userInfo, (newVal) => {
   if (newVal) {
-    console.log(newVal.profile, 'p[');
-    getList(newVal.profile.userId);
+    getList();
   }
 });
 
 function refresh() {
-  if (userInfo.value) {
-    getList(userInfo.value.profile.userId);
-  }
+  getList();
 }
 
 /**
