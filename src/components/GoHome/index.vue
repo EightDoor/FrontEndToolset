@@ -11,15 +11,16 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { useRouter } from 'vue-router';
+
 const props = defineProps<{
   path?: string;
 }>();
 
 const router = useRouter();
 function goHome() {
-  console.log(props.path, "path");
-  router.push(props.path ?? "/");
+  console.log(props.path, 'path');
+  router.push(props.path ?? '/');
 }
 </script>
 <style scoped lang="less">

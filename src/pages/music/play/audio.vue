@@ -1,33 +1,73 @@
 <template>
-  <div @click="clickFun" class="play_audio" v-show="playData && isShow">
+  <div class="play_audio" v-show="playData && isShow">
     <div class="play_audio_title" v-if="data">
       <img :src="data.al.picUrl" alt="" />
       <div class="play_audio_name">
         <span>{{ data?.name }}</span>
         <div>{{ formaAuthor(data?.ar) }}</div>
       </div>
+      <div>
+        <el-tooltip
+          class="item"
+          effect="dark"
+          :content="selectMusic ? '取消喜欢' : '喜欢'"
+          placement="top"
+        >
+          <img
+            @click="changeSelectMusic"
+            class="select_music"
+            :src="selectMusicImg + '.png'"
+            alt=""
+          />
+        </el-tooltip>
+      </div>
     </div>
-    <audio :src="playData?.url" controls />
+    <div class="play_audio_controller">
+      <el-button type="primary" class="last" @click="songSwitch(1)">上一首</el-button>
+      <audio autoplay ref="audioRef" :src="playData?.url" controls />
+      <el-button type="primary" class="nextSong" @click="songSwitch(2)">下一首</el-button>
+    </div>
+    <div class="right_menu">
+      <el-tooltip class="item" effect="dark" content="最小化" placement="top">
+        <img
+        @click="clickHide"
+          class="select_music"
+          src="http://vue3.admin.qiniu.start6.cn/%E6%9C%80%E5%B0%8F%E5%8C%96.png"
+          alt=""
+        />
+      </el-tooltip>
+
+      <el-tooltip class="item" effect="dark" content="播放列表" placement="top">
+        <el-icon @click="goMenu" class="play_audio_icon" size="25"><menu-icon /></el-icon>
+      </el-tooltip>
+    </div>
   </div>
   <div v-show="!isShow && minimization" @click="clickShow" class="play_audio_mini">
-    <img src="http://vue3.admin.qiniu.start6.cn/%E9%9F%B3%E4%B9%90.png" alt="" />
+    <el-tooltip class="item" effect="dark" content="点击展开播放器" placement="top">
+      <img src="http://vue3.admin.qiniu.start6.cn/%E9%9F%B3%E4%B9%90.png" alt="" />
+    </el-tooltip>
   </div>
 </template>
-<script lang="ts">
-import { Datum, Song } from "@/types/music/detail";
-import { ElMessage } from "element-plus";
-import { computed, ref } from "vue-demi";
-export default {
-  name: "PlayAudio",
-};
-</script>
+
 <script lang="ts" setup>
-import { useStore } from "vuex";
+import { useStore } from 'vuex';
+import { ElMessage } from 'element-plus';
+import {
+  computed, ref, onMounted, onUnmounted,
+} from 'vue';
+import { Menu as MenuIcon } from '@element-plus/icons';
+import { useRouter } from 'vue-router';
+import { Datum, Song, SongPalyList } from '@/types/music/detail';
+import { log } from '@/utils/log';
+import http from '@/utils/request';
+import business from '@/utils/business';
 
 const store = useStore();
 const isShow = ref(false);
 const minimization = ref(false);
 const clickCount = ref(0);
+
+const router = useRouter();
 
 const playData = computed<Datum | null>(() => {
   isShow.value = true;
@@ -44,24 +84,96 @@ function formaAuthor(val) {
     list.push(item.name);
   });
 
-  return list.join("，");
-}
-
-function clickFun() {
-  clickCount.value += 1;
-  if (clickCount.value >= 2) {
-    isShow.value = false;
-    minimization.value = true;
-    ElMessage.success("播放器最小化了");
-  }
-  setTimeout(() => {
-    clickCount.value = 0;
-  }, 2000);
+  return list.join('，');
 }
 function clickShow() {
   isShow.value = true;
   minimization.value = false;
 }
+function clickHide() {
+  isShow.value = false;
+  minimization.value = true;
+}
+const audioRef = ref();
+
+// 1是 上一首 2是下一首
+async function playTheNext(status?: 1 | 2) {
+  const list = store.state.music.songList;
+  const sing = store.state.music.data;
+  if (list.length > 0) {
+    const index = list.findIndex((item) => item.id === sing.id);
+    if (index < 0) {
+      // 已经是第一首了
+      ElMessage.info('已经是第一首歌曲了');
+    } else if (index < list.length - 1) {
+      songSwitchImplement(list, index, status);
+    } else {
+      ElMessage.info('已经是最后一首歌了');
+    }
+  }
+}
+
+async function songSwitchImplement(list, index, status?: 1 | 2) {
+  const v = status === 1 ? index - 1 : index + 1;
+  log('v', v);
+  const singData = list[v];
+  if (singData) {
+    const loading = business.showLoading('切换中..');
+    const r = await getIdsList(singData?.id);
+    log('r', r.data.data);
+    if (r.data.data.length > 0) {
+      business.hideLoading(loading);
+      store.commit('music/setData', singData);
+      store.commit('music/setPlayData', r.data.data[0]);
+    } else {
+      ElMessage.info('切换失败');
+    }
+  }
+}
+
+function songSwitch(val?: 1 | 2) {
+  playTheNext(val);
+}
+/**
+ * 获取单条播放地址
+ */
+function getIdsList(id: number) {
+  return http.get<SongPalyList>('/music/song/url', {
+    params: {
+      id,
+    },
+  });
+}
+onMounted(() => {
+  if (audioRef.value) {
+    audioRef.value.addEventListener('ended', () => {
+      // 播放完毕，自定切换播放下一首
+      playTheNext();
+    });
+  }
+});
+function goMenu() {
+  router.push('/music_list');
+}
+
+// 喜欢音乐/取消喜欢
+const url = 'http://vue3.admin.qiniu.start6.cn/%E5%96%9C%E6%AC%A2';
+const selectMusic = ref(false);
+const selectMusicImg = ref(url);
+function changeSelectMusic() {
+  selectMusic.value = !selectMusic.value;
+  if (selectMusic.value) {
+    selectMusicImg.value = `${url}_select`;
+  } else {
+    selectMusicImg.value = url;
+  }
+}
+
+onUnmounted(() => {
+  if (audioRef.value) {
+    audioRef.value.removeEventLister('ended');
+  }
+});
 </script>
 <style lang="less" scoped>
 .play_audio {
@@ -74,6 +186,8 @@ function clickShow() {
   z-index: 1000;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   .play_audio_title {
     display: flex;
     flex-direction: row;
@@ -104,5 +218,38 @@ function clickShow() {
       cursor: pointer;
     }
   }
+}
+.play_audio_icon {
+  margin: 0 15px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.play_audio_controller {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .last {
+    margin-right: 15px;
+  }
+  .nextSong {
+    margin-left: 15px;
+  }
+}
+.select_music {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+  vertical-align: bottom;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.right_menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 </style>

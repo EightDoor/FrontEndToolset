@@ -8,60 +8,58 @@
   </ul>
 </template>
 <script lang="ts" setup>
-import { MusicType, RecommendedSongList, SongListDetail } from "@/types/music";
-import { log } from "@/utils/log";
-import http from "@/utils/request";
-import { onMounted, ref } from "vue";
-import { sortBy } from "lodash";
-import { useRouter } from "vue-router";
-import business from "@/utils/business";
-import Constant from "@/utils/constant";
-import store from "@/utils/store";
+import { onMounted, ref } from 'vue';
+import { sortBy } from 'lodash';
+import { useRouter } from 'vue-router';
+import { MusicType, RecommendedSongList, SongListDetail } from '@/types/music';
+import { log } from '@/utils/log';
+import http from '@/utils/request';
+import business from '@/utils/business';
+import Constant from '@/utils/constant';
+import store from '@/utils/store';
 
 const router = useRouter();
 const loading = ref(false);
-
-onMounted(() => {
-  getSongList();
-});
-
 const list = ref<RecommendedSongList[]>([]);
 function getSongList() {
   loading.value = true;
-  http.get<MusicType<RecommendedSongList>>("music/personalized").then((res) => {
-    log("res.data", res.data.result);
+  http.get<MusicType<RecommendedSongList>>('music/personalized').then((res) => {
+    log('res.data', res.data.result);
     // 排序
-    const result = sortBy(res.data.result, "playCount").reverse();
+    const result = sortBy(res.data.result, 'playCount').reverse();
     list.value = result;
     loading.value = false;
   });
 }
+onMounted(() => {
+  getSongList();
+});
 
 function formatCount(num: number) {
-  let result = "";
+  let result = '';
   if (num >= 100000000) {
-    result = Math.round(num / 10000000) / 10 + "亿";
+    result = `${Math.round(num / 10000000) / 10}亿`;
   } else if (num >= 10000) {
-    result = Math.round(num / 1000) / 10 + "万";
+    result = `${Math.round(num / 1000) / 10}万`;
   }
   return result;
 }
 
 async function change(item) {
-  log("item", item);
+  log('item', item);
   const r = business.showLoading();
-  const result = await http.get<SongListDetail>("/music/playlist/detail", {
+  const result = await http.get<SongListDetail>('/music/playlist/detail', {
     params: {
       id: item.id,
     },
   });
-  let ids: number[] = [];
-  result.data.playlist.trackIds.forEach((item) => {
-    ids.push(item.id);
+  const ids: number[] = [];
+  result.data.playlist.trackIds.forEach((v) => {
+    ids.push(v.id);
   });
-  await store.set(Constant.storageListIds, ids.join(","));
+  await store.set(Constant.storageListIds, ids.join(','));
   business.hideLoading(r);
-  router.push("/music_list");
+  router.push('/music_list');
 }
 </script>
 <style lang="less" scoped>

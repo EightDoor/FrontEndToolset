@@ -1,5 +1,5 @@
+import { Module } from 'vuex';
 import { Song, Datum } from '@/types/music/detail';
-import { Module } from "vuex";
 
 type StatusType = 1 | 2;
 interface State {
@@ -12,7 +12,7 @@ interface State {
   // 歌曲列表
   songList: Song[],
 }
- const MusicStore: Module<State, any> = {
+const MusicStore: Module<State, any> = {
   namespaced: true,
   state: {
     playStatus: 1,
@@ -32,8 +32,8 @@ interface State {
     },
     setSongList(state, payload) {
       state.songList = payload;
-    }
-  }
- }
+    },
+  },
+};
 
- export default MusicStore
+export default MusicStore;
