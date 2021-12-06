@@ -16,7 +16,7 @@
       </el-form>
     </div>
   <div v-else>
-    <ul class="person_center_info">
+    <ul v-if="userInfo" class="person_center_info">
       <li>
         <span>网易云等级: </span>
         <span>

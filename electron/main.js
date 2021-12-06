@@ -4,12 +4,12 @@ const isDev = require('electron-is-dev');
 const electronDl = require('electron-dl');
 const { init } = require("./events/index")
 const menuInit = require("./menu/index")
-// 升级
-require('update-electron-app')({
-  repo: 'https://github.com/EightDoor/FrontEndToolset',
-  updateInterval: '5 minutes',
-  logger: require('electron-log')
-})
+// // 升级
+// require('update-electron-app')({
+//   repo: 'https://github.com/EightDoor/FrontEndToolset',
+//   updateInterval: '5 minutes',
+//   logger: require('electron-log')
+// })
 
 electronDl()
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
