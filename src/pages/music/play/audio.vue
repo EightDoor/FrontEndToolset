@@ -202,8 +202,10 @@ function changeSelectMusic() {
     likeFun(false);
   }
 }
-function likeFun(like: boolean) {
-  http.get('/music/like', {
+async function likeFun(like: boolean) {
+  let url = '/music/like';
+  url = await business.getCookie(url);
+  http.get(url, {
     params: {
       id: data.value?.id,
       like,

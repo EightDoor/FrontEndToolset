@@ -1,6 +1,6 @@
 <template>
   <refresh-data @refresh="refresh"/>
-  <el-table :data="playList" stripe style="width: 100%"
+  <el-table v-loading="loading" :data="list" stripe style="width: 100%"
             :row-class-name="tableRowClassName"
   >
     <el-table-column label="序号">
@@ -28,6 +28,7 @@
       </template>
     </el-table-column>
   </el-table>
+  <el-pagination @current-change="change" small layout="prev, pager, next" :total="total"> </el-pagination>
 </template>
 <script lang="ts" setup>
 import {
@@ -35,27 +36,58 @@ import {
 } from 'vue';
 import { useStore } from 'vuex';
 import { ElMessage } from 'element-plus';
+import { cloneDeep } from 'lodash';
 import http from '@/utils/request';
 import { log } from '@/utils/log';
 import RefreshData from '@/components/RefreshData/index.vue';
 
 import business from '@/utils/business';
-import { Song, SongPalyList } from '@/types/music/detail';
-import { DailyRecommendedSongData, DailySong } from '@/types/music/my_play_list';
+import {
+  Song, SongIdsDetail, SongPalyList,
+} from '@/types/music/detail';
 
 const storeU = useStore();
-const playList = ref<DailySong[]>([]);
+const playList = ref<Song[]>([]);
+const loading = ref(false);
+const list = ref<Song[]>([]);
 
 async function getList(id) {
-  http.get<DailyRecommendedSongData>('music/likelist', {
+  let url = 'music/likelist';
+  url = await business.getCookie(url);
+  playList.value = [];
+  list.value = [];
+  loading.value = true;
+  http.get(url, {
     params: {
       uid: id,
     },
-  }).then((res) => {
-    playList.value = res.data.data.dailySongs;
+  }).then((res: any) => {
+    const { ids } = res.data;
+    getSongList(ids);
   });
 }
 
+function getSongList(ids: number[]) {
+  const v = Math.ceil(ids.length / 1000);
+  for (let i = 0; i < v; i += 1) {
+    sendSong(ids, i);
+  }
+}
+function sendSong(ids, i) {
+  const result = cloneDeep(ids);
+  // 获取歌曲详情
+  http.get<SongIdsDetail>('/music/song/detail', {
+    params: {
+      ids: result.splice(i * 1000, 1000).join(','),
+    },
+  }).then((res) => {
+    loading.value = false;
+    console.log(res.data.songs, 'data');
+    if (res.data.songs) {
+      playList.value = playList.value.concat(res.data.songs);
+    }
+  });
+}
 // 当前选择播放的歌曲
 const playingSong = computed(() => storeU.state.music.data);
 function tableRowClassName({ row }) {
@@ -133,6 +165,26 @@ function generateTime(time: number) {
     )}`;
   }
   return timeStr;
+}
+
+// 表格分页
+const total = ref(0);
+watch(playList, (newVal) => {
+  total.value = newVal.length;
+  pagination(1);
+});
+function change(val) {
+  pagination(val);
+}
+function pagination(val) {
+  const v = val - 1;
+  const result:Song[] = [];
+  playList.value.forEach((item, index) => {
+    if (index > v * 10 && index < val * 10) {
+      result.push(item);
+    }
+  });
+  list.value = result;
 }
 </script>
 <style  lang="less">

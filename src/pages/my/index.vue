@@ -15,10 +15,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import CommVariable from "@/comm_variable/comm_variable.json";
+import { onMounted, ref } from 'vue';
+import CommVariable from '@/comm_variable/comm_variable.json';
 import GoHome from '@/components/GoHome/index.vue';
-const {ipcRenderer} = require("electron")
+
+const { ipcRenderer } = require('electron');
 
 const data = ref({
   version: '0.0.0',
@@ -27,20 +28,20 @@ const data = ref({
   v8Version: '',
   chromeVersion: '',
   information: '',
-})
+});
 
-onMounted(()=>{
+onMounted(() => {
   getVersion();
-})
+});
 
 async function getVersion() {
-  const res = await ipcRenderer.invoke(CommVariable.channel.GET_VERSION)
-  const {version} = JSON.parse(res);
+  const res = await ipcRenderer.invoke(CommVariable.channel.GET_VERSION);
+  const { version } = JSON.parse(res);
   data.value.version = version;
-  data.value.elVersion = process.versions.electron ?? "";
-  data.value.nodeVersion = process.versions.node ?? "";
-  data.value.v8Version = process.versions.v8 ?? "";
-  data.value.chromeVersion = process.versions.chrome ?? "";
+  data.value.elVersion = process.versions.electron ?? '';
+  data.value.nodeVersion = process.versions.node ?? '';
+  data.value.v8Version = process.versions.v8 ?? '';
+  data.value.chromeVersion = process.versions.chrome ?? '';
 }
 
 </script>
