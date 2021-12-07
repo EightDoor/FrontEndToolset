@@ -6,6 +6,7 @@ export interface LoginInfo {
   profile: Profile;
   bindings: Binding[];
   cookie: string;
+  message?: string;
 }
 interface Binding {
   url: string;
