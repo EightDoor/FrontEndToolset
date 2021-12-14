@@ -1,11 +1,12 @@
 # 功能
 - 开发环境配置
-- 开发ide安装
 
 # 运行
 - `npm run z`
 # 打包
-- `npm run dist`
+- `npm run dist:all` 打包全部平台
+- `npm run dist:mac` 打包mac
+- `npm run dist:win` 打包win
 # 其他
 - 编辑器使用webstorm 
   - 配置Prettier  实现代码保存自动格式化
@@ -17,13 +18,14 @@
 - vitejs-plugin-electron electron ESModule使用
 - codemirror 代码编辑器
 - json-to-ts json转换为ts文件
+- 百度翻译api
+  - 需要自己在根目录创建 .env.local文件 添加对应的百度api开发者id和秘钥
 
 
 # 完成
-- 安装环境检测 ![安装环境检测](./public/git/tools.png)
-- json格式化 ![安装环境检测](./public/git/json_1.png)
-- json转换ts ![安装环境检测](./public/git/json_2.png)
-# 下载
-- win x64
-  - [百度云网盘地址(windows安装包)](https://pan.baidu.com/s/1l0GtwhxAFPXV-xKWDWOuHg)
-  - 提取码：emw6
+- 首页 ![首页](http://mn.applet.start6.cn/git-home.png)
+
+# 更多
+- 查看
+  - https://www.yuque.com/docs/share/aee204ad-4be0-431e-9d22-87ee26963798?# 《前端工具 electron》
+

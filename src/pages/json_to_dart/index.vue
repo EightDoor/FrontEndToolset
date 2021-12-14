@@ -1,9 +1,17 @@
 <template>
-  <webview id="wb" src="https://javiercbk.github.io/json_to_dart/" />
+  <div>
+    <!-- <webview
+      id="wb"
+      :allowpaymentrequest="true"
+      src="https://javiercbk.github.io/json_to_dart/"
+    /> -->
+  </div>
 </template>
-
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({ name: 'JsonToDart' });
+</script>
 <script setup lang="ts">
-
 </script>
 <style scoped lang="less">
 #wb {

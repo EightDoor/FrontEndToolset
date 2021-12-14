@@ -1,5 +1,5 @@
 <template>
-  <env-component-list v-for="(item, index) in list" :key="index" :data="item"></env-component-list>
+  <env-component-list v-for="(item,   index) in list" :key="index" :data="item"></env-component-list>
 </template>
 
 <script setup lang="ts">

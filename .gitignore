@@ -6,3 +6,5 @@ dist-ssr
 /electron/node_modules
 /electron/dist
 /.history
+.env.local
+.idea

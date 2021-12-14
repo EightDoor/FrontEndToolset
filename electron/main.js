@@ -1,29 +1,41 @@
-
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
 const electronDl = require('electron-dl');
 const { init } = require("./events/index")
+const menuInit = require("./menu/index")
+// // 升级
+// require('update-electron-app')({
+//   repo: 'https://github.com/EightDoor/FrontEndToolset',
+//   updateInterval: '5 minutes',
+//   logger: require('electron-log')
+// })
+
 electronDl()
-
-// 初始化render函数
-
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
+let win;
 function createWindow () {
-  const win = new BrowserWindow({
-    width: 1200,
-    height: 800,
+  win = new BrowserWindow({
+    width: 1400,
+    height: 900,
     maximizable: true,
     minimizable: true,
     resizable: true,
     webPreferences: {
-      webviewTag: true,
+      webviewTag: false,
       webSecurity: false,
       nodeIntegration: true,
       contextIsolation: false,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+
+
+  init(win);
+  menuInit(win)
+
+
   isDev ? dev() : win.loadFile(path.join(__dirname, 'dist/index.html'));
   // win.loadFile(path.join(__dirname, 'dist/index.html'));
   function dev () {
@@ -36,20 +48,35 @@ function createWindow () {
       console.log(err);
     });
   }
+
 }
 
 app.whenReady().then(() => {
   createWindow();
-  init();
+
+  // 在主进程中调用 Chromium 命令行关闭同源策略。
+  app.commandLine.appendSwitch("disable-site-isolation-trials");
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
     }
   });
+
+  win.on('close', (event)=>{
+    event.preventDefault()
+    win.hide();
+  })
 });
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
+app.on("will-quit", ()=>{
+  win = null;
+  globalShortcut.unregisterAll()
+})
+
+// app.on('window-all-closed', () => {
+//   if (process.platform !== 'darwin') {
+//     app.quit();
+//   }
+// });
+

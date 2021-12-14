@@ -1,0 +1,32 @@
+{
+  "channel": {
+    "SWITCH_ROUTE": "SWITCH_ROUTE",
+    "SHORTCUT": "SHORTCUT",
+    "REGISTER_SHORTCUT": "REGISTER_SHORTCUT",
+    "DOWNLOAD_FILE": "DOWNLOAD_FILE",
+    "POWER_ON_STATUS": "POWER_ON_STATUS",
+    "POWER_ON_SETTING_STATUS": "POWER_ON_SETTING_STATUS",
+    "WEBVIEW": "WEBVIEW",
+    "GET_VERSION": "GET_VERSION"
+  },
+  "method": {
+    "HELP": "HELP",
+    "SHORTCUT": "SHORTCUT",
+    "CHECK_APP_VERSION": "CHECK_APP_VERSION",
+    "SETTINGS": "SETTINGS"
+  },
+  "Config": {
+    "ShortcutKey": [
+      {
+      "value": "Alt+T",
+      "label": "translate",
+        "description": "翻译"
+      },
+      {
+        "value": "Alt+Z",
+        "label": "myMustSee",
+        "description": "每日必看"
+      }
+    ]
+  }
+}

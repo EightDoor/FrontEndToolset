@@ -1,20 +1,14 @@
-const { BrowserWindow, ipcMain } = require("electron")
-const electronDl = require('electron-dl');
-
-
+const Tray = require("./tray")
+const ListenEvent = require("./listen_event")
 
 // 初始化
-const init = () => {
+const init = (win) => {
   console.log('监听init初始化------------------->');
+  // 监听事件
+  ListenEvent(win)
 
-  ipcMain.handle("download", async (event, arg) => {
-    console.log(arg, 'url');
-    const win = BrowserWindow.getFocusedWindow();
-    const result = await electronDl.download(win, arg);
-    console.log(result);
-    return JSON.stringify(result);
-  })
+  // 托盘图标
+  Tray(win)
 }
-
 
 module.exports = { init }

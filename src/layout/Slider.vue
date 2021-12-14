@@ -1,66 +1,113 @@
 <template>
   <ul class="ul">
-    <li v-for="(item, index) in list" :key="index" @click="change(item, index)">
-      <el-button type="primary">{{ item.title }}</el-button>
-      <img v-if="selectIndex === index" class="img" src="/images/tap.png" alt />
-    </li>
+    <el-menu
+      background-color="#545c64"
+      text-color="#fff"
+      :default-active="String(selectIndex)"
+      class="slider"
+    >
+      <el-menu-item
+        v-for="(item, index) in list"
+        :key="index"
+        :index="String(index)"
+        @click="change(item, index)"
+      >
+        <template #title>{{ item.title }}</template>
+      </el-menu-item>
+    </el-menu>
   </ul>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref, onMounted } from 'vue';
+import {
+  defineComponent, reactive, ref, onMounted, computed, watch,
+} from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+import utils from '@/utils';
 
 const Slider = defineComponent({
-  name: 'slider',
+  name: 'LayoutSlider',
   setup() {
-    const selectIndex = ref(0)
+    const selectIndex = ref(0);
     const router = useRouter();
-    const route = useRoute()
+    const route = useRoute();
+    const store = useStore();
     const list = reactive<Layout.SliderType[]>([
       {
         title: '首页',
         url: '/home',
       },
       {
-        title: "node环境安装与配置",
-        url: "/env_install"
+        title: '每日必看',
+        url: '/daily_muse_see',
       },
       {
-        title: "json格式化",
-        url: "/json"
+        title: '音乐',
+        url: '/music',
       },
       {
-        title: "json to dart",
-        url: "/json_to_dart"
+        title: 'node环境安装与配置',
+        url: '/env_install',
       },
       {
-        title: "github",
-        url: '/github'
-      }
+        title: 'json格式化',
+        url: '/json',
+      },
+      {
+        title: '百度翻译',
+        url: '/translate',
+      },
+      {
+        title: '小工具',
+        url: '/gadgets',
+      },
+      {
+        title: 'json to dart',
+        url: 'https://javiercbk.github.io/json_to_dart/',
+        type: 'url',
+      },
+      {
+        title: 'github',
+        url: 'https://github.com/EightDoor/FrontEndToolset',
+        type: 'url',
+      },
     ]);
-    function change(item: any, index: number) {
-      selectIndex.value = index;
+    function change(item: Layout.SliderType, index: number) {
       console.log(`当前选择的: ${JSON.stringify(item)}`);
-      router.push(item.url);
+      if (item.type === 'url') {
+        utils.openUrl(item.url, item.title);
+      } else {
+        selectIndex.value = index;
+        store.commit('MenuBar/setIndex', item.title);
+        router.push(item.url);
+      }
     }
 
     function getPath() {
-      const path = route.path;
+      const { path } = route;
       const index = list.findIndex((item) => item.url === path);
       if (index !== -1) {
         selectIndex.value = index;
       }
     }
 
+    const title = computed(() => store.state.MenuBar.title);
+    watch(title, (newVal) => {
+      const v = list.findIndex((item) => item.title === newVal);
+      if (v !== -1) {
+        selectIndex.value = v;
+      }
+    });
+
     onMounted(() => {
-      getPath()
-    })
+      getPath();
+    });
     return {
-      //fun
+      // fun
       change,
-      //data
+      // data
       list,
-      selectIndex
+      selectIndex,
     };
   },
 });
@@ -69,11 +116,4 @@ export default Slider;
 </script>
 <style lang="less" scoped>
 @import "slider.module";
-.img {
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-  display: inline-block;
-  margin-left: 15px;
-}
 </style>

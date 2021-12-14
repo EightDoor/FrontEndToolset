@@ -47,7 +47,6 @@ import "codemirror/addon/lint/lint.js";
 // 需要依赖全局的jsonlint，不是很优雅
 import "codemirror/addon/lint/json-lint.js";
 import { log } from "@/utils/log";
-// @ts-ignore
 
 
 const code = ref('')
@@ -155,7 +154,7 @@ watch(() => props.content, (newVal, oldVal) => {
   deep: true,
 })
 </script>
-<style scoped lang="less">
+<style  lang="less">
 .codesql {
   font-size: 11pt;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
@@ -164,5 +163,8 @@ watch(() => props.content, (newVal, oldVal) => {
 .title {
   font-size: 25px;
   margin-bottom: 15px;
+}
+.CodeMirror {
+  height: calc(100vh - 250px);
 }
 </style>
