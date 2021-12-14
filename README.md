@@ -3,8 +3,6 @@
 - 开发ide安装
 
 # 运行
-- 构建node-gpy
-  - 执行 nmp run rebuild
 - `npm run z`
 # 打包
 - `npm run dist`
