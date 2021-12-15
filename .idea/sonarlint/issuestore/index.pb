@@ -27,3 +27,15 @@ M
 src/store/modules/menu_bar.ts,1\3\1349a7b836c24457bb52b6cbfb98e1e1ad3ced74
 O
 src/types/music/my_play_list.ts,a\e\ae28bd871e32266a0717a8f6413f7da8ff21c8c3
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+C
+src/config/index.ts,0\3\032e57e0fe40d4bfbf61efe7d8bd9c8ac84c077b
+Y
+)src/pages/music/personal_center/index.vue,d\e\de7294c53b788f08e7bbc303b1d171952a10760b
+@
+electron/main.js,b\8\b8a1a7276c8e00611ae0bee8b3f623c2793ef19f
+L
+src/types/music/user_info.ts,0\0\00dca7e14fcecc51eee436bb920b8d1a62b737b4
+N
+src/pages/music/play/audio.vue,b\2\b279ba64b8aa96dc9e8933fae7acf4630d21b259
