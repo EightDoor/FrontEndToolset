@@ -54,7 +54,6 @@ async function getList() {
   loading.value = true;
   http.get<DailyRecommendedSongData>(url).then((res) => {
     playList.value = res.data.data.dailySongs;
-    storeU.commit('music/setSongList', res.data.data.dailySongs);
     loading.value = false;
   });
 }
@@ -98,6 +97,7 @@ function formatSinger(val) {
 }
 
 async function playFun(item: Song) {
+  storeU.commit('music/setSongList', playList.value);
   log('song', item);
   const r = business.showLoading();
   const result = await getIdsList(item.id);

@@ -39,11 +39,12 @@ function change(val: string) {
       break;
     case '格式化':
       try {
-        content.value = JSON.parse(content.value);
+        content.value = utils.format(content.value, false);
       } catch (e) {
         ElMessage.error('json格式化失败');
       }
       break;
+    default:
   }
 }
 
