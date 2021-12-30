@@ -20,7 +20,7 @@
 - json-to-ts json转换为ts文件
 - 百度翻译api
   - 需要自己在根目录创建 .env.local文件 添加对应的百度api开发者id和秘钥
-
+- lodash 工具库
 
 # 完成
 - 首页 ![首页](http://mn.applet.start6.cn/git-home.png)
