@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { log } from '@/utils/log';
 import { onMounted, ref } from 'vue';
+import { log } from '@/utils/log';
 import EnvComponentList from './env_component_list.vue';
 
 const defaultList: EnvInstall.ListType[] = [
@@ -24,7 +24,7 @@ const defaultList: EnvInstall.ListType[] = [
     title: 'nvm',
     status: false,
     type: 'nvm',
-    cmd: 'nvm --version'
+    cmd: 'nvm --version',
   },
   {
     title: 'nrm',
@@ -32,7 +32,7 @@ const defaultList: EnvInstall.ListType[] = [
     type: 'nrm',
     cmd: 'nrm -V',
     install: 'npm install nrm -g',
-    uninstall: "npm uninstall nrm -g"
+    uninstall: 'npm uninstall nrm -g',
   },
   {
     title: 'cnpm',
@@ -40,7 +40,7 @@ const defaultList: EnvInstall.ListType[] = [
     type: 'cnpm',
     cmd: 'cnpm -v',
     install: 'npm install cnpm -g',
-    uninstall: 'npm uninstall cnpm -g'
+    uninstall: 'npm uninstall cnpm -g',
   },
   {
     title: 'yarn',
@@ -62,6 +62,6 @@ const defaultList: EnvInstall.ListType[] = [
 const list = ref<EnvInstall.ListType[]>(defaultList);
 
 onMounted(() => {
-  log("工作空间", process.env)
-})
+  log('工作空间', process.env);
+});
 </script>

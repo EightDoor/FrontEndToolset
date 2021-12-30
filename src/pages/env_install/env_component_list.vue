@@ -40,9 +40,11 @@
   <other-dialog ref="otherRef" />
 </template>
 <script lang="ts" setup>
-import { log } from '@/utils/log';
 import { ElMessage } from 'element-plus';
-import { defineComponent, PropType, reactive, ref, watch } from 'vue';
+import {
+  defineComponent, PropType, reactive, ref, watch,
+} from 'vue';
+import { log } from '@/utils/log';
 import EnvCmd from './env_component_list_cmd';
 import ComDialog from './env_component_list_dialog.vue';
 import OtherDialog from './env_component_list_other_dialog.vue';
@@ -65,9 +67,8 @@ const cmdDataErr = ref('');
 const dialogRef = ref<EnvInstall.openDialogType<EnvInstall.ListType>>();
 const otherRef = ref();
 
-
 function refresh() {
-  cmdFun()
+  cmdFun();
 }
 
 function cmdFun(val?: EnvInstall.ListType) {
@@ -77,12 +78,12 @@ function cmdFun(val?: EnvInstall.ListType) {
     val?.cmd ?? data.cmd,
     (val) => {
       cmdDataErr.value = val;
-      data.status = false
+      data.status = false;
     },
     (val) => {
       cmdData.value = String(val);
       data.status = true;
-    }
+    },
   );
 }
 watch(
@@ -90,20 +91,20 @@ watch(
   (newValue, oldValue) => {
     if (props.data) {
       data = props.data;
-      cmdFun(props.data)
+      cmdFun(props.data);
     }
   },
   {
     immediate: true,
     deep: true,
-  }
+  },
 );
 
 function change(val: EnvInstall.ListType) {
   if (val.install || val.uninstall) {
-    dialogRef.value?.openDialog(data.status ? "uninstall" : "install", val)
+    dialogRef.value?.openDialog(data.status ? 'uninstall' : 'install', val);
   } else {
-    ElMessage.error('没有安装命令!!!')
+    ElMessage.error('没有安装命令!!!');
   }
 }
 
@@ -111,8 +112,8 @@ function other(val: EnvInstall.ListType) {
   console.log(val);
   otherRef.value?.openDialog({
     title: val.title,
-    type: val.type
-  })
+    type: val.type,
+  });
 }
 </script>
 <style scoped lang="less">
