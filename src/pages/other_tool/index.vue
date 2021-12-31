@@ -99,14 +99,19 @@ function formatTime() {
 }
 
 function startFun() {
+  if (!selectTimeCu.value && !selectTime.value) {
+    ElMessage.info('请选择时间');
+    return;
+  }
   if (selectTimeCu.value) {
     log('selectTimeCu', selectTimeCu.value);
     turnOnTiming.value = selectTimeCu.value;
   } else if (selectTime.value) {
     log('selectTime', selectTime.value);
-    turnOnTiming.value = dayjs(selectTimeCu.value).valueOf();
+    turnOnTiming.value = dayjs(selectTime.value).valueOf();
   }
   selectTimeInter.value = setInterval(() => {
+    log('时间', turnOnTiming.value);
     turnOnTiming.value -= 1000;
     if (turnOnTiming.value <= 0) {
       sendStop();
@@ -115,14 +120,31 @@ function startFun() {
 }
 
 function sendStop() {
-  //
+  log('执行了关机命令了', process.platform);
+  let cmd = '';
   if (process.platform === 'win32') {
-    const cmd = 'shutdown  -s  -t   00';
-    exec(cmd);
+    cmd = 'shutdown  -s  -t   00';
   } else if (process.platform === 'linux') {
     //
   } else if (process.platform === 'darwin') {
     //
+  }
+  const workerProcess = exec(cmd);
+  if (workerProcess) {
+    // 打印正常的后台可执行程序输出
+    workerProcess.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`);
+    });
+
+    // 打印错误的后台可执行程序输出
+    workerProcess.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`);
+    });
+
+    // 退出之后的输出
+    workerProcess.on('close', (code) => {
+      console.log(`out code：${code}`);
+    });
   }
 }
 
