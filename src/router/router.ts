@@ -14,6 +14,7 @@ import Setting from '@/pages/setting/settings.vue';
 import TodayHeadlines from '@/pages/daily_muse_see/today_headlines.vue';
 import Music from '@/pages/music/index.vue';
 import MusicList from '@/pages/music/music_list/index.vue';
+import OtherTool from '@/pages/other_tool/index.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -56,6 +57,14 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'music_list',
         component: MusicList,
+      },
+      {
+        path: 'music_list',
+        component: MusicList,
+      },
+      {
+        path: '/other_tool',
+        component: OtherTool,
       },
     ],
   },
