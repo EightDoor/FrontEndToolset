@@ -1,65 +1,115 @@
 <template>
-  <env-component-list v-for="(item,   index) in list" :key="index" :data="item"></env-component-list>
+  <env-component-list
+    v-for="(item, index) in list"
+    :key="index"
+    :data="item"
+  ></env-component-list>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { log } from '@/utils/log';
 import EnvComponentList from './env_component_list.vue';
+import { ListType } from '@/pages/env_install/env_type';
 
-const defaultList: EnvInstall.ListType[] = [
+const defaultList: ListType[] = [
   {
     title: 'nodejs',
     status: false,
     type: 'node',
-    cmd: 'node -v',
+    cmd: {
+      cmd: 'node',
+      arg: ['-v'],
+    },
   },
   {
     title: 'npm',
     status: false,
     type: 'npm',
-    cmd: 'npm -v',
+    cmd: {
+      cmd: 'npm',
+      arg: ['-v'],
+    },
   },
   {
     title: 'nvm',
     status: false,
     type: 'nvm',
-    cmd: 'nvm --version',
+    cmd: {
+      cmd: 'nvm',
+      arg: ['-v'],
+    },
   },
   {
     title: 'nrm',
     status: false,
     type: 'nrm',
-    cmd: 'nrm -V',
-    install: 'npm install nrm -g',
-    uninstall: 'npm uninstall nrm -g',
+    install: {
+      cmd: 'npm',
+      arg: ['install', 'nrm', '-g'],
+    },
+    uninstall: {
+      cmd: 'npm',
+      arg: ['uninstall', 'nrm', '-g'],
+    },
+    cmd: {
+      cmd: 'nrm',
+      arg: ['-V'],
+    },
   },
   {
     title: 'cnpm',
     status: false,
     type: 'cnpm',
-    cmd: 'cnpm -v',
-    install: 'npm install cnpm -g',
-    uninstall: 'npm uninstall cnpm -g',
+    cmd: {
+      cmd: 'cnpm',
+      arg: ['-v'],
+    },
+    install: {
+      cmd: 'npm',
+      arg: ['install', 'cnpm', '-g'],
+    },
+    uninstall: {
+      cmd: 'npm',
+      arg: ['uninstall', 'cnpm', '-g'],
+    },
   },
   {
     title: 'yarn',
     status: false,
     type: 'yarn',
-    cmd: 'yarn -v',
-    install: 'npm install yarn -g',
-    uninstall: 'npm uninstall -g yarn',
+    cmd: {
+      cmd: 'yarn',
+      arg: ['-v'],
+    },
+    install: {
+      cmd: 'npm',
+      arg: ['install', 'yarn', '-g'],
+    },
+    uninstall: {
+      cmd: 'npm',
+      arg: ['uninstall', 'yarn', '-g'],
+    },
   },
   {
     title: 'pnpm',
     status: false,
     type: 'pnpm',
-    cmd: 'pnpm -v',
-    install: 'npm install -g pnpm',
-    uninstall: 'npm uninstall -g pnpm',
+    cmd: {
+      cmd: 'pnpm',
+      arg: ['-v'],
+    },
+    install: {
+      cmd: 'npm',
+      arg: ['install', 'pnpm', '-g'],
+    },
+    uninstall: {
+      cmd: 'npm',
+      arg: ['uninstall', 'pnpm', '-g'],
+    },
   },
 ];
-const list = ref<EnvInstall.ListType[]>(defaultList);
+const list = ref<ListType[]>(defaultList);
 
 onMounted(() => {
   log('工作空间', process.env);
