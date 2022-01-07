@@ -51,7 +51,7 @@
         <el-button @click="dialogVisible = false">取消</el-button>
         <el-button
           type="primary"
-          @click="submit(data.install, `--registry=${form.mirrorSource}`)"
+          @click="submit(`--registry=${form.mirrorSource}`, data?.install)"
           :loading="loading"
           >确定</el-button
         >
@@ -90,27 +90,29 @@ function openDialog(sta: Status, val: ListType) {
 }
 
 const operationLog = ref('');
-function submit(source: EnvCmdType, val: string) {
+function submit(val: string, source?: EnvCmdType) {
   log('submit', '提交');
   if (status.value === 'install') {
     if (!val) {
       ElMessage.error('没有安装命令');
     } else {
       loading.value = true;
-      source.arg.push(val);
-      EnvCmd(
-        source,
-        (err) => {
-          operationLog.value += `${err}\n`;
-          loading.value = false;
-        },
-        (data) => {
-          loading.value = false;
-          operationLog.value += `<li style="margin-top: 15px;border-bottom: 1px solid red">${data}</li>`;
-          log('执行的', operationLog.value);
-          emit('refresh', 'install');
-        }
-      );
+      if (source?.arg) {
+        source.arg.push(val);
+        EnvCmd(
+          source,
+          (err) => {
+            operationLog.value += `${err}\n`;
+            loading.value = false;
+          },
+          (v: any) => {
+            loading.value = false;
+            operationLog.value += `<li style="margin-top: 15px;border-bottom: 1px solid red">${v}</li>`;
+            log('执行的', operationLog.value);
+            emit('refresh', 'install');
+          }
+        );
+      }
     }
   } else if (status.value === 'uninstall') {
     loading.value = true;
