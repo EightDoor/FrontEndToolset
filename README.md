@@ -11,6 +11,8 @@
 - 编辑器使用webstorm 
   - 配置Prettier  实现代码保存自动格式化
     - 详细参考 https://prettier.bootcss.com/docs/webstorm.html
+- 下载地址
+  - 链接: https://pan.baidu.com/s/1d3vAPqGm-N6vPC9p_zUmyw 提取码: jjv3 
 # 依赖
 - concurrently 同时运行多条命令
 - prettier 代码格式化
