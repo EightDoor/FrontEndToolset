@@ -34,7 +34,7 @@
             <el-alert
               :closable="false"
               style="margin: 15px 0"
-              title="同时选择了【预制时间】和【关机时间】, 优先使用关机时间"
+              title="目前只®†支持windows,执行同时选择了【预制时间】和【关机时间】, 优先使用关机时间"
               type="warning"
             />
           </div>
