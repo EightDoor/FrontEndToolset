@@ -105,13 +105,16 @@ function startFun() {
   }
   if (selectTimeCu.value) {
     log('selectTimeCu', selectTimeCu.value);
-    turnOnTiming.value = selectTimeCu.value;
+    log('unix', dayjs(selectTimeCu.value).unix());
+    const currentTi = Date.now();
+    const selectTi = dayjs(selectTimeCu.value).valueOf();
+    turnOnTiming.value = selectTi - currentTi;
   } else if (selectTime.value) {
     log('selectTime', selectTime.value);
-    turnOnTiming.value = dayjs(selectTime.value).valueOf();
+    turnOnTiming.value = selectTime.value;
   }
   selectTimeInter.value = setInterval(() => {
-    log('时间', turnOnTiming.value);
+    // log('时间', turnOnTiming.value);
     turnOnTiming.value -= 1000;
     if (turnOnTiming.value <= 0) {
       sendStop();
@@ -124,10 +127,8 @@ function sendStop() {
   let cmd = '';
   if (process.platform === 'win32') {
     cmd = 'shutdown  -s  -t   00';
-  } else if (process.platform === 'linux') {
-    //
-  } else if (process.platform === 'darwin') {
-    //
+  } else if (process.platform === 'linux' || process.platform === 'darwin') {
+    cmd = 'sudo halt';
   }
   const workerProcess = exec(cmd);
   if (workerProcess) {
@@ -184,6 +185,7 @@ const formatDuring = (t: number) => {
   }
   return text || '-';
 };
+
 onMounted(() => {
   timeInter.value = setInterval(() => {
     formatTime();

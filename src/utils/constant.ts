@@ -7,6 +7,9 @@ const Constant = {
   storageListIds: 'STORAGE_LIST_IDS',
   // 网易云音乐 登录信息
   NETEASE_CLOUD_MUSIC: 'NETEASE_CLOUD_MUSIC',
+
+  // 定时开关机，管理员密码
+  TIMING_SWITCH: 'TIMING_SWITCH',
 };
 
 export default Constant;
