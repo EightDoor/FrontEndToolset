@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,20 +9,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const loaders = require('./webpack.loaders');
 
 const HOST = process.env.NUCLEUS_HOST || '127.0.0.1';
-const PORT = process.env.NUCLEUS_PORT || '8888';
+const PORT = process.env.NUCLEUS_PORT || '8887';
 
 let mainPort = 3030;
 try {
-  mainPort = require('./config.js').port
-} catch (err) {
-
-}
+  mainPort = require('./config.js').port;
+} catch (err) {}
 
 module.exports = {
-  entry: [
-    'react-hot-loader/patch',
-    './public/index.tsx',
-  ],
+  entry: ['react-hot-loader/patch', './public/index.tsx'],
   devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
   output: {
     publicPath: '/',
@@ -48,8 +43,8 @@ module.exports = {
     port: PORT,
     host: HOST,
     proxy: {
-      '/rest': `http://localhost:${mainPort}`
-    }
+      '/rest': `http://localhost:${mainPort}`,
+    },
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
@@ -61,7 +56,7 @@ module.exports = {
     }),
     new FaviconsWebpackPlugin({
       logo: path.resolve(__dirname, 'public/favicon.png'),
-      background: '#0F4AA3'
+      background: '#0F4AA3',
     }),
   ],
 };
