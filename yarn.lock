@@ -5883,11 +5883,6 @@ strip-json-comments@~2.0.1:
   resolved "https://registry.nlark.com/strip-json-comments/download/strip-json-comments-2.0.1.tgz"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
 
-sudo-prompt@^9.2.1:
-  version "9.2.1"
-  resolved "https://registry.npm.taobao.org/sudo-prompt/download/sudo-prompt-9.2.1.tgz#77efb84309c9ca489527a4e749f287e6bdd52afd"
-  integrity sha1-d++4QwnJykiVJ6TnSfKH5r3VKv0=
-
 sumchecker@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npm.taobao.org/sumchecker/download/sumchecker-3.0.1.tgz"
@@ -6220,8 +6215,8 @@ upath@^2.0.1:
 
 update-electron-app@^2.0.1:
   version "2.0.1"
-  resolved "https://registry.npmjs.org/update-electron-app/-/update-electron-app-2.0.1.tgz"
-  integrity sha512-e4xEner89UZZaBGYJbYlMdL1uUrC0VjOsTAL2N4opPjzFtn+j7mdsJJsnyXZzUVeLY+8tuCX4XEsUM98oBHmZg==
+  resolved "https://registry.nlark.com/update-electron-app/download/update-electron-app-2.0.1.tgz#229dbeb4534f51ec949e6a46ae1ac32f68a17eed"
+  integrity sha1-Ip2+tFNPUeyUnmpGrhrDL2ihfu0=
   dependencies:
     electron-is-dev "^0.3.0"
     github-url-to-object "^4.0.4"
