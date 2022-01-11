@@ -85,7 +85,8 @@ app.on('will-quit', () => {
 function initUpdate() {
   const server = 'https://vue3-admin-nest-upload.vercel.app/';
   const url = `${server}/update/${process.platform}/${app.getVersion()}`;
-
+  console.log('操作平台', process.platform);
+  console.log('当前版本: ', app.getVersion());
   autoUpdater.setFeedURL({ url });
   setInterval(() => {
     autoUpdater.checkForUpdates();
