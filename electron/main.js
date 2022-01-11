@@ -83,8 +83,8 @@ app.on('will-quit', () => {
 // });
 
 function initUpdate() {
-  const server = 'http://vue3.admin.upload.start6.cn';
-  const url = `${server}/download/${app.getVersion()}/${process.platform}/`;
+  const server = 'https://vue3-admin-nest-upload.vercel.app/';
+  const url = `${server}/update/${process.platform}/${app.getVersion()}`;
 
   autoUpdater.setFeedURL({ url });
   setInterval(() => {
