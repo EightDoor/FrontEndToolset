@@ -81,26 +81,55 @@
     "appId": "cn.start6",
     "copyright": "周凯",
     "compression": "store",
-    "publish": [
-      {
-        "provider": "generic",
-        "url": "https://xxx.com"
-      }
-    ],
+    "publish": {
+      "provider": "generic",
+      "url": "https://vue3-admin-nest-upload.vercel.app/"
+    },
     "win": {
       "target": [
-        "nsis"
+        "nsis",
+        "zip"
       ],
       "requestedExecutionLevel": "requireAdministrator"
     },
     "mac": {
       "target": [
-        "dmg"
+        "dmg",
+        "zip",
+        "pkg"
+      ],
+      "hardenedRuntime": true,
+      "entitlements": "electron-builder/entitlements.plist",
+      "entitlementsInherit": "electron-builder/entitlements.plist",
+      "provisioningProfile": "electron-builder/comalibabaslobs.provisionprofile"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "zip"
       ]
+    },
+    "pkg": {
+      "isRelocatable": false,
+      "overwriteAction": "upgrade"
     },
     "dmg": {
       "icon": "public/images/tap.ico",
-      "title": "个人工具箱"
+      "title": "个人工具箱",
+      "iconSize": 100,
+      "sign": false,
+      "contents": [
+        {
+          "x": 112,
+          "y": 165
+        },
+        {
+          "type": "link",
+          "path": "/Applications",
+          "x": 396,
+          "y": 165
+        }
+      ]
     },
     "nsis": {
       "oneClick": false,

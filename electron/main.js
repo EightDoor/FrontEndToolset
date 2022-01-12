@@ -90,7 +90,7 @@ function initUpdate() {
   autoUpdater.setFeedURL({ url });
   setInterval(() => {
     autoUpdater.checkForUpdates();
-  }, 60000);
+  }, 5000);
 
   autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     const dialogOpts = {
@@ -104,5 +104,10 @@ function initUpdate() {
     dialog.showMessageBox(dialogOpts).then((returnValue) => {
       if (returnValue.response === 0) autoUpdater.quitAndInstall();
     });
+  });
+
+  autoUpdater.on('error', (message) => {
+    console.error('There was a problem updating the application');
+    console.error(message);
   });
 }
