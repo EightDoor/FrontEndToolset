@@ -90,7 +90,7 @@ function initUpdate() {
   autoUpdater.setFeedURL({ url });
   setInterval(() => {
     autoUpdater.checkForUpdates();
-  }, 5000);
+  }, 60000);
 
   autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     const dialogOpts = {
