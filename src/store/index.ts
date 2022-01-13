@@ -10,9 +10,7 @@ const store = createStore({
     music: MusicStore,
     userInfo: UserInfo,
   },
-  plugins: [
-    createLogger(),
-  ],
+  plugins: [createLogger()],
   strict: process.env.NODE_ENV !== 'production',
 });
 
