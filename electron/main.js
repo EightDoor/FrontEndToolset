@@ -49,8 +49,6 @@ function createWindow() {
         console.log(err);
       });
   }
-
-  initUpdate();
 }
 
 app.whenReady().then(() => {
@@ -81,33 +79,3 @@ app.on('will-quit', () => {
 //     app.quit();
 //   }
 // });
-
-function initUpdate() {
-  const server = 'https://vue3-admin-nest-upload.vercel.app/';
-  const url = `${server}/update/${process.platform}/${app.getVersion()}`;
-  console.log('操作平台', process.platform);
-  console.log('当前版本: ', app.getVersion());
-  autoUpdater.setFeedURL({ url });
-  setInterval(() => {
-    autoUpdater.checkForUpdates();
-  }, 60000);
-
-  autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-    const dialogOpts = {
-      type: 'info',
-      buttons: ['立即重启', '稍后启动'],
-      title: '应用程序更新',
-      message: process.platform === 'win32' ? releaseNotes : releaseName,
-      detail: '已下载新版本,重新启动应用程序更新。',
-    };
-
-    dialog.showMessageBox(dialogOpts).then((returnValue) => {
-      if (returnValue.response === 0) autoUpdater.quitAndInstall();
-    });
-  });
-
-  autoUpdater.on('error', (message) => {
-    console.error('There was a problem updating the application');
-    console.error(message);
-  });
-}
