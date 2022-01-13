@@ -1,10 +1,4 @@
-const {
-  app,
-  BrowserWindow,
-  globalShortcut,
-  autoUpdater,
-  dialog,
-} = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
 const electronDl = require('electron-dl');

@@ -62,7 +62,7 @@
       width="30%"
       :before-close="handleClose"
     >
-      <span>更新内容: {{ versionData.updateContent }}</span>
+      <span>更新内容: {{ versionData?.updateContent }}</span>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="versionUpdate = false">取消</el-button>
