@@ -6,23 +6,24 @@
   </el-tabs>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'Gadgets',
-}
-</script>
+<script lang="ts"></script>
 <script lang="ts" setup>
-import { markRaw, ref } from "vue";
+import { markRaw, ref } from 'vue';
 import Calculator from './calculator/index.vue';
 import ColorHexConversion from './color_hex_conversion.vue';
 import UrlEncoding from './url_encoding.vue';
 import StyleConversion from './style_conversion/index.vue';
+import UUIDGenerate from './uuid_generate.vue';
 
 interface ListType {
   label: string;
   component: any;
 }
 const list = ref<ListType[]>([
+  {
+    label: 'uuid生成',
+    component: markRaw(UUIDGenerate),
+  },
   {
     label: '颜色进制转换',
     component: markRaw(ColorHexConversion),
@@ -39,5 +40,5 @@ const list = ref<ListType[]>([
     label: 'less、sass、css相互转换',
     component: markRaw(StyleConversion),
   },
-])
+]);
 </script>
