@@ -23,14 +23,18 @@
       </div>
     </div>
     <div class="play_audio_controller">
-      <el-button type="primary" class="last" @click="songSwitch(1)">上一首</el-button>
+      <el-button type="primary" class="last" @click="songSwitch(1)"
+        >上一首</el-button
+      >
       <audio autoplay ref="audioRef" :src="playData?.url" controls />
-      <el-button type="primary" class="nextSong" @click="songSwitch(2)">下一首</el-button>
+      <el-button type="primary" class="nextSong" @click="songSwitch(2)"
+        >下一首</el-button
+      >
     </div>
     <div class="right_menu">
       <el-tooltip class="item" effect="dark" content="最小化" placement="top">
         <img
-        @click="clickHide"
+          @click="clickHide"
           class="select_music"
           src="http://vue3.admin.qiniu.start6.cn/%E6%9C%80%E5%B0%8F%E5%8C%96.png"
           alt=""
@@ -38,13 +42,27 @@
       </el-tooltip>
 
       <el-tooltip class="item" effect="dark" content="播放列表" placement="top">
-        <el-icon @click="goMenu" class="play_audio_icon" size="25"><menu-icon /></el-icon>
+        <el-icon @click="goMenu" class="play_audio_icon" size="25"
+          ><menu-icon
+        /></el-icon>
       </el-tooltip>
     </div>
   </div>
-  <div v-show="!isShow && minimization" @click="clickShow" class="play_audio_mini">
-    <el-tooltip class="item" effect="dark" content="点击展开播放器" placement="top">
-      <img src="http://vue3.admin.qiniu.start6.cn/%E9%9F%B3%E4%B9%90.png" alt="" />
+  <div
+    v-show="!isShow && minimization"
+    @click="clickShow"
+    class="play_audio_mini"
+  >
+    <el-tooltip
+      class="item"
+      effect="dark"
+      content="点击展开播放器"
+      placement="top"
+    >
+      <img
+        src="http://vue3.admin.qiniu.start6.cn/%E9%9F%B3%E4%B9%90.png"
+        alt=""
+      />
     </el-tooltip>
   </div>
 </template>
@@ -52,9 +70,7 @@
 <script lang="ts" setup>
 import { useStore } from 'vuex';
 import { ElMessage } from 'element-plus';
-import {
-  computed, ref, onMounted, onUnmounted,
-} from 'vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { Menu as MenuIcon } from '@element-plus/icons';
 import { useRouter } from 'vue-router';
 import { Datum, Song, SongPalyList } from '@/types/music/detail';
@@ -147,19 +163,22 @@ async function songSwitchImplement(list, index, status?: 1 | 2) {
 
 function getSongIsAvailable(id) {
   return new Promise((resolve, reject) => {
-    http.get<IMusicCheck>('/music/check/music', {
-      params: {
-        id,
-      },
-    }).then((res) => {
-      if (res.data.success) {
-        resolve(true);
-      } else {
-        resolve(false);
-      }
-    }).catch((err) => {
-      reject(err);
-    });
+    http
+      .get<IMusicCheck>('/music/check/music', {
+        params: {
+          id,
+        },
+      })
+      .then((res) => {
+        if (res.data.success) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      })
+      .catch((err) => {
+        reject(err);
+      });
   });
 }
 
@@ -205,16 +224,18 @@ function changeSelectMusic() {
 async function likeFun(like: boolean) {
   let url = '/music/like';
   url = await business.getCookie(url);
-  http.get(url, {
-    params: {
-      id: data.value?.id,
-      like,
-    },
-  }).then((res) => {
-    if (res.data.code === 200) {
-      ElMessage.success(like ? '喜欢成功' : '取消喜欢');
-    }
-  });
+  http
+    .get(url, {
+      params: {
+        id: data.value?.id,
+        like,
+      },
+    })
+    .then((res) => {
+      if (res.data.code === 200) {
+        ElMessage.success(like ? '喜欢成功' : '取消喜欢');
+      }
+    });
 }
 
 onUnmounted(() => {

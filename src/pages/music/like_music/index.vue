@@ -63,6 +63,7 @@ async function getList(id) {
     },
   }).then((res: any) => {
     const { ids } = res.data;
+
     getSongList(ids);
   });
 }
@@ -130,6 +131,7 @@ function formatSinger(val) {
 }
 
 async function playFun(item: Song) {
+  storeU.commit('music/setSongList', playList.value);
   log('song', item);
   const r = business.showLoading();
   const result = await getIdsList(item.id);
@@ -171,6 +173,7 @@ function generateTime(time: number) {
 const total = ref(0);
 watch(playList, (newVal) => {
   total.value = newVal.length;
+  storeU.commit('music/setSongList', newVal);
   pagination(1);
 });
 function change(val) {

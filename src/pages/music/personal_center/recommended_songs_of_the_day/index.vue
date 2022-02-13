@@ -97,6 +97,7 @@ function formatSinger(val) {
 }
 
 async function playFun(item: Song) {
+  storeU.commit('music/setSongList', playList.value);
   log('song', item);
   const r = business.showLoading();
   const result = await getIdsList(item.id);

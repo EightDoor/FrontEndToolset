@@ -15,8 +15,9 @@
 </template>
 <script setup lang="ts">
 import utils from '@/utils';
+
 function download() {
-  utils.openUrl("http://nodejs.cn/download/")
+  utils.openUrl('http://nodejs.cn/download/');
 }
 </script>
 <style scoped lang="less">

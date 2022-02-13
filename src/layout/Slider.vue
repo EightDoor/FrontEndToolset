@@ -58,8 +58,12 @@ const Slider = defineComponent({
         url: '/translate',
       },
       {
-        title: '小工具',
+        title: '开发小工具',
         url: '/gadgets',
+      },
+      {
+        title: '其他工具',
+        url: '/other_tool',
       },
       {
         title: 'json to dart',

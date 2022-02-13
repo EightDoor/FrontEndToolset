@@ -22,5 +22,7 @@ const app = createApp(App);
 directives(app);
 app.use(store);
 
-app.use(ElementPlus, { size: 'small', zIndex: 3000, location: zhCn }).use(router);
+app
+  .use(ElementPlus, { size: 'small', zIndex: 3000, location: zhCn })
+  .use(router);
 app.mount('#app');

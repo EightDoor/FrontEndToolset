@@ -4,7 +4,7 @@
       <JsonCode :changeText="changeText" :content="defaultSource">
         <template #title>
           <div>
-            <el-link type="primary" style="font-size: 25px;" disabled>请输入根节点名称</el-link>
+             <el-link type="primary" style="font-size: 25px;" disabled>请输入根节点名称</el-link>
             <el-input class="inputW" v-model="tsName" placeholder="请输入根节点名称"></el-input>
           </div>
           <Buttons :list="buttonList" :click="changeButton" />
@@ -23,29 +23,27 @@
 </template>
 
 <script setup lang="ts">
-import JsonCode from '@/components/JsonCode/index.vue';
-import { log } from '@/utils/log';
 import JsonToTs from 'json-to-ts';
 import { ref, watch } from 'vue';
 import { cloneDeep } from 'lodash';
+import { log } from '@/utils/log';
+import JsonCode from '@/components/JsonCode/index.vue';
 import Clip_button from '@/components/Buttons/clip_button.vue';
 import utils from '@/utils';
 import Buttons, { ButtonsListType } from '@/components/Buttons/index.vue';
 
-const content = ref("");
-const tsName = ref("")
-const sourceData = ref('')
-const defaultSource = ref("")
-
+const content = ref('');
+const tsName = ref('');
+const sourceData = ref('');
+const defaultSource = ref('');
 
 function CoverToTs(val: string, name?: string) {
   try {
     const result = JSON.parse(val);
-    return JsonToTs(result, { rootName: name ?? "RootObj" })
+    return JsonToTs(result, { rootName: name ?? 'RootObj' });
   } catch (err) {
-    log('err', err)
+    log('err', err);
   }
-
 }
 
 // button
@@ -64,29 +62,28 @@ function changeButton(val: string) {
   }
 }
 
-
 function changeText(val: any) {
   sourceData.value = cloneDeep(val);
   tsGen(val);
 }
 function tsGen(val: string, name?: string) {
   if (CoverToTs(val, name)) {
-    content.value = CoverToTs(val, name)?.join("\n") ?? "";
+    content.value = CoverToTs(val, name)?.join('\n') ?? '';
   }
 }
 
 function clipText() {
-  utils.clipText(content.value)
+  utils.clipText(content.value);
 }
 
 watch(tsName, (newVal) => {
-  log("文件名称变化", newVal)
+  log('文件名称变化', newVal);
   tsName.value = newVal;
-  tsGen(sourceData.value, tsName.value)
+  tsGen(sourceData.value, tsName.value);
 }, {
   immediate: true,
-  deep: true
-})
+  deep: true,
+});
 </script>
 <style scoped lang="less">
 .inputW {

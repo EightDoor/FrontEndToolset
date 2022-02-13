@@ -1,4 +1,6 @@
 # Ignore artifacts:
 build
 coverage
-electron/dist
+
+# Ignore all HTML files:
+*.html
