@@ -1,7 +1,7 @@
 <template>
   <div class="play_audio" v-show="playData && isShow">
     <div class="play_audio_title" v-if="data">
-      <img :src="data.al.picUrl" alt="" />
+      <img :src="data?.al?.picUrl" alt="" />
       <div class="play_audio_name">
         <span>{{ data?.name }}</span>
         <div>{{ formaAuthor(data?.ar) }}</div>
@@ -73,6 +73,7 @@ import { ElMessage } from 'element-plus';
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { Menu as MenuIcon } from '@element-plus/icons';
 import { useRouter } from 'vue-router';
+import { isArray } from 'lodash';
 import { Datum, Song, SongPalyList } from '@/types/music/detail';
 import { log } from '@/utils/log';
 import http from '@/utils/request';
@@ -101,9 +102,11 @@ const data = computed<Song | null>(() => {
 
 function formaAuthor(val) {
   const list: string[] = [];
-  val.forEach((item) => {
-    list.push(item.name);
-  });
+  if (isArray(val)) {
+    val.forEach((item) => {
+      list.push(item.name);
+    });
+  }
 
   return list.join('，');
 }

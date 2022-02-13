@@ -2,20 +2,14 @@ const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
 const electronDl = require('electron-dl');
-const { init } = require("./events/index")
-const menuInit = require("./menu/index")
-// // 升级
-// require('update-electron-app')({
-//   repo: 'https://github.com/EightDoor/FrontEndToolset',
-//   updateInterval: '5 minutes',
-//   logger: require('electron-log')
-// })
+const { init } = require('./events/index');
+const menuInit = require('./menu/index');
 
-electronDl()
+electronDl();
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 let win;
-function createWindow () {
+function createWindow() {
   win = new BrowserWindow({
     width: 1400,
     height: 900,
@@ -31,31 +25,31 @@ function createWindow () {
     },
   });
 
-
   init(win);
-  menuInit(win)
-
+  menuInit(win);
 
   isDev ? dev() : win.loadFile(path.join(__dirname, 'dist/index.html'));
   // win.loadFile(path.join(__dirname, 'dist/index.html'));
-  function dev () {
+  function dev() {
     const url = 'http://localhost:9999/';
-    win.loadURL(url).then(
-      (
-        r // 打开调试
-      ) => win.webContents.openDevTools({ mode: 'bottom' })
-    ).catch(err => {
-      console.log(err);
-    });
+    win
+      .loadURL(url)
+      .then(
+        (
+          r // 打开调试
+        ) => win.webContents.openDevTools({ mode: 'bottom' })
+      )
+      .catch((err) => {
+        console.log(err);
+      });
   }
-
 }
 
 app.whenReady().then(() => {
   createWindow();
 
   // 在主进程中调用 Chromium 命令行关闭同源策略。
-  app.commandLine.appendSwitch("disable-site-isolation-trials");
+  app.commandLine.appendSwitch('disable-site-isolation-trials');
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -63,20 +57,19 @@ app.whenReady().then(() => {
     }
   });
 
-  win.on('close', (event)=>{
-    event.preventDefault()
+  win.on('close', (event) => {
+    event.preventDefault();
     win.hide();
-  })
+  });
 });
 
-app.on("will-quit", ()=>{
+app.on('will-quit', () => {
   win = null;
-  globalShortcut.unregisterAll()
-})
+  globalShortcut.unregisterAll();
+});
 
 // app.on('window-all-closed', () => {
 //   if (process.platform !== 'darwin') {
 //     app.quit();
 //   }
 // });
-

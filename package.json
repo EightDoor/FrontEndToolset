@@ -1,6 +1,6 @@
 {
   "name": "vite-project",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./electron/main.js",
   "scripts": {
     "z": "concurrently  \"npm run start\" \"npm run dev\"",
@@ -22,36 +22,38 @@
   "dependencies": {
     "@amap/amap-jsapi-types": "^0.0.8",
     "@element-plus/icons": "^0.0.11",
-    "axios": "^0.24.0",
+    "axios": "^0.25.0",
     "codemirror": "^5.65.0",
     "cross-spawn": "^7.0.3",
     "dayjs": "^1.10.7",
     "electron-dl": "^3.3.0",
     "electron-is-dev": "^2.0.0",
-    "electron-log": "^4.4.4",
+    "electron-log": "^4.4.6",
     "electron-updater": "^4.6.1",
-    "element-plus": "^1.3.0-beta.1",
+    "element-plus": "^1.3.0-beta.10",
     "highlight.js": "^11.3.1",
     "json-to-ts": "^1.7.0",
     "localforage": "^1.10.0",
     "lodash": "^4.17.21",
     "md5": "^2.3.0",
+    "uuid": "^8.3.2",
     "vue": "^3.2.21",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.0.1",
+    "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@types/codemirror": "^5.60.5",
     "@types/localforage": "^0.0.34",
     "@types/lodash": "^4.14.178",
     "@types/md5": "^2.3.1",
     "@types/node": "^16.11.10",
-    "@typescript-eslint/eslint-plugin": "^5.8.1",
-    "@typescript-eslint/parser": "^5.9.0",
-    "@vitejs/plugin-vue": "^2.0.1",
-    "@vue/compiler-sfc": "^3.2.26",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "@vitejs/plugin-vue": "^2.1.0",
+    "@vue/compiler-sfc": "^3.2.29",
     "@vue/eslint-config-prettier": "^7.0.0",
     "chalk": "^5.0.0",
     "concurrently": "^7.0.0",
@@ -59,22 +61,21 @@
     "debugout.js": "^1.0.0",
     "electron": "^16.0.6",
     "electron-builder": "22.14.5",
-    "electron-rebuild": "^3.2.5",
-    "eslint": "^8.6.0",
+    "electron-rebuild": "^3.2.7",
+    "eslint": "^8.8.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^8.2.0",
+    "eslint-plugin-vue": "^8.4.1",
     "husky": "^7.0.4",
     "less": "^4.1.2",
     "prettier": "^2.5.1",
     "prettier-eslint": "^13.0.0",
-    "typescript": "^4.5.4",
-    "unplugin-vue-components": "^0.17.11",
-    "update-electron-app": "^2.0.1",
-    "vite": "^2.7.10",
-    "vue-tsc": "^0.30.2",
+    "typescript": "^4.5.5",
+    "unplugin-vue-components": "^0.17.16",
+    "vite": "^2.7.13",
+    "vue-tsc": "^0.31.2",
     "wait-on": "^6.0.0"
   },
   "build": {
@@ -82,25 +83,55 @@
     "appId": "cn.start6",
     "copyright": "周凯",
     "compression": "store",
-    "publish": [
-      {
-        "provider": "generic",
-        "url": "https://xxx.com"
-      }
-    ],
+    "publish": {
+      "provider": "generic",
+      "url": "https://vue3-admin-nest-upload.vercel.app/"
+    },
     "win": {
       "target": [
-        "nsis"
-      ]
+        "nsis",
+        "zip"
+      ],
+      "requestedExecutionLevel": "requireAdministrator"
     },
     "mac": {
       "target": [
-        "dmg"
+        "dmg",
+        "zip",
+        "pkg"
+      ],
+      "hardenedRuntime": true,
+      "entitlements": "electron-builder/entitlements.plist",
+      "entitlementsInherit": "electron-builder/entitlements.plist",
+      "provisioningProfile": "electron-builder/comalibabaslobs.provisionprofile"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "zip"
       ]
+    },
+    "pkg": {
+      "isRelocatable": false,
+      "overwriteAction": "upgrade"
     },
     "dmg": {
       "icon": "public/images/tap.ico",
-      "title": "个人工具箱"
+      "title": "个人工具箱",
+      "iconSize": 100,
+      "sign": false,
+      "contents": [
+        {
+          "x": 112,
+          "y": 165
+        },
+        {
+          "type": "link",
+          "path": "/Applications",
+          "x": 396,
+          "y": 165
+        }
+      ]
     },
     "nsis": {
       "oneClick": false,

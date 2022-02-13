@@ -1,5 +1,5 @@
 <template>
-  <login-status/>
+  <login-status />
   <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane
       v-for="(item, index) in list"
@@ -20,6 +20,7 @@ import PersonalCenter from './personal_center/index.vue';
 import MyPlayList from './personal_center/my_play_list/index.vue';
 import RecommendedSongsOfTheDay from './personal_center/recommended_songs_of_the_day/index.vue';
 import LoginStatus from './personal_center/login_status.vue';
+import SearchMusic from './search_music/index.vue';
 import RefreshData from '@/components/RefreshData/index.vue';
 
 const activeName = ref('recommendedSongsOfTheDay');
@@ -45,6 +46,11 @@ const list = [
     component: LikeMusic,
   },
   {
+    title: '搜索歌曲',
+    name: 'searchMusic',
+    component: SearchMusic,
+  },
+  {
     title: '个人中心',
     name: 'personalCenter',
     component: PersonalCenter,
@@ -55,5 +61,4 @@ function handleClick(val: any) {
   //
   log('val', val.index);
 }
-
 </script>
