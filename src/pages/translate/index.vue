@@ -84,11 +84,11 @@ import {
   RouteLocationNormalized,
   NavigationGuardNext,
 } from 'vue-router';
-import md5 from 'md5';
+import * as qiniu from 'qiniu-js';
+import dayjs from 'dayjs';
 import { log } from '@/utils/log';
 import { TranslateType } from './index.type';
-
-const { clipboard } = require('electron');
+import Config from '@/config/index';
 
 const data = reactive<TranslateType.Data>({
   entryText: '',
@@ -188,12 +188,59 @@ function changeSelect(val) {
 const contentImgRef = ref();
 function changeEvenet(v) {
   const text = v.target.innerText;
-  const imgUrl = '';
+  let imgUrl = '';
   v.target.childNodes.forEach(async (item) => {
     if (item.nodeName === 'IMG') {
-      //
+      imgUrl = item.currentSrc;
+      uploadImg(imgUrl);
     }
   });
+}
+
+function uploadImg(imgUrl: string) {
+  const token =
+    'USmI2xVzjc7ufYwFejo7i-nJyKwfBiVGfowtUAC5:Md_Mt4Wx8X6pVvsugQOt2G-tiYk=:eyJzY29wZSI6ImJhaWR1LWZhbnlpIiwiZGVhZGxpbmUiOjE2NDUwOTM4OTB9';
+  const blob: any = dataURItoBlob(imgUrl);
+  const name = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+  const observable = qiniu.upload(
+    blob,
+    name,
+    token,
+    {},
+    {
+      useCdnDomain: true,
+      region: 'z1',
+    }
+  );
+  // 上传开始
+  const observer = {
+    next(res) {
+      console.log(res, '上传中...');
+    },
+    error(err) {
+      console.log(err, '上传失败');
+    },
+    complete(res) {
+      const uploadImg = Config.qiuniuLoadUrl + res.key;
+      console.log(uploadImg, '最终访问地址');
+    },
+  };
+  const subscription = observable.subscribe(observer);
+}
+
+/**
+ * base64  to blob二进制
+ */
+function dataURItoBlob(dataURI) {
+  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]; // mime类型
+  const byteString = atob(dataURI.split(',')[1]); // base64 解码
+  const arrayBuffer = new ArrayBuffer(byteString.length); // 创建缓冲数组
+  const intArray = new Uint8Array(arrayBuffer); // 创建视图
+
+  for (let i = 0; i < byteString.length; i++) {
+    intArray[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([intArray], { type: mimeString });
 }
 </script>
 <style scoped lang="less">
