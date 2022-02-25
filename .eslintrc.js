@@ -20,5 +20,10 @@ module.exports = {
     'vue/no-side-effects-in-computed-properties': 'off',
     'no-use-before-define': 'off',
     'no-param-reassign': 'off',
+    'comma-dangle': 'off',
+    'operator-linebreak': 'off',
+    'no-shadow': 'off',
+    'no-plusplus': 'off',
+    'no-console': 'off',
   },
 };

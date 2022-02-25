@@ -38,13 +38,13 @@
   </el-row>
   <el-row>
     <el-col :span="11">
-      <el-input
+      <!-- <el-input
         type="textarea"
         :autosize="{ minRows: 10 }"
         :rows="10"
         placeholder="请输入翻译内容"
         v-model="data.entryText"
-      />
+      /> -->
       <div
         ref="contentImgRef"
         @keyup="changeEvenet"
@@ -114,6 +114,11 @@ const options = ref<
 ]);
 
 function translateFun() {
+  if (showTransitionImg.value) {
+    // 存在图片，直接翻译图片
+    uploadImg(showTransitionImg.value);
+    return;
+  }
   data.resultText = [];
   data.loading = true;
   const appid = import.meta.env.VITE_APP_ID;
@@ -184,48 +189,88 @@ function changeSelect(val) {
   }
 }
 
+// 翻译的图片
+const showTransitionImg = ref('');
+const contentImgRef = ref(null);
+
 // 翻译图片显示
-const contentImgRef = ref();
 function changeEvenet(v) {
   const text = v.target.innerText;
+  data.entryText = text;
   let imgUrl = '';
+  if (text) {
+    showTransitionImg.value = '';
+  }
   v.target.childNodes.forEach(async (item) => {
     if (item.nodeName === 'IMG') {
       imgUrl = item.currentSrc;
-      uploadImg(imgUrl);
+      showTransitionImg.value = imgUrl;
     }
   });
 }
 
-function uploadImg(imgUrl: string) {
-  const token =
-    'USmI2xVzjc7ufYwFejo7i-nJyKwfBiVGfowtUAC5:Md_Mt4Wx8X6pVvsugQOt2G-tiYk=:eyJzY29wZSI6ImJhaWR1LWZhbnlpIiwiZGVhZGxpbmUiOjE2NDUwOTM4OTB9';
-  const blob: any = dataURItoBlob(imgUrl);
-  const name = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-  const observable = qiniu.upload(
-    blob,
-    name,
-    token,
-    {},
-    {
-      useCdnDomain: true,
-      region: 'z1',
-    }
-  );
-  // 上传开始
-  const observer = {
-    next(res) {
-      console.log(res, '上传中...');
-    },
-    error(err) {
-      console.log(err, '上传失败');
-    },
-    complete(res) {
-      const uploadImg = Config.qiuniuLoadUrl + res.key;
-      console.log(uploadImg, '最终访问地址');
-    },
-  };
-  const subscription = observable.subscribe(observer);
+async function uploadImg(imgUrl: string) {
+  const result = await axios.get(`${Config.backUrl}baidu_img/token`);
+  if (result.data.code === 0) {
+    const token = result.data.data;
+    const blob: any = dataURItoBlob(imgUrl);
+    const name = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+    const observable = qiniu.upload(
+      blob,
+      name,
+      token,
+      {},
+      {
+        useCdnDomain: true,
+        region: 'z1',
+      }
+    );
+    // 上传开始
+    const observer = {
+      next(res) {
+        console.log(res, '上传中...');
+      },
+      error(err) {
+        console.log(err, '上传失败');
+        ElMessage.error('图片上传失败');
+      },
+      complete(res) {
+        const uploadImg = Config.qiuniuLoadUrl + res.key;
+        ElMessage.success('图片上传成功');
+        translationImageContent(uploadImg);
+      },
+    };
+    observable.subscribe(observer);
+  }
+}
+function translationImageContent(url: string) {
+  axios
+    .get(
+      `${Config.backUrl}baidu_img/img?url=${encodeURI(url)}&from=${
+        value.value
+      }&to=${outputValue.value}`
+    )
+    .then((res) => {
+      console.log(
+        '🚀 ~ file: index.vue ~ line 236 ~ axios.get ~ res',
+        res.data
+      );
+      const result = res.data.data.data.sumDst;
+      const src = res.data.data.data.sumSrc;
+
+      data.resultText = [
+        {
+          dst: result,
+          src,
+        },
+      ];
+      console.log(data.resultText);
+
+      ElMessage.success('翻译成功');
+    })
+    .catch(() => {
+      ElMessage.error('翻译失败');
+    });
 }
 
 /**
