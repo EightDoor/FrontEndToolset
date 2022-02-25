@@ -313,5 +313,6 @@ function dataURItoBlob(dataURI) {
   height: 200px;
   border: 1px solid #cccccc;
   overflow-x: scroll;
+  padding: 15px;
 }
 </style>
