@@ -5,9 +5,9 @@ const Config = {
   qiuniuLoadUrl: 'http://fanyi.baidu.start6.cn/',
 
   // 本地地址
-  backUrl: 'http://192.168.150.7:7003/',
+  // backUrl: 'http://192.168.150.7:7003/',
   // 线上地址
-  // backUrl: 'https://xka.start6.cn/wx_mn/',
+  backUrl: 'https://xka.start6.cn/wx_mn/',
 };
 
 export default Config;
