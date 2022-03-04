@@ -14,6 +14,8 @@ import ColorHexConversion from './color_hex_conversion.vue';
 import UrlEncoding from './url_encoding.vue';
 import StyleConversion from './style_conversion/index.vue';
 import UUIDGenerate from './uuid_generate.vue';
+import Md5Component from './md5Component.vue';
+import Base64Component from './base64Component.vue';
 
 interface ListType {
   label: string;
@@ -23,6 +25,14 @@ const list = ref<ListType[]>([
   {
     label: 'uuid生成',
     component: markRaw(UUIDGenerate),
+  },
+  {
+    label: 'md5',
+    component: markRaw(Md5Component),
+  },
+  {
+    label: 'base64',
+    component: markRaw(Base64Component),
   },
   {
     label: '颜色进制转换',
