@@ -45,6 +45,9 @@
         placeholder="请输入翻译内容"
         v-model="data.entryText"
       /> -->
+      <div class="imageContent__clear">
+        <el-button type="primary" @click="clearText">清空</el-button>
+      </div>
       <div
         ref="contentImgRef"
         @keyup="changeEvenet"
@@ -158,6 +161,13 @@ function translateFun() {
     });
 }
 const route = useRoute();
+function clearText() {
+  data.entryText = '';
+  showTransitionImg.value = '';
+  if (contentImgRef.value) {
+    (contentImgRef.value as HTMLElement).innerHTML = '';
+  }
+}
 
 onMounted(() => {
   const title = route.query.title as string;
@@ -314,5 +324,9 @@ function dataURItoBlob(dataURI) {
   border: 1px solid #cccccc;
   overflow-x: scroll;
   padding: 15px;
+  &__clear {
+    float: right;
+    margin-left: 5px;
+  }
 }
 </style>
