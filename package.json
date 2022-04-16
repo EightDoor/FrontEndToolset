@@ -3,8 +3,9 @@
   "version": "0.0.4",
   "main": "./electron/main.js",
   "scripts": {
-    "z": "concurrently  \"npm run start\" \"npm run dev\"",
-    "start": "wait-on -c waitOnConfig.json http-get://localhost:9999/ && electron ./electron",
+    "z": "concurrently  \"npm run dev\" \"npm run start\"",
+    "start": "wait-on -c waitOnConfig.json http-get://localhost:9999/ && npm run electorn",
+    "electorn": "electron ./electron",
     "dev": "vite",
     "build": "cross-env NODE_ENV=production vue-tsc --noEmit --skipLibCheck && vite build",
     "dist:ci": "npm run build && npm run dist:all",

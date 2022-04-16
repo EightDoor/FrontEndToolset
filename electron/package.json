@@ -9,6 +9,6 @@
   "author": "周凯",
   "license": "ISC",
   "dependencies": {
-    "electron": "^15.3.0"
+    "electron": "^17.4.0"
   }
 }
