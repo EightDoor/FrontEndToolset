@@ -1,4 +1,5 @@
 <template>
+  <refresh-data @refresh="refresh" />
   <ul v-loading="loading" class="daily_song_container">
     <li @click="change(item)" v-for="(item, index) in list" :key="index">
       <img :src="item.picUrl" :alt="item.name" />
@@ -9,7 +10,7 @@
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import { sortBy } from 'lodash';
+import { sortBy } from 'lodash-es';
 import { useRouter } from 'vue-router';
 import { MusicType, RecommendedSongList, SongListDetail } from '@/types/music';
 import { log } from '@/utils/log';
@@ -17,6 +18,7 @@ import http from '@/utils/request';
 import business from '@/utils/business';
 import Constant from '@/utils/constant';
 import store from '@/utils/store';
+import RefreshData from '@/components/RefreshData/index.vue';
 
 const router = useRouter();
 const loading = ref(false);
@@ -43,6 +45,10 @@ function formatCount(num: number) {
     result = `${Math.round(num / 1000) / 10}万`;
   }
   return result;
+}
+
+function refresh() {
+  getSongList();
 }
 
 async function change(item) {

@@ -1,20 +1,23 @@
 <template>
+  <refresh-data @refresh="refresh" />
+
   <div v-loading="loading">
     <ul v-if="list.length > 0" class="daily_song_container">
       <li @click="change(item)" v-for="(item, index) in list" :key="index">
         <img :src="item.coverImgUrl" :alt="item.name" />
-        <div class="play_count">播放次数: {{ formatCount(item.playCount) }}</div>
+        <div class="play_count">
+          播放次数: {{ formatCount(item.playCount) }}
+        </div>
         <div class="content">{{ item.name }}</div>
       </li>
     </ul>
     <el-empty v-else description="暂无歌曲"></el-empty>
   </div>
-
 </template>
 
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
-import { sortBy } from 'lodash';
+import { sortBy } from 'lodash-es';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { SongListDetail } from '@/types/music';
@@ -24,6 +27,7 @@ import business from '@/utils/business';
 import Constant from '@/utils/constant';
 import store from '@/utils/store';
 import { Playlist, UserPlayList } from '@/types/music/my_play_list';
+import RefreshData from '@/components/RefreshData/index.vue';
 
 const storeV = useStore();
 const router = useRouter();
@@ -31,18 +35,20 @@ const loading = ref(false);
 const list = ref<Playlist[]>([]);
 function getSongList(id) {
   loading.value = true;
-  http.get<UserPlayList>('music/user/playlist', {
-    params: {
-      uid: id,
-      limit: 10000,
-    },
-  }).then((res) => {
-    log('res.data', res.data);
-    // 排序
-    list.value = sortBy(res.data.playlist, 'playCount').reverse();
-    console.log(list.value, 'val');
-    loading.value = false;
-  });
+  http
+    .get<UserPlayList>('music/user/playlist', {
+      params: {
+        uid: id,
+        limit: 10000,
+      },
+    })
+    .then((res) => {
+      log('res.data', res.data);
+      // 排序
+      list.value = sortBy(res.data.playlist, 'playCount').reverse();
+      console.log(list.value, 'val');
+      loading.value = false;
+    });
 }
 
 const userInfo = computed(() => storeV.state.userInfo.data);
@@ -61,6 +67,11 @@ function formatCount(num: number) {
   return result;
 }
 
+function refresh() {
+  if (userInfo.value.profile.userId) {
+    getSongList(userInfo.value.profile.userId);
+  }
+}
 async function change(item) {
   log('item', item);
   const r = business.showLoading();
@@ -83,7 +94,7 @@ async function change(item) {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-   li {
+  li {
     position: relative;
     height: 250px;
     width: 200px;
@@ -109,5 +120,4 @@ async function change(item) {
   .content {
   }
 }
-
 </style>

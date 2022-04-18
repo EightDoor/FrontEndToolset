@@ -1,8 +1,12 @@
 <template>
-  <refresh-data @refresh="refresh"/>
+  <refresh-data @refresh="refresh" />
 
-  <el-table v-loading="loading" :data="playList" stripe style="width: 100%"
-            :row-class-name="tableRowClassName"
+  <el-table
+    v-loading="loading"
+    :data="playList"
+    stripe
+    style="width: 100%"
+    :row-class-name="tableRowClassName"
   >
     <el-table-column label="序号">
       <template #default="scope">
@@ -22,18 +26,19 @@
     </el-table-column>
     <el-table-column label="操作">
       <template #default="scope">
-        <img class="action_play" v-if="scope.row.id === playingSong?.id" src="http://vue3.admin.qiniu.start6.cn/%E6%92%AD%E6%94%BE.png" alt="">
-        <el-button @click="playFun(scope.row)" type="primary">
-
-          播放 </el-button>
+        <img
+          class="action_play"
+          v-if="scope.row.id === playingSong?.id"
+          src="http://vue3.admin.qiniu.start6.cn/%E6%92%AD%E6%94%BE.png"
+          alt=""
+        />
+        <el-button @click="playFun(scope.row)" type="primary"> 播放 </el-button>
       </template>
     </el-table-column>
   </el-table>
 </template>
 <script lang="ts" setup>
-import {
-  computed, ref, watch,
-} from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 import { ElMessage } from 'element-plus';
 import http from '@/utils/request';
@@ -41,7 +46,10 @@ import { log } from '@/utils/log';
 
 import business from '@/utils/business';
 import { Song, SongPalyList } from '@/types/music/detail';
-import { DailyRecommendedSongData, DailySong } from '@/types/music/my_play_list';
+import {
+  DailyRecommendedSongData,
+  DailySong,
+} from '@/types/music/my_play_list';
 import RefreshData from '@/components/RefreshData/index.vue';
 
 const storeU = useStore();
@@ -128,14 +136,14 @@ function generateTime(time: number) {
     hourTime = parseInt(String(time / 3600), 10);
     minuteTime = parseInt(String(t / 60), 10);
     secondTime = parseInt(String(t % 60), 10);
-    timeStr = `${stringFormat(hourTime)}:${stringFormat(minuteTime)}:${stringFormat(
-      secondTime,
-    )}`;
+    timeStr = `${stringFormat(hourTime)}:${stringFormat(
+      minuteTime
+    )}:${stringFormat(secondTime)}`;
   }
   return timeStr;
 }
 </script>
-<style  lang="less">
+<style lang="less">
 .el-table .success-row {
   --el-table-tr-bg-color: var(--el-color-success-lighter);
 }

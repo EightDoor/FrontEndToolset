@@ -11,12 +11,12 @@ const emit = defineEmits(['refresh']);
 function refresh() {
   emit('refresh');
 }
-
 </script>
 <style lang="less" scoped>
 .refresh_data {
   position: fixed;
   right: 15px;
   bottom: 15px;
+  z-index: 100;
 }
 </style>

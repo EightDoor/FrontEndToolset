@@ -35,11 +35,11 @@ function clipText() {
 function change(val: string) {
   switch (val) {
     case '压缩':
-      content.value = utils.format(defaultJson.value, true);
+      content.value = JSON.stringify(defaultJson.value);
       break;
     case '格式化':
       try {
-        content.value = utils.format(content.value, false);
+        content.value = JSON.parse(defaultJson.value);
       } catch (e) {
         ElMessage.error('json格式化失败');
       }
@@ -51,7 +51,5 @@ function change(val: string) {
 function changeText(val: any) {
   defaultJson.value = val;
 }
-
 </script>
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

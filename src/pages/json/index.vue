@@ -10,14 +10,11 @@
   </el-tabs>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import JsonComponent from './json.vue';
 import JsonToTs from './json_to_typescript.vue';
 
-export default defineComponent({ name: 'Json' });
-</script>
-<script setup lang="ts">
 interface DataType {
   title: string;
   component: any;
@@ -37,7 +34,5 @@ const data = ref<DataType[]>([
 function change(val: any) {
   selectIndex.value = Number(val.index);
 }
-
 </script>
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>
