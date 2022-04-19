@@ -73,7 +73,7 @@ import { ElMessage } from 'element-plus';
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { Menu as MenuIcon } from '@element-plus/icons';
 import { useRouter } from 'vue-router';
-import { isArray } from 'lodash';
+import { isArray } from 'lodash-es';
 import { Datum, Song, SongPalyList } from '@/types/music/detail';
 import { log } from '@/utils/log';
 import http from '@/utils/request';
