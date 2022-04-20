@@ -78,6 +78,8 @@ import { Datum, Song, SongPalyList } from '@/types/music/detail';
 import { log } from '@/utils/log';
 import http from '@/utils/request';
 import business from '@/utils/business';
+import UtilStore from '@/utils/store';
+import Constant from '@/utils/constant';
 
 interface IMusicCheck {
   success: boolean;
@@ -93,6 +95,18 @@ const router = useRouter();
 
 const playData = computed<Datum | null>(() => {
   isShow.value = true;
+  log('当前播放歌曲信息', store.state.music.playData);
+  if (store.state.music.data) {
+    const { id } = store.state.music.playData;
+    const status = likeList.value.includes(id);
+    if (status) {
+      selectMusic.value = true;
+      selectMusicImg.value = `${url}_select`;
+    } else {
+      selectMusic.value = false;
+      selectMusicImg.value = url;
+    }
+  }
   return store.state.music.playData;
 });
 const data = computed<Song | null>(() => {
@@ -198,6 +212,25 @@ function getIdsList(id: number) {
     },
   });
 }
+
+// 获取喜欢歌曲列表
+const likeList = ref<number[]>([]);
+async function getAListOfFavoriteSongs() {
+  // 获取登录信息
+  const userInfo: any = await UtilStore.get(Constant.NETEASE_CLOUD_MUSIC);
+  log('登录信息', userInfo);
+  if (userInfo) {
+    const uid = userInfo.account.id;
+    let url = '/music/likelist';
+    url = await business.getCookie(url);
+    await http.get(`${url}&uid=${uid}`).then((res) => {
+      const { data } = res;
+      log('喜欢音乐列表', data);
+      likeList.value = data.ids;
+    });
+  }
+}
+
 onMounted(() => {
   if (audioRef.value) {
     audioRef.value.addEventListener('ended', () => {
@@ -205,6 +238,8 @@ onMounted(() => {
       playTheNext();
     });
   }
+
+  getAListOfFavoriteSongs();
 });
 function goMenu() {
   router.push('/music_list');
@@ -223,6 +258,9 @@ function changeSelectMusic() {
     selectMusicImg.value = url;
     likeFun(false);
   }
+  setTimeout(() => {
+    getAListOfFavoriteSongs();
+  }, 5000);
 }
 async function likeFun(like: boolean) {
   let url = '/music/like';
