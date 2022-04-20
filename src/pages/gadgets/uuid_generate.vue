@@ -6,7 +6,7 @@
       v-model="generateCount"
       placeholder="请输入生成数量"
     />
-    <el-button type="primary" style="margin-left: 15px" @click="generate"
+    <el-button type="primary" style="margin-left: 15px" @click="generate()"
       >生成</el-button
     >
     <el-button type="warning" style="margin-left: 15px" @click="generate(1)"

@@ -8,7 +8,7 @@
             <el-button
               class="btn"
               type="primary"
-              size="mini"
+              size="small"
               @click="changeCard(item)"
               >访问</el-button
             >

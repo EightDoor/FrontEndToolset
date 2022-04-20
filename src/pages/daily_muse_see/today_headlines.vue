@@ -1,6 +1,6 @@
 <template>
   <go-home path="/daily_muse_see">
-    <el-row gutter="10">
+    <el-row :gutter="10">
       <el-col v-for="(o, index) in data" :key="o.rid" :span="8" class="space">
         <el-card :body-style="{ padding: '0px' }">
           <template #header>

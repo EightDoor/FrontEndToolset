@@ -8,28 +8,28 @@
         :type="item.type ?? 'primary'"
         :size="item.size ?? 'medium'"
         :plain="item.plain ?? false"
-      >{{ item.title }}</el-button>
+        >{{ item.title }}</el-button
+      >
     </li>
     <slot></slot>
   </ul>
 </template>
 <script lang="ts" setup>
-
 export interface ButtonsType {
-  list: ButtonsListType[],
+  list: ButtonsListType[];
   click: (val: string) => void;
   w?: string;
   h?: string;
-  loading?: boolean
+  loading?: boolean;
 }
 export interface ButtonsListType {
   title: string;
-  type?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text',
-  size?: 'medium' | 'small' | 'mini'
-  plain?: boolean,
+  type?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text';
+  size?: any;
+  plain?: boolean;
 }
 
-const props = defineProps<ButtonsType>()
+const props = defineProps<ButtonsType>();
 </script>
 <style lang="less" scoped>
 .button_space {
