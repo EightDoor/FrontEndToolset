@@ -1,3 +1,33 @@
+<script lang="ts" setup>
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+import GoHome from '@/components/GoHome/index.vue'
+import type { ListType } from '@/pages/daily_muse_see/daily_muse_see.interface'
+import utils from '@/utils'
+
+const data = ref<ListType[]>([])
+onMounted(() => {
+  getList()
+})
+
+function getList() {
+  // 今日头条
+  axios.get('http://is.snssdk.com/api/news/feed/v51/').then((res) => {
+    const result: any[] = res.data.data
+    const list: ListType[] = []
+    result.map((item) => {
+      const v = JSON.parse(item.content)
+      list.push(v)
+    })
+    data.value = list
+  })
+}
+
+function open(val: string, title: string) {
+  utils.openUrl(val, title)
+}
+</script>
+
 <template>
   <go-home path="/daily_muse_see">
     <el-row :gutter="10">
@@ -7,11 +37,12 @@
             <div class="card-header">
               <span>来源: {{ o.source }}</span>
               <el-button
-                type="text"
+                type="primary"
                 class="button"
                 @click="open(o.article_url, o.title)"
-                >打开</el-button
               >
+                打开
+              </el-button>
             </div>
           </template>
           <div style="padding: 14px">
@@ -22,36 +53,7 @@
     </el-row>
   </go-home>
 </template>
-<script lang="ts" setup>
-import { onMounted, ref } from 'vue';
-import axios from 'axios';
-import dayjs from 'dayjs';
-import GoHome from '@/components/GoHome/index.vue';
-import { ListType } from '@/pages/daily_muse_see/daily_muse_see.interface';
-import utils from '@/utils';
 
-const data = ref<ListType[]>([]);
-onMounted(() => {
-  getList();
-});
-
-function getList() {
-  // 今日头条
-  axios.get('http://is.snssdk.com/api/news/feed/v51/').then((res) => {
-    const result: any[] = res.data.data;
-    const list: ListType[] = [];
-    result.map((item) => {
-      const v = JSON.parse(item.content);
-      list.push(v);
-    });
-    data.value = list;
-  });
-}
-
-function open(val: string, title: string) {
-  utils.openUrl(val, title);
-}
-</script>
 <style scoped lang="less">
 .card-header {
   display: flex;

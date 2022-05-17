@@ -14,6 +14,7 @@ specifiers:
   axios: ^0.26.1
   clipboard: ^2.0.11
   codemirror: ^5.65.2
+  cross-env: ^7.0.3
   cross-spawn: ^7.0.3
   dayjs: ^1.11.1
   element-plus: ^2.1.10
@@ -68,6 +69,7 @@ devDependencies:
   '@types/uuid': 8.3.4
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.9+vue@3.2.33
   '@vue/compiler-sfc': 3.2.33
+  cross-env: 7.0.3
   eslint: 8.15.0
   less: 4.1.2
   typescript: 4.6.4
@@ -947,6 +949,14 @@ packages:
     deprecated: core-js@<3.4 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Please, upgrade your dependencies to the actual version of core-js.
     requiresBuild: true
     dev: false
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
 
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}

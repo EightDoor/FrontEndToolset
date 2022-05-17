@@ -66,7 +66,7 @@ function formatSinger(val) {
 
 async function playFun(item: Song) {
   storeU.commit('music/setSongList', playList.value)
-  log.i('song', item)
+  log.i(item, 'song')
   const r = business.showLoading()
   const result = await getIdsList(item.id)
   business.hideLoading(r)

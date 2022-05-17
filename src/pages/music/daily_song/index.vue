@@ -15,11 +15,10 @@ const loading = ref(false)
 const list = ref<RecommendedSongList[]>([])
 function getSongList() {
   loading.value = true
-  http.get<MusicType<RecommendedSongList>>('music/personalized').then((res) => {
+  http.get<MusicType<RecommendedSongList>>('music/personalized').then((res: any) => {
     log.i('res.data', res.data.result)
     // 排序
-    const result = sortBy(res.data.result, 'playCount').reverse()
-    list.value = result
+    list.value = sortBy(res.data.result, 'playCount').reverse()
     loading.value = false
   })
 }

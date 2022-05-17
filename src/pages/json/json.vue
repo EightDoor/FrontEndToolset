@@ -3,8 +3,8 @@ import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import Clipboard from 'clipboard'
 import JsonCode from '@/components/JsonCode/index.vue'
-import type { ButtonsListType } from '@/components/Buttons/index.vue'
 import Buttons from '@/components/Buttons/index.vue'
+import type { ButtonsListType } from '@/types/com'
 
 const loading = ref(false)
 

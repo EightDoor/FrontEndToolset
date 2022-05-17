@@ -66,7 +66,7 @@ function submit() {
       }).then(async (res) => {
         const r = res.data
         if (r.code === 200) {
-          log.i('res.data', r)
+          log.i(r, 'res.data')
           await store.set(Constant.NETEASE_CLOUD_MUSIC, r)
           await getUserDetailInfo(r.profile.userId)
           info.value = r

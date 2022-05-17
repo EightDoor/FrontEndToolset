@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onActivated, ref, watch } from 'vue'
+import { computed, onActivated, ref } from 'vue'
 import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
 import GoHome from '@/components/GoHome/index.vue'
@@ -23,7 +23,7 @@ async function getList() {
           ids,
         },
       })
-      .then(async (res) => {
+      .then(async (res: any) => {
         log.i('res.data', res.data.songs)
         playList.value = res.data.songs
         log.i('res.data.data', res.data.songs)
@@ -65,7 +65,7 @@ function formatSinger(val) {
 }
 
 async function playFun(item: Song) {
-  log.i('song', item)
+  log.i(item, 'song')
   const r = business.showLoading()
   const result = await getIdsList(item.id)
   business.hideLoading(r)

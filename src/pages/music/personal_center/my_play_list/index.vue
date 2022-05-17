@@ -25,7 +25,7 @@ function getSongList(id) {
         limit: 10000,
       },
     })
-    .then((res) => {
+    .then((res: any) => {
       log.i('res.data', res.data)
       // 排序
       list.value = sortBy(res.data.playlist, 'playCount').reverse()

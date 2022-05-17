@@ -21,6 +21,13 @@ const store = useStore()
 const isShow = ref(false)
 const minimization = ref(false)
 const clickCount = ref(0)
+// 获取喜欢歌曲列表
+const likeList = ref<number[]>([])
+
+// 喜欢音乐/取消喜欢
+const url = 'http://vue3.admin.qiniu.start6.cn/%E5%96%9C%E6%AC%A2'
+const selectMusic = ref(false)
+const selectMusicImg = ref(url)
 
 const router = useRouter()
 
@@ -95,7 +102,7 @@ async function songSwitchImplement(list, index, status?: 1 | 2) {
     const v = await getSongIsAvailable(singData?.id)
     if (v) {
       const r = await getIdsList(singData?.id)
-      log.i('r', r.data.data)
+      log.i(r.data.data, 'r')
       if (r.data.data.length > 0) {
         business.hideLoading(loading)
         store.commit('music/setData', singData)
@@ -148,8 +155,6 @@ function getIdsList(id: number) {
   })
 }
 
-// 获取喜欢歌曲列表
-const likeList = ref<number[]>([])
 async function getAListOfFavoriteSongs() {
   // 获取登录信息
   const userInfo: any = await UtilStore.get(Constant.NETEASE_CLOUD_MUSIC)
@@ -180,10 +185,6 @@ function goMenu() {
   router.push('/music_list')
 }
 
-// 喜欢音乐/取消喜欢
-const url = 'http://vue3.admin.qiniu.start6.cn/%E5%96%9C%E6%AC%A2'
-const selectMusic = ref(false)
-const selectMusicImg = ref(url)
 function changeSelectMusic() {
   selectMusic.value = !selectMusic.value
   if (selectMusic.value) {

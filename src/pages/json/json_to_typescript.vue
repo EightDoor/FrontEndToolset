@@ -6,8 +6,8 @@ import Clipboard from 'clipboard'
 import { log } from '@/utils/log'
 import JsonCode from '@/components/JsonCode/index.vue'
 import utils from '@/utils'
-import type { ButtonsListType } from '@/components/Buttons/index.vue'
 import Buttons from '@/components/Buttons/index.vue'
+import type { ButtonsListType } from '@/types/com'
 
 const content = ref('')
 const tsName = ref('')
@@ -19,7 +19,7 @@ function CoverToTs(val: string, name?: string) {
     const result = JSON.parse(val)
     return JsonToTs(result, { rootName: name ?? 'RootObj' })
   }
-  catch (err) {
+  catch (err: any) {
     log.i('err', err)
   }
 }
