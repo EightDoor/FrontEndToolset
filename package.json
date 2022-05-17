@@ -2,31 +2,17 @@
   "name": "vite-project",
   "version": "0.0.4",
   "author": "周凯 <851708184@qq.com>",
-  "main": "./electron/main.js",
   "scripts": {
-    "z": "concurrently  \"npm run dev\" \"npm run start\"",
-    "start": "wait-on -c waitOnConfig.json http-get://localhost:9999/ && npm run electron",
-    "electron": "electron ./electron",
     "dev": "vite",
     "build": "cross-env NODE_ENV=production vue-tsc --noEmit --skipLibCheck && vite build",
-    "dist:ci": "npm run build && npm run dist:all",
-    "dist:all": "cross-env NODE_ENV=production electron-builder -mwl",
-    "dist:mac": "cross-env NODE_ENV=production electron-builder -m",
-    "dist:win": "cross-env NODE_ENV=production electron-builder --win --x64",
-    "dist:linux": "electron-builder --linux deb tar.xz AppImage",
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@amap/amap-jsapi-types": "^0.0.8",
     "@element-plus/icons": "^0.0.11",
     "axios": "^0.26.1",
     "codemirror": "^5.65.2",
     "cross-spawn": "^7.0.3",
     "dayjs": "^1.11.1",
-    "electron-dl": "^3.3.1",
-    "electron-is-dev": "^2.0.0",
-    "electron-log": "^4.4.6",
-    "electron-updater": "^4.6.5",
     "element-plus": "^2.1.10",
     "highlight.js": "^11.5.1",
     "js-base64": "^3.7.2",
@@ -42,26 +28,14 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.23.1",
-    "@commitlint/cli": "^16.2.3",
-    "@commitlint/config-conventional": "^16.2.1",
     "@types/codemirror": "^5.60.5",
     "@types/localforage": "^0.0.34",
-    "@types/lodash": "^4.14.182",
     "@types/lodash-es": "^4.17.6",
     "@types/md5": "^2.3.2",
     "@types/node": "^16.11.27",
     "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
     "@vitejs/plugin-vue": "^2.3.1",
     "@vue/compiler-sfc": "^3.2.33",
-    "chalk": "^5.0.1",
-    "concurrently": "^7.1.0",
-    "cross-env": "^7.0.3",
-    "debugout.js": "^1.1.0",
-    "electron": "^17.4.0",
-    "electron-builder": "23.0.6",
-    "electron-rebuild": "^3.2.7",
     "eslint": "^8.13.0",
     "less": "^4.1.2",
     "typescript": "^4.6.3",
@@ -69,72 +43,5 @@
     "unplugin-vue-components": "^0.18.5",
     "vite": "^2.9.5",
     "vue-tsc": "^0.33.9",
-    "wait-on": "^6.0.1"
-  },
-  "build": {
-    "productName": "个人工具箱",
-    "appId": "cn.start6",
-    "copyright": "周凯",
-    "compression": "store",
-    "publish": {
-      "provider": "generic",
-      "url": "https://vue3-admin-nest-upload.vercel.app/"
-    },
-    "win": {
-      "target": [
-        "nsis",
-        "zip"
-      ],
-      "requestedExecutionLevel": "requireAdministrator"
-    },
-    "mac": {
-      "target": [
-        "dmg",
-        "zip",
-        "pkg"
-      ],
-      "hardenedRuntime": true,
-      "entitlements": "electron-builder/entitlements.plist",
-      "entitlementsInherit": "electron-builder/entitlements.plist",
-      "provisioningProfile": "electron-builder/comalibabaslobs.provisionprofile"
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "zip"
-      ]
-    },
-    "pkg": {
-      "isRelocatable": false,
-      "overwriteAction": "upgrade"
-    },
-    "dmg": {
-      "icon": "public/images/tap.ico",
-      "title": "个人工具箱",
-      "iconSize": 100,
-      "sign": false,
-      "contents": [
-        {
-          "x": 112,
-          "y": 165
-        },
-        {
-          "type": "link",
-          "path": "/Applications",
-          "x": 396,
-          "y": 165
-        }
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "language": "2052",
-      "perMachine": true,
-      "allowToChangeInstallationDirectory": true,
-      "allowElevation": true,
-      "createDesktopShortcut": true,
-      "runAfterFinish": true
-    }
-  },
-  "__npminstall_done": false
+  }
 }
