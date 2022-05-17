@@ -1,37 +1,18 @@
-<template>
-  <ul class="ul">
-    <el-menu
-      background-color="#545c64"
-      text-color="#fff"
-      :default-active="String(selectIndex)"
-      class="slider"
-    >
-      <el-menu-item
-        v-for="(item, index) in list"
-        :key="index"
-        :index="String(index)"
-        @click="change(item, index)"
-      >
-        <template #title>{{ item.title }}</template>
-      </el-menu-item>
-    </el-menu>
-  </ul>
-</template>
 <script lang="ts">
 import {
-  defineComponent, reactive, ref, onMounted, computed, watch,
-} from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { useStore } from 'vuex';
-import utils from '@/utils';
+  computed, defineComponent, onMounted, reactive, ref, watch,
+} from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+import utils from '@/utils'
 
 const Slider = defineComponent({
   name: 'LayoutSlider',
   setup() {
-    const selectIndex = ref(0);
-    const router = useRouter();
-    const route = useRoute();
-    const store = useStore();
+    const selectIndex = ref(0)
+    const router = useRouter()
+    const route = useRoute()
+    const store = useStore()
     const list = reactive<Layout.SliderType[]>([
       {
         title: '首页',
@@ -44,10 +25,6 @@ const Slider = defineComponent({
       {
         title: '音乐',
         url: '/music',
-      },
-      {
-        title: 'node环境安装与配置',
-        url: '/env_install',
       },
       {
         title: 'json格式化',
@@ -75,49 +52,71 @@ const Slider = defineComponent({
         url: 'https://github.com/EightDoor/FrontEndToolset',
         type: 'url',
       },
-    ]);
+    ])
     function change(item: Layout.SliderType, index: number) {
-      console.log(`当前选择的: ${JSON.stringify(item)}`);
+      console.log(`当前选择的: ${JSON.stringify(item)}`)
       if (item.type === 'url') {
-        utils.openUrl(item.url, item.title);
-      } else {
-        selectIndex.value = index;
-        store.commit('MenuBar/setIndex', item.title);
-        router.push(item.url);
+        utils.openUrl(item.url, item.title)
+      }
+      else {
+        selectIndex.value = index
+        store.commit('MenuBar/setIndex', item.title)
+        router.push(item.url)
       }
     }
 
     function getPath() {
-      const { path } = route;
-      const index = list.findIndex((item) => item.url === path);
-      if (index !== -1) {
-        selectIndex.value = index;
-      }
+      const { path } = route
+      const index = list.findIndex(item => item.url === path)
+      if (index !== -1)
+        selectIndex.value = index
     }
 
-    const title = computed(() => store.state.MenuBar.title);
+    const title = computed(() => store.state.MenuBar.title)
     watch(title, (newVal) => {
-      const v = list.findIndex((item) => item.title === newVal);
-      if (v !== -1) {
-        selectIndex.value = v;
-      }
-    });
+      const v = list.findIndex(item => item.title === newVal)
+      if (v !== -1)
+        selectIndex.value = v
+    })
 
     onMounted(() => {
-      getPath();
-    });
+      getPath()
+    })
     return {
       // fun
       change,
       // data
       list,
       selectIndex,
-    };
+    }
   },
-});
+})
 
-export default Slider;
+export default Slider
 </script>
+
+<template>
+  <ul class="ul">
+    <el-menu
+      background-color="#545c64"
+      text-color="#fff"
+      :default-active="String(selectIndex)"
+      class="slider"
+    >
+      <el-menu-item
+        v-for="(item, index) in list"
+        :key="index"
+        :index="String(index)"
+        @click="change(item, index)"
+      >
+        <template #title>
+          {{ item.title }}
+        </template>
+      </el-menu-item>
+    </el-menu>
+  </ul>
+</template>
+
 <style lang="less" scoped>
 @import "slider.module";
 </style>

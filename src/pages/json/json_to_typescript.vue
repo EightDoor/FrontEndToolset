@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import JsonToTs from 'json-to-ts';
 import { ref, watch } from 'vue';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { log } from '@/utils/log';
 import JsonCode from '@/components/JsonCode/index.vue';
 import Clip_button from '@/components/Buttons/clip_button.vue';

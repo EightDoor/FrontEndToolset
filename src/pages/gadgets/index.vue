@@ -1,25 +1,16 @@
-<template>
-  <el-tabs tab-position="top">
-    <el-tab-pane v-for="(item, index) in list" :key="index" :label="item.label">
-      <component :is="item.component" />
-    </el-tab-pane>
-  </el-tabs>
-</template>
-
-<script lang="ts"></script>
 <script lang="ts" setup>
-import { markRaw, ref } from 'vue';
-import Calculator from './calculator/index.vue';
-import ColorHexConversion from './color_hex_conversion.vue';
-import UrlEncoding from './url_encoding.vue';
-import StyleConversion from './style_conversion/index.vue';
-import UUIDGenerate from './uuid_generate.vue';
-import Md5Component from './md5Component.vue';
-import Base64Component from './base64Component.vue';
+import { markRaw, ref } from 'vue'
+import Calculator from './calculator/index.vue'
+import ColorHexConversion from './color_hex_conversion.vue'
+import UrlEncoding from './url_encoding.vue'
+import StyleConversion from './style_conversion/index.vue'
+import UUIDGenerate from './uuid_generate.vue'
+import Md5Component from './md5Component.vue'
+import Base64Component from './base64Component.vue'
 
 interface ListType {
-  label: string;
-  component: any;
+  label: string
+  component: any
 }
 const list = ref<ListType[]>([
   {
@@ -50,5 +41,13 @@ const list = ref<ListType[]>([
     label: 'less、sass、css相互转换',
     component: markRaw(StyleConversion),
   },
-]);
+])
 </script>
+
+<template>
+  <el-tabs tab-position="top">
+    <el-tab-pane v-for="(item, index) in list" :key="index" :label="item.label">
+      <component :is="item.component" />
+    </el-tab-pane>
+  </el-tabs>
+</template>

@@ -52,11 +52,11 @@ module.exports = (win) => {
   // 打开webview
   ipcMain.handle(Config.channel.WEBVIEW,  async (event, arg) => {
     const { title, url } = JSON.parse(arg)
-    const child = new BrowserWindow({parent: win, modal: true, show: false, webPreferences: {
+    console.log(win, 'win')
+    const child = new BrowserWindow({parent: win, width: 1400, height: 900, modal: true, show: false, webPreferences: {
             preload: path.join(__dirname, 'child_webview.js')
-          },
-        },
-      )
+    }
+    )
     child.setTitle(title)
     await child.loadURL(url)
     child.show()
