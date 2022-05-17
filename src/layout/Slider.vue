@@ -39,10 +39,6 @@ const Slider = defineComponent({
         url: '/gadgets',
       },
       {
-        title: '其他工具',
-        url: '/other_tool',
-      },
-      {
         title: 'json to dart',
         url: 'https://javiercbk.github.io/json_to_dart/',
         type: 'url',

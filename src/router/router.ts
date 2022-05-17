@@ -9,12 +9,9 @@ import Translate from '@/pages/translate/index.vue'
 import Gadgets from '@/pages/gadgets/index.vue'
 import My from '@/pages/my/index.vue'
 import DailyMuseSee from '@/pages/daily_muse_see/index.vue'
-import ShortcutKey from '@/pages/shortcut_key/index.vue'
-import Setting from '@/pages/setting/settings.vue'
 import TodayHeadlines from '@/pages/daily_muse_see/today_headlines.vue'
 import Music from '@/pages/music/index.vue'
 import MusicList from '@/pages/music/music_list/index.vue'
-import OtherTool from '@/pages/other_tool/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -58,10 +55,7 @@ const routes: RouteRecordRaw[] = [
         path: 'music_list',
         component: MusicList,
       },
-      {
-        path: '/other_tool',
-        component: OtherTool,
-      },
+
     ],
   },
   {
@@ -69,16 +63,8 @@ const routes: RouteRecordRaw[] = [
     component: My,
   },
   {
-    path: '/shortcut_key',
-    component: ShortcutKey,
-  },
-  {
     path: '/today_headlines',
     component: TodayHeadlines,
-  },
-  {
-    path: '/setting',
-    component: Setting,
   },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]

@@ -1,9 +1,5 @@
-import { Debugout } from 'debugout.js';
+import { LogUtil } from 'zhoukai_utils'
 
-const uLog = new Debugout();
+const log = new LogUtil()
 
-export const log = (title: string = '输入信息', v: any) => {
-  console.group(title);
-  uLog.log(v);
-  console.groupEnd();
-};
+export { log }

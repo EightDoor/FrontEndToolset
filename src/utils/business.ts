@@ -1,30 +1,29 @@
-import { ElLoading } from 'element-plus';
-import CommVariable from '@/comm_variable/comm_variable.json';
-import store from '@/utils/store';
-import Constant from '@/utils/constant';
-import http from '@/utils/request';
-import axios from 'axios';
-import { log } from '@/utils/log';
-import utils from '.';
-
+import { ElLoading } from 'element-plus'
+import axios from 'axios'
+import utils from '.'
+import CommVariable from '@/comm_variable/comm_variable.json'
+import store from '@/utils/store'
+import Constant from '@/utils/constant'
+import http from '@/utils/request'
+import { log } from '@/utils/log'
 
 export interface RegisterShortcutType {
-  value: string;
-  label: string;
-  description: string;
+  value: string
+  label: string
+  description: string
 }
 
 export interface CheckoutVersion {
   // 是否有新版本
-  isShowNewVersion?: boolean;
+  isShowNewVersion?: boolean
   // 版本信息
-  version: string;
+  version: string
   // 更新内容
-  updateContent: string;
+  updateContent: string
   // 下载地址
-  downloadUrl: string;
+  downloadUrl: string
   // 历史版本列表
-  lastList: CheckoutVersion[];
+  lastList: CheckoutVersion[]
 }
 const business = {
   /**
@@ -36,26 +35,8 @@ const business = {
       params: {
         uid,
       },
-    });
+    })
   },
-  registerShortcutKeys: async (list?: RegisterShortcutType[]) => {
-    const result = await store.get(Constant.REGISTER_SHORTCUT_KEYS);
-    let r: unknown = list ?? CommVariable.Config.ShortcutKey;
-    if (result) {
-      r = result;
-    }
-
-    if (utils.isElectron()) {
-      const { ipcRenderer } = require('electron');
-      // 发送主进程注册快捷键
-      await ipcRenderer.invoke(
-        CommVariable.channel.REGISTER_SHORTCUT,
-        JSON.stringify(r)
-      );
-    }
-
-  },
-
   /**
    * 显示加载中
    * @param text
@@ -64,32 +45,30 @@ const business = {
   showLoading(text?: string) {
     const loadingInstance = ElLoading.service({
       text: text ?? '加载中...',
-    });
+    })
     setTimeout(() => {
-      if (loadingInstance) {
-        loadingInstance.close();
-      }
-    }, 5000);
-    return loadingInstance;
+      if (loadingInstance)
+        loadingInstance.close()
+    }, 5000)
+    return loadingInstance
   },
   /**
    * 关闭loading弹框
    * @param instant
    */
   hideLoading(instant: any) {
-    if (instant) {
-      instant.close();
-    }
+    if (instant)
+      instant.close()
   },
   /**
    * 获取本地登录存储的cookie 登录鉴权需要
    */
   async getCookie(url) {
-    const data: any = await store.get(Constant.NETEASE_CLOUD_MUSIC);
-    if (data) {
-      return `${url}?cookie=${data.cookie}&timestamp=${Date.now()}`;
-    }
-    return url;
+    const data: any = await store.get(Constant.NETEASE_CLOUD_MUSIC)
+    if (data)
+      return `${url}?cookie=${data.cookie}&timestamp=${Date.now()}`
+
+    return url
   },
 
   /**
@@ -100,28 +79,28 @@ const business = {
       axios
         .get<CheckoutVersion>('http://vue3.admin.qiniu.start6.cn/update.json')
         .then((res) => {
-          const { data } = res;
-          console.log(data, 'res.data');
-          log('当前获取的版本更新数据为 -> ', data);
-          const version = process.env.npm_package_version;
-          log('当前获取的package.json版本号为 -> ', version);
+          const { data } = res
+          console.log(data, 'res.data')
+          log.i('当前获取的版本更新数据为 -> ', data)
+          const version = process.env.npm_package_version
+          log.i('当前获取的package.json版本号为 -> ', version)
           const result: CheckoutVersion = {
             version: data.version,
             updateContent: data.updateContent,
             downloadUrl: data.downloadUrl,
             lastList: data.lastList,
             isShowNewVersion: false,
-          };
+          }
           if (business.compare(data.version, version) === 1) {
             // 有新版本了
-            result.isShowNewVersion = true;
+            result.isShowNewVersion = true
           }
-          resolve(result);
+          resolve(result)
         })
         .catch((e) => {
-          reject(e);
-        });
-    });
+          reject(e)
+        })
+    })
   },
 
   /**
@@ -133,40 +112,35 @@ const business = {
    * @param b
    */
   compare(a, b): 1 | -1 | 0 {
-    if (a === b) {
-      return 0;
-    }
+    if (a === b)
+      return 0
 
-    const aComponents = a.split('.');
-    const bComponents = b.split('.');
+    const aComponents = a.split('.')
+    const bComponents = b.split('.')
 
-    const len = Math.min(aComponents.length, bComponents.length);
+    const len = Math.min(aComponents.length, bComponents.length)
 
     // loop while the components are equal
     for (let i = 0; i < len; i += 1) {
       // A bigger than B
-      if (parseInt(aComponents[i], 10) > parseInt(bComponents[i], 10)) {
-        return 1;
-      }
+      if (parseInt(aComponents[i], 10) > parseInt(bComponents[i], 10))
+        return 1
 
       // B bigger than A
-      if (parseInt(aComponents[i], 10) < parseInt(bComponents[i], 10)) {
-        return -1;
-      }
+      if (parseInt(aComponents[i], 10) < parseInt(bComponents[i], 10))
+        return -1
     }
 
     // If one's a prefix of the other, the longer one is greater.
-    if (aComponents.length > bComponents.length) {
-      return 1;
-    }
+    if (aComponents.length > bComponents.length)
+      return 1
 
-    if (aComponents.length < bComponents.length) {
-      return -1;
-    }
+    if (aComponents.length < bComponents.length)
+      return -1
 
     // Otherwise they are the same.
-    return 0;
+    return 0
   },
-};
+}
 
-export default business;
+export default business

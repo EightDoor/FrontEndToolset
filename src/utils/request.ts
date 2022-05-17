@@ -1,31 +1,32 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import Config from '@/config';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios from 'axios'
+import Config from '@/config'
 
 const instant = axios.create({
   baseURL: '',
   withCredentials: true,
-});
+})
 
 instant.interceptors.request.use(
   async (config: AxiosRequestConfig) => {
     // 在发送请求之前做些什么
-    const reg = /music/;
-    if (reg.test(config.url || '')) {
-      config.baseURL = Config.musicApi;
-    }
-    return config;
+    const reg = /music/
+    if (reg.test(config.url || ''))
+      config.baseURL = Config.musicApi
+
+    return config
   },
-  (error) =>
+  error =>
     // 对请求错误做些什么
-    Promise.reject(error)
-);
+    Promise.reject(error),
+)
 
 // 添加响应拦截器
 instant.interceptors.response.use(
   (response: AxiosResponse) => response,
-  async (error) =>
+  async error =>
     // 对响应错误做点什么
-    Promise.reject(error)
-);
+    Promise.reject(error),
+)
 
-export default instant;
+export default instant

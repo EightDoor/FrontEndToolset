@@ -54,7 +54,7 @@ function currentChange(val: number) {
   search()
 }
 async function action(item: SearchList) {
-  log('song', item)
+  log.i('song', item)
   const r = business.showLoading()
   const result = await getIdsList(item.id)
   business.hideLoading(r)

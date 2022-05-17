@@ -2,27 +2,15 @@
 import { defineComponent, onMounted, ref } from 'vue'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-import type { CheckoutVersion } from '@/utils/business'
-import business from '@/utils/business'
 import type { ForecastType, WeaterType } from '@/types/home'
-import { log } from '@/utils/log'
-
-const { shell } = require('electron')
 
 const Home = defineComponent({
   name: 'PagesHome',
   setup() {
     const watherData = ref<Partial<ForecastType>>()
-    const versionData = ref<CheckoutVersion | null>(null)
 
-    async function getVersion() {
-      versionData.value = await business.checkoutVersion()
-      log('version', versionData)
-      versionUpdate.value = versionData.value.isShowNewVersion || false
-    }
     onMounted(() => {
       getWeater()
-      getVersion()
     })
 
     async function getWeater() {
@@ -68,28 +56,12 @@ const Home = defineComponent({
     }
 
     const versionUpdate = ref(false)
-    function handleClose() {
-      versionUpdate.value = false
-    }
-    function updateVersionDownLoad() {
-      const url = versionData.value?.downloadUrl
-      if (url) {
-        shell.openExternal(url)
-      }
-      else {
-        ElMessage.info({
-          message: '不存在下载地址',
-        })
-      }
-    }
+
     return {
       watherData,
       formatDay,
 
-      versionData,
-      handleClose,
       versionUpdate,
-      updateVersionDownLoad,
     }
   },
 })
@@ -175,22 +147,6 @@ export default Home
     <div v-else>
       个人工具箱
     </div>
-
-    <el-dialog
-      v-model="versionUpdate"
-      title="版本升级"
-      :center="true"
-      width="30%"
-      :before-close="handleClose"
-    >
-      <span>更新内容: {{ versionData?.updateContent }}</span>
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="versionUpdate = false">取消</el-button>
-          <el-button type="primary" @click="updateVersionDownLoad()">更新</el-button>
-        </span>
-      </template>
-    </el-dialog>
   </div>
 </template>
 

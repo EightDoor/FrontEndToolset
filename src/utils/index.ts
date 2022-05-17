@@ -1,6 +1,5 @@
-import { ElLoading, ElMessage } from 'element-plus'
+import { ElMessage } from 'element-plus'
 import { log } from './log'
-import CommVariable from '@/comm_variable/comm_variable.json'
 
 const utils = {
   /**
@@ -14,14 +13,14 @@ const utils = {
     /* 格式化JSON源码(对象转换为JSON文本) */
     const indentChar = ' '
     if (/^\s*$/.test(txt)) {
-      log('err', '数据为空,无法格式化! ')
+      log.i('err', '数据为空,无法格式化! ')
       return txt
     }
     try {
       var data = eval(`(${txt})`)
     }
     catch (e: any) {
-      log('err', `数据源语法错误,格式化失败! 错误信息: ${e.description}`)
+      log.i('err', `数据源语法错误,格式化失败! 错误信息: ${e.description}`)
       return txt
     }
     const draw: any[] = []
@@ -92,47 +91,19 @@ const utils = {
    * @param text 内容
    */
   clipText(text: string): void {
-    if (text) {
-      ElMessage.success('内容已经复制到剪切板')
-      if (utils.isElectron()) {
-        const { clipboard } = require('electron')
-        clipboard.writeText(text)
-      }
-    }
-    else {
+    if (text)
+      alert('待更改')
+      // ElMessage.success('内容已经复制到剪切板')
+      // if (utils.isElectron()) {
+      //   const { clipboard } = require('electron')
+      //   clipboard.writeText(text)
+      // }
+
+    else
       ElMessage.info('请输入内容')
-    }
   },
   async openUrl(url: string, title?: string) {
-    const loading = ElLoading.service({
-      lock: true,
-      text: `${title ?? '网页'} 打开中...`,
-    })
-    // 超时5秒关闭
-    setTimeout(() => {
-      loading.close()
-    }, 5000)
-
-    if (utils.isElectron()) {
-      const { ipcRenderer } = require('electron')
-      await ipcRenderer.invoke(
-        CommVariable.channel.WEBVIEW,
-        JSON.stringify({
-          url,
-          title,
-        }),
-      )
-    }
-
-    loading.close()
-  },
-
-  /**
-   * 是否是electron
-   * @returns
-   */
-  isElectron() {
-    return window === undefined
+    window.open(url, '_blank')
   },
 }
 
