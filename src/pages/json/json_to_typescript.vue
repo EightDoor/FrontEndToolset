@@ -3,6 +3,7 @@ import JsonToTs from 'json-to-ts'
 import { ref, watch } from 'vue'
 import { cloneDeep } from 'lodash-es'
 import Clipboard from 'clipboard'
+import { ElMessage } from 'element-plus'
 import { log } from '@/utils/log'
 import JsonCode from '@/components/JsonCode/index.vue'
 import utils from '@/utils'
@@ -52,6 +53,7 @@ function clipText() {
   const clipboard = new Clipboard('.copy')
   clipboard.on('success', (e) => {
     console.log('复制成功', e)
+    ElMessage.success('复制成功')
     // 释放内存
     clipboard.destroy()
   })

@@ -10,6 +10,6 @@ const Constant = {
 
   // 定时开关机，管理员密码
   TIMING_SWITCH: 'TIMING_SWITCH',
-};
+}
 
-export default Constant;
+export default Constant

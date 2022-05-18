@@ -1,3 +1,11 @@
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({ name: 'JsonToDart' })
+</script>
+
+<script setup lang="ts">
+</script>
+
 <template>
   <div>
     <!-- <webview
@@ -7,12 +15,7 @@
     /> -->
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
-export default defineComponent({ name: 'JsonToDart' });
-</script>
-<script setup lang="ts">
-</script>
+
 <style scoped lang="less">
 #wb {
   height: 100%;

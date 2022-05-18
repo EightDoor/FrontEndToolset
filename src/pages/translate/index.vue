@@ -60,7 +60,7 @@ function translateFun() {
   log.i('appid', appid)
   log.i('key', key)
   axios
-    .get('http://api.fanyi.baidu.com/api/trans/vip/translate', {
+    .get(`${Config.backUrl}baidu_img/translationContent`, {
       params: {
         q: query,
         appid,
@@ -71,12 +71,12 @@ function translateFun() {
       },
     })
     .then((res) => {
-      console.log(res)
+      console.log(res.data, 'res.data')
       data.loading = false
-      if (res.data.error_code)
-        ElMessage.error(`翻译失败: ${res.data.error_cod}`)
+      if (res.data.code === 0)
+        data.resultText = res.data.data.trans_result
       else
-        data.resultText = res.data.trans_result
+        ElMessage.error(`翻译失败: ${res.data.data}`)
     })
     .catch((err) => {
       data.loading = false

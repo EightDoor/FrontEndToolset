@@ -1,4 +1,4 @@
-import { Module } from "vuex";
+import type { Module } from 'vuex'
 
 interface State {
   title: string
@@ -6,13 +6,13 @@ interface State {
 const MenuBar: Module<State, any> = {
   namespaced: true,
   state: {
-    title: "首页",
+    title: '首页',
   },
-  mutations:{
+  mutations: {
     setIndex(state, r) {
-      state.title = r;
-    }
-  }
+      state.title = r
+    },
+  },
 }
 
 export default MenuBar

@@ -1,8 +1,8 @@
-import { createStore, createLogger } from 'vuex';
+import { createLogger, createStore } from 'vuex'
 
-import MenuBar from './modules/menu_bar';
-import MusicStore from './modules/music';
-import UserInfo from './modules/user_info';
+import MenuBar from './modules/menu_bar'
+import MusicStore from './modules/music'
+import UserInfo from './modules/user_info'
 
 const store = createStore({
   modules: {
@@ -12,6 +12,6 @@ const store = createStore({
   },
   plugins: [createLogger()],
   strict: process.env.NODE_ENV !== 'production',
-});
+})
 
-export default store;
+export default store

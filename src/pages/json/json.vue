@@ -25,6 +25,7 @@ function clipText() {
   const clipboard = new Clipboard('.copy')
   clipboard.on('success', (e) => {
     console.log('复制成功', e)
+    ElMessage.success('复制成功')
     // 释放内存
     clipboard.destroy()
   })

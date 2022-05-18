@@ -85,22 +85,23 @@ const utils = {
     notify('', data, isLast, indent, false)
     return draw.join('')
   },
-
   /**
-   * 复制文字到剪切板
-   * @param text 内容
+   * 复制的回调
+   * @param clipboard
    */
-  clipText(text: string): void {
-    if (text)
-      alert('待更改')
-      // ElMessage.success('内容已经复制到剪切板')
-      // if (utils.isElectron()) {
-      //   const { clipboard } = require('electron')
-      //   clipboard.writeText(text)
-      // }
-
-    else
-      ElMessage.info('请输入内容')
+  clipTextResultInfo(clipboard: any) {
+    clipboard.on('success', (e) => {
+      console.log('复制成功', e)
+      ElMessage.success('复制成功')
+      // 释放内存
+      clipboard.destroy()
+    })
+    clipboard.on('error', (e) => {
+      // 不支持复制
+      console.log('该浏览器不支持自动复制', e)
+      // 释放内存
+      clipboard.destroy()
+    })
   },
   async openUrl(url: string, title?: string) {
     window.open(url, '_blank')

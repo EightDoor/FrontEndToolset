@@ -1,43 +1,19 @@
-<template>
-  <ul class="daily_muse_see">
-    <li v-for="(item, index) in list" :key="index">
-      <el-card>
-        <template #header>
-          <div class="header">
-            {{ item.title }}
-            <el-button
-              class="btn"
-              type="primary"
-              size="small"
-              @click="changeCard(item)"
-              >访问</el-button
-            >
-          </div>
-        </template>
-        <div class="content">
-          {{ item.descriptions }}
-        </div>
-      </el-card>
-    </li>
-  </ul>
-</template>
-
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import utils from '@/utils';
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import utils from '@/utils'
 
 interface ListType {
-  title: string;
-  url?: string;
-  descriptions: string;
-  router?: string;
+  title: string
+  url?: string
+  descriptions: string
+  router?: string
 }
-const list = ref<ListType[]>([]);
+const list = ref<ListType[]>([])
 
 onMounted(() => {
-  getList();
-});
+  getList()
+})
 
 function getList() {
   list.value = [
@@ -61,18 +37,43 @@ function getList() {
       descriptions: '开源中国',
       url: 'https://www.oschina.net/',
     },
-  ];
+  ]
 }
 
-const router = useRouter();
+const router = useRouter()
 function changeCard(item) {
-  if (item.url) {
-    utils.openUrl(item.url, item.title);
-  } else if (item.router) {
-    router.push(item.router);
-  }
+  if (item.url)
+    utils.openUrl(item.url, item.title)
+  else if (item.router)
+    router.push(item.router)
 }
 </script>
+
+<template>
+  <ul class="daily_muse_see">
+    <li v-for="(item, index) in list" :key="index">
+      <el-card>
+        <template #header>
+          <div class="header">
+            {{ item.title }}
+            <el-button
+              class="btn"
+              type="primary"
+              size="small"
+              @click="changeCard(item)"
+            >
+              访问
+            </el-button>
+          </div>
+        </template>
+        <div class="content">
+          {{ item.descriptions }}
+        </div>
+      </el-card>
+    </li>
+  </ul>
+</template>
+
 <style scoped lang="less">
 .daily_muse_see {
   display: flex;

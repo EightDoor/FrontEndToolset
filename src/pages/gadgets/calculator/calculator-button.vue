@@ -1,9 +1,16 @@
+<script>
+export default {
+  name: 'CalculatorButton',
+  props: ['buttonArr'],
+}
+</script>
+
 <template>
   <div class="button-container">
     <button
-      :class="index < 5 ? 'special' : 'normal'"
       v-for="(item, index) in buttonArr"
       :key="index"
+      :class="index < 5 ? 'special' : 'normal'"
       :value="item"
       @click="$emit('assign', $event, item)"
     >
@@ -11,13 +18,6 @@
     </button>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'calculator-button',
-  props: ['buttonArr'],
-};
-</script>
 
 <style>
 .special {

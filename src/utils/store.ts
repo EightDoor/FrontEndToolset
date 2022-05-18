@@ -1,6 +1,6 @@
 import {
-  getItem, setItem, removeItem, clear,
-} from 'localforage';
+  clear, getItem, removeItem, setItem,
+} from 'localforage'
 
 const store = {
   /**
@@ -23,6 +23,6 @@ const store = {
    * 清空
    */
   clear: () => clear(),
-};
+}
 
-export default store;
+export default store

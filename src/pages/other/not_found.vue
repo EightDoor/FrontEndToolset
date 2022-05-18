@@ -1,10 +1,13 @@
-<template>404</template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
 const NotFound = defineComponent({
-  name: 'notFond',
+  name: 'NotFond',
   setup() {},
-});
-export default NotFound;
+})
+export default NotFound
 </script>
+
+<template>
+  404
+</template>
