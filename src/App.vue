@@ -2,6 +2,7 @@
 import { defineComponent } from 'vue'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import PlayAudio from '@/pages/music/play/audio.vue'
+
 export default defineComponent({
   name: 'App',
   components: {
