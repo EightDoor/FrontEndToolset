@@ -12,6 +12,7 @@ import DailyMuseSee from '@/pages/daily_muse_see/index.vue'
 import TodayHeadlines from '@/pages/daily_muse_see/today_headlines.vue'
 import Music from '@/pages/music/index.vue'
 import MusicList from '@/pages/music/music_list/index.vue'
+import Go from '@/pages/go/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -42,6 +43,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'daily_muse_see',
         component: DailyMuseSee,
+      },
+      {
+        path: 'go',
+        component: Go,
       },
       {
         path: 'music',

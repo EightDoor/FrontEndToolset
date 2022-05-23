@@ -23,6 +23,10 @@ const Slider = defineComponent({
         url: '/daily_muse_see',
       },
       {
+        title: 'go',
+        url: '/go',
+      },
+      {
         title: '音乐',
         url: '/music',
       },

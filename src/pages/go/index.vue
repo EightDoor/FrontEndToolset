@@ -18,19 +18,34 @@ onMounted(() => {
 function getList() {
   list.value = [
     {
-      title: 'Go语言爱好者周刊',
-      descriptions: 'Go语言爱好者周刊',
-      url: 'https://github.com/polaris1119/golangweekly',
+      title: 'go官方文档',
+      descriptions: 'go官方文档',
+      url: 'https://golang.google.cn/',
     },
     {
-      title: 'Leedcode',
-      descriptions: '算法刷题',
-      url: 'https://leetcode.cn/leetbook/',
+      title: 'Golang标准库文档',
+      descriptions: 'Golang标准库文档',
+      url: 'https://studygolang.com/pkgdoc',
     },
     {
-      title: '开源中国',
-      descriptions: '开源中国',
-      url: 'https://www.oschina.net/',
+      title: 'Go语言高级编程(Advanced Go Programming)',
+      descriptions: 'Go语言高级编程(Advanced Go Programming)',
+      url: 'https://chai2010.cn/advanced-go-programming-book/',
+    },
+    {
+      title: 'go Web编程',
+      descriptions: 'go Web编程',
+      url: 'https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md',
+    },
+    {
+      title: 'Go 语言学习资料与社区索引',
+      descriptions: 'Go 语言学习资料与社区索引',
+      url: 'https://github.com/unknwon/go-study-index',
+    },
+    {
+      title: 'Go语言101',
+      descriptions: 'Go语言101',
+      url: 'https://gfw.go101.org/article/101.html',
     },
   ]
 }
