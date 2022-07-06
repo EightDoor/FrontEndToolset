@@ -4,7 +4,7 @@
   "author": "周凯 <851708184@qq.com>",
   "scripts": {
     "dev": "vite",
-    "build": "cross-env NODE_ENV=production vue-tsc --noEmit --skipLibCheck && vite build",
+    "build": "cross-env NODE_ENV=production && vite build",
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {

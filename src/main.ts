@@ -20,9 +20,11 @@ import store from '@/store' // 导入代码高亮样式
 
 const app = createApp(App)
 directives(app)
+// @ts-expect-error
 app.use(store)
 
 app
   .use(ElementPlus, { size: 'small', zIndex: 3000, location: zhCn })
+  // @ts-expect-error
   .use(router)
 app.mount('#app')
