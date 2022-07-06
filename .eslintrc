@@ -1,4 +1,13 @@
 {
-  "extends": "@antfu"
+  "extends": "@antfu",
+  "rules": {
+    "vue/custom-event-name-casing": "off",
+    "no-console": "off",
+    // vue 组合形式
+    "vue/component-tags-order": [
+      "error", {
+        "order": ["template", "script", "style"]
+      }]
+  }
 }
 

@@ -43,24 +43,29 @@ onMounted(() => {
 function getList() {
   list.value = [
     {
-      title: 'github中文社区',
-      descriptions: 'github中文社区',
-      url: 'https://www.githubs.cloud/#/trend',
+      title: 'TC39标准',
+      descriptions: 'javascript',
+      url: 'https://tc39.es/zh-Hans/',
     },
     {
-      title: 'github中文排行榜',
-      descriptions: 'github中文排行榜',
-      url: 'https://github.com/GrowingGit/GitHub-Chinese-Top-Charts',
+      title: 'javascript在线编辑',
+      descriptions: 'javascript',
+      url: 'http://jsbin.com/?html,js,output',
     },
     {
-      title: '开发人员路线图',
-      descriptions: '开发人员路线图',
-      url: 'https://roadmap.sh/',
+      title: '在线编辑代码codesandbox',
+      descriptions: '在线编辑代码codesandbox',
+      url: 'https://codesandbox.io/',
     },
     {
-      title: '开源中国',
-      descriptions: '开源中国',
-      url: 'https://www.oschina.net/',
+      title: 'json Editor',
+      descriptions: 'json',
+      url: 'http://jsoneditoronline.org/#left=local.kadozu&right=local.gekegi',
+    },
+    {
+      title: 'MDN Web',
+      descriptions: 'Web',
+      url: 'https://developer.mozilla.org/zh-CN/',
     },
   ]
 }

@@ -1,3 +1,25 @@
+<template>
+  <ul class="ul">
+    <el-menu
+      background-color="#545c64"
+      text-color="#fff"
+      :default-active="String(selectIndex)"
+      class="slider"
+    >
+      <el-menu-item
+        v-for="(item, index) in list"
+        :key="index"
+        :index="String(index)"
+        @click="change(item, index)"
+      >
+        <template #title>
+          {{ item.title }}
+        </template>
+      </el-menu-item>
+    </el-menu>
+  </ul>
+</template>
+
 <script lang="ts">
 import {
   computed, defineComponent, onMounted, reactive, ref, watch,
@@ -21,6 +43,10 @@ const Slider = defineComponent({
       {
         title: '每日必看',
         url: '/daily_muse_see',
+      },
+      {
+        title: '前端开发',
+        url: '/front',
       },
       {
         title: 'go',
@@ -94,28 +120,6 @@ const Slider = defineComponent({
 
 export default Slider
 </script>
-
-<template>
-  <ul class="ul">
-    <el-menu
-      background-color="#545c64"
-      text-color="#fff"
-      :default-active="String(selectIndex)"
-      class="slider"
-    >
-      <el-menu-item
-        v-for="(item, index) in list"
-        :key="index"
-        :index="String(index)"
-        @click="change(item, index)"
-      >
-        <template #title>
-          {{ item.title }}
-        </template>
-      </el-menu-item>
-    </el-menu>
-  </ul>
-</template>
 
 <style lang="less" scoped>
 @import "slider.module";
