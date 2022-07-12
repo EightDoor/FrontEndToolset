@@ -67,6 +67,11 @@ function getList() {
       descriptions: 'Web',
       url: 'https://developer.mozilla.org/zh-CN/',
     },
+    {
+      title: 'vConsole',
+      descriptions: '移动端调试',
+      url: 'https://github.com/Tencent/vConsole/blob/dev/README_CN.md',
+    },
   ]
 }
 
