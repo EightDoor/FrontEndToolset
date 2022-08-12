@@ -49,6 +49,10 @@ const Slider = defineComponent({
         url: '/front',
       },
       {
+        title: 'java',
+        url: '/java',
+      },
+      {
         title: 'go',
         url: '/go',
       },
