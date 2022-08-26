@@ -1,3 +1,15 @@
+<template>
+  <el-tabs type="border-card" @tab-click="change">
+    <el-tab-pane v-for="(item, index) in data" :key="index" :label="item.title">
+      <template v-if="index === selectIndex">
+        <div class="container_json">
+          <component :is="item.component" />
+        </div>
+      </template>
+    </el-tab-pane>
+  </el-tabs>
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 import JsonComponent from './json.vue'
@@ -23,17 +35,5 @@ function change(val: any) {
   selectIndex.value = Number(val.index)
 }
 </script>
-
-<template>
-  <el-tabs type="border-card" @tab-click="change">
-    <el-tab-pane v-for="(item, index) in data" :key="index" :label="item.title">
-      <template v-if="index === selectIndex">
-        <div class="container_json">
-          <component :is="item.component" />
-        </div>
-      </template>
-    </el-tab-pane>
-  </el-tabs>
-</template>
 
 <style scoped lang="less"></style>

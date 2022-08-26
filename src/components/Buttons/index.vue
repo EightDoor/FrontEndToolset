@@ -1,15 +1,3 @@
-<script lang="ts" setup>
-import type { ButtonsListType } from '@/types/com'
-
-const props = defineProps<{
-  list: ButtonsListType[]
-  click: (val: string) => void
-  w?: string
-  h?: string
-  loading?: boolean
-}>()
-</script>
-
 <template>
   <ul class="ul">
     <li v-for="(item, index) in props.list" :key="index">
@@ -27,6 +15,18 @@ const props = defineProps<{
     <slot />
   </ul>
 </template>
+
+<script lang="ts" setup>
+import type { ButtonsListType } from '@/types/com'
+
+const props = defineProps<{
+  list: ButtonsListType[]
+  click: (val: string) => void
+  w?: string
+  h?: string
+  loading?: boolean
+}>()
+</script>
 
 <style lang="less" scoped>
 .button_space {

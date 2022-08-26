@@ -1,3 +1,10 @@
+<template>
+  <el-input v-model="text" :row="4" :autosize="{ minRows: 10 }" type="textarea" placeholder="请输入" />
+  <div class="container_buttons">
+    <buttons :list="list" :click="change" />
+  </div>
+</template>
+
 <script lang="ts" setup>
 // Url编码解码
 import { ref } from 'vue'
@@ -9,10 +16,12 @@ const text = ref('')
 const list: ButtonsListType[] = [
   {
     title: 'encodeURI编码',
+    size: 'large',
   },
   {
     title: 'decodeURI解码',
     type: 'success',
+    size: 'large',
   },
 ]
 
@@ -20,11 +29,11 @@ function change(val) {
   console.log(val, 'val')
   if (text.value) {
     if (val === 'encodeURI编码') {
-      text.value = encodeURI(text.value)
+      text.value = encodeURIComponent(text.value)
       ElMessage.success('编码成功')
     }
     else if (val === 'decodeURI解码') {
-      text.value = decodeURI(text.value)
+      text.value = decodeURIComponent(text.value)
       ElMessage.success('解码成功')
     }
   }
@@ -33,18 +42,6 @@ function change(val) {
   }
 }
 </script>
-
-<template>
-  <el-input
-    v-model="text"
-    :row="4"
-    type="textarea"
-    placeholder="请输入"
-  />
-  <div class="container_buttons">
-    <buttons :list="list" :click="change" />
-  </div>
-</template>
 
 <style scoped lang="less">
 .container_buttons {

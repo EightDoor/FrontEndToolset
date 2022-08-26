@@ -1,3 +1,11 @@
+<template>
+  <el-tabs tab-position="top">
+    <el-tab-pane v-for="(item, index) in list" :key="index" :label="item.label">
+      <component :is="item.component" />
+    </el-tab-pane>
+  </el-tabs>
+</template>
+
 <script lang="ts" setup>
 import { markRaw, ref } from 'vue'
 import Calculator from './calculator/index.vue'
@@ -43,11 +51,3 @@ const list = ref<ListType[]>([
   },
 ])
 </script>
-
-<template>
-  <el-tabs tab-position="top">
-    <el-tab-pane v-for="(item, index) in list" :key="index" :label="item.label">
-      <component :is="item.component" />
-    </el-tab-pane>
-  </el-tabs>
-</template>

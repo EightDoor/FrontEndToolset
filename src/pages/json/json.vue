@@ -1,3 +1,19 @@
+<template>
+  <Buttons :focus="true" :list="list" :click="change" :loading="loading">
+    <el-button
+      type="primary"
+      size="large"
+      class="copy"
+      :data-clipboard-text="defaultJson"
+      style="margin-left: 15px; margin-bottom: 15px"
+      @click="clipText"
+    >
+      复制
+    </el-button>
+  </Buttons>
+  <JsonCode :change-text="changeText" :content="content" />
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
@@ -11,11 +27,11 @@ const loading = ref(false)
 const list = ref<ButtonsListType[]>([
   {
     title: '压缩',
-    size: 'small',
+    size: 'default',
   },
   {
     title: '格式化',
-    size: 'small',
+    size: 'default',
   },
 ])
 const content = ref<any>(null)
@@ -58,21 +74,5 @@ function changeText(val: any) {
   defaultJson.value = val
 }
 </script>
-
-<template>
-  <Buttons :focus="true" :list="list" :click="change" :loading="loading">
-    <el-button
-      type="primary"
-      size="small"
-      class="copy"
-      :data-clipboard-text="defaultJson"
-      style="margin-left: 15px; margin-bottom: 15px"
-      @click="clipText"
-    >
-      复制
-    </el-button>
-  </Buttons>
-  <JsonCode :change-text="changeText" :content="content" />
-</template>
 
 <style scoped lang="less"></style>

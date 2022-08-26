@@ -1,3 +1,50 @@
+<template>
+  <div>
+    <div>
+      <el-divider content-position="left">
+        base64加密
+      </el-divider>
+      <el-input
+        v-model="generateCount" style="width: 500px" placeholder="请输入加密内容" clearable type="textarea" :rows="4"
+        :autosize="{ minRows: 10 }"
+      />
+      <el-button type="primary" size="large" style="margin-left: 15px" @click="generate">
+        加密
+      </el-button>
+      <div v-if="data" style="margin-top: 10px">
+        {{ data }} <span style="color: red"> ({{ data.length }}位)</span>
+        <el-button
+          type="success" style="margin-left: 15px" size="large" class="copy" :data-clipboard-text="data"
+          @click="copy()"
+        >
+          复制
+        </el-button>
+      </div>
+    </div>
+    <div>
+      <el-divider content-position="left">
+        base64解密
+      </el-divider>
+      <el-input
+        v-model="generateCountDecrypt" style="width: 500px" :autosize="{ minRows: 10 }" placeholder="请输入解密内容"
+        clearable type="textarea" :rows="4"
+      />
+      <el-button type="primary" size="large" style="margin-left: 15px" @click="generateDecrypt">
+        解密
+      </el-button>
+      <div v-if="dataDecrypt" style="margin-top: 10px">
+        {{ dataDecrypt }}
+        <el-button
+          type="success" style="margin-left: 15px" size="large" class="copy" :data-clipboard-text="dataDecrypt"
+          @click="copyDecrypt()"
+        >
+          复制
+        </el-button>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script lang="ts" setup>
 import { ref, unref } from 'vue'
 import { ElMessage } from 'element-plus'
@@ -33,71 +80,6 @@ function copyDecrypt() {
   utils.clipTextResultInfo(clipboard)
 }
 </script>
-
-<template>
-  <div>
-    <div>
-      <el-divider content-position="left">
-        base64加密
-      </el-divider>
-      <el-input
-        v-model="generateCount"
-        style="width: 400px"
-        placeholder="请输入加密内容"
-        clearable
-        type="textarea"
-        :rows="4"
-      />
-      <el-button type="primary" style="margin-left: 15px" @click="generate">
-        加密
-      </el-button>
-      <div v-if="data" style="margin-top: 10px">
-        {{ data }} <span style="color: red"> ({{ data.length }}位)</span>
-        <el-button
-          type="success"
-          style="margin-left: 15px"
-          size="small"
-          class="copy" :data-clipboard-text="data"
-          @click="copy()"
-        >
-          复制
-        </el-button>
-      </div>
-    </div>
-    <div>
-      <el-divider content-position="left">
-        base64解密
-      </el-divider>
-      <el-input
-        v-model="generateCountDecrypt"
-        style="width: 400px"
-        placeholder="请输入解密内容"
-        clearable
-        type="textarea"
-        :rows="4"
-      />
-      <el-button
-        type="primary"
-        style="margin-left: 15px"
-        @click="generateDecrypt"
-      >
-        解密
-      </el-button>
-      <div v-if="dataDecrypt" style="margin-top: 10px">
-        {{ dataDecrypt }}
-        <el-button
-          type="success"
-          style="margin-left: 15px"
-          size="small"
-          class="copy" :data-clipboard-text="dataDecrypt"
-          @click="copyDecrypt()"
-        >
-          复制
-        </el-button>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style scoped lang="less">
 .ul {
