@@ -60,10 +60,10 @@ const Slider = defineComponent({
         title: 'windows',
         url: '/windows',
       },
-      {
-        title: '音乐',
-        url: '/music',
-      },
+      // {
+      //   title: '音乐',
+      //   url: '/music',
+      // },
       {
         title: 'json格式化',
         url: '/json',
