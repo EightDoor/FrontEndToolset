@@ -14,6 +14,7 @@ import Music from '@/pages/music/index.vue'
 import MusicList from '@/pages/music/music_list/index.vue'
 import Go from '@/pages/go/index.vue'
 import Front from '@/pages/front/index.vue'
+import Windows from '@/pages/windows/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -64,6 +65,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'front',
         component: Front,
+      },
+      {
+        path: 'windows',
+        component: Windows,
       },
     ],
   },

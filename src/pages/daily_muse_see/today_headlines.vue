@@ -1,3 +1,29 @@
+<template>
+  <go-home path="/daily_muse_see">
+    <el-row :gutter="10">
+      <el-col v-for="o in data" :key="o.rid" :span="8" class="space">
+        <el-card :body-style="{ padding: '0px' }">
+          <template #header>
+            <div class="card-header">
+              <span>来源: {{ o.source }}</span>
+              <el-button
+                type="primary"
+                class="button"
+                @click="open(o.article_url, o.title)"
+              >
+                打开
+              </el-button>
+            </div>
+          </template>
+          <div style="padding: 14px">
+            <span class="title">{{ o.title }}</span>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+  </go-home>
+</template>
+
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
@@ -27,32 +53,6 @@ function open(val: string, title: string) {
   utils.openUrl(val, title)
 }
 </script>
-
-<template>
-  <go-home path="/daily_muse_see">
-    <el-row :gutter="10">
-      <el-col v-for="(o, index) in data" :key="o.rid" :span="8" class="space">
-        <el-card :body-style="{ padding: '0px' }">
-          <template #header>
-            <div class="card-header">
-              <span>来源: {{ o.source }}</span>
-              <el-button
-                type="primary"
-                class="button"
-                @click="open(o.article_url, o.title)"
-              >
-                打开
-              </el-button>
-            </div>
-          </template>
-          <div style="padding: 14px">
-            <span class="title">{{ o.title }}</span>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-  </go-home>
-</template>
 
 <style scoped lang="less">
 .card-header {

@@ -5,6 +5,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Buttons: typeof import('./src/components/Buttons/index.vue')['default']
+    Card: typeof import('./src/components/Card/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
@@ -37,6 +38,7 @@ declare module 'vue' {
     JsonCode: typeof import('./src/components/JsonCode/index.vue')['default']
     Loading: typeof import('element-plus/es')['ElLoadingDirective']
     RefreshData: typeof import('./src/components/RefreshData/index.vue')['default']
+    ZCard: typeof import('./src/components/ZCard/index.vue')['default']
   }
 }
 

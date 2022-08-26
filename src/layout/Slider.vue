@@ -53,6 +53,10 @@ const Slider = defineComponent({
         url: '/go',
       },
       {
+        title: 'windows',
+        url: '/windows',
+      },
+      {
         title: '音乐',
         url: '/music',
       },
