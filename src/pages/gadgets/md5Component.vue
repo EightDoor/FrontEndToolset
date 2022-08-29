@@ -1,25 +1,3 @@
-<script lang="ts" setup>
-import { ref, unref } from 'vue'
-import md5 from 'md5'
-import { ElMessage } from 'element-plus'
-import Clipboard from 'clipboard'
-import utils from '@/utils/index'
-
-function generate() {
-  if (generateCount.value)
-    data.value = md5(unref(generateCount.value))
-  else
-    ElMessage.info('请输入内容')
-}
-const generateCount = ref('')
-const data = ref('')
-
-function copy() {
-  const clip = new Clipboard('.copy')
-  utils.clipTextResultInfo(clip)
-}
-</script>
-
 <template>
   <div>
     <span> 加密内容: </span><el-input
@@ -45,6 +23,28 @@ function copy() {
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { ref, unref } from 'vue'
+import md5 from 'md5'
+import { ElMessage } from 'element-plus'
+import Clipboard from 'clipboard'
+import utils from '@/utils/index'
+
+function generate() {
+  if (generateCount.value)
+    data.value = md5(unref(generateCount.value))
+  else
+    ElMessage.info('请输入内容')
+}
+const generateCount = ref('')
+const data = ref('')
+
+function copy() {
+  const clip = new Clipboard('.copy')
+  utils.clipTextResultInfo(clip)
+}
+</script>
 
 <style scoped lang="less">
 .ul {

@@ -63,10 +63,6 @@ const routes: RouteRecordRaw[] = [
         component: MusicList,
       },
       {
-        path: 'music_list',
-        component: MusicList,
-      },
-      {
         path: 'front',
         component: Front,
       },
