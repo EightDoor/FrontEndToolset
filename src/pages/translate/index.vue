@@ -252,7 +252,7 @@ function dataURItoBlob(dataURI) {
     <el-col :span="12">
       <el-button
         type="primary"
-        size="small"
+        size="large"
         :loading="data.loading"
         @click="translateFun"
       >

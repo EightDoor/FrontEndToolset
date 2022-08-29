@@ -1,3 +1,40 @@
+<template>
+  <el-row :gutter="20">
+    <el-col :span="12">
+      <JsonCode :change-text="changeText" :content="defaultSource">
+        <template #title>
+          <div>
+            <el-link type="primary" style="font-size: 25px;" disabled>
+              请输入根节点名称
+            </el-link>
+            <el-input v-model="tsName" class="inputW" placeholder="请输入根节点名称" />
+          </div>
+          <Buttons :list="buttonList" :click="changeButton" />
+        </template>
+      </JsonCode>
+    </el-col>
+    <el-col :span="12">
+      <JsonCode :content="content" mode="text/typescript" :read-only="true">
+        <template #title>
+          <el-link type="success" style="font-size: 25px;" disabled>
+            转换的typescript
+          </el-link>
+          <el-button
+            type="primary"
+            size="large"
+            class="copy"
+            :data-clipboard-text="content"
+            style="margin-left: 15px; margin-bottom: 15px"
+            @click="clipText"
+          >
+            复制内容
+          </el-button>
+        </template>
+      </JsonCode>
+    </el-col>
+  </el-row>
+</template>
+
 <script setup lang="ts">
 import JsonToTs from 'json-to-ts'
 import { ref, watch } from 'vue'
@@ -29,7 +66,7 @@ function CoverToTs(val: string, name?: string) {
 const buttonList: ButtonsListType[] = [
   {
     title: '格式化',
-    size: 'small',
+    size: 'large',
   },
 ]
 function formatText() {
@@ -74,43 +111,6 @@ watch(tsName, (newVal) => {
   deep: true,
 })
 </script>
-
-<template>
-  <el-row :gutter="20">
-    <el-col :span="12">
-      <JsonCode :change-text="changeText" :content="defaultSource">
-        <template #title>
-          <div>
-            <el-link type="primary" style="font-size: 25px;" disabled>
-              请输入根节点名称
-            </el-link>
-            <el-input v-model="tsName" class="inputW" placeholder="请输入根节点名称" />
-          </div>
-          <Buttons :list="buttonList" :click="changeButton" />
-        </template>
-      </JsonCode>
-    </el-col>
-    <el-col :span="12">
-      <JsonCode :content="content" mode="text/typescript" :read-only="true">
-        <template #title>
-          <el-link type="success" style="font-size: 25px;" disabled>
-            转换的typescript
-          </el-link>
-          <el-button
-            type="primary"
-            size="small"
-            class="copy"
-            :data-clipboard-text="content"
-            style="margin-left: 15px; margin-bottom: 15px"
-            @click="clipText"
-          >
-            复制内容
-          </el-button>
-        </template>
-      </JsonCode>
-    </el-col>
-  </el-row>
-</template>
 
 <style scoped lang="less">
 .inputW {

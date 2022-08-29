@@ -1,10 +1,3 @@
-<script>
-export default {
-  name: 'CalculatorOutput',
-  props: ['expression', 'result', 'tweenExpression', 'calculated'],
-}
-</script>
-
 <template>
   <div class="output-container">
     <div class="output-up">
@@ -16,6 +9,13 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'CalculatorOutput',
+  props: ['expression', 'result', 'tweenExpression', 'calculated'],
+}
+</script>
 
 <style>
 .output-container span {

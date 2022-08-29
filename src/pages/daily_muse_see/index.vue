@@ -1,105 +1,36 @@
 <template>
-  <ul class="daily_muse_see">
-    <li v-for="(item, index) in list" :key="index">
-      <el-card>
-        <template #header>
-          <div class="header">
-            {{ item.title }}
-            <el-button
-              class="btn"
-              type="primary"
-              size="small"
-              @click="changeCard(item)"
-            >
-              访问
-            </el-button>
-          </div>
-        </template>
-        <div class="content">
-          {{ item.descriptions }}
-        </div>
-      </el-card>
-    </li>
-  </ul>
+  <z-card :list="list" />
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import utils from '@/utils'
+import ZCard from '@/components/ZCard/index.vue'
+import type { ListType } from '@/types/com'
 
-interface ListType {
-  title: string
-  url?: string
-  descriptions: string
-  router?: string
-}
-const list = ref<ListType[]>([])
-
-onMounted(() => {
-  getList()
-})
-
-function getList() {
-  list.value = [
-    {
-      title: 'github中文社区',
-      descriptions: 'github中文社区',
-      url: 'https://www.githubs.cloud/#/trend',
-    },
-    {
-      title: 'github中文排行榜',
-      descriptions: 'github中文排行榜',
-      url: 'https://github.com/GrowingGit/GitHub-Chinese-Top-Charts',
-    },
-    {
-      title: '开发人员路线图',
-      descriptions: '开发人员路线图',
-      url: 'https://roadmap.sh/',
-    },
-    {
-      title: '开源中国',
-      descriptions: '开源中国',
-      url: 'https://www.oschina.net/',
-    },
-  ]
-}
-
-const router = useRouter()
-function changeCard(item) {
-  if (item.url)
-    utils.openUrl(item.url, item.title)
-  else if (item.router)
-    router.push(item.router)
-}
+const list = ref<ListType[]>([
+  {
+    title: 'github中文社区',
+    url: 'https://www.githubs.cloud/#/trend',
+    type: '文档',
+  },
+  {
+    title: 'github中文排行榜',
+    url: 'https://github.com/GrowingGit/GitHub-Chinese-Top-Charts',
+    type: '文档',
+  },
+  {
+    title: '开发人员路线图',
+    url: 'https://roadmap.sh/',
+    type: '文档',
+  },
+  {
+    title: '开源中国',
+    url: 'https://www.oschina.net/',
+    type: '文档',
+  },
+])
 </script>
 
 <style scoped lang="less">
-.daily_muse_see {
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-  & > li {
-    width: 300px;
-    margin-right: 15px;
-    margin-bottom: 15px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-.content {
-  font-size: 14px;
-  color: #afaeae;
-}
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.btn {
-  &:hover {
-    cursor: pointer;
-  }
-}
+
 </style>

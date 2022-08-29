@@ -37,6 +37,7 @@ declare module 'vue' {
     JsonCode: typeof import('./src/components/JsonCode/index.vue')['default']
     Loading: typeof import('element-plus/es')['ElLoadingDirective']
     RefreshData: typeof import('./src/components/RefreshData/index.vue')['default']
+    ZCard: typeof import('./src/components/ZCard/index.vue')['default']
   }
 }
 

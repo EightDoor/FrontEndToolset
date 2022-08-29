@@ -1,3 +1,19 @@
+<template>
+  <div>
+    <div class="calculator-container">
+      <CalculatorOutput
+        :expression="expression"
+        :result="result"
+        :calculated="calculated"
+      />
+      <CalculatorButton
+        :button-arr="buttonArr"
+        @assign="assign"
+      />
+    </div>
+  </div>
+</template>
+
 <script>
 import calculator_button from './calculator-button.vue'
 import calculator_output from './calculator-output.vue'
@@ -162,22 +178,6 @@ export default {
   },
 }
 </script>
-
-<template>
-  <div>
-    <div class="calculator-container">
-      <CalculatorOutput
-        :expression="expression"
-        :result="result"
-        :calculated="calculated"
-      />
-      <CalculatorButton
-        :button-arr="buttonArr"
-        @assign="assign"
-      />
-    </div>
-  </div>
-</template>
 
 <style>
 .calculator-container {

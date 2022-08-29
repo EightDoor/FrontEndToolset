@@ -1,10 +1,3 @@
-<script>
-export default {
-  name: 'CalculatorButton',
-  props: ['buttonArr'],
-}
-</script>
-
 <template>
   <div class="button-container">
     <button
@@ -18,6 +11,13 @@ export default {
     </button>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'CalculatorButton',
+  props: ['buttonArr'],
+}
+</script>
 
 <style>
 .special {

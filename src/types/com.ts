@@ -11,3 +11,9 @@ export interface ButtonsListType {
   size?: any
   plain?: boolean
 }
+export interface ListType {
+  title: string
+  url?: string
+  router?: string
+  type?: string
+}

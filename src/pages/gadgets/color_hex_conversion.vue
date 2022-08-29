@@ -1,3 +1,56 @@
+<template>
+  <div class="gadgets_container">
+    <h2>RGB颜色转换成十六进制颜色</h2>
+    <div>
+      (R)
+      <el-input-number v-model="hex1" class="input_num" :min="0" />(G)
+      <el-input-number v-model="hex2" class="input_num" :min="0" />(B)
+      <el-input-number v-model="hex3" class="input_num" :min="0" />
+      <el-button size="large" type="primary" @click="transformation">
+        转换
+      </el-button>
+    </div>
+    <div class="content">
+      <div class="backColor" :style="hex ? { backgroundColor: hex } : {}" />
+      <div class="content__hex">
+        {{ hex }}
+      </div>
+      <div v-if="hex">
+        <el-button
+          type="success" size="large" :data-clipboard-text="hex" class="copy" style="margin-left: 15px"
+          @click="copyColor(hex)"
+        >
+          复制颜色
+        </el-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="gadgets_container">
+    <h2>十六进制颜色转换成RGB颜色</h2>
+    <div>
+      <el-input v-model="hexadecimal" style="width: 150px" placeholder="请输入十六进制颜色" class="input_num" :min="0" />
+      <el-button size="large" type="primary" @click="transformationRgb">
+        转换
+      </el-button>
+    </div>
+    <div class="content">
+      <div class="backColor" :style="hexadecimalRgb ? { backgroundColor: hexadecimalRgb } : {}" />
+      <div class="content__hex">
+        {{ hexadecimalRgb }}
+      </div>
+      <div v-if="hexadecimalRgb">
+        <el-button
+          type="success" size="large" style="margin-left: 15px" :data-clipboard-text="hexadecimalRgb"
+          class="copy" @click="copyColor(hexadecimalRgb)"
+        >
+          复制颜色
+        </el-button>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script lang="ts" setup>
 // 颜色进制转换
 import { ref } from 'vue'
@@ -102,73 +155,6 @@ function copyColor(val) {
   })
 }
 </script>
-
-<template>
-  <div class="gadgets_container">
-    <h2>RGB颜色转换成十六进制颜色</h2>
-    <div>
-      (R)
-      <el-input-number v-model="hex1" class="input_num" :min="0" />(G)
-      <el-input-number v-model="hex2" class="input_num" :min="0" />(B)
-      <el-input-number v-model="hex3" class="input_num" :min="0" />
-      <el-button type="primary" @click="transformation">
-        转换
-      </el-button>
-    </div>
-    <div class="content">
-      <div class="backColor" :style="hex ? { backgroundColor: hex } : {}" />
-      <div class="content__hex">
-        {{ hex }}
-      </div>
-      <div v-if="hex">
-        <el-button
-          type="success"
-          size="small"
-          :data-clipboard-text="hex"
-          class="copy"
-          style="margin-left: 15px"
-          @click="copyColor(hex)"
-        >
-          复制颜色
-        </el-button>
-      </div>
-    </div>
-  </div>
-
-  <div class="gadgets_container">
-    <h2>十六进制颜色转换成RGB颜色</h2>
-    <div>
-      <el-input
-        v-model="hexadecimal"
-        style="width: 150px"
-        placeholder="请输入十六进制颜色"
-        class="input_num"
-        :min="0"
-      />
-      <el-button type="primary" @click="transformationRgb">
-        转换
-      </el-button>
-    </div>
-    <div class="content">
-      <div class="backColor" :style="hexadecimalRgb ? { backgroundColor: hexadecimalRgb } : {}" />
-      <div class="content__hex">
-        {{ hexadecimalRgb }}
-      </div>
-      <div v-if="hexadecimalRgb">
-        <el-button
-          type="success"
-          size="small"
-          style="margin-left: 15px"
-          :data-clipboard-text="hexadecimalRgb"
-          class="copy"
-          @click="copyColor(hexadecimalRgb)"
-        >
-          复制颜色
-        </el-button>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style lang="less" scoped>
 .gadgets_container {
