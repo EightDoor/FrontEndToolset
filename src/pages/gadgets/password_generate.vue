@@ -64,7 +64,6 @@ function copyData() {
   .result {
     color: red;
     margin-left: 15px;
-
   }
 }
 </style>
