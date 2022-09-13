@@ -48,6 +48,11 @@ const list = ref<ListType[]>([
     url: 'https://www.liaoxuefeng.com/wiki/1252599548343744',
     type: '文档',
   },
+  {
+    title: 'Spring Boot 教程、技术栈示例代码，快速简单上手教程。',
+    url: 'https://github.com/ityouknow/spring-boot-examples',
+    type: '文档',
+  },
 ])
 </script>
 
