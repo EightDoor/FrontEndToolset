@@ -15,12 +15,17 @@ import StyleConversion from './style_conversion/index.vue'
 import UUIDGenerate from './uuid_generate.vue'
 import Md5Component from './md5Component.vue'
 import Base64Component from './base64Component.vue'
+import PasswordGenerate from './password_generate.vue'
 
 interface ListType {
   label: string
   component: any
 }
 const list = ref<ListType[]>([
+  {
+    label: '密码生成',
+    component: markRaw(PasswordGenerate),
+  },
   {
     label: 'uuid生成',
     component: markRaw(UUIDGenerate),

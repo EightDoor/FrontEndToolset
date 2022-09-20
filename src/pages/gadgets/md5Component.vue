@@ -28,7 +28,6 @@ import utils from '@/utils/index'
 
 const generateCount = ref('')
 const data = ref('')
-
 function generate() {
   if (generateCount.value)
     data.value = md5(unref(generateCount.value))
