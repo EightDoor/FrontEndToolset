@@ -63,6 +63,21 @@ const list = ref<ListType[]>([
     url: 'https://github.com/kingToolbox/WindTerm/releases',
     type: '工具',
   },
+  {
+    title: 'Free Download Manager 下载器',
+    url: 'https://www.freedownloadmanager.org/zh/',
+    type: '工具',
+  },
+  {
+    title: 'PhotoDemon轻量级的图片编辑工具',
+    url: 'https://photodemon.org/',
+    type: '工具',
+  },
+  {
+    title: 'ScreenToGif - 录屏，编辑，保存为 GIF 动画、视频或更多其他格式',
+    url: 'https://www.screentogif.com/',
+    type: '工具',
+  },
 ])
 </script>
 
