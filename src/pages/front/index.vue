@@ -38,6 +38,32 @@ const list = ref<ListType[]>([
     url: 'https://github.com/Tencent/vConsole/blob/dev/README_CN.md',
     type: '工具',
   },
+  // vue3
+  {
+    title: '官网',
+    url: 'https://cn.vuejs.org/',
+    type: 'vue3',
+  },
+  {
+    title: 'Vue.js 挑战合集',
+    url: 'https://github.com/webfansplz/vuejs-challenges/blob/main/README.zh-CN.md',
+    type: 'vue3',
+  },
+  {
+    title: 'VueUse',
+    url: 'https://vueuse.org/',
+    type: 'vue3',
+  },
+  {
+    title: 'vite',
+    url: 'https://cn.vitejs.dev/',
+    type: 'vue3',
+  },
+  {
+    title: 'pinia',
+    url: 'https://pinia.vuejs.org/',
+    type: 'vue3',
+  },
 ])
 </script>
 
