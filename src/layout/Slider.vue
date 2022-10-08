@@ -60,6 +60,10 @@ const Slider = defineComponent({
         title: 'windows',
         url: '/windows',
       },
+      {
+        title: '逆向论坛',
+        url: '/reverse_forum',
+      },
       // {
       //   title: '音乐',
       //   url: '/music',

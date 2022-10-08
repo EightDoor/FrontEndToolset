@@ -16,6 +16,7 @@ import Go from '@/pages/go/index.vue'
 import Front from '@/pages/front/index.vue'
 import Windows from '@/pages/windows/index.vue'
 import Java from '@/pages/java/index.vue'
+import ReverseFrom from '@/pages/reverse_forum/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -62,6 +63,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'music_list',
         component: MusicList,
+      },
+      {
+        path: 'reverse_forum',
+        component: ReverseFrom,
       },
       {
         path: 'front',
