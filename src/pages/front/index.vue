@@ -33,9 +33,20 @@ const list = ref<ListType[]>([
     url: 'https://developer.mozilla.org/zh-CN/',
     type: '文档',
   },
+  // 工具
   {
     title: 'vConsole',
     url: 'https://github.com/Tencent/vConsole/blob/dev/README_CN.md',
+    type: '工具',
+  },
+  {
+    title: 'tailwindcss中文文档',
+    url: 'https://www.tailwindcss.cn/',
+    type: '工具',
+  },
+  {
+    title: '为开发者打造的演示文稿工具',
+    url: 'https://cn.sli.dev/',
     type: '工具',
   },
   // vue3
@@ -63,6 +74,12 @@ const list = ref<ListType[]>([
     title: 'pinia',
     url: 'https://pinia.vuejs.org/',
     type: 'vue3',
+  },
+  // vue2
+  {
+    title: 'vue2官网',
+    url: 'https://v2.cn.vuejs.org/v2/guide/',
+    type: 'vue2',
   },
 ])
 </script>

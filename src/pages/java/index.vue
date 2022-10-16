@@ -69,6 +69,19 @@ const list = ref<ListType[]>([
     type: '文档',
   },
   // 文档--------------
+
+  // 文档--------------
+  {
+    title: 'SpringSecurity框架教程-Spring Security+JWT实现项目级前端分离认证授权',
+    url: 'https://www.bilibili.com/video/BV1mm4y1X7Hc?p=1&vd_source=6df11dc86c4e13ea88a67a6ef88d77bc',
+    type: '学习视频',
+  },
+  {
+    title: 'java8函数式编程(Lambda表达式，Optional，Stream流)从入门到精通-最通俗易懂的函数式编程教学',
+    url: 'https://www.bilibili.com/video/BV1Gh41187uR?p=1&vd_source=6df11dc86c4e13ea88a67a6ef88d77bc',
+    type: '学习视频',
+  },
+  // 文档--------------
 ])
 </script>
 
