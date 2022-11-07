@@ -41,6 +41,26 @@ const list = ref<ListType[]>([
     url: 'https://hutool.cn/',
     type: '工具',
   },
+  {
+    title: 'jrebel激活',
+    url: 'http://jrebel-license.jiweichengzhu.com/',
+    type: '工具',
+  },
+  {
+    title: 'java镜像下载(各种JAVA JDK的镜像分发)',
+    url: 'https://www.injdk.cn/',
+    type: '工具',
+  },
+  {
+    title: 'banner生成',
+    url: 'http://patorjk.com/software/taag/#p=testall&f=Graffiti&t=Hello',
+    type: '工具',
+  },
+  {
+    title: '阿里云云效 Maven',
+    url: 'https://developer.aliyun.com/mvn/guide',
+    type: '工具',
+  },
   // 工具--------------
   // 文档--------------
   {
@@ -67,6 +87,11 @@ const list = ref<ListType[]>([
     title: '互联网 Java 工程师进阶知识完全扫盲：涵盖高并发、分布式、高可用、微服务、海量数据处理等领域知识',
     url: 'https://github.com/doocs/advanced-java',
     type: '文档',
+  },
+  {
+    title: 'fastJson2',
+    url: ' https://alibaba.github.io/fastjson2/',
+    type: '工具',
   },
   // 文档--------------
 
