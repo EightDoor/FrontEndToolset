@@ -93,6 +93,11 @@ const list = ref<ListType[]>([
     url: ' https://alibaba.github.io/fastjson2/',
     type: '工具',
   },
+  {
+    title: 'mybatis中文文档',
+    url: ' https://mybatis.org/mybatis-3/zh/index.html',
+    type: '工具',
+  },
   // 文档--------------
 
   // 文档--------------
