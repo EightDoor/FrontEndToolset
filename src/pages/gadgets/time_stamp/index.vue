@@ -112,7 +112,7 @@ function transformation(item) {
     ElNotification.success(`${formatAction(item.key)} 成功!`)
   }
   else if (item.key === 2) {
-    item.two = dayjs(item.one).format(item.defaultFormat)
+    item.two = dayjs(Number(item.one)).format(item.defaultFormat)
     ElNotification.success(`${formatAction(item.key)} 成功!`)
   }
   else {
