@@ -1,4 +1,4 @@
-  {
+{
   "name": "vite-project",
   "version": "0.0.4",
   "author": "周凯 <851708184@qq.com>",
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
+    "@element-plus/icons-vue": "^2.0.10",
     "axios": "^0.26.1",
     "clipboard": "^2.0.11",
     "codemirror": "^5.65.2",

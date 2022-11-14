@@ -16,6 +16,7 @@ import UUIDGenerate from './uuid_generate.vue'
 import Md5Component from './md5Component.vue'
 import Base64Component from './base64Component.vue'
 import PasswordGenerate from './password_generate.vue'
+import TimeStamp from './time_stamp/index.vue'
 
 interface ListType {
   label: string
@@ -25,6 +26,10 @@ const list = ref<ListType[]>([
   {
     label: '密码生成',
     component: markRaw(PasswordGenerate),
+  },
+  {
+    label: '时间转换<->时间戳',
+    component: markRaw(TimeStamp),
   },
   {
     label: 'uuid生成',

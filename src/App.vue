@@ -1,3 +1,11 @@
+<template>
+  <el-config-provider size="large" :locale="locale">
+    <router-view />
+    <!-- 播放器 -->
+    <PlayAudio />
+  </el-config-provider>
+</template>
+
 <script lang="ts">
 import { defineComponent } from 'vue'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
@@ -16,19 +24,12 @@ export default defineComponent({
 })
 </script>
 
-<template>
-  <el-config-provider :locale="locale">
-    <router-view />
-    <!-- 播放器 -->
-    <PlayAudio />
-  </el-config-provider>
-</template>
-
 <style>
 @font-face {
   font-family: 'custom_font';
   src: url('http://vue3.admin.qiniu.start6.cn/NotoSerifGeorgian-Bold.ttf');
 }
+
 body,
 ul,
 li {
