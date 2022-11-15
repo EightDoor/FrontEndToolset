@@ -81,11 +81,6 @@ const Slider = defineComponent({
         url: '/gadgets',
       },
       {
-        title: 'json to dart',
-        url: 'https://javiercbk.github.io/json_to_dart/',
-        type: 'url',
-      },
-      {
         title: 'github',
         url: 'https://github.com/EightDoor/FrontEndToolset',
         type: 'url',
