@@ -25,6 +25,7 @@
     "qiniu-js": "^3.4.0",
     "uuid": "^8.3.2",
     "vue": "^3.2.36",
+    "vue-json-pretty": "^2.2.3",
     "vue-router": "^4.0.15",
     "vuex": "^4.0.2",
     "zhoukai_utils": "^2.0.0"

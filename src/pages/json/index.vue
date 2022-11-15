@@ -22,7 +22,7 @@ interface DataType {
 const selectIndex = ref(0)
 const data = ref<DataType[]>([
   {
-    title: 'json格式化',
+    title: 'json处理',
     component: JsonComponent,
   },
   {

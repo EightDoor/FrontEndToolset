@@ -34,6 +34,7 @@ specifiers:
   uuid: ^8.3.2
   vite: ^2.9.5
   vue: ^3.2.36
+  vue-json-pretty: ^2.2.3
   vue-router: ^4.0.15
   vue-tsc: ^0.33.9
   vuex: ^4.0.2
@@ -57,6 +58,7 @@ dependencies:
   qiniu-js: 3.4.0
   uuid: 8.3.2
   vue: 3.2.36
+  vue-json-pretty: 2.2.3_vue@3.2.36
   vue-router: 4.0.15_vue@3.2.36
   vuex: 4.0.2_vue@3.2.36
   zhoukai_utils: 2.0.0
@@ -3415,6 +3417,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-json-pretty/2.2.3_vue@3.2.36:
+    resolution: {integrity: sha512-tJo+4eFclQBt3gJ6EELXNdvo50wDKTZYthwmLpy9YS7UDldeJln5ff+IpdmUglfk+FqLVOX/re0+Ni/EOUPZgw==}
+    engines: {node: '>= 10.0.0', npm: '>= 5.0.0'}
+    peerDependencies:
+      vue: '>=3.0.0'
+    dependencies:
+      vue: 3.2.36
+    dev: false
 
   /vue-router/4.0.15_vue@3.2.36:
     resolution: {integrity: sha512-xa+pIN9ZqORdIW1MkN2+d9Ui2pCM1b/UMgwYUCZOiFYHAvz/slKKBDha8DLrh5aCG/RibtrpyhKjKOZ85tYyWg==}

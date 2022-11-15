@@ -1,3 +1,15 @@
+<template>
+  <div class="title">
+    <slot name="title" />
+  </div>
+  <textarea
+    ref="jsonCodeRef"
+    v-model="code"
+    class="codesql"
+    style="height: 100%; width: 100%"
+  />
+</template>
+
 <script lang="ts" setup>
 import { markRaw, onMounted, onUnmounted, ref, watch } from 'vue'
 
@@ -148,18 +160,6 @@ watch(
   },
 )
 </script>
-
-<template>
-  <div class="title">
-    <slot name="title" />
-  </div>
-  <textarea
-    ref="jsonCodeRef"
-    v-model="code"
-    class="codesql"
-    style="height: 100%; width: 100%"
-  />
-</template>
 
 <style lang="less">
 .codesql {
