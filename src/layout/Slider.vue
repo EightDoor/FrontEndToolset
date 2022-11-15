@@ -69,7 +69,7 @@ const Slider = defineComponent({
       //   url: '/music',
       // },
       {
-        title: 'json格式化',
+        title: '数据处理',
         url: '/json',
       },
       {

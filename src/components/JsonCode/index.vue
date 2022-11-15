@@ -16,6 +16,8 @@ import { markRaw, onMounted, onUnmounted, ref, watch } from 'vue'
 // 引入CodeMirror和基础样式
 import type { EditorFromTextArea } from 'codemirror'
 import CodeMirror from 'codemirror'
+import 'codemirror/addon/display/autorefresh'
+
 import 'codemirror/lib/codemirror.css'
 // JSON代码高亮需要由JavaScript插件支持
 import 'codemirror/mode/javascript/javascript.js'
@@ -48,10 +50,10 @@ import 'codemirror/addon/edit/closebrackets.js'
 // 行注释
 import 'codemirror/addon/comment/comment.js'
 // JSON错误检查
-import 'codemirror/addon/lint/lint.css'
-import 'codemirror/addon/lint/lint.js'
+// import 'codemirror/addon/lint/lint.css'
+// import 'codemirror/addon/lint/lint.js'
 // 需要依赖全局的jsonlint，不是很优雅
-import 'codemirror/addon/lint/json-lint.js'
+// import 'codemirror/addon/lint/json-lint.js'
 import { log } from '@/utils/log'
 
 const props = defineProps<{
@@ -66,6 +68,7 @@ const props = defineProps<{
 const code = ref('')
 const jsonCodeRef = ref<any>(null)
 
+// 加载 显示的行号不对齐问题  https://www.cnblogs.com/wenruo/p/8274958.html
 let codemirror: EditorFromTextArea
 function init() {
   // 防止转为监听对象，vue3中如果CodeMirror对象被转为监听对象，会无法正常使用
@@ -96,7 +99,7 @@ function init() {
       ],
       // CodeMirror-lint-markers是实现语法报错功能
       lint: true,
-
+      autoRefresh: true, // 自动触发刷新
       // 全屏模式
       fullScreen: false,
 

@@ -3,8 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import BaseLayout from '@/layout/BaseLayout.vue'
 import Home from '@/pages/home/home.vue'
 import NotFound from '@/pages/other/not_found.vue'
-import Json from '@/pages/json/index.vue'
-import JsonToDart from '@/pages/json_to_dart/index.vue'
+import Json from '@/pages/format/index.vue'
 import Translate from '@/pages/translate/index.vue'
 import Gadgets from '@/pages/gadgets/index.vue'
 import My from '@/pages/my/index.vue'
@@ -32,10 +31,7 @@ const routes: RouteRecordRaw[] = [
         path: 'json',
         component: Json,
       },
-      {
-        path: 'json_to_dart',
-        component: JsonToDart,
-      },
+
       {
         path: 'translate',
         component: Translate,
