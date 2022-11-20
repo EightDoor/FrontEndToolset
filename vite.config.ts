@@ -10,7 +10,7 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {
-        target: 'http://localhost:7003/',
+        target: 'http://tool.start6.cn/api/',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, ''),
       },
