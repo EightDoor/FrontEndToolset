@@ -49,6 +49,11 @@ const list = ref<ListType[]>([
     url: 'https://cn.sli.dev/',
     type: '工具',
   },
+  {
+    title: '免费pdf工具 PDF24 Tools',
+    url: 'https://tools.pdf24.org/zh/',
+    type: '工具',
+  },
   // vue3
   {
     title: '官网',
