@@ -49,10 +49,11 @@ const list = ref<ListType[]>([
     url: 'https://cn.sli.dev/',
     type: '工具',
   },
+  // javascript库
   {
-    title: '免费pdf工具 PDF24 Tools',
-    url: 'https://tools.pdf24.org/zh/',
-    type: '工具',
+    title: 'file-saver',
+    url: 'https://github.com/eligrey/FileSaver.js#readme',
+    type: 'javascript库',
   },
   // vue3
   {

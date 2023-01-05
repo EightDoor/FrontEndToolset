@@ -40,7 +40,7 @@ specifiers:
   vue-router: ^4.0.15
   vue-tsc: ^0.33.9
   vuex: ^4.0.2
-  zhoukai_utils: ^2.0.4
+  zhoukai_utils: ^2.0.3
 
 dependencies:
   '@element-plus/icons': 0.0.11

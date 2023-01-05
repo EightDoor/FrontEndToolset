@@ -53,6 +53,10 @@ const Slider = defineComponent({
         url: '/java',
       },
       {
+        title: '工具',
+        url: '/tool',
+      },
+      {
         title: 'go',
         url: '/go',
       },
