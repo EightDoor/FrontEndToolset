@@ -69,20 +69,36 @@
     </el-col>
     <el-col :span="1" />
     <el-col :span="12" class="right_content">
-      <template v-if="data.resultText.length === 0">
-        请在左侧输入翻译内容
-      </template>
-      <template v-else>
-        <div class="right_content__title">
-          翻译结果为:
-        </div>
-        <ul v-for="(item, index) in data.resultText" :key="index">
-          <li class="right_content__title__li">
-            <span v-if="data.resultText.length > 1">值: ({{ index + 1 }}):</span>
-            {{ item.dst }}
-          </li>
+      <div>
+        <template v-if="data.resultText.length === 0">
+          请在左侧输入翻译内容
+        </template>
+        <template v-else>
+          <div class="right_content__title">
+            翻译结果为:
+          </div>
+          <ul v-for="(item, index) in data.resultText" :key="index">
+            <li class="right_content__title__li">
+              <span v-if="data.resultText.length > 1">值: ({{ index + 1 }}):</span>
+              {{ item.dst }}
+            </li>
+          </ul>
+        </template>
+      </div>
+      <div
+        v-if="selectIndex[0] === 0"
+      >
+        <el-divider />
+        <ul class="formattxt-ul">
+          <template v-for="(item, index) in defaultList">
+            <li v-if="formatTxt(item)" :key="index">
+              {{ formatTxt(item) }}   <el-button style="margin-left: 15px" type="success" class="copy" :data-clipboard-text="formatTxt(item)" @click="copyData">
+                复制
+              </el-button>
+            </li>
+          </template>
         </ul>
-      </template>
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -103,9 +119,11 @@ import {
 } from 'vue-router'
 import * as qiniu from 'qiniu-js'
 import dayjs from 'dayjs'
+import Clipboard from 'clipboard'
 import type { TranslateType } from './index.type'
 import { log } from '@/utils/log'
 import Config from '@/config/index'
+import utils from '@/utils'
 
 const data = reactive<TranslateType.Data>({
   entryText: '',
@@ -130,6 +148,48 @@ const options = ref<
     label: '英文',
   },
 ])
+
+// 英文格式化展示
+const defaultList = ['2', '4', '3', '1']
+function formatTxt(val: string) {
+  if (data?.resultText?.length > 0) {
+    let source = data.resultText[0].dst
+    // 转换首字符为小写
+    source = source.toLowerCase()
+    const withHorizontal = source.replaceAll(' ', '-')
+    const smallHump = tranformStr1(withHorizontal)
+    switch (val) {
+      case '1':
+        // 带横线
+        return withHorizontal
+      case '2':
+        // 小驼峰
+        return smallHump
+      case '3':
+        // 大驼峰
+        return smallHump[0].toUpperCase() + smallHump.substr(1)
+      case '4':
+        // 大写
+        return withHorizontal.replaceAll('-', '_').toUpperCase()
+    }
+  }
+}
+
+/**
+ * 字符串转换-分割
+ * @param str
+ */
+function tranformStr1(str) {
+  const strArr = str.split('-')
+  for (let i = 1; i < strArr.length; i++)
+    strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].substring(1)
+
+  return strArr.join('')
+}
+function copyData() {
+  const clip = new Clipboard('.copy')
+  utils.clipTextResultInfo(clip)
+}
 
 function translateFun() {
   if (showTransitionImg.value) {
@@ -231,6 +291,10 @@ function changeEvenet(v) {
       showTransitionImg.value = imgUrl
     }
   })
+  if (v.keyCode === 13) {
+    console.log('键入回车')
+    translateFun()
+  }
 }
 
 async function uploadImg(imgUrl: string) {
@@ -376,5 +440,10 @@ function changeNewSelect() {
   justify-content: space-around;
   margin-right: 15px;
   align-items: center;
+}
+.formattxt-ul {
+  li {
+    margin-top: 15px;
+  }
 }
 </style>

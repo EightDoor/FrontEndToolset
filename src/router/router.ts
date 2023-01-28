@@ -17,7 +17,6 @@ import Windows from '@/pages/windows/index.vue'
 import Java from '@/pages/java/index.vue'
 import ReverseFrom from '@/pages/reverse_forum/index.vue'
 import Tool from '@/pages/tool/index.vue'
-import NameTranslation from '@/pages/name_translation/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -32,10 +31,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'json',
         component: Json,
-      },
-      {
-        path: 'name_translation',
-        component: NameTranslation,
       },
       {
         path: 'translate',
