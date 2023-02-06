@@ -17,6 +17,7 @@ import Windows from '@/pages/windows/index.vue'
 import Java from '@/pages/java/index.vue'
 import ReverseFrom from '@/pages/reverse_forum/index.vue'
 import BlackApple from '@/pages/black_apple/index.vue'
+import Tool from '@/pages/tool/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -51,6 +52,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'go',
         component: Go,
+      },
+      {
+        path: 'tool',
+        component: Tool,
       },
       {
         path: 'java',

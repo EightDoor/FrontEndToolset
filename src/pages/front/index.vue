@@ -49,6 +49,12 @@ const list = ref<ListType[]>([
     url: 'https://cn.sli.dev/',
     type: '工具',
   },
+  // javascript库
+  {
+    title: 'file-saver',
+    url: 'https://github.com/eligrey/FileSaver.js#readme',
+    type: 'javascript库',
+  },
   // vue3
   {
     title: '官网',

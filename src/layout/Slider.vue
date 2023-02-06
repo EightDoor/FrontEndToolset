@@ -45,12 +45,28 @@ const Slider = defineComponent({
         url: '/daily_muse_see',
       },
       {
+        title: '百度翻译',
+        url: '/translate',
+      },
+      {
+        title: 'json数据处理',
+        url: '/json',
+      },
+      {
+        title: '开发小工具',
+        url: '/gadgets',
+      },
+      {
         title: '前端开发',
         url: '/front',
       },
       {
         title: 'java',
         url: '/java',
+      },
+      {
+        title: '工具',
+        url: '/tool',
       },
       {
         title: 'go',
@@ -72,18 +88,6 @@ const Slider = defineComponent({
       //   title: '音乐',
       //   url: '/music',
       // },
-      {
-        title: '数据处理',
-        url: '/json',
-      },
-      {
-        title: '百度翻译',
-        url: '/translate',
-      },
-      {
-        title: '开发小工具',
-        url: '/gadgets',
-      },
       {
         title: 'github',
         url: 'https://github.com/EightDoor/FrontEndToolset',

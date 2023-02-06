@@ -1,6 +1,112 @@
+<template>
+  <el-row class="header_title">
+    <el-col :span="12">
+      <!--      <el-select -->
+      <!--        v-model="value" -->
+      <!--        class="input_w" -->
+      <!--        placeholder="请选择语言" -->
+      <!--        @change="changeSelect" -->
+      <!--      > -->
+      <!--        <el-option -->
+      <!--          v-for="item in options" -->
+      <!--          :key="item.value" -->
+      <!--          :label="item.label" -->
+      <!--          :value="item.value" -->
+      <!--        /> -->
+      <!--      </el-select> -->
+      <!--      <el-icon class="icon"> -->
+      <!--        <ArrowRightBold /> -->
+      <!--      </el-icon> -->
+      <!--      <el-select v-model="outputValue" class="input_w" placeholder="请选择语言"> -->
+      <!--        <el-option -->
+      <!--          v-for="item in options" -->
+      <!--          :key="item.value" -->
+      <!--          :label="item.label" -->
+      <!--          :value="item.value" -->
+      <!--        /> -->
+      <!--      </el-select> -->
+      <div class="select-btn">
+        <div class="select-show">
+          <span :style="selectIndex[0] === 0 ? { color: 'blue' } : { color: 'red' }">{{ options[selectIndex[0]].label }}</span>
+          <el-icon><Switch /></el-icon>
+          <span :style="selectIndex[0] === 0 ? { color: 'red' } : { color: 'blue' }">{{ options[selectIndex[1]].label }}</span>
+        </div>
+        <el-button type="primary" @click="changeNewSelect">
+          切换
+        </el-button>
+      </div>
+    </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="11">
+      <!-- <el-input
+        type="textarea"
+        :autosize="{ minRows: 10 }"
+        :rows="10"
+        placeholder="请输入翻译内容"
+        v-model="data.entryText"
+      /> -->
+
+      <div class="imageContent__clear">
+        <el-button
+          type="success"
+          size="large"
+          :loading="data.loading"
+          @click="translateFun"
+        >
+          翻译
+        </el-button>
+        <el-button type="primary" plain @click="clearText">
+          清空
+        </el-button>
+      </div>
+      <div
+        ref="contentImgRef"
+        contenteditable="true"
+        class="imageContent"
+        @keyup="changeEvenet"
+      />
+    </el-col>
+    <el-col :span="1" />
+    <el-col :span="12" class="right_content">
+      <div>
+        <template v-if="data.resultText.length === 0">
+          请在左侧输入翻译内容
+        </template>
+        <template v-else>
+          <div class="right_content__title">
+            翻译结果为:
+          </div>
+          <ul v-for="(item, index) in data.resultText" :key="index">
+            <li class="right_content__title__li">
+              <span v-if="data.resultText.length > 1">值: ({{ index + 1 }}):</span>
+              {{ item.dst }}
+            </li>
+          </ul>
+        </template>
+      </div>
+      <div
+        v-if="selectIndex[0] === 0"
+      >
+        <el-divider />
+        <ul class="formattxt-ul">
+          <template v-for="(item, index) in defaultList">
+            <li v-if="formatTxt(item)" :key="index">
+              {{ formatTxt(item) }}   <el-button style="margin-left: 15px" type="success" class="copy" :data-clipboard-text="formatTxt(item)" @click="copyData">
+                复制
+              </el-button>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </el-col>
+  </el-row>
+</template>
+
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import { Switch } from '@element-plus/icons'
 import axios from 'axios'
 import MD5 from 'md5'
 import type {
@@ -13,9 +119,11 @@ import {
 } from 'vue-router'
 import * as qiniu from 'qiniu-js'
 import dayjs from 'dayjs'
+import Clipboard from 'clipboard'
 import type { TranslateType } from './index.type'
 import { log } from '@/utils/log'
 import Config from '@/config/index'
+import utils from '@/utils'
 
 const data = reactive<TranslateType.Data>({
   entryText: '',
@@ -24,6 +132,7 @@ const data = reactive<TranslateType.Data>({
 })
 const value = ref('en')
 const outputValue = ref('zh')
+const selectIndex = ref([1, 0])
 const options = ref<
   {
     value: string
@@ -39,6 +148,48 @@ const options = ref<
     label: '英文',
   },
 ])
+
+// 英文格式化展示
+const defaultList = ['2', '4', '3', '1']
+function formatTxt(val: string) {
+  if (data?.resultText?.length > 0) {
+    let source = data.resultText[0].dst
+    // 转换首字符为小写
+    source = source.toLowerCase()
+    const withHorizontal = source.replaceAll(' ', '-')
+    const smallHump = tranformStr1(withHorizontal)
+    switch (val) {
+      case '1':
+        // 带横线
+        return withHorizontal
+      case '2':
+        // 小驼峰
+        return smallHump
+      case '3':
+        // 大驼峰
+        return smallHump[0].toUpperCase() + smallHump.substr(1)
+      case '4':
+        // 大写
+        return withHorizontal.replaceAll('-', '_').toUpperCase()
+    }
+  }
+}
+
+/**
+ * 字符串转换-分割
+ * @param str
+ */
+function tranformStr1(str) {
+  const strArr = str.split('-')
+  for (let i = 1; i < strArr.length; i++)
+    strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].substring(1)
+
+  return strArr.join('')
+}
+function copyData() {
+  const clip = new Clipboard('.copy')
+  utils.clipTextResultInfo(clip)
+}
 
 function translateFun() {
   if (showTransitionImg.value) {
@@ -91,6 +242,7 @@ const contentImgRef = ref(null)
 
 function clearText() {
   data.entryText = ''
+  data.resultText = []
   showTransitionImg.value = ''
   if (contentImgRef.value)
     (contentImgRef.value as HTMLElement).innerHTML = ''
@@ -139,6 +291,10 @@ function changeEvenet(v) {
       showTransitionImg.value = imgUrl
     }
   })
+  if (v.keyCode === 13) {
+    console.log('键入回车')
+    translateFun()
+  }
 }
 
 async function uploadImg(imgUrl: string) {
@@ -219,87 +375,27 @@ function dataURItoBlob(dataURI) {
 
   return new Blob([intArray], { type: mimeString })
 }
-</script>
 
-<template>
-  <el-row class="header_title">
-    <el-col :span="12">
-      <el-select
-        v-model="value"
-        class="input_w"
-        placeholder="请选择语言"
-        @change="changeSelect"
-      >
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-select>
-      <el-icon class="icon">
-        <ArrowRightBold />
-      </el-icon>
-      <el-select v-model="outputValue" class="input_w" placeholder="请选择语言">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-select>
-    </el-col>
-    <el-col :span="12">
-      <el-button
-        type="primary"
-        size="large"
-        :loading="data.loading"
-        @click="translateFun"
-      >
-        翻译
-      </el-button>
-    </el-col>
-  </el-row>
-  <el-row>
-    <el-col :span="11">
-      <!-- <el-input
-        type="textarea"
-        :autosize="{ minRows: 10 }"
-        :rows="10"
-        placeholder="请输入翻译内容"
-        v-model="data.entryText"
-      /> -->
-      <div class="imageContent__clear">
-        <el-button type="primary" @click="clearText">
-          清空
-        </el-button>
-      </div>
-      <div
-        ref="contentImgRef"
-        contenteditable="true"
-        class="imageContent"
-        @keyup="changeEvenet"
-      />
-    </el-col>
-    <el-col :span="1" />
-    <el-col :span="12" class="right_content">
-      <template v-if="data.resultText.length === 0">
-        请在左侧输入翻译内容
-      </template>
-      <template v-else>
-        <div class="right_content__title">
-          翻译结果为:
-        </div>
-        <ul v-for="(item, index) in data.resultText" :key="index">
-          <li class="right_content__title__li">
-            <span v-if="data.resultText.length > 1">值: ({{ index + 1 }}):</span>
-            {{ item.dst }}
-          </li>
-        </ul>
-      </template>
-    </el-col>
-  </el-row>
-</template>
+function changeNewSelect() {
+  if (selectIndex.value[0] === 0) {
+    selectIndex.value[0] = 1
+    selectIndex.value[1] = 0
+  }
+  else {
+    selectIndex.value[0] = 0
+    selectIndex.value[1] = 1
+  }
+  console.log(selectIndex.value[0])
+  if (selectIndex.value[0] === 0) {
+    value.value = 'zh'
+    outputValue.value = 'en'
+  }
+  else {
+    value.value = 'en'
+    outputValue.value = 'zh'
+  }
+}
+</script>
 
 <style scoped lang="less">
 .header_title {
@@ -330,6 +426,24 @@ function dataURItoBlob(dataURI) {
   &__clear {
     float: right;
     margin-left: 5px;
+  }
+}
+.select-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.select-show {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-right: 15px;
+  align-items: center;
+}
+.formattxt-ul {
+  li {
+    margin-top: 15px;
   }
 }
 </style>

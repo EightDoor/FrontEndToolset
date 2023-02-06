@@ -1,0 +1,21 @@
+<template>
+  <z-card :list="list" />
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import type { ListType } from '@/types/com'
+import ZCard from '@/components/ZCard/index.vue'
+
+const list = ref<ListType[]>([
+  {
+    title: '免费pdf工具 PDF24 Tools',
+    url: 'https://tools.pdf24.org/zh/',
+    type: '工具',
+  },
+])
+</script>
+
+<style scoped lang="less">
+
+</style>
