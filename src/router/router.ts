@@ -16,6 +16,7 @@ import Front from '@/pages/front/index.vue'
 import Windows from '@/pages/windows/index.vue'
 import Java from '@/pages/java/index.vue'
 import ReverseFrom from '@/pages/reverse_forum/index.vue'
+import BlackApple from '@/pages/black_apple/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -31,7 +32,10 @@ const routes: RouteRecordRaw[] = [
         path: 'json',
         component: Json,
       },
-
+      {
+        path: '/black_apple',
+        component: BlackApple,
+      },
       {
         path: 'translate',
         component: Translate,
