@@ -35,6 +35,11 @@ const list = ref<ListType[]>([
   },
   // 工具
   {
+    title: 'eruda(手机网页调试面板)',
+    url: 'https://github.com/liriliri/eruda',
+    type: '工具',
+  },
+  {
     title: 'vConsole',
     url: 'https://github.com/Tencent/vConsole/blob/dev/README_CN.md',
     type: '工具',
