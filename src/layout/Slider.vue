@@ -77,6 +77,10 @@ const Slider = defineComponent({
         url: '/windows',
       },
       {
+        title: '黑苹果',
+        url: '/black_apple',
+      },
+      {
         title: '逆向论坛',
         url: '/reverse_forum',
       },
