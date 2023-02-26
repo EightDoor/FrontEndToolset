@@ -1,16 +1,18 @@
 <template>
   <div v-if="dataForm">
     <h3>更新时间: {{ formatTime() }}</h3>
-    <span>人民币: </span>
+    <span>当前选择: {{ formatCode(selectKey) }}（{{ selectKey }}）: </span>
     <el-input-number v-model="num" :min="1" @input="inputNum" />
-    <div>
-      <h4>常用</h4>
-      <span>美元: {{ formatCommonUse("USD") }}</span>
-    </div>
-    <h4>其他</h4>
+    <!--    <div> -->
+    <!--      <h4>常用</h4> -->
+    <!--      <span>美元: {{ formatCommonUse("USD") }}</span> -->
+    <!--    </div> -->
     <ul class="ul">
       <li v-for="(item, index) in numRates" :key="index">
         <span>{{ formatCode(index) }}（{{ index }}）</span> <span>{{ item }}</span>
+        <el-button style="margin-left: 30px" type="primary" plain size="small" @click="changeSelect(index)">
+          选择
+        </el-button>
       </li>
     </ul>
   </div>
@@ -28,6 +30,8 @@ const dataForm = ref()
 const num = ref(1)
 const numRates = ref<any[]>([])
 const defaultRates = ref<any[]>([])
+const keys = ref<String[]>([])
+const selectKey = ref('USD')
 onMounted(() => {
   getBaseInfo()
 })
@@ -55,9 +59,18 @@ function formatCommonUse(type) {
 function formatCode(key) {
   return exchangeRateCode(key)
 }
+function changeSelect(type) {
+  selectKey.value = type
+  getBaseInfo()
+}
 function getBaseInfo() {
-  const url = 'https://api.exchangerate-api.com/v4/latest/CNY'
+  const url = `https://api.exchangerate-api.com/v4/latest/${selectKey.value}`
+  numRates.value = []
   axios.get(url).then((res) => {
+    const resultKeys: String[] = []
+    for (const key in res.data.rates)
+      resultKeys.push(key)
+    keys.value = resultKeys
     const data = res.data
     console.log(data, 'data')
     numRates.value = cloneDeep(res.data.rates)
@@ -71,6 +84,7 @@ function getBaseInfo() {
 .ul {
   margin-top: 15px ;
   li {
+    margin-top: 15px;
     font-size: 15px;
     &>span:nth-child(1) {
       font-weight: bold;
