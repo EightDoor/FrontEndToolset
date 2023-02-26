@@ -19,7 +19,7 @@ specifiers:
   cross-env: ^7.0.3
   cross-spawn: ^7.0.3
   dayjs: ^1.11.2
-  element-plus: ^2.2.4
+  element-plus: ^2.2.32
   eslint: ^8.13.0
   highlight.js: ^11.5.1
   js-base64: ^3.7.2
@@ -49,7 +49,7 @@ dependencies:
   codemirror: 5.65.11
   cross-spawn: 7.0.3
   dayjs: 1.11.7
-  element-plus: 2.2.28_vue@3.2.45
+  element-plus: 2.2.32_vue@3.2.45
   highlight.js: 11.7.0
   js-base64: 3.7.3
   js-beautify: 1.14.7
@@ -1174,8 +1174,8 @@ packages:
       sigmund: 1.0.1
     dev: false
 
-  /element-plus/2.2.28_vue@3.2.45:
-    resolution: {integrity: sha512-BsxF7iEaBydmRfw1Tt++EO9jRBjbtJr7ZRIrnEwz4J3Cwa1IzHCNCcx3ZwcYTlJq9CYFxv94JnbNr1EbkTou3A==}
+  /element-plus/2.2.32_vue@3.2.45:
+    resolution: {integrity: sha512-DTJMhYOy6MApbmh6z/95hPTK5WrBiNHGzV4IN+uEkup1WoimQ+Qyt8RxKdTe/X1LWEJ8YgWv/Cl8P4ocrt5z5g==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:

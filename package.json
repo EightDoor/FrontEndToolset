@@ -15,7 +15,7 @@
     "codemirror": "^5.65.2",
     "cross-spawn": "^7.0.3",
     "dayjs": "^1.11.2",
-    "element-plus": "^2.2.4",
+    "element-plus": "^2.2.32",
     "highlight.js": "^11.5.1",
     "js-base64": "^3.7.2",
     "js-beautify": "^1.14.7",

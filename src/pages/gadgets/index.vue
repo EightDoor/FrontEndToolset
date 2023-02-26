@@ -17,6 +17,7 @@ import Md5Component from './md5Component.vue'
 import Base64Component from './base64Component.vue'
 import PasswordGenerate from './password_generate.vue'
 import TimeStamp from './time_stamp/index.vue'
+import TimeConversion from '@/pages/gadgets/timeConversion.vue'
 
 interface ListType {
   label: string
@@ -30,6 +31,10 @@ const list = ref<ListType[]>([
   {
     label: '时间转换<->时间戳',
     component: markRaw(TimeStamp),
+  },
+  {
+    label: '时间单位转换',
+    component: markRaw(TimeConversion),
   },
   {
     label: 'uuid生成',
