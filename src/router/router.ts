@@ -18,6 +18,7 @@ import Java from '@/pages/java/index.vue'
 import ReverseFrom from '@/pages/reverse_forum/index.vue'
 import BlackApple from '@/pages/black_apple/index.vue'
 import Tool from '@/pages/tool/index.vue'
+import CommonGadgets from '@/pages/common_gadgets/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -44,6 +45,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'gadgets',
         component: Gadgets,
+      },
+      {
+        path: 'commonGadgets',
+        component: CommonGadgets,
       },
       {
         path: 'daily_muse_see',

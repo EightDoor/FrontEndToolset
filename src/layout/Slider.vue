@@ -57,6 +57,10 @@ const Slider = defineComponent({
         url: '/gadgets',
       },
       {
+        title: '常用小工具',
+        url: '/commonGadgets',
+      },
+      {
         title: '前端开发',
         url: '/front',
       },

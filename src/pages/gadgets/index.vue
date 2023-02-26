@@ -19,7 +19,7 @@ import PasswordGenerate from './password_generate.vue'
 import TimeStamp from './time_stamp/index.vue'
 import TimeConversion from '@/pages/gadgets/timeConversion.vue'
 
-interface ListType {
+export interface ListType {
   label: string
   component: any
 }
