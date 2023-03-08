@@ -69,6 +69,11 @@ const list = ref<ListType[]>([
     type: '工具',
   },
   {
+    title: 'NeatDownloadManager 下载器',
+    url: 'https://neat-download-manager.en.softonic.com/',
+    type: '工具',
+  },
+  {
     title: 'PhotoDemon轻量级的图片编辑工具',
     url: 'https://photodemon.org/',
     type: '工具',
