@@ -14,18 +14,13 @@ const list = ref<ListType[]>([
     type: 'EFI',
   },
   {
-    title: 'openCore可视化配置',
-    url: 'https://github.com/ic005k/OCAuxiliaryTools',
-    type: '工具',
+    title: 'OpenCore EFI For B460M-MORTAR-WIFI',
+    url: 'https://github.com/Spectrelai/Hackintosh-B460M-MORTAR-WIFI',
+    type: 'EFI',
   },
   {
     title: 'openCore可视化配置',
     url: 'https://github.com/ic005k/OCAuxiliaryTools',
-    type: '工具',
-  },
-  {
-    title: 'Hackintool',
-    url: 'https://github.com/benbaker76/Hackintool',
     type: '工具',
   },
   {
