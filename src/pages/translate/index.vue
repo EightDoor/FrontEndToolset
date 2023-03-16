@@ -1,53 +1,21 @@
 <template>
   <el-row class="header_title">
     <el-col :span="12">
-      <!--      <el-select -->
-      <!--        v-model="value" -->
-      <!--        class="input_w" -->
-      <!--        placeholder="请选择语言" -->
-      <!--        @change="changeSelect" -->
-      <!--      > -->
-      <!--        <el-option -->
-      <!--          v-for="item in options" -->
-      <!--          :key="item.value" -->
-      <!--          :label="item.label" -->
-      <!--          :value="item.value" -->
-      <!--        /> -->
-      <!--      </el-select> -->
-      <!--      <el-icon class="icon"> -->
-      <!--        <ArrowRightBold /> -->
-      <!--      </el-icon> -->
-      <!--      <el-select v-model="outputValue" class="input_w" placeholder="请选择语言"> -->
-      <!--        <el-option -->
-      <!--          v-for="item in options" -->
-      <!--          :key="item.value" -->
-      <!--          :label="item.label" -->
-      <!--          :value="item.value" -->
-      <!--        /> -->
-      <!--      </el-select> -->
       <div class="select-btn">
         <div class="select-show">
           <span :style="selectIndex[0] === 0 ? { color: 'blue' } : { color: 'red' }">{{ options[selectIndex[0]].label }}</span>
           <el-icon><Switch /></el-icon>
           <span :style="selectIndex[0] === 0 ? { color: 'red' } : { color: 'blue' }">{{ options[selectIndex[1]].label }}</span>
         </div>
-        <el-button type="primary" @click="changeNewSelect">
-          切换
-        </el-button>
       </div>
     </el-col>
   </el-row>
   <el-row>
     <el-col :span="11">
-      <!-- <el-input
-        type="textarea"
-        :autosize="{ minRows: 10 }"
-        :rows="10"
-        placeholder="请输入翻译内容"
-        v-model="data.entryText"
-      /> -->
-
       <div class="imageContent__clear">
+        <el-button type="primary" @click="changeNewSelect">
+          切换
+        </el-button>
         <el-button
           type="success"
           size="large"
@@ -60,30 +28,27 @@
           清空
         </el-button>
       </div>
-      <div
+      <el-input
         ref="contentImgRef"
-        contenteditable="true"
-        class="imageContent"
-        @keyup="changeEvenet"
+        v-model="data.entryText"
+        :rows="10"
+        placeholder="请在左侧输入翻译内容"
+        style="margin-top: 15px"
+        type="textarea"
       />
     </el-col>
     <el-col :span="1" />
     <el-col :span="12" class="right_content">
       <div>
-        <template v-if="data.resultText.length === 0">
-          请在左侧输入翻译内容
-        </template>
-        <template v-else>
-          <div class="right_content__title">
-            翻译结果为:
-          </div>
-          <ul v-for="(item, index) in data.resultText" :key="index">
-            <li class="right_content__title__li">
-              <span v-if="data.resultText.length > 1">值: ({{ index + 1 }}):</span>
-              {{ item.dst }}
-            </li>
-          </ul>
-        </template>
+        <div class="right_content__title">
+          翻译结果为:
+        </div>
+        <ul v-for="(item, index) in data.resultText" :key="index">
+          <li class="right_content__title__li">
+            <span v-if="data.resultText.length > 1">值: ({{ index + 1 }}):</span>
+            {{ item.dst }}
+          </li>
+        </ul>
       </div>
       <div
         v-if="selectIndex[0] === 0"
@@ -117,8 +82,6 @@ import {
   onBeforeRouteUpdate,
   useRoute,
 } from 'vue-router'
-import * as qiniu from 'qiniu-js'
-import dayjs from 'dayjs'
 import Clipboard from 'clipboard'
 import type { TranslateType } from './index.type'
 import { log } from '@/utils/log'
@@ -150,7 +113,7 @@ const options = ref<
 ])
 
 // 英文格式化展示
-const defaultList = ['2', '4', '3', '1']
+const defaultList = ['2', '5', '4', '3', '1']
 function formatTxt(val: string) {
   if (data?.resultText?.length > 0) {
     let source = data.resultText[0].dst
@@ -171,6 +134,8 @@ function formatTxt(val: string) {
       case '4':
         // 大写
         return withHorizontal.replaceAll('-', '_').toUpperCase()
+      case '5':
+        return source.toLowerCase().replaceAll(' ', '_')
     }
   }
 }
@@ -192,11 +157,6 @@ function copyData() {
 }
 
 function translateFun() {
-  if (showTransitionImg.value) {
-    // 存在图片，直接翻译图片
-    uploadImg(showTransitionImg.value)
-    return
-  }
   data.resultText = []
   data.loading = true
   const appid = import.meta.env.VITE_APP_ID
@@ -236,14 +196,11 @@ function translateFun() {
 }
 const route = useRoute()
 
-// 翻译的图片
-const showTransitionImg = ref('')
 const contentImgRef = ref(null)
 
 function clearText() {
   data.entryText = ''
   data.resultText = []
-  showTransitionImg.value = ''
   if (contentImgRef.value)
     (contentImgRef.value as HTMLElement).innerHTML = ''
 }
@@ -269,112 +226,6 @@ onBeforeRouteUpdate(
     next()
   },
 )
-
-function changeSelect(val) {
-  if (val === 'zh')
-    outputValue.value = 'en'
-  else
-    outputValue.value = 'zh'
-}
-
-// 翻译图片显示
-function changeEvenet(v) {
-  const text = v.target.innerText
-  data.entryText = text
-  let imgUrl = ''
-  if (text)
-    showTransitionImg.value = ''
-
-  v.target.childNodes.forEach(async (item) => {
-    if (item.nodeName === 'IMG') {
-      imgUrl = item.currentSrc
-      showTransitionImg.value = imgUrl
-    }
-  })
-  if (v.keyCode === 13) {
-    console.log('键入回车')
-    translateFun()
-  }
-}
-
-async function uploadImg(imgUrl: string) {
-  const result = await axios.get(`${Config.backUrl}baidu_img/token`)
-  if (result.data.code === 0) {
-    const token = result.data.data
-    const blob: any = dataURItoBlob(imgUrl)
-    const name = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss')
-    const observable = qiniu.upload(
-      blob,
-      name,
-      token,
-      {},
-      {
-        useCdnDomain: true,
-        region: 'z1',
-      },
-    )
-    // 上传开始
-    const observer = {
-      next(res) {
-        console.log(res, '上传中...')
-      },
-      error(err) {
-        console.log(err, '上传失败')
-        ElMessage.error('图片上传失败')
-      },
-      complete(res) {
-        const uploadImg = Config.qiuniuLoadUrl + res.key
-        ElMessage.success('图片上传成功')
-        translationImageContent(uploadImg)
-      },
-    }
-    observable.subscribe(observer)
-  }
-}
-function translationImageContent(url: string) {
-  axios
-    .get(
-      `${Config.backUrl}baidu_img/img?url=${encodeURI(url)}&from=${
-        value.value
-      }&to=${outputValue.value}`,
-    )
-    .then((res) => {
-      console.log(
-        '🚀 ~ file: index.vue ~ line 236 ~ axios.get ~ res',
-        res.data,
-      )
-      const result = res.data.data.data.sumDst
-      const src = res.data.data.data.sumSrc
-
-      data.resultText = [
-        {
-          dst: result,
-          src,
-        },
-      ]
-      console.log(data.resultText)
-
-      ElMessage.success('翻译成功')
-    })
-    .catch(() => {
-      ElMessage.error('翻译失败')
-    })
-}
-
-/**
- * base64  to blob二进制
- */
-function dataURItoBlob(dataURI) {
-  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0] // mime类型
-  const byteString = atob(dataURI.split(',')[1]) // base64 解码
-  const arrayBuffer = new ArrayBuffer(byteString.length) // 创建缓冲数组
-  const intArray = new Uint8Array(arrayBuffer) // 创建视图
-
-  for (let i = 0; i < byteString.length; i++)
-    intArray[i] = byteString.charCodeAt(i)
-
-  return new Blob([intArray], { type: mimeString })
-}
 
 function changeNewSelect() {
   if (selectIndex.value[0] === 0) {
