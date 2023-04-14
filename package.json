@@ -23,7 +23,6 @@
     "localforage": "^1.10.0",
     "lodash-es": "^4.17.21",
     "md5": "^2.3.0",
-    "qiniu-js": "^3.4.0",
     "uuid": "^8.3.2",
     "vue": "^3.2.36",
     "vue-json-pretty": "^2.2.3",
