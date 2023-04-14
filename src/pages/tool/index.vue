@@ -13,6 +13,16 @@ const list = ref<ListType[]>([
     url: 'https://tools.pdf24.org/zh/',
     type: '工具',
   },
+  {
+    title: 'stackoverflow',
+    url: ' https://stackoverflow.com/',
+    type: '工具',
+  },
+  {
+    title: 'stackoverflow中文站点',
+    url: 'https://stackoverflow.org.cn/',
+    type: '工具',
+  },
 ])
 </script>
 

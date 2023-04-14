@@ -33,6 +33,11 @@ const list = ref<ListType[]>([
     url: 'https://developer.mozilla.org/zh-CN/',
     type: '文档',
   },
+  {
+    title: 'caniuse 浏览器兼容性各属性',
+    url: 'https://caniuse.com/ciu/index',
+    type: '文档',
+  },
   // 工具
   {
     title: 'eruda(手机网页调试面板)',
