@@ -61,6 +61,11 @@ const list = ref<ListType[]>([
     url: 'https://developer.aliyun.com/mvn/guide',
     type: '工具',
   },
+  {
+    title: 'Easy Excel（快速、简洁、解决大文件内存溢出的Excel处理工具）',
+    url: 'https://easyexcel.opensource.alibaba.com/',
+    type: '工具',
+  },
   // 工具--------------
   // 文档--------------
   {
