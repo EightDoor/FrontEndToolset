@@ -65,6 +65,10 @@ const Slider = defineComponent({
         url: '/front',
       },
       {
+        title: '小程序',
+        url: '/mini_program',
+      },
+      {
         title: 'java',
         url: '/java',
       },

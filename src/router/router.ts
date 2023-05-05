@@ -19,6 +19,7 @@ import ReverseFrom from '@/pages/reverse_forum/index.vue'
 import BlackApple from '@/pages/black_apple/index.vue'
 import Tool from '@/pages/tool/index.vue'
 import CommonGadgets from '@/pages/common_gadgets/index.vue'
+import MiniProgram from '@/pages/mini_program/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -85,6 +86,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'windows',
         component: Windows,
+      },
+      {
+        path: 'mini_program',
+        component: MiniProgram,
       },
     ],
   },
