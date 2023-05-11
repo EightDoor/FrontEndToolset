@@ -59,10 +59,20 @@ const list = ref<ListType[]>([
     url: 'https://cn.sli.dev/',
     type: '工具',
   },
+  {
+    title: '图片压缩',
+    url: 'https://docsmall.com/image-compress',
+    type: '工具',
+  },
   // javascript库
   {
     title: 'file-saver',
     url: 'https://github.com/eligrey/FileSaver.js#readme',
+    type: 'javascript库',
+  },
+  {
+    title: '前端rsa加解密工具(兼容小程序环境)',
+    url: 'https://github.com/neohan666/wxmp-rsa',
     type: 'javascript库',
   },
   // vue3
@@ -96,6 +106,17 @@ const list = ref<ListType[]>([
     title: 'vue2官网',
     url: 'https://v2.cn.vuejs.org/v2/guide/',
     type: 'vue2',
+  },
+  // 切图
+  {
+    title: 'pxcook 高效易用的自动标注工具, 生成前端代码, 设计研发协作利器',
+    url: 'https://www.fancynode.com.cn/pxcook',
+    type: '切图',
+  },
+  {
+    title: '在线ps',
+    url: 'https://ps.start6.com/',
+    type: '切图',
   },
 ])
 </script>
