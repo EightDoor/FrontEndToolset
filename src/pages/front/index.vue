@@ -115,12 +115,11 @@ const list = ref<ListType[]>([
   },
   {
     title: '在线ps',
-    url: 'https://ps.start6.com/',
+    url: 'https://www.photopea.com/',
     type: '切图',
   },
 ])
 </script>
 
 <style scoped lang="less">
-
 </style>
