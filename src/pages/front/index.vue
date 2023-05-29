@@ -74,6 +74,11 @@ const list = ref<ListType[]>([
     url: 'https://github.com/rocyuan666/vue2-scale-box',
     type: '工具',
   },
+  {
+    title: '🛠️启动Vite驱动的Vue项目的推荐方式',
+    url: 'https://github.com/vuejs/create-vue',
+    type: '工具',
+  },
   // javascript库
   {
     title: 'file-saver',
