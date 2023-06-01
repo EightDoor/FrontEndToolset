@@ -18,6 +18,7 @@ import Base64Component from './base64Component.vue'
 import PasswordGenerate from './password_generate.vue'
 import TimeStamp from './time_stamp/index.vue'
 import TimeConversion from '@/pages/gadgets/timeConversion.vue'
+import Base64ConversionImg from '@/pages/gadgets/base64_conversion_img.vue'
 
 export interface ListType {
   label: string
@@ -59,6 +60,10 @@ const list = ref<ListType[]>([
   {
     label: 'Url编码解码',
     component: markRaw(UrlEncoding),
+  },
+  {
+    label: 'base64<->图片转换',
+    component: markRaw(Base64ConversionImg),
   },
   {
     label: 'less、sass、css相互转换',

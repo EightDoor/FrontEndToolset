@@ -64,21 +64,6 @@ const list = ref<ListType[]>([
     url: 'https://docsmall.com/image-compress',
     type: '工具',
   },
-  {
-    title: '帮小忙（腾讯qq浏览器在线工具箱）',
-    url: 'https://tool.browser.qq.com/',
-    type: '工具',
-  },
-  {
-    title: 'vue2大屏自适应组件',
-    url: 'https://github.com/rocyuan666/vue2-scale-box',
-    type: '工具',
-  },
-  {
-    title: '🛠️启动Vite驱动的Vue项目的推荐方式',
-    url: 'https://github.com/vuejs/create-vue',
-    type: '工具',
-  },
   // javascript库
   {
     title: 'file-saver',
