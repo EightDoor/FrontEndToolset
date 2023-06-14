@@ -64,6 +64,11 @@ const list = ref<ListType[]>([
     url: 'https://docsmall.com/image-compress',
     type: '工具',
   },
+  {
+    title: '腾讯QQ浏览器在线工具箱',
+    url: 'https://tool.browser.qq.com/',
+    type: '工具',
+  },
   // javascript库
   {
     title: 'file-saver',
