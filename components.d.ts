@@ -37,6 +37,7 @@ declare module 'vue' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     GoHome: typeof import('./src/components/GoHome/index.vue')['default']
     JsonCode: typeof import('./src/components/JsonCode/index.vue')['default']
     Loading: typeof import('element-plus/es')['ElLoadingDirective']
