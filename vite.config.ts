@@ -11,7 +11,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         // target: 'http://tool.start6.cn/api/',
-        target: 'http://localhost:8081/api',
+        target: 'http://localhost:8085/api',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, ''),
       },

@@ -26,8 +26,10 @@
       </el-upload>
       <div class="slider-demo-block">
         <span class="demonstration">图片质量压缩比例: {{ compressSchedule }}</span>
-        <el-slider v-model="compressSchedule" :min="0.1" :max="1" :step="0.1" />
-        <el-alert title="提示：图片质量压缩比例越低，图片越小，图片质量越差。jpg格式图片压缩效果最好" type="warning" />
+        <div style="padding: 0 15px">
+          <el-slider v-model="compressSchedule" :min="0.1" :max="1" :step="0.1" />
+        </div>
+        <el-alert :closable="false" title="提示：图片质量压缩比例越低，图片越小，图片质量越差。jpg格式图片压缩效果最好" type="warning" />
       </div>
       <el-button v-if="fileList.length > 0" style="margin-top: 20px;margin-left: 30px" type="primary" @click="startComppression">
         开始压缩
