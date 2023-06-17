@@ -21,7 +21,7 @@ import { ref } from 'vue'
 import Clipboard from 'clipboard'
 import utils from '@/utils'
 
-const count = ref(20)
+const count = ref(15)
 const data = ref('')
 
 function password_generator(len) {

@@ -171,7 +171,7 @@ function translateFun() {
   log.i('appid', appid)
   log.i('key', key)
   axios
-    .get(`${Config.backUrl}baidu_img/translationContent`, {
+    .get(`${Config.backUrl}translate/translationContent`, {
       params: {
         q: query,
         appid,
