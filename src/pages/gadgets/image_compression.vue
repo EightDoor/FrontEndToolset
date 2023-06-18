@@ -16,7 +16,7 @@
         :data="{
           compressSchedule,
         }"
-        accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG"
+        accept=".jpg,.png,.JPG,.PNG"
         drag
         :on-exceed="handleExceed"
       >
