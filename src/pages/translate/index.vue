@@ -171,15 +171,13 @@ function translateFun() {
   log.i('appid', appid)
   log.i('key', key)
   axios
-    .get(`${Config.backUrl}translate/translationContent`, {
-      params: {
-        q: query,
-        appid,
-        salt,
-        from,
-        to,
-        sign,
-      },
+    .post(`${Config.backUrl}translate/translationContent`, {
+      q: query,
+      appid,
+      salt,
+      from,
+      to,
+      sign,
     })
     .then((res) => {
       console.log(res.data, 'res.data')
