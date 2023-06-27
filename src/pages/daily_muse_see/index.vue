@@ -9,11 +9,6 @@ import type { ListType } from '@/types/com'
 
 const list = ref<ListType[]>([
   {
-    title: 'github中文社区',
-    url: 'https://www.githubs.cloud/#/trend',
-    type: '文档',
-  },
-  {
     title: 'github中文排行榜',
     url: 'https://github.com/GrowingGit/GitHub-Chinese-Top-Charts',
     type: '文档',
