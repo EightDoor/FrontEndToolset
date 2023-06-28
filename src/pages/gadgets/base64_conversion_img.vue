@@ -2,10 +2,12 @@
   <div>
     <el-upload
       ref="upload"
+      style="width: 200px"
       action="#"
       class="upload-demo"
+      :on-change="onChange"
       :http-request="httpRequest"
-      :limit="1"
+      :file-list="fileList"
       :auto-upload="true"
     >
       <template #trigger>
@@ -59,7 +61,12 @@ async function copyData() {
     console.error(e)
   }
 }
-
+const fileList = ref<any[]>([])
+function onChange(uploadFile, uploadFiles: any) {
+  console.log(uploadFiles, 'uploadFiles')
+  if (uploadFiles.length > 0)
+    fileList.value = [uploadFiles[uploadFiles.length - 1]]// 这一步，是 展示最后一次选择文件
+}
 // 转base64码
 function getBase64(file) {
   return new Promise((resolve, reject) => {
