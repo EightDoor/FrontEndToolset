@@ -159,25 +159,15 @@ function copyData() {
 function translateFun() {
   data.resultText = []
   data.loading = true
-  const appid = import.meta.env.VITE_APP_ID
-  const key = import.meta.env.VITE_APP_KEY
-  const salt = new Date().getTime()
   const query = data.entryText
   // 多个query可以用\n连接  如 query='apple\norange\nbanana\npear'
   const from = value.value
   const to = outputValue.value
-  const str1 = appid + query + salt + key
-  const sign = MD5(str1)
-  log.i('appid', appid)
-  log.i('key', key)
   axios
     .post(`${Config.backUrl}translate/translationContent`, {
       q: query,
-      appid,
-      salt,
       from,
       to,
-      sign,
     })
     .then((res) => {
       console.log(res.data, 'res.data')
