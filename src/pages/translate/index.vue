@@ -173,7 +173,7 @@ function translateFun() {
       console.log(res.data, 'res.data')
       data.loading = false
       if (res.data.code === 0)
-        data.resultText = res.data.data.trans_result
+        data.resultText = res.data.data
       else
         ElMessage.error(`翻译失败: ${res.data.data}`)
     })
