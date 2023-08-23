@@ -14,9 +14,19 @@ const list = ref<ListType[]>([
     url: 'https://ext.dcloud.net.cn/',
   },
   {
+    title: 'z-tabs',
+    type: '常用库',
+    url: 'https://ext.dcloud.net.cn/plugin?id=8308',
+  },
+  {
     title: 'z-paging分页',
     type: '常用库',
     url: 'https://z-paging.zxlee.cn/',
+  },
+  {
+    title: '小程序 使用 tailwindcss 全方面解决方案',
+    type: '常用库',
+    url: 'https://weapp-tw.icebreaker.top/',
   },
   {
     title: 'uview2.0',
