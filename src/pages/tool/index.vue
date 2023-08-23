@@ -19,6 +19,11 @@ const list = ref<ListType[]>([
     type: '工具',
   },
   {
+    title: '1Panel运维工具',
+    url: 'https://github.com/1Panel-dev/1Panel',
+    type: '工具',
+  },
+  {
     title: 'stackoverflow中文站点',
     url: 'https://stackoverflow.org.cn/',
     type: '工具',
