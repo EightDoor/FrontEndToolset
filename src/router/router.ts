@@ -20,6 +20,7 @@ import BlackApple from '@/pages/black_apple/index.vue'
 import Tool from '@/pages/tool/index.vue'
 import CommonGadgets from '@/pages/common_gadgets/index.vue'
 import MiniProgram from '@/pages/mini_program/index.vue'
+import AI from '@/pages/ai/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -58,6 +59,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'go',
         component: Go,
+      },
+      {
+        path: 'AI',
+        component: AI,
       },
       {
         path: 'tool',
