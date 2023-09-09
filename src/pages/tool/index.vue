@@ -28,6 +28,11 @@ const list = ref<ListType[]>([
     url: 'https://stackoverflow.org.cn/',
     type: '工具',
   },
+  {
+    title: 'pandoc支持多种格式相互转换，比如docx、docx、pdf、html等',
+    url: 'https://github.com/jgm/pandoc',
+    type: '工具',
+  },
 ])
 </script>
 
