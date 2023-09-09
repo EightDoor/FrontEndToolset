@@ -123,6 +123,12 @@ const list = ref<ListType[]>([
     url: 'https://www.photopea.com/',
     type: '切图',
   },
+  // 字体
+  {
+    title: '带有编程连字的免费等宽字体 FiraCode',
+    url: 'https://github.com/tonsky/FiraCode',
+    type: '字体',
+  },
 ])
 </script>
 
