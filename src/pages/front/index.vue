@@ -129,6 +129,17 @@ const list = ref<ListType[]>([
     url: 'https://github.com/tonsky/FiraCode',
     type: '字体',
   },
+  // javascript运行时
+  {
+    title: 'Bun(它的核心是 Bun 运行时，一个快速的 JavaScript 运行时，旨在替代 Node.js。它是用Zig编写的，由JavaScriptCore提供支持，大大减少了启动时间和内存使用量。)',
+    url: 'https://github.com/oven-sh/bun',
+    type: 'javascript运行时',
+  },
+  {
+    title: 'Bun(是一个简单、现代且安全的运行时 对于使用 V8 并在 Rust 中构建的 JavaScript 和 TypeScript。)',
+    url: 'https://github.com/denoland/deno',
+    type: 'javascript运行时',
+  },
 ])
 </script>
 
