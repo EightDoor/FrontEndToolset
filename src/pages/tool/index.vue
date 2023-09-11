@@ -9,6 +9,11 @@ import ZCard from '@/components/ZCard/index.vue'
 
 const list = ref<ListType[]>([
   {
+    title: '适用于开发人员和 IT 人员的有用工具',
+    url: 'https://it-tools.tech/',
+    type: '工具',
+  },
+  {
     title: '免费pdf工具 PDF24 Tools',
     url: 'https://tools.pdf24.org/zh/',
     type: '工具',
