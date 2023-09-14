@@ -15,6 +15,7 @@
     "codemirror": "^5.65.2",
     "cross-spawn": "^7.0.3",
     "dayjs": "^1.11.2",
+    "diff": "^5.1.0",
     "element-plus": "^2.2.32",
     "highlight.js": "^11.5.1",
     "js-base64": "^3.7.2",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.23.1",
     "@types/codemirror": "^5.60.5",
+    "@types/diff": "^5.0.3",
     "@types/js-beautify": "^1.13.3",
     "@types/localforage": "^0.0.34",
     "@types/lodash-es": "^4.17.6",

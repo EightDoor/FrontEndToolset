@@ -26,6 +26,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.2
     version: 1.11.7
+  diff:
+    specifier: ^5.1.0
+    version: 5.1.0
   element-plus:
     specifier: ^2.2.32
     version: 2.2.32(vue@3.2.45)
@@ -76,6 +79,9 @@ devDependencies:
   '@types/codemirror':
     specifier: ^5.60.5
     version: 5.60.6
+  '@types/diff':
+    specifier: ^5.0.3
+    version: 5.0.3
   '@types/js-beautify':
     specifier: ^1.13.3
     version: 1.13.3
@@ -382,6 +388,10 @@ packages:
     resolution: {integrity: sha512-JIDPSvkYRlcv/2F0erqD+de2ni/Mz6FJMEGb0vwF6ByQOcHIKfiEfwrO4d6dSRwYeHyNUMpGjev0PyjX2M0XWw==}
     dependencies:
       '@types/tern': 0.23.4
+    dev: true
+
+  /@types/diff@5.0.3:
+    resolution: {integrity: sha512-amrLbRqTU9bXMCc6uX0sWpxsQzRIo9z6MJPkH1pkez/qOxuqSZVuryJAWoBRq94CeG8JxY+VK4Le9HtjQR5T9A==}
     dev: true
 
   /@types/estree@1.0.0:
@@ -1141,6 +1151,11 @@ packages:
 
   /delegate@3.2.0:
     resolution: {integrity: sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==}
+    dev: false
+
+  /diff@5.1.0:
+    resolution: {integrity: sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==}
+    engines: {node: '>=0.3.1'}
     dev: false
 
   /dir-glob@3.0.1:

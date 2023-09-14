@@ -10,16 +10,16 @@
 import { markRaw, ref } from 'vue'
 import type { ListType } from '@/pages/gadgets/index.vue'
 import ExchangeRate from '@/pages/common_gadgets/exchangeRate.vue'
-import SpeedTest from '@/pages/common_gadgets/speedTest.vue'
+import TextComparison from '@/pages/text_comparison/index.vue'
 
 const list = ref<ListType[]>([
   {
-    label: '汇率换算',
-    component: markRaw(ExchangeRate),
+    label: '文本对比',
+    component: markRaw(TextComparison),
   },
   {
-    label: '网速测试',
-    component: markRaw(SpeedTest),
+    label: '汇率换算',
+    component: markRaw(ExchangeRate),
   },
 ])
 </script>
