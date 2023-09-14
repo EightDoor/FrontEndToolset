@@ -25,6 +25,9 @@ export default defineComponent({
 </script>
 
 <style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @font-face {
   font-family: 'custom_font';
   src: url('http://vue3.admin.qiniu.start6.cn/NotoSerifGeorgian-Bold.ttf');
