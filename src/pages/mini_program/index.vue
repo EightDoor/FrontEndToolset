@@ -29,6 +29,11 @@ const list = ref<ListType[]>([
     url: 'https://weapp-tw.icebreaker.top/',
   },
   {
+    title: ' 精致的下拉刷新和上拉加载js框架 mescroll',
+    type: '常用库',
+    url: 'https://github.com/EightDoor/mescroll',
+  },
+  {
     title: 'uview2.0',
     type: 'ui',
     url: 'https://www.uviewui.com/?from=thosefree.com',
