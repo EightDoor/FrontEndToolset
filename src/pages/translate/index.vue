@@ -60,7 +60,7 @@
         <ul class="formattxt-ul">
           <template v-for="(item, index) in defaultList">
             <li v-if="formatTxt(item)" :key="index">
-              {{ formatTxt(item) }}   <el-button style="margin-left: 15px" type="success" class="copy" :data-clipboard-text="formatTxt(item)" @click="copyData">
+              {{ formatTxt(item) }}    <el-button style="margin-left: 15px" type="success" class="copy" :data-clipboard-text="formatTxt(item)" @click="copyData">
                 复制
               </el-button>
             </li>
