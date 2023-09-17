@@ -43,12 +43,15 @@
         <div class="right_content__title">
           翻译结果为:
         </div>
-        <ul v-for="(item, index) in data.resultText" :key="index">
-          <li class="right_content__title__li">
-            <span v-if="data.resultText.length > 1">值: ({{ index + 1 }}):</span>
-            {{ item.dst }}
-          </li>
-        </ul>
+        <div class="tw-flex tw-flex-row tw-items-center">
+          <ul v-for="(item, index) in data.resultText" :key="index">
+            <li class="right_content__title__li">
+              <span v-if="data.resultText.length > 1">值: ({{ index + 1 }}):</span>
+              {{ item.dst }}
+            </li>
+          </ul>
+          <img v-if="data.resultText.length > 0" class="tw-w-5 tw-h-5 speak-img tw-ml-4" src="/images/speak.png" @click="pronunciationFun">
+        </div>
       </div>
       <div
         v-if="selectIndex[0] === 0"
@@ -234,6 +237,23 @@ function changeNewSelect() {
     outputValue.value = 'zh'
   }
 }
+
+// 发音
+const speak = (msg: string) => {
+  const synth = window.speechSynthesis
+  const u = new SpeechSynthesisUtterance()
+  // u.lang = 'zh-TW'
+  u.text = msg
+  synth.speak(u)
+}
+function pronunciationFun() {
+  // data.resultText
+  log.i(data.resultText, '翻译结果')
+  const result = data.resultText.map((item) => {
+    return item.dst
+  }).join(',')
+  speak(result)
+}
 </script>
 
 <style scoped lang="less">
@@ -283,6 +303,15 @@ function changeNewSelect() {
 .formattxt-ul {
   li {
     margin-top: 15px;
+  }
+}
+.speak-img {
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    background: #cccccc;
+    border-radius: 20px;
   }
 }
 </style>
