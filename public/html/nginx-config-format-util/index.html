@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nginx配置文件格式化</title>
+    <meta name="keywords" content="Nginx配置文件格式化,Nginx配置文件,Nginx代码格式化">
+    <meta name="description" content="本工具是一款文本格式化工具，提供了对Nginx配置文件格式化功能，并支持自定义缩进样式和大括号样式。本工具操作简单方便，可一键美化Nginx配置文件。">
+    <link rel="shortcut icon" type="image/icon" href="./favicon.ico">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+
+</head>
+
+<body>
+
+    <main id="pjax-container">
+        <section class="content-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="tool-body">
+                            <section class="tool-content-container">
+                                <div class="form-control-group">
+                                    <div class="form-control-group-header flexible">
+                                        <span>
+                                            <i class="iconfont icon-edit"></i> 请输入Nginx配置
+                                        </span>
+                                        <button type="button" class="btn btn-primary btn-sm btn-copy btn-copy-code"
+                                            disabled="">复制</button>
+                                    </div>
+                                    <div class="form-control-group-body with-code-editor">
+                                        <textarea class="codemirror-control hidden" data-bindto=".btn-config-format"
+                                            placeholder="在这里输入要格式化的 Nginx 配置..." style="display: none;"></textarea>
+                                        <div class="CodeMirror cm-s-default CodeMirror-empty">
+                                            <div
+                                                style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 20px; left: 52px;">
+                                                <textarea autocorrect="off" autocapitalize="off" spellcheck="false"
+                                                    tabindex="0"
+                                                    style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea>
+                                            </div>
+                                            <div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true">
+                                                <div style="min-width: 1px; height: 0px;"></div>
+                                            </div>
+                                            <div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true">
+                                                <div style="height: 100%; min-height: 1px; width: 0px;"></div>
+                                            </div>
+                                            <div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div>
+                                            <div class="CodeMirror-gutter-filler" cm-not-content="true"></div>
+                                            <div class="CodeMirror-scroll" tabindex="-1">
+                                                <div class="CodeMirror-sizer"
+                                                    style="margin-left: 42px; margin-bottom: -17px; border-right-width: 13px; min-height: 22px; min-width: 13px; padding-right: 0px; padding-bottom: 0px;">
+                                                    <div style="position: relative; top: 0px;">
+                                                        <div class="CodeMirror-lines" role="presentation">
+                                                            <div role="presentation"
+                                                                style="position: relative; outline: none;">
+                                                                <pre class="CodeMirror-placeholder"
+                                                                    style="height: 0px; overflow: visible; direction: ltr;">在这里输入要格式化的 Nginx 配置...</pre>
+                                                                <div class="CodeMirror-measure">
+                                                                    <pre><span></span></pre>
+                                                                </div>
+                                                                <div class="CodeMirror-measure"></div>
+                                                                <div style="position: relative; z-index: 1;"></div>
+                                                                <div class="CodeMirror-cursors">
+                                                                    <div class="CodeMirror-cursor"
+                                                                        style="left: 10px; top: 0px; height: 18.36px;">
+                                                                        &nbsp;</div>
+                                                                </div>
+                                                                <div class="CodeMirror-code" role="presentation">
+                                                                    <div style="position: relative;">
+                                                                        <div class="CodeMirror-gutter-wrapper"
+                                                                            style="left: -42px;">
+                                                                            <div class="CodeMirror-linenumber CodeMirror-gutter-elt"
+                                                                                style="left: 0px; width: 25px;">1</div>
+                                                                        </div>
+                                                                        <pre class=" CodeMirror-line "
+                                                                            role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 22px;">
+                                                </div>
+                                                <div class="CodeMirror-gutters" style="height: 35px;">
+                                                    <div class="CodeMirror-gutter CodeMirror-linenumbers"
+                                                        style="width: 39px;"></div>
+                                                    <div class="CodeMirror-gutter CodeMirror-foldgutter"></div>
+                                                    <div class="CodeMirror-gutter customergutter"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-control-group-footer">
+                                        <div class="row middle-xs">
+                                            <label class="col-xs-3 col-md-2" for="option-indent">缩进方式</label>
+                                            <div class="col-xs-9 col-md-4">
+                                                <select id="option-indent" class="form-control">
+                                                    <option value="2">以 2 个空格缩进</option>
+                                                    <option value="4" selected="">以 4 个空格缩进</option>
+                                                    <option value="0">以 tab 方式缩进</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-9 col-xs-offset-3 col-md-6 col-md-offset-0">
+                                                <label class="custom-input-item">
+                                                    <input type="checkbox" id="option-bracet-new-line" value="1">
+                                                    <span>大括号单独一行展示</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-group mt-1">
+                                    <button type="button" class="btn btn-primary btn-lg btn-config-format"
+                                        data-click-handler="">格式化Nginx配置</button>
+                                </div>
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        var scripts = [],
+            styles = [];
+        scripts.push('assets/js/page/nginx-formatter.js');
+        styles.push('assets/css/code.css');
+    </script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/base.js"></script>
+</body>
+
+</html>

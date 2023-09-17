@@ -80,6 +80,16 @@ const list = ref<ListType[]>([
     url: 'https://github.com/neohan666/wxmp-rsa',
     type: 'javascript库',
   },
+  {
+    title: '代码高亮，自动语言检测 highlightjs',
+    url: 'https://highlightjs.org/',
+    type: 'javascript库',
+  },
+  {
+    title: 'codemirror 可扩展的代码编辑器',
+    url: 'https://codemirror.net/',
+    type: 'javascript库',
+  },
   // vue3
   {
     title: '官网',
