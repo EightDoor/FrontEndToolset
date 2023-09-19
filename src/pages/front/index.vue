@@ -38,6 +38,11 @@ const list = ref<ListType[]>([
     url: 'https://caniuse.com/ciu/index',
     type: '文档',
   },
+  {
+    title: 'Vercel v0根据文本生成UI界面代码',
+    url: 'https://v0.dev/',
+    type: '文档',
+  },
   // 工具
   {
     title: 'eruda(手机网页调试面板)',
