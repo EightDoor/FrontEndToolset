@@ -95,6 +95,22 @@ const list = ref<ListType[]>([
     url: 'https://codemirror.net/',
     type: 'javascript库',
   },
+  // 播放器
+  {
+    title: '西瓜播放器-xgplayer',
+    url: 'https://github.com/bytedance/xgplayer',
+    type: '播放器',
+  },
+  {
+    title: 'videojs',
+    url: 'https://github.com/videojs/video.js',
+    type: '播放器',
+  },
+  {
+    title: '西瓜播放器-xgplayer',
+    url: 'https://github.com/bytedance/xgplayer',
+    type: '播放器',
+  },
   // vue3
   {
     title: '官网',
