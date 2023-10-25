@@ -68,9 +68,15 @@ const list = ref<ListType[]>([
   },
   // 工具--------------
   // 文档--------------
+
   {
     title: 'openjdk',
     url: 'https://openjdk.org/',
+    type: '文档',
+  },
+  {
+    title: '廖雪峰java教程',
+    url: 'https://www.liaoxuefeng.com/wiki/1252599548343744',
     type: '文档',
   },
   {
@@ -103,9 +109,6 @@ const list = ref<ListType[]>([
     url: ' https://mybatis.org/mybatis-3/zh/index.html',
     type: '工具',
   },
-  // 文档--------------
-
-  // 文档--------------
   {
     title: 'SpringSecurity框架教程-Spring Security+JWT实现项目级前端分离认证授权',
     url: 'https://www.bilibili.com/video/BV1mm4y1X7Hc?p=1&vd_source=6df11dc86c4e13ea88a67a6ef88d77bc',
