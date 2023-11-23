@@ -119,6 +119,11 @@ const list = ref<ListType[]>([
     url: 'https://www.bilibili.com/video/BV1Gh41187uR?p=1&vd_source=6df11dc86c4e13ea88a67a6ef88d77bc',
     type: '学习视频',
   },
+  {
+    title: '高并发的哲学原理 Philosophical Principles of High Concurrency',
+    url: 'https://github.com/johnlui/PPHC',
+    type: '学习视频',
+  },
   // 文档--------------
 ])
 </script>
