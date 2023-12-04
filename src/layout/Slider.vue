@@ -65,6 +65,10 @@ const Slider = defineComponent({
         url: '/front',
       },
       {
+        title: '数据库',
+        url: '/database',
+      },
+      {
         title: '小程序',
         url: '/mini_program',
       },
