@@ -83,6 +83,11 @@ const list = ref<ListType[]>([
     url: 'https://www.screentogif.com/',
     type: '工具',
   },
+  {
+    title: '磁盘健康检查工具',
+    url: 'https://github.com/hiyohiyo/CrystalDiskInfo/blob/master/README.sc.md',
+    type: '工具',
+  },
 ])
 </script>
 
