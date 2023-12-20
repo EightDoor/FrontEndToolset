@@ -88,6 +88,11 @@ const list = ref<ListType[]>([
     url: 'https://github.com/hiyohiyo/CrystalDiskInfo/blob/master/README.sc.md',
     type: '工具',
   },
+  {
+    title: 'Watt Toolkit 是一个开源跨平台的多功能 Steam 工具箱',
+    url: 'https://github.com/BeyondDimension/SteamTools',
+    type: '工具',
+  },
 ])
 </script>
 
