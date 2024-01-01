@@ -93,6 +93,11 @@ const list = ref<ListType[]>([
     url: 'https://github.com/BeyondDimension/SteamTools',
     type: '工具',
   },
+  {
+    title: 'Another Redis Desktop Manager Redis连接工具',
+    url: 'https://github.com/qishibo/AnotherRedisDesktopManager/blob/master/README.zh-CN.md',
+    type: '工具',
+  },
 ])
 </script>
 
