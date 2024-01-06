@@ -98,6 +98,11 @@ const list = ref<ListType[]>([
     url: 'https://github.com/qishibo/AnotherRedisDesktopManager/blob/master/README.zh-CN.md',
     type: '工具',
   },
+  {
+    title: 'HandBrake 视频转码器',
+    url: 'https://handbrake.fr/',
+    type: '工具',
+  },
 ])
 </script>
 
