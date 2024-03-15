@@ -24,6 +24,11 @@ const list = ref<ListType[]>([
     type: '工具',
   },
   {
+    title: "ScreenToGif 允许您录制屏幕的选定区域，编辑并将其保存为 gif 或视频。",
+    url: "https://github.com/NickeManarin/ScreenToGif/tree/master",
+    type:"工具",
+  },
+  {
     title: '播放器  Global Potplayer',
     url: 'https://potplayer.daum.net/?lang=zh_CN',
     type: '工具',
