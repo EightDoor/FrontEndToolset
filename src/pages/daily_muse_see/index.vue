@@ -45,11 +45,6 @@ const list = ref<ListType[]>([
     type: '学习',
   },
   {
-    title: 'TypeScript 教程',
-    url: 'https://www.ruanyifeng.com/blog/2023/08/typescript-tutorial.html',
-    type: '学习',
-  },
-  {
     title: 'Hello 算法(动画图解、一键运行的数据结构与算法教程)',
     url: 'https://github.com/krahets/hello-algo',
     type: '学习',
