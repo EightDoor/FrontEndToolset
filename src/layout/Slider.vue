@@ -41,7 +41,7 @@ const Slider = defineComponent({
         url: '/home',
       },
       {
-        title: '每日必看',
+        title: '看看',
         url: '/daily_muse_see',
       },
       {
