@@ -24,6 +24,11 @@ const list = ref<ListType[]>([
     type: '工具',
   },
   {
+    title: "ScreenToGif 允许您录制屏幕的选定区域，编辑并将其保存为 gif 或视频。",
+    url: "https://github.com/NickeManarin/ScreenToGif/tree/master",
+    type:"工具",
+  },
+  {
     title: '播放器  Global Potplayer',
     url: 'https://potplayer.daum.net/?lang=zh_CN',
     type: '工具',
@@ -81,6 +86,26 @@ const list = ref<ListType[]>([
   {
     title: 'ScreenToGif - 录屏，编辑，保存为 GIF 动画、视频或更多其他格式',
     url: 'https://www.screentogif.com/',
+    type: '工具',
+  },
+  {
+    title: '磁盘健康检查工具',
+    url: 'https://github.com/hiyohiyo/CrystalDiskInfo/blob/master/README.sc.md',
+    type: '工具',
+  },
+  {
+    title: 'Watt Toolkit 是一个开源跨平台的多功能 Steam 工具箱',
+    url: 'https://github.com/BeyondDimension/SteamTools',
+    type: '工具',
+  },
+  {
+    title: 'Another Redis Desktop Manager Redis连接工具',
+    url: 'https://github.com/qishibo/AnotherRedisDesktopManager/blob/master/README.zh-CN.md',
+    type: '工具',
+  },
+  {
+    title: 'HandBrake 视频转码器',
+    url: 'https://handbrake.fr/',
     type: '工具',
   },
 ])

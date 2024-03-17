@@ -21,6 +21,7 @@ import Tool from '@/pages/tool/index.vue'
 import CommonGadgets from '@/pages/common_gadgets/index.vue'
 import MiniProgram from '@/pages/mini_program/index.vue'
 import AI from '@/pages/ai/index.vue'
+import DataBase from '@/pages/database/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -95,6 +96,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'mini_program',
         component: MiniProgram,
+      },
+      {
+        path: 'database',
+        component: DataBase,
       },
     ],
   },
