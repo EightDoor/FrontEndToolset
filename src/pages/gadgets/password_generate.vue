@@ -2,6 +2,9 @@
   <div>
     <span>生成密码位数: </span>
     <el-input-number v-model="count" :min="5" />
+    <el-checkbox v-model="usePunctuation" style="margin-left: 15px">
+      包含特殊字符
+    </el-checkbox>
     <el-button type="primary" style="margin-left: 30px" @click="generatePasswd">
       生成
     </el-button>
@@ -23,31 +26,33 @@ import utils from '@/utils'
 
 const count = ref(15)
 const data = ref('')
+const usePunctuation = ref(true) // 新增一个用来控制是否使用特殊字符的标志
 
-function password_generator(len) {
-  const length = (len) || (10)
-  const string = 'abcdefghijklmnopqrstuvwxyz' // to upper
-  const numeric = '0123456789'
+function password_generator(len, includePunctuation = true) {
+  const lowerCase = 'abcdefghijklmnopqrstuvwxyz'
+  const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const numbers = '0123456789'
   const punctuation = '!@#$%^&*()_+~`|}{[]\:;?><,./-='
+
+  // 根据includePunctuation决定是否合并punctuation
+  const allChars = [...lowerCase, ...upperCase, ...numbers]
+  if (includePunctuation)
+    allChars.push(...punctuation)
+
   let password = ''
-  let character = ''
-  while (password.length < length) {
-    const entity1 = Math.ceil(string.length * Math.random() * Math.random())
-    const entity2 = Math.ceil(numeric.length * Math.random() * Math.random())
-    const entity3 = Math.ceil(punctuation.length * Math.random() * Math.random())
-    let hold = string.charAt(entity1)
-    hold = (password.length % 2 === 0) ? (hold.toUpperCase()) : (hold)
-    character += hold
-    character += numeric.charAt(entity2)
-    character += punctuation.charAt(entity3)
-    password = character
+  while (password.length < len) {
+    const randomIndex = Math.floor(Math.random() * allChars.length)
+    password += allChars[randomIndex]
   }
-  password = password.split('').sort(() => { return 0.5 - Math.random() }).join('')
-  return password.substr(0, len)
+
+  // 如果密码长度大于实际需要的长度，则截取前len位
+  password = password.slice(0, len)
+
+  return password
 }
 
 function generatePasswd() {
-  data.value = password_generator(count.value)
+  data.value = password_generator(count.value, usePunctuation.value)
 }
 function copyData() {
   const clip = new Clipboard('.copy')
