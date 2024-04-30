@@ -190,5 +190,9 @@
     {
         "title": "\u5e2e\u52a9\u548c\u6559\u7a0b",
         "url": "https://support.mozilla.org/zh-CN/products/firefox"
+    },
+    {
+        "title": "\u53c2\u4e0e\u8fdb\u6765",
+        "url": "https://www.mozilla.org/zh-CN/contribute/"
     }
 ]
