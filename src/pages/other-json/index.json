@@ -198,5 +198,9 @@
     {
         "title": "\u81ea\u5b9a\u4e49 Firefox",
         "url": "https://support.mozilla.org/zh-CN/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize"
+    },
+    {
+        "title": "\u83b7\u53d6\u5e2e\u52a9",
+        "url": "https://support.mozilla.org/zh-CN/products/firefox"
     }
 ]
