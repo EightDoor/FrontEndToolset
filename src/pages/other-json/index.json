@@ -210,5 +210,9 @@
     {
         "title": "\u52a0\u5165\u8fdb\u6765",
         "url": "https://www.mozilla.org/zh-CN/contribute/"
+    },
+    {
+        "title": "\u81ea\u5b9a\u4e49 Firefox",
+        "url": "https://www.mozilla.org/zh-CN/firefox/customize/"
     }
 ]
