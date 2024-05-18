@@ -214,5 +214,9 @@
     {
         "title": "\u81ea\u5b9a\u4e49 Firefox",
         "url": "https://www.mozilla.org/zh-CN/firefox/customize/"
+    },
+    {
+        "title": "\u5e2e\u52a9\u548c\u6559\u7a0b",
+        "url": "https://www.mozilla.org/zh-CN/firefox/help/"
     }
 ]
