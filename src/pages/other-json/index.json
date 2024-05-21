@@ -218,5 +218,9 @@
     {
         "title": "\u5e2e\u52a9\u548c\u6559\u7a0b",
         "url": "https://www.mozilla.org/zh-CN/firefox/help/"
+    },
+    {
+        "title": "\u5173\u4e8e\u6211\u4eec",
+        "url": "https://www.mozilla.org/about/"
     }
 ]
