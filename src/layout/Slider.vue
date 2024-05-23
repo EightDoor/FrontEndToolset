@@ -61,6 +61,11 @@ const Slider = defineComponent({
         url: '/commonGadgets',
       },
       {
+        title: '人信息生成器',
+        type: 'url',
+        url: 'http://random-user.start6.cn/',
+      },
+      {
         title: '前端开发',
         url: '/front',
       },
