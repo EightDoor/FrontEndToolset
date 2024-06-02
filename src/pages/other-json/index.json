@@ -234,5 +234,9 @@
     {
         "title": "\u83b7\u53d6\u5e2e\u52a9",
         "url": "https://support.mozilla.org/products/firefox"
+    },
+    {
+        "title": "about:blank",
+        "url": "about:blank"
     }
 ]
