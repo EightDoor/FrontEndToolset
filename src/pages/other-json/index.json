@@ -274,5 +274,9 @@
     {
         "title": "\u5173\u4e8e\u6211\u4eec",
         "url": "https://www.mozilla.org/zh-CN/about/"
+    },
+    {
+        "title": "\u53c2\u4e0e\u8fdb\u6765",
+        "url": "https://www.mozilla.org/zh-CN/contribute/"
     }
 ]
