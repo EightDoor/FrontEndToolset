@@ -294,5 +294,9 @@
     {
         "title": "\u53c2\u4e0e\u8fdb\u6765",
         "url": "https://www.mozilla.org/contribute/"
+    },
+    {
+        "title": "\u5b9a\u5236 Firefox",
+        "url": "https://support.mozilla.org/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize"
     }
 ]
