@@ -314,5 +314,9 @@
     {
         "title": "\u4e2d\u56fd\u94c1\u5854\u4f18\u5316\u5e73\u53f0",
         "url": "http://10.43.74.53/modules/optimize/project?status=add"
+    },
+    {
+        "title": "\u5168\u5c40\u914d\u7f6e-\u7ba1\u7406\u4e2d\u5fc3-\u89c6\u8054\u7b97\u6cd5\u4ed3",
+        "url": "http://117.78.2.139:8090/manager-center/system/selectAllocation"
     }
 ]
