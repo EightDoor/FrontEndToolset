@@ -298,6 +298,7 @@
     {
         "title": "\u5b9a\u5236 Firefox",
         "url": "https://support.mozilla.org/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize"
+<<<<<<< HEAD
     },
     {
         "title": "\u83b7\u53d6\u5e2e\u52a9",
@@ -318,5 +319,7 @@
     {
         "title": "\u5168\u5c40\u914d\u7f6e-\u7ba1\u7406\u4e2d\u5fc3-\u89c6\u8054\u7b97\u6cd5\u4ed3",
         "url": "http://117.78.2.139:8090/manager-center/system/selectAllocation"
+=======
+>>>>>>> parent of 7c676e4 (feat: 获取帮助)
     }
 ]
