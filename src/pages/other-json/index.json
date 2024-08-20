@@ -10,5 +10,9 @@
     {
         "title": "\u89c6\u8054\u7b97\u6cd5\u4ed3  124.70.47.8 \u6d4b\u8bd5\u73af\u5883",
         "url": "http://124.70.47.8:8090/manager-center/dailyOperation"
+    },
+    {
+        "title": "\u7b97\u6cd5\u4ed3\u751f\u4ea7\u73af\u5883",
+        "url": "https://sf.chinatowercom.cn/login?redirect=%2Foperation%2Falarm%2Fuser-log"
     }
 ]
