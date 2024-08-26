@@ -18,5 +18,9 @@
     {
         "title": "\u89c6\u8054\u7b97\u6cd5\u4ed3---cce",
         "url": "http://124.70.47.8:8090/login?redirect=%2Fdashboard"
+    },
+    {
+        "title": "\u4e2a\u4eba\u5de5\u5177\u96c6",
+        "url": "http://tool.start6.cn/#/json"
     }
 ]
