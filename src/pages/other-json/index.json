@@ -2,5 +2,9 @@
     {
         "title": "[Jenkins] \u9879\u76ee\u6784\u5efa",
         "url": "http://10.43.74.44:9400/jenkins/"
+    },
+    {
+        "title": "\u89c6\u8054\u7b97\u6cd5\u4ed3 \u51c6\u751f\u4ea7",
+        "url": "http://117.78.2.139:8090/resource-center/samples-manage"
     }
 ]
