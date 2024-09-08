@@ -10,5 +10,9 @@
     {
         "title": "\u89c6\u8054\u7b97\u6cd5\u4ed3-\u51c6\u751f\u4ea7",
         "url": "http://117.78.2.139:8090/login?redirect=%2Fmanager-center%2FdailyReport"
+    },
+    {
+        "title": "\u51c6\u751f\u4ea7=\u7b97\u6cd5\u65e5\u5e38\u8fd0\u8425\u7edf\u8ba1-\u7ba1\u7406\u4e2d\u5fc3-\u89c6\u8054\u7b97\u6cd5\u4ed3",
+        "url": "http://120.46.188.62/manager-center/dailyOperation"
     }
 ]
