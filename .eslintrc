@@ -5,10 +5,12 @@
     "no-console": "off",
     // vue 组合形式
     "vue/component-tags-order": [
-      "error", {
-        "order": ["template", "script", "style"]
-      }],
-    "@typescript-eslint/ban-ts-comment": "off"
-  }
+      "error",
+      {
+        "order": ["template", "script", "style"],
+      },
+    ],
+    "@typescript-eslint/ban-ts-comment": "off",
+  },
+  "plugins": ["prettier", "prettier-eslint"],
 }
-
