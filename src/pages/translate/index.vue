@@ -45,7 +45,7 @@
       <div>
         <div class="right_content__title">翻译结果为:</div>
         <div class="tw-flex tw-flex-row tw-items-center">
-          <ul v-for="(item, index) in data.resultText" :key="index">
+          <ul :key="index" v-for="(item, index) in data.resultText">
             <li class="right_content__title__li">
               <span v-if="data.resultText.length > 1"
                 >值: ({{ index + 1 }}):</span

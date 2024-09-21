@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "cross-env NODE_ENV=production && vite build",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "format": "prettier .  --write"
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
@@ -24,6 +25,7 @@
     "localforage": "^1.10.0",
     "lodash-es": "^4.17.21",
     "md5": "^2.3.0",
+    "prettier": "^3.3.3",
     "uuid": "^8.3.2",
     "vue": "^3.2.36",
     "vue-clipboard3": "^2.0.0",
@@ -32,7 +34,7 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.23.1",
+    "@eslint/js": "^9.11.0",
     "@types/codemirror": "^5.60.5",
     "@types/diff": "^5.0.3",
     "@types/js-beautify": "^1.13.3",
@@ -45,12 +47,16 @@
     "@vue/compiler-sfc": "^3.2.33",
     "autoprefixer": "^10.4.15",
     "cross-env": "^7.0.3",
-    "eslint": "^8.13.0",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.28.0",
+    "globals": "^15.9.0",
     "less": "^4.1.2",
     "postcss": "^8.4.29",
     "prettier-eslint": "^16.3.0",
     "tailwindcss": "^3.3.3",
     "typescript": "^4.6.3",
+    "typescript-eslint": "^8.6.0",
     "unplugin-auto-import": "^0.6.9",
     "unplugin-vue-components": "^0.18.5",
     "vite": "^2.9.5",
