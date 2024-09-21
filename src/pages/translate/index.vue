@@ -171,28 +171,32 @@ function copyData() {
 }
 
 function translateFun() {
-  data.resultText = [];
-  data.loading = true;
-  const query = data.entryText;
-  // 多个query可以用\n连接  如 query='apple\norange\nbanana\npear'
-  const from = value.value;
-  const to = outputValue.value;
-  axios
-    .post(`${Config.backUrl}translate/translationContent`, {
-      q: query,
-      from,
-      to,
-    })
-    .then((res) => {
-      console.log(res.data, "res.data");
-      data.loading = false;
-      if (res.data.code === 0) data.resultText = res.data.data;
-      else ElMessage.error(`翻译失败: ${res.data.data}`);
-    })
-    .catch((err) => {
-      data.loading = false;
-      ElMessage.error(`翻译失败: ${JSON.stringify(err)}`);
-    });
+  if (data.entryText) {
+    data.resultText = [];
+    data.loading = true;
+    const query = data.entryText;
+    // 多个query可以用\n连接  如 query='apple\norange\nbanana\npear'
+    const from = value.value;
+    const to = outputValue.value;
+    axios
+      .post(`${Config.backUrl}translate/translationContent`, {
+        q: query,
+        from,
+        to,
+      })
+      .then((res) => {
+        console.log(res.data, "res.data");
+        data.loading = false;
+        if (res.data.code === 0) data.resultText = res.data.data;
+        else ElMessage.error(`翻译失败: ${res.data.data}`);
+      })
+      .catch((err) => {
+        data.loading = false;
+        ElMessage.error(`翻译失败: ${JSON.stringify(err)}`);
+      });
+  } else {
+    ElMessage.error("请输入翻译内容");
+  }
 }
 const route = useRoute();
 
@@ -290,9 +294,8 @@ function pronunciationFun() {
   border: 1px solid #cccccc;
   overflow-x: scroll;
   padding: 15px;
+
   &__clear {
-    float: right;
-    margin-left: 5px;
   }
 }
 .select-btn {
