@@ -1,6 +1,6 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Slider from '@/layout/Slider.vue'
+import Slider from '@/layout/Slider.vue';
+import { defineComponent } from 'vue';
 
 const BaseLayout = defineComponent({
   name: 'BaseLayout',

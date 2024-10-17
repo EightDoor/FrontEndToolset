@@ -21,136 +21,102 @@
 </template>
 
 <script lang="ts">
+import utils from "@/utils";
 import {
-  computed, defineComponent, onMounted, reactive, ref, watch,
-} from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { useStore } from 'vuex'
-import utils from '@/utils'
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  ref,
+  watch,
+} from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 const Slider = defineComponent({
-  name: 'LayoutSlider',
+  name: "LayoutSlider",
   setup() {
-    const selectIndex = ref(0)
-    const router = useRouter()
-    const route = useRoute()
-    const store = useStore()
+    const selectIndex = ref(0);
+    const router = useRouter();
+    const route = useRoute();
+    const store = useStore();
     const list = reactive<Layout.SliderType[]>([
       {
-        title: '首页',
-        url: '/home',
+        title: "首页",
+        url: "/home",
       },
       {
-        title: '看看',
-        url: '/daily_muse_see',
+        title: "每日看",
+        url: "/daily_muse_see",
       },
       {
-        title: '百度翻译',
-        url: '/translate',
+        title: "百度翻译",
+        url: "/translate",
       },
       {
-        title: 'json数据处理',
-        url: '/json',
+        title: "json数据处理",
+        url: "/json",
       },
       {
-        title: '开发小工具',
-        url: '/gadgets',
+        title: "开发小工具",
+        url: "/gadgets",
       },
       {
-        title: '常用小工具',
-        url: '/commonGadgets',
+        title: "常用小工具",
+        url: "/commonGadgets",
       },
       {
-        title: '个人信息生成器',
-        type: 'url',
-        url: 'http://random-user.start6.cn/',
+        title: "文档",
+        url: "/bookmark",
       },
       {
-        title: '前端开发',
-        url: '/front',
+        title: "个人信息生成器",
+        type: "url",
+        url: "http://random-user.start6.cn/",
       },
       {
-        title: '数据库',
-        url: '/database',
+        title: "github",
+        url: "https://github.com/EightDoor/FrontEndToolset",
+        type: "url",
       },
-      {
-        title: '小程序',
-        url: '/mini_program',
-      },
-      {
-        title: 'java',
-        url: '/java',
-      },
-      {
-        title: '工具',
-        url: '/tool',
-      },
-      {
-        title: 'go',
-        url: '/go',
-      },
-      {
-        title: 'windows',
-        url: '/windows',
-      },
-      {
-        title: '黑苹果',
-        url: '/black_apple',
-      },
-      {
-        title: '逆向论坛',
-        url: '/reverse_forum',
-      },
-      // {
-      //   title: '音乐',
-      //   url: '/music',
-      // },
-      {
-        title: 'github',
-        url: 'https://github.com/EightDoor/FrontEndToolset',
-        type: 'url',
-      },
-    ])
+    ]);
     function change(item: Layout.SliderType, index: number) {
-      console.log(`当前选择的: ${JSON.stringify(item)}`)
-      if (item.type === 'url') {
-        utils.openUrl(item.url, item.title)
-      }
-      else {
-        selectIndex.value = index
-        store.commit('MenuBar/setIndex', item.title)
-        router.push(item.url)
+      console.log(`当前选择的: ${JSON.stringify(item)}`);
+      if (item.type === "url") {
+        utils.openUrl(item.url, item.title);
+      } else {
+        selectIndex.value = index;
+        store.commit("MenuBar/setIndex", item.title);
+        router.push(item.url);
       }
     }
 
     function getPath() {
-      const { path } = route
-      const index = list.findIndex(item => item.url === path)
-      if (index !== -1)
-        selectIndex.value = index
+      const { path } = route;
+      const index = list.findIndex((item) => item.url === path);
+      if (index !== -1) selectIndex.value = index;
     }
 
-    const title = computed(() => store.state.MenuBar.title)
+    const title = computed(() => store.state.MenuBar.title);
     watch(title, (newVal) => {
-      const v = list.findIndex(item => item.title === newVal)
-      if (v !== -1)
-        selectIndex.value = v
-    })
+      const v = list.findIndex((item) => item.title === newVal);
+      if (v !== -1) selectIndex.value = v;
+    });
 
     onMounted(() => {
-      getPath()
-    })
+      getPath();
+    });
     return {
       // fun
       change,
       // data
       list,
       selectIndex,
-    }
+    };
   },
-})
+});
 
-export default Slider
+export default Slider;
 </script>
 
 <style lang="less" scoped>

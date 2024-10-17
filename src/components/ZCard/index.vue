@@ -1,6 +1,10 @@
 <template>
   <div v-for="(item, index) in data" :key="index">
-    <el-divider v-if="item.title !== 'none'" class="divider_container" content-position="left">
+    <el-divider
+      v-if="item.title !== 'none'"
+      class="divider_container"
+      content-position="left"
+    >
       <div class="divider_font">
         {{ item.title }}
       </div>
@@ -20,65 +24,64 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
-import { ref, watch } from 'vue'
-import { isArray } from 'lodash-es'
-import type { ListType } from '@/types/com'
-import utils from '@/utils'
+import type { ListType } from "@/types/com";
+import utils from "@/utils";
+import { isArray } from "lodash-es";
+import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
 
 interface GroupList {
-  title: String
-  list: ListType[]
+  title: String;
+  list: ListType[];
 }
 const props = defineProps<{
-  list: ListType[]
-}>()
+  list: ListType[];
+}>();
 
-const data = ref<GroupList[]>([])
-const router = useRouter()
+const data = ref<GroupList[]>([]);
+const router = useRouter();
 function changeCard(item) {
-  if (item.url)
-    utils.openUrl(item.url, item.title)
-  else if (item.router)
-    router.push(item.router)
+  if (item.url) utils.openUrl(item.url, item.title);
+  else if (item.router) router.push(item.router);
 }
-watch(props.list, (newVal) => {
-  if (isArray(newVal)) {
-    // 分组
-    const list: GroupList[] = []
-    newVal.forEach((item) => {
-      if (item.type) {
-        const isTypeIndex = list.findIndex(v => v.title === item.type)
-        if (isTypeIndex !== -1) {
-          list[isTypeIndex].list.push(item)
+watch(
+  () => props.list,
+  (newVal) => {
+    if (isArray(newVal)) {
+      // 分组
+      const list: GroupList[] = [];
+      newVal.forEach((item) => {
+        if (item.type) {
+          const isTypeIndex = list.findIndex((v) => v.title === item.type);
+          if (isTypeIndex !== -1) {
+            list[isTypeIndex].list.push(item);
+          } else {
+            list.push({
+              title: item.type,
+              list: [item],
+            });
+          }
+        } else {
+          const isNoneIndex = list.findIndex((v) => v.title === "none");
+          if (isNoneIndex !== -1) {
+            list[isNoneIndex].list.push(item);
+          } else {
+            list.push({
+              title: "none",
+              list: [item],
+            });
+          }
         }
-        else {
-          list.push({
-            title: item.type,
-            list: [item],
-          })
-        }
-      }
-      else {
-        const isNoneIndex = list.findIndex(v => v.title === 'none')
-        if (isNoneIndex !== -1) {
-          list[isNoneIndex].list.push(item)
-        }
-        else {
-          list.push({
-            title: 'none',
-            list: [item],
-          })
-        }
-      }
-    })
-    data.value = list
-    console.log(data, 'data')
-  }
-}, {
-  immediate: true,
-  deep: true,
-})
+      });
+      data.value = list;
+      console.log(data, "data");
+    }
+  },
+  {
+    immediate: true,
+    deep: true,
+  },
+);
 </script>
 
 <style lang="less" scoped>
