@@ -1,7 +1,8 @@
 <template>
   <div>
-    <ul class="ul">
+    <ul class="ul sticky">
       <li
+        :class="[currentIndex === index ? 'active-li' : '']"
         @click="currentIndex = index"
         v-for="(item, index) of data"
         :key="index"
@@ -33,7 +34,11 @@ const bookmarks = computed(() => {
   align-items: center;
   flex-wrap: wrap;
   column-gap: 20px;
+
+  background: white;
+  height: 50px;
   li {
+    min-width: 100px;
     margin-top: 10px;
     font-size: 20px;
     padding: 10px;
@@ -43,5 +48,15 @@ const bookmarks = computed(() => {
       cursor: pointer;
     }
   }
+  .active-li {
+    border: 1px dashed #ccc;
+    text-align: center;
+  }
+}
+
+.sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0; /* 设置元素距离顶部的位置 */
 }
 </style>
